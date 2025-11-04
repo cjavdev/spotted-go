@@ -390,6 +390,12 @@ Methods:
 - <code title="get /recommendations">client.Recommendations.<a href="https://pkg.go.dev/github.com/stainless-sdks/spotted-go#RecommendationService.Get">Get</a>(ctx <a href="https://pkg.go.dev/context">context</a>.<a href="https://pkg.go.dev/context#Context">Context</a>, query <a href="https://pkg.go.dev/github.com/stainless-sdks/spotted-go">spotted</a>.<a href="https://pkg.go.dev/github.com/stainless-sdks/spotted-go#RecommendationGetParams">RecommendationGetParams</a>) (<a href="https://pkg.go.dev/github.com/stainless-sdks/spotted-go">spotted</a>.<a href="https://pkg.go.dev/github.com/stainless-sdks/spotted-go#RecommendationGetResponse">RecommendationGetResponse</a>, <a href="https://pkg.go.dev/builtin#error">error</a>)</code>
 - <code title="get /recommendations/available-genre-seeds">client.Recommendations.<a href="https://pkg.go.dev/github.com/stainless-sdks/spotted-go#RecommendationService.ListAvailableGenreSeeds">ListAvailableGenreSeeds</a>(ctx <a href="https://pkg.go.dev/context">context</a>.<a href="https://pkg.go.dev/context#Context">Context</a>) (<a href="https://pkg.go.dev/github.com/stainless-sdks/spotted-go">spotted</a>.<a href="https://pkg.go.dev/github.com/stainless-sdks/spotted-go#RecommendationListAvailableGenreSeedsResponse">RecommendationListAvailableGenreSeedsResponse</a>, <a href="https://pkg.go.dev/builtin#error">error</a>)</code>
 
+# Webhooks
+
+Response Types:
+
+- <a href="https://pkg.go.dev/github.com/stainless-sdks/spotted-go">spotted</a>.<a href="https://pkg.go.dev/github.com/stainless-sdks/spotted-go#UnwrapWebhookEvent">UnwrapWebhookEvent</a>
+
 # Markets
 
 Response Types:

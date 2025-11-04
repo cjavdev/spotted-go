@@ -32,12 +32,13 @@ type Client struct {
 	AudioFeatures   AudioFeatureService
 	AudioAnalysis   AudioAnalysisService
 	Recommendations RecommendationService
+	Webhooks        WebhookService
 	Markets         MarketService
 }
 
-// DefaultClientOptions read from the environment (SPOTIFY_CLIENT_ID,
-// SPOTIFY_CLIENT_SECRET, SPOTTED_BASE_URL). This should be used to initialize new
-// clients.
+// DefaultClientOptions read from the environment (ORG_WEBHOOK_KEY,
+// SPOTIFY_CLIENT_ID, SPOTIFY_CLIENT_SECRET, SPOTTED_BASE_URL). This should be used
+// to initialize new clients.
 func DefaultClientOptions() []option.RequestOption {
 	defaults := []option.RequestOption{option.WithEnvironmentProduction()}
 	if o, ok := os.LookupEnv("SPOTTED_BASE_URL"); ok {
@@ -49,13 +50,17 @@ func DefaultClientOptions() []option.RequestOption {
 	if o, ok := os.LookupEnv("SPOTIFY_CLIENT_SECRET"); ok {
 		defaults = append(defaults, option.WithClientSecret(o))
 	}
+	if o, ok := os.LookupEnv("ORG_WEBHOOK_KEY"); ok {
+		defaults = append(defaults, option.WithWebhookKey(o))
+	}
 	return defaults
 }
 
 // NewClient generates a new client with the default option read from the
-// environment (SPOTIFY_CLIENT_ID, SPOTIFY_CLIENT_SECRET, SPOTTED_BASE_URL). The
-// option passed in as arguments are applied after these default arguments, and all
-// option will be passed down to the services and requests that this client makes.
+// environment (ORG_WEBHOOK_KEY, SPOTIFY_CLIENT_ID, SPOTIFY_CLIENT_SECRET,
+// SPOTTED_BASE_URL). The option passed in as arguments are applied after these
+// default arguments, and all option will be passed down to the services and
+// requests that this client makes.
 func NewClient(opts ...option.RequestOption) (r Client) {
 	opts = append(DefaultClientOptions(), opts...)
 
@@ -76,6 +81,7 @@ func NewClient(opts ...option.RequestOption) (r Client) {
 	r.AudioFeatures = NewAudioFeatureService(opts...)
 	r.AudioAnalysis = NewAudioAnalysisService(opts...)
 	r.Recommendations = NewRecommendationService(opts...)
+	r.Webhooks = NewWebhookService(opts...)
 	r.Markets = NewMarketService(opts...)
 
 	return

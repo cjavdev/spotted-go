@@ -6,7 +6,7 @@
 
 <!-- x-release-please-end -->
 
-The Spotted Go library provides convenient access to the [Spotted REST API](https://community.spotify.com/t5/Spotify-for-Developers/bd-p/Spotify_Developer)
+The Spotted Go library provides convenient access to the [Spotted REST API](https://spotted.stldocs.com)
 from applications written in Go.
 
 It is generated with [Stainless](https://www.stainless.com/).

@@ -83,8 +83,7 @@ func TestMeTrackRemoveWithOptionalParams(t *testing.T) {
 		option.WithClientSecret("My Client Secret"),
 	)
 	err := client.Me.Tracks.Remove(context.TODO(), spotted.MeTrackRemoveParams{
-		QueryIDs: "7ouMYWpwJ422jRcDASZB7P,4VqPOruhp5EdPBeR92t6lQ,2takcwOaAZWiXQijPHIx7B",
-		BodyIDs:  []string{"string"},
+		IDs: []string{"string"},
 	})
 	if err != nil {
 		var apierr *spotted.Error

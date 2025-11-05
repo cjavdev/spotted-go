@@ -83,11 +83,11 @@ func (r *MeEpisodeService) Check(ctx context.Context, query MeEpisodeCheckParams
 // endpoint is in **beta** and could change without warning. Please share any
 // feedback that you have, or issues that you discover, in our
 // [developer community forum](https://community.spotify.com/t5/Spotify-for-Developers/bd-p/Spotify_Developer).
-func (r *MeEpisodeService) Remove(ctx context.Context, params MeEpisodeRemoveParams, opts ...option.RequestOption) (err error) {
+func (r *MeEpisodeService) Remove(ctx context.Context, body MeEpisodeRemoveParams, opts ...option.RequestOption) (err error) {
 	opts = slices.Concat(r.Options, opts)
 	opts = append([]option.RequestOption{option.WithHeader("Accept", "")}, opts...)
 	path := "me/episodes"
-	err = requestconfig.ExecuteNewRequest(ctx, http.MethodDelete, path, params, nil, opts...)
+	err = requestconfig.ExecuteNewRequest(ctx, http.MethodDelete, path, body, nil, opts...)
 	return
 }
 
@@ -95,11 +95,11 @@ func (r *MeEpisodeService) Remove(ctx context.Context, params MeEpisodeRemovePar
 // is in **beta** and could change without warning. Please share any feedback that
 // you have, or issues that you discover, in our
 // [developer community forum](https://community.spotify.com/t5/Spotify-for-Developers/bd-p/Spotify_Developer).
-func (r *MeEpisodeService) Save(ctx context.Context, params MeEpisodeSaveParams, opts ...option.RequestOption) (err error) {
+func (r *MeEpisodeService) Save(ctx context.Context, body MeEpisodeSaveParams, opts ...option.RequestOption) (err error) {
 	opts = slices.Concat(r.Options, opts)
 	opts = append([]option.RequestOption{option.WithHeader("Accept", "")}, opts...)
 	path := "me/episodes"
-	err = requestconfig.ExecuteNewRequest(ctx, http.MethodPut, path, params, nil, opts...)
+	err = requestconfig.ExecuteNewRequest(ctx, http.MethodPut, path, body, nil, opts...)
 	return
 }
 
@@ -169,16 +169,12 @@ func (r MeEpisodeCheckParams) URLQuery() (v url.Values, err error) {
 }
 
 type MeEpisodeRemoveParams struct {
-	// A comma-separated list of the
-	// [Spotify IDs](/documentation/web-api/concepts/spotify-uris-ids). For example:
-	// `ids=4iV5W9uYEdYUVa79Axb7Rh,1301WleyT98MSxVHPZCA6M`. Maximum: 50 IDs.
-	QueryIDs string `query:"ids,required" json:"-"`
 	// A JSON array of the
 	// [Spotify IDs](/documentation/web-api/concepts/spotify-uris-ids). <br/>A maximum
 	// of 50 items can be specified in one request. _**Note**: if the `ids` parameter
 	// is present in the query string, any IDs listed here in the body will be
 	// ignored._
-	BodyIDs []string `json:"ids,omitzero"`
+	IDs []string `json:"ids,omitzero"`
 	paramObj
 }
 
@@ -190,25 +186,13 @@ func (r *MeEpisodeRemoveParams) UnmarshalJSON(data []byte) error {
 	return apijson.UnmarshalRoot(data, r)
 }
 
-// URLQuery serializes [MeEpisodeRemoveParams]'s query parameters as `url.Values`.
-func (r MeEpisodeRemoveParams) URLQuery() (v url.Values, err error) {
-	return apiquery.MarshalWithSettings(r, apiquery.QuerySettings{
-		ArrayFormat:  apiquery.ArrayQueryFormatComma,
-		NestedFormat: apiquery.NestedQueryFormatBrackets,
-	})
-}
-
 type MeEpisodeSaveParams struct {
-	// A comma-separated list of the
-	// [Spotify IDs](/documentation/web-api/concepts/spotify-uris-ids). Maximum: 50
-	// IDs.
-	QueryIDs string `query:"ids,required" json:"-"`
 	// A JSON array of the
 	// [Spotify IDs](/documentation/web-api/concepts/spotify-uris-ids). <br/>A maximum
 	// of 50 items can be specified in one request. _**Note**: if the `ids` parameter
 	// is present in the query string, any IDs listed here in the body will be
 	// ignored._
-	BodyIDs []string `json:"ids,omitzero,required"`
+	IDs []string `json:"ids,omitzero,required"`
 	paramObj
 }
 
@@ -218,12 +202,4 @@ func (r MeEpisodeSaveParams) MarshalJSON() (data []byte, err error) {
 }
 func (r *MeEpisodeSaveParams) UnmarshalJSON(data []byte) error {
 	return apijson.UnmarshalRoot(data, r)
-}
-
-// URLQuery serializes [MeEpisodeSaveParams]'s query parameters as `url.Values`.
-func (r MeEpisodeSaveParams) URLQuery() (v url.Values, err error) {
-	return apiquery.MarshalWithSettings(r, apiquery.QuerySettings{
-		ArrayFormat:  apiquery.ArrayQueryFormatComma,
-		NestedFormat: apiquery.NestedQueryFormatBrackets,
-	})
 }

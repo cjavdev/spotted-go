@@ -82,8 +82,7 @@ func TestMeEpisodeRemoveWithOptionalParams(t *testing.T) {
 		option.WithClientSecret("My Client Secret"),
 	)
 	err := client.Me.Episodes.Remove(context.TODO(), spotted.MeEpisodeRemoveParams{
-		QueryIDs: "7ouMYWpwJ422jRcDASZB7P,4VqPOruhp5EdPBeR92t6lQ,2takcwOaAZWiXQijPHIx7B",
-		BodyIDs:  []string{"string"},
+		IDs: []string{"string"},
 	})
 	if err != nil {
 		var apierr *spotted.Error
@@ -109,8 +108,7 @@ func TestMeEpisodeSave(t *testing.T) {
 		option.WithClientSecret("My Client Secret"),
 	)
 	err := client.Me.Episodes.Save(context.TODO(), spotted.MeEpisodeSaveParams{
-		QueryIDs: "77o6BIVlYM3msb4MMIL1jH,0Q86acNRm6V9GYx55SXKwf",
-		BodyIDs:  []string{"string"},
+		IDs: []string{"string"},
 	})
 	if err != nil {
 		var apierr *spotted.Error

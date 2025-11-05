@@ -73,20 +73,20 @@ func (r *MeAlbumService) Check(ctx context.Context, query MeAlbumCheckParams, op
 }
 
 // Remove one or more albums from the current user's 'Your Music' library.
-func (r *MeAlbumService) Remove(ctx context.Context, params MeAlbumRemoveParams, opts ...option.RequestOption) (err error) {
+func (r *MeAlbumService) Remove(ctx context.Context, body MeAlbumRemoveParams, opts ...option.RequestOption) (err error) {
 	opts = slices.Concat(r.Options, opts)
 	opts = append([]option.RequestOption{option.WithHeader("Accept", "")}, opts...)
 	path := "me/albums"
-	err = requestconfig.ExecuteNewRequest(ctx, http.MethodDelete, path, params, nil, opts...)
+	err = requestconfig.ExecuteNewRequest(ctx, http.MethodDelete, path, body, nil, opts...)
 	return
 }
 
 // Save one or more albums to the current user's 'Your Music' library.
-func (r *MeAlbumService) Save(ctx context.Context, params MeAlbumSaveParams, opts ...option.RequestOption) (err error) {
+func (r *MeAlbumService) Save(ctx context.Context, body MeAlbumSaveParams, opts ...option.RequestOption) (err error) {
 	opts = slices.Concat(r.Options, opts)
 	opts = append([]option.RequestOption{option.WithHeader("Accept", "")}, opts...)
 	path := "me/albums"
-	err = requestconfig.ExecuteNewRequest(ctx, http.MethodPut, path, params, nil, opts...)
+	err = requestconfig.ExecuteNewRequest(ctx, http.MethodPut, path, body, nil, opts...)
 	return
 }
 
@@ -284,16 +284,12 @@ func (r MeAlbumCheckParams) URLQuery() (v url.Values, err error) {
 }
 
 type MeAlbumRemoveParams struct {
-	// A comma-separated list of the
-	// [Spotify IDs](/documentation/web-api/concepts/spotify-uris-ids) for the albums.
-	// Maximum: 20 IDs.
-	QueryIDs string `query:"ids,required" json:"-"`
 	// A JSON array of the
 	// [Spotify IDs](/documentation/web-api/concepts/spotify-uris-ids). For example:
 	// `["4iV5W9uYEdYUVa79Axb7Rh", "1301WleyT98MSxVHPZCA6M"]`<br/>A maximum of 50 items
 	// can be specified in one request. _**Note**: if the `ids` parameter is present in
 	// the query string, any IDs listed here in the body will be ignored._
-	BodyIDs []string `json:"ids,omitzero"`
+	IDs []string `json:"ids,omitzero"`
 	paramObj
 }
 
@@ -305,25 +301,13 @@ func (r *MeAlbumRemoveParams) UnmarshalJSON(data []byte) error {
 	return apijson.UnmarshalRoot(data, r)
 }
 
-// URLQuery serializes [MeAlbumRemoveParams]'s query parameters as `url.Values`.
-func (r MeAlbumRemoveParams) URLQuery() (v url.Values, err error) {
-	return apiquery.MarshalWithSettings(r, apiquery.QuerySettings{
-		ArrayFormat:  apiquery.ArrayQueryFormatComma,
-		NestedFormat: apiquery.NestedQueryFormatBrackets,
-	})
-}
-
 type MeAlbumSaveParams struct {
-	// A comma-separated list of the
-	// [Spotify IDs](/documentation/web-api/concepts/spotify-uris-ids) for the albums.
-	// Maximum: 20 IDs.
-	QueryIDs string `query:"ids,required" json:"-"`
 	// A JSON array of the
 	// [Spotify IDs](/documentation/web-api/concepts/spotify-uris-ids). For example:
 	// `["4iV5W9uYEdYUVa79Axb7Rh", "1301WleyT98MSxVHPZCA6M"]`<br/>A maximum of 50 items
 	// can be specified in one request. _**Note**: if the `ids` parameter is present in
 	// the query string, any IDs listed here in the body will be ignored._
-	BodyIDs []string `json:"ids,omitzero"`
+	IDs []string `json:"ids,omitzero"`
 	paramObj
 }
 
@@ -333,12 +317,4 @@ func (r MeAlbumSaveParams) MarshalJSON() (data []byte, err error) {
 }
 func (r *MeAlbumSaveParams) UnmarshalJSON(data []byte) error {
 	return apijson.UnmarshalRoot(data, r)
-}
-
-// URLQuery serializes [MeAlbumSaveParams]'s query parameters as `url.Values`.
-func (r MeAlbumSaveParams) URLQuery() (v url.Values, err error) {
-	return apiquery.MarshalWithSettings(r, apiquery.QuerySettings{
-		ArrayFormat:  apiquery.ArrayQueryFormatComma,
-		NestedFormat: apiquery.NestedQueryFormatBrackets,
-	})
 }

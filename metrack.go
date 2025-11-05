@@ -73,11 +73,11 @@ func (r *MeTrackService) Check(ctx context.Context, query MeTrackCheckParams, op
 }
 
 // Remove one or more tracks from the current user's 'Your Music' library.
-func (r *MeTrackService) Remove(ctx context.Context, params MeTrackRemoveParams, opts ...option.RequestOption) (err error) {
+func (r *MeTrackService) Remove(ctx context.Context, body MeTrackRemoveParams, opts ...option.RequestOption) (err error) {
 	opts = slices.Concat(r.Options, opts)
 	opts = append([]option.RequestOption{option.WithHeader("Accept", "")}, opts...)
 	path := "me/tracks"
-	err = requestconfig.ExecuteNewRequest(ctx, http.MethodDelete, path, params, nil, opts...)
+	err = requestconfig.ExecuteNewRequest(ctx, http.MethodDelete, path, body, nil, opts...)
 	return
 }
 
@@ -158,16 +158,12 @@ func (r MeTrackCheckParams) URLQuery() (v url.Values, err error) {
 }
 
 type MeTrackRemoveParams struct {
-	// A comma-separated list of the
-	// [Spotify IDs](/documentation/web-api/concepts/spotify-uris-ids). For example:
-	// `ids=4iV5W9uYEdYUVa79Axb7Rh,1301WleyT98MSxVHPZCA6M`. Maximum: 50 IDs.
-	QueryIDs string `query:"ids,required" json:"-"`
 	// A JSON array of the
 	// [Spotify IDs](/documentation/web-api/concepts/spotify-uris-ids). For example:
 	// `["4iV5W9uYEdYUVa79Axb7Rh", "1301WleyT98MSxVHPZCA6M"]`<br/>A maximum of 50 items
 	// can be specified in one request. _**Note**: if the `ids` parameter is present in
 	// the query string, any IDs listed here in the body will be ignored._
-	BodyIDs []string `json:"ids,omitzero"`
+	IDs []string `json:"ids,omitzero"`
 	paramObj
 }
 
@@ -177,14 +173,6 @@ func (r MeTrackRemoveParams) MarshalJSON() (data []byte, err error) {
 }
 func (r *MeTrackRemoveParams) UnmarshalJSON(data []byte) error {
 	return apijson.UnmarshalRoot(data, r)
-}
-
-// URLQuery serializes [MeTrackRemoveParams]'s query parameters as `url.Values`.
-func (r MeTrackRemoveParams) URLQuery() (v url.Values, err error) {
-	return apiquery.MarshalWithSettings(r, apiquery.QuerySettings{
-		ArrayFormat:  apiquery.ArrayQueryFormatComma,
-		NestedFormat: apiquery.NestedQueryFormatBrackets,
-	})
 }
 
 type MeTrackSaveParams struct {

@@ -55,21 +55,21 @@ func (r *MeFollowingService) Check(ctx context.Context, query MeFollowingCheckPa
 
 // Add the current user as a follower of one or more artists or other Spotify
 // users.
-func (r *MeFollowingService) Follow(ctx context.Context, params MeFollowingFollowParams, opts ...option.RequestOption) (err error) {
+func (r *MeFollowingService) Follow(ctx context.Context, body MeFollowingFollowParams, opts ...option.RequestOption) (err error) {
 	opts = slices.Concat(r.Options, opts)
 	opts = append([]option.RequestOption{option.WithHeader("Accept", "")}, opts...)
 	path := "me/following"
-	err = requestconfig.ExecuteNewRequest(ctx, http.MethodPut, path, params, nil, opts...)
+	err = requestconfig.ExecuteNewRequest(ctx, http.MethodPut, path, body, nil, opts...)
 	return
 }
 
 // Remove the current user as a follower of one or more artists or other Spotify
 // users.
-func (r *MeFollowingService) Unfollow(ctx context.Context, params MeFollowingUnfollowParams, opts ...option.RequestOption) (err error) {
+func (r *MeFollowingService) Unfollow(ctx context.Context, body MeFollowingUnfollowParams, opts ...option.RequestOption) (err error) {
 	opts = slices.Concat(r.Options, opts)
 	opts = append([]option.RequestOption{option.WithHeader("Accept", "")}, opts...)
 	path := "me/following"
-	err = requestconfig.ExecuteNewRequest(ctx, http.MethodDelete, path, params, nil, opts...)
+	err = requestconfig.ExecuteNewRequest(ctx, http.MethodDelete, path, body, nil, opts...)
 	return
 }
 
@@ -198,20 +198,12 @@ const (
 )
 
 type MeFollowingFollowParams struct {
-	// A comma-separated list of the artist or the user
-	// [Spotify IDs](/documentation/web-api/concepts/spotify-uris-ids). A maximum of 50
-	// IDs can be sent in one request.
-	QueryIDs string `query:"ids,required" json:"-"`
-	// The ID type.
-	//
-	// Any of "artist", "user".
-	Type MeFollowingFollowParamsType `query:"type,omitzero,required" json:"-"`
 	// A JSON array of the artist or user
 	// [Spotify IDs](/documentation/web-api/concepts/spotify-uris-ids). For example:
 	// `{ids:["74ASZWbe4lXaubB36ztrGX", "08td7MxkoHQkXnWAYD8d6Q"]}`. A maximum of 50
 	// IDs can be sent in one request. _**Note**: if the `ids` parameter is present in
 	// the query string, any IDs listed here in the body will be ignored._
-	BodyIDs []string `json:"ids,omitzero,required"`
+	IDs []string `json:"ids,omitzero,required"`
 	paramObj
 }
 
@@ -223,39 +215,13 @@ func (r *MeFollowingFollowParams) UnmarshalJSON(data []byte) error {
 	return apijson.UnmarshalRoot(data, r)
 }
 
-// URLQuery serializes [MeFollowingFollowParams]'s query parameters as
-// `url.Values`.
-func (r MeFollowingFollowParams) URLQuery() (v url.Values, err error) {
-	return apiquery.MarshalWithSettings(r, apiquery.QuerySettings{
-		ArrayFormat:  apiquery.ArrayQueryFormatComma,
-		NestedFormat: apiquery.NestedQueryFormatBrackets,
-	})
-}
-
-// The ID type.
-type MeFollowingFollowParamsType string
-
-const (
-	MeFollowingFollowParamsTypeArtist MeFollowingFollowParamsType = "artist"
-	MeFollowingFollowParamsTypeUser   MeFollowingFollowParamsType = "user"
-)
-
 type MeFollowingUnfollowParams struct {
-	// A comma-separated list of the artist or the user
-	// [Spotify IDs](/documentation/web-api/concepts/spotify-uris-ids). For example:
-	// `ids=74ASZWbe4lXaubB36ztrGX,08td7MxkoHQkXnWAYD8d6Q`. A maximum of 50 IDs can be
-	// sent in one request.
-	QueryIDs string `query:"ids,required" json:"-"`
-	// The ID type: either `artist` or `user`.
-	//
-	// Any of "artist", "user".
-	Type MeFollowingUnfollowParamsType `query:"type,omitzero,required" json:"-"`
 	// A JSON array of the artist or user
 	// [Spotify IDs](/documentation/web-api/concepts/spotify-uris-ids). For example:
 	// `{ids:["74ASZWbe4lXaubB36ztrGX", "08td7MxkoHQkXnWAYD8d6Q"]}`. A maximum of 50
 	// IDs can be sent in one request. _**Note**: if the `ids` parameter is present in
 	// the query string, any IDs listed here in the body will be ignored._
-	BodyIDs []string `json:"ids,omitzero"`
+	IDs []string `json:"ids,omitzero"`
 	paramObj
 }
 
@@ -266,20 +232,3 @@ func (r MeFollowingUnfollowParams) MarshalJSON() (data []byte, err error) {
 func (r *MeFollowingUnfollowParams) UnmarshalJSON(data []byte) error {
 	return apijson.UnmarshalRoot(data, r)
 }
-
-// URLQuery serializes [MeFollowingUnfollowParams]'s query parameters as
-// `url.Values`.
-func (r MeFollowingUnfollowParams) URLQuery() (v url.Values, err error) {
-	return apiquery.MarshalWithSettings(r, apiquery.QuerySettings{
-		ArrayFormat:  apiquery.ArrayQueryFormatComma,
-		NestedFormat: apiquery.NestedQueryFormatBrackets,
-	})
-}
-
-// The ID type: either `artist` or `user`.
-type MeFollowingUnfollowParamsType string
-
-const (
-	MeFollowingUnfollowParamsTypeArtist MeFollowingUnfollowParamsType = "artist"
-	MeFollowingUnfollowParamsTypeUser   MeFollowingUnfollowParamsType = "user"
-)

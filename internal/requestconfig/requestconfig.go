@@ -214,7 +214,6 @@ type RequestConfig struct {
 	Middlewares    []middleware
 	ClientID       string
 	ClientSecret   string
-	WebhookKey     string
 	// OAuth2State holds the OAuth2 provider configuration and cached token information
 	OAuth2State *OAuth2State
 	// If ResponseBodyInto not nil, then we will attempt to deserialize into
@@ -599,7 +598,6 @@ func (cfg *RequestConfig) Clone(ctx context.Context) *RequestConfig {
 		Middlewares:    cfg.Middlewares,
 		ClientID:       cfg.ClientID,
 		ClientSecret:   cfg.ClientSecret,
-		WebhookKey:     cfg.WebhookKey,
 	}
 
 	return new

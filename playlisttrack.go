@@ -48,14 +48,14 @@ func NewPlaylistTrackService(opts ...option.RequestOption) (r PlaylistTrackServi
 // reorder are mutually exclusive operations which share the same endpoint, but
 // have different parameters. These operations can't be applied together in a
 // single request.
-func (r *PlaylistTrackService) Update(ctx context.Context, playlistID string, params PlaylistTrackUpdateParams, opts ...option.RequestOption) (res *PlaylistTrackUpdateResponse, err error) {
+func (r *PlaylistTrackService) Update(ctx context.Context, playlistID string, body PlaylistTrackUpdateParams, opts ...option.RequestOption) (res *PlaylistTrackUpdateResponse, err error) {
 	opts = slices.Concat(r.Options, opts)
 	if playlistID == "" {
 		err = errors.New("missing required playlist_id parameter")
 		return
 	}
 	path := fmt.Sprintf("playlists/%s/tracks", playlistID)
-	err = requestconfig.ExecuteNewRequest(ctx, http.MethodPut, path, params, &res, opts...)
+	err = requestconfig.ExecuteNewRequest(ctx, http.MethodPut, path, body, &res, opts...)
 	return
 }
 
@@ -87,14 +87,14 @@ func (r *PlaylistTrackService) ListAutoPaging(ctx context.Context, playlistID st
 }
 
 // Add one or more items to a user's playlist.
-func (r *PlaylistTrackService) Add(ctx context.Context, playlistID string, params PlaylistTrackAddParams, opts ...option.RequestOption) (res *PlaylistTrackAddResponse, err error) {
+func (r *PlaylistTrackService) Add(ctx context.Context, playlistID string, body PlaylistTrackAddParams, opts ...option.RequestOption) (res *PlaylistTrackAddResponse, err error) {
 	opts = slices.Concat(r.Options, opts)
 	if playlistID == "" {
 		err = errors.New("missing required playlist_id parameter")
 		return
 	}
 	path := fmt.Sprintf("playlists/%s/tracks", playlistID)
-	err = requestconfig.ExecuteNewRequest(ctx, http.MethodPost, path, params, &res, opts...)
+	err = requestconfig.ExecuteNewRequest(ctx, http.MethodPost, path, body, &res, opts...)
 	return
 }
 
@@ -159,12 +159,6 @@ func (r *PlaylistTrackRemoveResponse) UnmarshalJSON(data []byte) error {
 }
 
 type PlaylistTrackUpdateParams struct {
-	// A comma-separated list of
-	// [Spotify URIs](/documentation/web-api/concepts/spotify-uris-ids) to set, can be
-	// track or episode URIs. For example:
-	// `uris=spotify:track:4iV5W9uYEdYUVa79Axb7Rh,spotify:track:1301WleyT98MSxVHPZCA6M,spotify:episode:512ojhOuo1ktJprKbVcKyQ`<br/>A
-	// maximum of 100 items can be set in one request.
-	QueryUris param.Opt[string] `query:"uris,omitzero" json:"-"`
 	// The position where the items should be inserted.<br/>To reorder the items to the
 	// end of the playlist, simply set _insert_before_ to the position after the last
 	// item.<br/>Examples:<br/>To reorder the first item to the last position in a
@@ -182,7 +176,7 @@ type PlaylistTrackUpdateParams struct {
 	RangeStart param.Opt[int64] `json:"range_start,omitzero"`
 	// The playlist's snapshot ID against which you want to make the changes.
 	SnapshotID param.Opt[string] `json:"snapshot_id,omitzero"`
-	BodyUris   []string          `json:"uris,omitzero"`
+	Uris       []string          `json:"uris,omitzero"`
 	paramObj
 }
 
@@ -192,15 +186,6 @@ func (r PlaylistTrackUpdateParams) MarshalJSON() (data []byte, err error) {
 }
 func (r *PlaylistTrackUpdateParams) UnmarshalJSON(data []byte) error {
 	return apijson.UnmarshalRoot(data, r)
-}
-
-// URLQuery serializes [PlaylistTrackUpdateParams]'s query parameters as
-// `url.Values`.
-func (r PlaylistTrackUpdateParams) URLQuery() (v url.Values, err error) {
-	return apiquery.MarshalWithSettings(r, apiquery.QuerySettings{
-		ArrayFormat:  apiquery.ArrayQueryFormatComma,
-		NestedFormat: apiquery.NestedQueryFormatBrackets,
-	})
 }
 
 type PlaylistTrackListParams struct {
@@ -251,26 +236,11 @@ func (r PlaylistTrackListParams) URLQuery() (v url.Values, err error) {
 
 type PlaylistTrackAddParams struct {
 	// The position to insert the items, a zero-based index. For example, to insert the
-	// items in the first position: `position=0`; to insert the items in the third
-	// position: `position=2`. If omitted, the items will be appended to the playlist.
-	// Items are added in the order they are listed in the query string or request
-	// body.
-	QueryPosition param.Opt[int64] `query:"position,omitzero" json:"-"`
-	// A comma-separated list of
-	// [Spotify URIs](/documentation/web-api/concepts/spotify-uris-ids) to add, can be
-	// track or episode URIs. For
-	// example:<br/>`uris=spotify:track:4iV5W9uYEdYUVa79Axb7Rh, spotify:track:1301WleyT98MSxVHPZCA6M, spotify:episode:512ojhOuo1ktJprKbVcKyQ`<br/>A
-	// maximum of 100 items can be added in one request. <br/> _**Note**: it is likely
-	// that passing a large number of item URIs as a query parameter will exceed the
-	// maximum length of the request URI. When adding a large number of items, it is
-	// recommended to pass them in the request body, see below._
-	QueryUris param.Opt[string] `query:"uris,omitzero" json:"-"`
-	// The position to insert the items, a zero-based index. For example, to insert the
 	// items in the first position: `position=0` ; to insert the items in the third
 	// position: `position=2`. If omitted, the items will be appended to the playlist.
 	// Items are added in the order they appear in the uris array. For example:
 	// `{"uris": ["spotify:track:4iV5W9uYEdYUVa79Axb7Rh","spotify:track:1301WleyT98MSxVHPZCA6M"], "position": 3}`
-	BodyPosition param.Opt[int64] `json:"position,omitzero"`
+	Position param.Opt[int64] `json:"position,omitzero"`
 	// A JSON array of the
 	// [Spotify URIs](/documentation/web-api/concepts/spotify-uris-ids) to add. For
 	// example:
@@ -278,7 +248,7 @@ type PlaylistTrackAddParams struct {
 	// maximum of 100 items can be added in one request. _**Note**: if the `uris`
 	// parameter is present in the query string, any URIs listed here in the body will
 	// be ignored._
-	BodyUris []string `json:"uris,omitzero"`
+	Uris []string `json:"uris,omitzero"`
 	paramObj
 }
 
@@ -288,14 +258,6 @@ func (r PlaylistTrackAddParams) MarshalJSON() (data []byte, err error) {
 }
 func (r *PlaylistTrackAddParams) UnmarshalJSON(data []byte) error {
 	return apijson.UnmarshalRoot(data, r)
-}
-
-// URLQuery serializes [PlaylistTrackAddParams]'s query parameters as `url.Values`.
-func (r PlaylistTrackAddParams) URLQuery() (v url.Values, err error) {
-	return apiquery.MarshalWithSettings(r, apiquery.QuerySettings{
-		ArrayFormat:  apiquery.ArrayQueryFormatComma,
-		NestedFormat: apiquery.NestedQueryFormatBrackets,
-	})
 }
 
 type PlaylistTrackRemoveParams struct {

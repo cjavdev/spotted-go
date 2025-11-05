@@ -83,9 +83,7 @@ func TestMeFollowingFollow(t *testing.T) {
 		option.WithClientSecret("My Client Secret"),
 	)
 	err := client.Me.Following.Follow(context.TODO(), spotted.MeFollowingFollowParams{
-		QueryIDs: "2CIMQHirSU0MQqyYHq0eOx,57dN52uHvrHOxijzpIgu3E,1vCWHaC5f2uS3yhpwWbIA6",
-		Type:     spotted.MeFollowingFollowParamsTypeArtist,
-		BodyIDs:  []string{"string"},
+		IDs: []string{"string"},
 	})
 	if err != nil {
 		var apierr *spotted.Error
@@ -111,9 +109,7 @@ func TestMeFollowingUnfollowWithOptionalParams(t *testing.T) {
 		option.WithClientSecret("My Client Secret"),
 	)
 	err := client.Me.Following.Unfollow(context.TODO(), spotted.MeFollowingUnfollowParams{
-		QueryIDs: "2CIMQHirSU0MQqyYHq0eOx,57dN52uHvrHOxijzpIgu3E,1vCWHaC5f2uS3yhpwWbIA6",
-		Type:     spotted.MeFollowingUnfollowParamsTypeArtist,
-		BodyIDs:  []string{"string"},
+		IDs: []string{"string"},
 	})
 	if err != nil {
 		var apierr *spotted.Error

@@ -31,12 +31,11 @@ func TestPlaylistTrackUpdateWithOptionalParams(t *testing.T) {
 		context.TODO(),
 		"3cEYpjA9oz9GiPac4AsH4n",
 		spotted.PlaylistTrackUpdateParams{
-			QueryUris:    spotted.String("uris"),
 			InsertBefore: spotted.Int(3),
 			RangeLength:  spotted.Int(2),
 			RangeStart:   spotted.Int(1),
 			SnapshotID:   spotted.String("snapshot_id"),
-			BodyUris:     []string{"string"},
+			Uris:         []string{"string"},
 		},
 	)
 	if err != nil {
@@ -100,10 +99,8 @@ func TestPlaylistTrackAddWithOptionalParams(t *testing.T) {
 		context.TODO(),
 		"3cEYpjA9oz9GiPac4AsH4n",
 		spotted.PlaylistTrackAddParams{
-			QueryPosition: spotted.Int(0),
-			QueryUris:     spotted.String("spotify:track:4iV5W9uYEdYUVa79Axb7Rh,spotify:track:1301WleyT98MSxVHPZCA6M"),
-			BodyPosition:  spotted.Int(0),
-			BodyUris:      []string{"string"},
+			Position: spotted.Int(0),
+			Uris:     []string{"string"},
 		},
 	)
 	if err != nil {

@@ -43,7 +43,7 @@ func TestAlbumGetWithOptionalParams(t *testing.T) {
 	}
 }
 
-func TestAlbumListWithOptionalParams(t *testing.T) {
+func TestAlbumBulkGetWithOptionalParams(t *testing.T) {
 	t.Skip("Prism tests are disabled")
 	baseURL := "http://localhost:4010"
 	if envURL, ok := os.LookupEnv("TEST_API_BASE_URL"); ok {
@@ -57,7 +57,7 @@ func TestAlbumListWithOptionalParams(t *testing.T) {
 		option.WithClientID("My Client ID"),
 		option.WithClientSecret("My Client Secret"),
 	)
-	_, err := client.Albums.List(context.TODO(), spotted.AlbumListParams{
+	_, err := client.Albums.BulkGet(context.TODO(), spotted.AlbumBulkGetParams{
 		IDs:    "382ObEPsp2rxGrnsizN5TX,1A2GTWGtFfWp7KSQTwWOyo,2noRn2Aes5aoNVsU6iWThc",
 		Market: spotted.String("ES"),
 	})

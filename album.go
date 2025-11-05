@@ -53,7 +53,7 @@ func (r *AlbumService) Get(ctx context.Context, id string, query AlbumGetParams,
 
 // Get Spotify catalog information for multiple albums identified by their Spotify
 // IDs.
-func (r *AlbumService) List(ctx context.Context, query AlbumListParams, opts ...option.RequestOption) (res *AlbumListResponse, err error) {
+func (r *AlbumService) BulkGet(ctx context.Context, query AlbumBulkGetParams, opts ...option.RequestOption) (res *AlbumBulkGetResponse, err error) {
 	opts = slices.Concat(r.Options, opts)
 	path := "albums"
 	err = requestconfig.ExecuteNewRequest(ctx, http.MethodGet, path, query, &res, opts...)
@@ -239,8 +239,8 @@ func (r *AlbumGetResponseTracks) UnmarshalJSON(data []byte) error {
 	return apijson.UnmarshalRoot(data, r)
 }
 
-type AlbumListResponse struct {
-	Albums []AlbumListResponseAlbum `json:"albums,required"`
+type AlbumBulkGetResponse struct {
+	Albums []AlbumBulkGetResponseAlbum `json:"albums,required"`
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
 		Albums      respjson.Field
@@ -250,12 +250,12 @@ type AlbumListResponse struct {
 }
 
 // Returns the unmodified JSON received from the API
-func (r AlbumListResponse) RawJSON() string { return r.JSON.raw }
-func (r *AlbumListResponse) UnmarshalJSON(data []byte) error {
+func (r AlbumBulkGetResponse) RawJSON() string { return r.JSON.raw }
+func (r *AlbumBulkGetResponse) UnmarshalJSON(data []byte) error {
 	return apijson.UnmarshalRoot(data, r)
 }
 
-type AlbumListResponseAlbum struct {
+type AlbumBulkGetResponseAlbum struct {
 	// The [Spotify ID](/documentation/web-api/concepts/spotify-uris-ids) for the
 	// album.
 	ID string `json:"id,required"`
@@ -311,7 +311,7 @@ type AlbumListResponseAlbum struct {
 	// Included in the response when a content restriction is applied.
 	Restrictions shared.AlbumRestrictionObject `json:"restrictions"`
 	// The tracks of the album.
-	Tracks AlbumListResponseAlbumTracks `json:"tracks"`
+	Tracks AlbumBulkGetResponseAlbumTracks `json:"tracks"`
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
 		ID                   respjson.Field
@@ -340,13 +340,13 @@ type AlbumListResponseAlbum struct {
 }
 
 // Returns the unmodified JSON received from the API
-func (r AlbumListResponseAlbum) RawJSON() string { return r.JSON.raw }
-func (r *AlbumListResponseAlbum) UnmarshalJSON(data []byte) error {
+func (r AlbumBulkGetResponseAlbum) RawJSON() string { return r.JSON.raw }
+func (r *AlbumBulkGetResponseAlbum) UnmarshalJSON(data []byte) error {
 	return apijson.UnmarshalRoot(data, r)
 }
 
 // The tracks of the album.
-type AlbumListResponseAlbumTracks struct {
+type AlbumBulkGetResponseAlbumTracks struct {
 	// A link to the Web API endpoint returning the full result of the request
 	Href  string                         `json:"href,required"`
 	Items []shared.SimplifiedTrackObject `json:"items,required"`
@@ -375,8 +375,8 @@ type AlbumListResponseAlbumTracks struct {
 }
 
 // Returns the unmodified JSON received from the API
-func (r AlbumListResponseAlbumTracks) RawJSON() string { return r.JSON.raw }
-func (r *AlbumListResponseAlbumTracks) UnmarshalJSON(data []byte) error {
+func (r AlbumBulkGetResponseAlbumTracks) RawJSON() string { return r.JSON.raw }
+func (r *AlbumBulkGetResponseAlbumTracks) UnmarshalJSON(data []byte) error {
 	return apijson.UnmarshalRoot(data, r)
 }
 
@@ -402,7 +402,7 @@ func (r AlbumGetParams) URLQuery() (v url.Values, err error) {
 	})
 }
 
-type AlbumListParams struct {
+type AlbumBulkGetParams struct {
 	// A comma-separated list of the
 	// [Spotify IDs](/documentation/web-api/concepts/spotify-uris-ids) for the albums.
 	// Maximum: 20 IDs.
@@ -420,8 +420,8 @@ type AlbumListParams struct {
 	paramObj
 }
 
-// URLQuery serializes [AlbumListParams]'s query parameters as `url.Values`.
-func (r AlbumListParams) URLQuery() (v url.Values, err error) {
+// URLQuery serializes [AlbumBulkGetParams]'s query parameters as `url.Values`.
+func (r AlbumBulkGetParams) URLQuery() (v url.Values, err error) {
 	return apiquery.MarshalWithSettings(r, apiquery.QuerySettings{
 		ArrayFormat:  apiquery.ArrayQueryFormatComma,
 		NestedFormat: apiquery.NestedQueryFormatBrackets,

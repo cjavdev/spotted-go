@@ -27,7 +27,7 @@ func TestAutoPagination(t *testing.T) {
 	)
 	iter := client.Shows.ListEpisodesAutoPaging(
 		context.TODO(),
-		"38bS44xjbVVZ3No3ByF1dJ",
+		"showid",
 		spotted.ShowListEpisodesParams{
 			Limit:  spotted.Int(5),
 			Offset: spotted.Int(10),

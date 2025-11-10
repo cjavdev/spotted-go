@@ -53,7 +53,7 @@ func (r *ShowService) Get(ctx context.Context, id string, query ShowGetParams, o
 }
 
 // Get Spotify catalog information for several shows based on their Spotify IDs.
-func (r *ShowService) List(ctx context.Context, query ShowListParams, opts ...option.RequestOption) (res *ShowListResponse, err error) {
+func (r *ShowService) BulkGet(ctx context.Context, query ShowBulkGetParams, opts ...option.RequestOption) (res *ShowBulkGetResponse, err error) {
 	opts = slices.Concat(r.Options, opts)
 	path := "shows"
 	err = requestconfig.ExecuteNewRequest(ctx, http.MethodGet, path, query, &res, opts...)
@@ -142,7 +142,7 @@ func (r *ShowGetResponseEpisodes) UnmarshalJSON(data []byte) error {
 	return apijson.UnmarshalRoot(data, r)
 }
 
-type ShowListResponse struct {
+type ShowBulkGetResponse struct {
 	Shows []shared.ShowBase `json:"shows,required"`
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
@@ -153,8 +153,8 @@ type ShowListResponse struct {
 }
 
 // Returns the unmodified JSON received from the API
-func (r ShowListResponse) RawJSON() string { return r.JSON.raw }
-func (r *ShowListResponse) UnmarshalJSON(data []byte) error {
+func (r ShowBulkGetResponse) RawJSON() string { return r.JSON.raw }
+func (r *ShowBulkGetResponse) UnmarshalJSON(data []byte) error {
 	return apijson.UnmarshalRoot(data, r)
 }
 
@@ -180,7 +180,7 @@ func (r ShowGetParams) URLQuery() (v url.Values, err error) {
 	})
 }
 
-type ShowListParams struct {
+type ShowBulkGetParams struct {
 	// A comma-separated list of the
 	// [Spotify IDs](/documentation/web-api/concepts/spotify-uris-ids) for the shows.
 	// Maximum: 50 IDs.
@@ -198,8 +198,8 @@ type ShowListParams struct {
 	paramObj
 }
 
-// URLQuery serializes [ShowListParams]'s query parameters as `url.Values`.
-func (r ShowListParams) URLQuery() (v url.Values, err error) {
+// URLQuery serializes [ShowBulkGetParams]'s query parameters as `url.Values`.
+func (r ShowBulkGetParams) URLQuery() (v url.Values, err error) {
 	return apiquery.MarshalWithSettings(r, apiquery.QuerySettings{
 		ArrayFormat:  apiquery.ArrayQueryFormatComma,
 		NestedFormat: apiquery.NestedQueryFormatBrackets,

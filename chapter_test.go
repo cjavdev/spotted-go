@@ -43,7 +43,7 @@ func TestChapterGetWithOptionalParams(t *testing.T) {
 	}
 }
 
-func TestChapterListWithOptionalParams(t *testing.T) {
+func TestChapterBulkGetWithOptionalParams(t *testing.T) {
 	t.Skip("Prism tests are disabled")
 	baseURL := "http://localhost:4010"
 	if envURL, ok := os.LookupEnv("TEST_API_BASE_URL"); ok {
@@ -57,7 +57,7 @@ func TestChapterListWithOptionalParams(t *testing.T) {
 		option.WithClientID("My Client ID"),
 		option.WithClientSecret("My Client Secret"),
 	)
-	_, err := client.Chapters.List(context.TODO(), spotted.ChapterListParams{
+	_, err := client.Chapters.BulkGet(context.TODO(), spotted.ChapterBulkGetParams{
 		IDs:    "0IsXVP0JmcB2adSE338GkK,3ZXb8FKZGU0EHALYX6uCzU,0D5wENdkdwbqlrHoaJ9g29",
 		Market: spotted.String("ES"),
 	})

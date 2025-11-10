@@ -43,7 +43,7 @@ func TestTrackGetWithOptionalParams(t *testing.T) {
 	}
 }
 
-func TestTrackListWithOptionalParams(t *testing.T) {
+func TestTrackBulkGetWithOptionalParams(t *testing.T) {
 	t.Skip("Prism tests are disabled")
 	baseURL := "http://localhost:4010"
 	if envURL, ok := os.LookupEnv("TEST_API_BASE_URL"); ok {
@@ -57,7 +57,7 @@ func TestTrackListWithOptionalParams(t *testing.T) {
 		option.WithClientID("My Client ID"),
 		option.WithClientSecret("My Client Secret"),
 	)
-	_, err := client.Tracks.List(context.TODO(), spotted.TrackListParams{
+	_, err := client.Tracks.BulkGet(context.TODO(), spotted.TrackBulkGetParams{
 		IDs:    "7ouMYWpwJ422jRcDASZB7P,4VqPOruhp5EdPBeR92t6lQ,2takcwOaAZWiXQijPHIx7B",
 		Market: spotted.String("ES"),
 	})

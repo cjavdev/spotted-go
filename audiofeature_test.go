@@ -37,7 +37,7 @@ func TestAudioFeatureGet(t *testing.T) {
 	}
 }
 
-func TestAudioFeatureList(t *testing.T) {
+func TestAudioFeatureBulkGet(t *testing.T) {
 	t.Skip("Prism tests are disabled")
 	baseURL := "http://localhost:4010"
 	if envURL, ok := os.LookupEnv("TEST_API_BASE_URL"); ok {
@@ -51,7 +51,7 @@ func TestAudioFeatureList(t *testing.T) {
 		option.WithClientID("My Client ID"),
 		option.WithClientSecret("My Client Secret"),
 	)
-	_, err := client.AudioFeatures.List(context.TODO(), spotted.AudioFeatureListParams{
+	_, err := client.AudioFeatures.BulkGet(context.TODO(), spotted.AudioFeatureBulkGetParams{
 		IDs: "7ouMYWpwJ422jRcDASZB7P,4VqPOruhp5EdPBeR92t6lQ,2takcwOaAZWiXQijPHIx7B",
 	})
 	if err != nil {

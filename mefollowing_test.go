@@ -13,7 +13,7 @@ import (
 	"github.com/stainless-sdks/spotted-go/option"
 )
 
-func TestMeFollowingListWithOptionalParams(t *testing.T) {
+func TestMeFollowingBulkGetWithOptionalParams(t *testing.T) {
 	t.Skip("Prism tests are disabled")
 	baseURL := "http://localhost:4010"
 	if envURL, ok := os.LookupEnv("TEST_API_BASE_URL"); ok {
@@ -27,8 +27,8 @@ func TestMeFollowingListWithOptionalParams(t *testing.T) {
 		option.WithClientID("My Client ID"),
 		option.WithClientSecret("My Client Secret"),
 	)
-	_, err := client.Me.Following.List(context.TODO(), spotted.MeFollowingListParams{
-		Type:  spotted.MeFollowingListParamsTypeArtist,
+	_, err := client.Me.Following.BulkGet(context.TODO(), spotted.MeFollowingBulkGetParams{
+		Type:  spotted.MeFollowingBulkGetParamsTypeArtist,
 		After: spotted.String("0I2XqVXqHScXjHhk6AYYRe"),
 		Limit: spotted.Int(10),
 	})

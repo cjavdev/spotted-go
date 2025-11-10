@@ -43,7 +43,7 @@ func TestEpisodeGetWithOptionalParams(t *testing.T) {
 	}
 }
 
-func TestEpisodeListWithOptionalParams(t *testing.T) {
+func TestEpisodeBulkGetWithOptionalParams(t *testing.T) {
 	t.Skip("Prism tests are disabled")
 	baseURL := "http://localhost:4010"
 	if envURL, ok := os.LookupEnv("TEST_API_BASE_URL"); ok {
@@ -57,7 +57,7 @@ func TestEpisodeListWithOptionalParams(t *testing.T) {
 		option.WithClientID("My Client ID"),
 		option.WithClientSecret("My Client Secret"),
 	)
-	_, err := client.Episodes.List(context.TODO(), spotted.EpisodeListParams{
+	_, err := client.Episodes.BulkGet(context.TODO(), spotted.EpisodeBulkGetParams{
 		IDs:    "77o6BIVlYM3msb4MMIL1jH,0Q86acNRm6V9GYx55SXKwf",
 		Market: spotted.String("ES"),
 	})

@@ -54,7 +54,7 @@ func (r *AudioFeatureService) Get(ctx context.Context, id string, opts ...option
 // Get audio features for multiple tracks based on their Spotify IDs.
 //
 // Deprecated: deprecated
-func (r *AudioFeatureService) List(ctx context.Context, query AudioFeatureListParams, opts ...option.RequestOption) (res *AudioFeatureListResponse, err error) {
+func (r *AudioFeatureService) BulkGet(ctx context.Context, query AudioFeatureBulkGetParams, opts ...option.RequestOption) (res *AudioFeatureBulkGetResponse, err error) {
 	opts = slices.Concat(r.Options, opts)
 	path := "audio-features"
 	err = requestconfig.ExecuteNewRequest(ctx, http.MethodGet, path, query, &res, opts...)
@@ -173,8 +173,8 @@ const (
 	AudioFeatureGetResponseTypeAudioFeatures AudioFeatureGetResponseType = "audio_features"
 )
 
-type AudioFeatureListResponse struct {
-	AudioFeatures []AudioFeatureListResponseAudioFeature `json:"audio_features,required"`
+type AudioFeatureBulkGetResponse struct {
+	AudioFeatures []AudioFeatureBulkGetResponseAudioFeature `json:"audio_features,required"`
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
 		AudioFeatures respjson.Field
@@ -184,12 +184,12 @@ type AudioFeatureListResponse struct {
 }
 
 // Returns the unmodified JSON received from the API
-func (r AudioFeatureListResponse) RawJSON() string { return r.JSON.raw }
-func (r *AudioFeatureListResponse) UnmarshalJSON(data []byte) error {
+func (r AudioFeatureBulkGetResponse) RawJSON() string { return r.JSON.raw }
+func (r *AudioFeatureBulkGetResponse) UnmarshalJSON(data []byte) error {
 	return apijson.UnmarshalRoot(data, r)
 }
 
-type AudioFeatureListResponseAudioFeature struct {
+type AudioFeatureBulkGetResponseAudioFeature struct {
 	// The Spotify ID for the track.
 	ID string `json:"id"`
 	// A confidence measure from 0.0 to 1.0 of whether the track is acoustic. 1.0
@@ -289,12 +289,12 @@ type AudioFeatureListResponseAudioFeature struct {
 }
 
 // Returns the unmodified JSON received from the API
-func (r AudioFeatureListResponseAudioFeature) RawJSON() string { return r.JSON.raw }
-func (r *AudioFeatureListResponseAudioFeature) UnmarshalJSON(data []byte) error {
+func (r AudioFeatureBulkGetResponseAudioFeature) RawJSON() string { return r.JSON.raw }
+func (r *AudioFeatureBulkGetResponseAudioFeature) UnmarshalJSON(data []byte) error {
 	return apijson.UnmarshalRoot(data, r)
 }
 
-type AudioFeatureListParams struct {
+type AudioFeatureBulkGetParams struct {
 	// A comma-separated list of the
 	// [Spotify IDs](/documentation/web-api/concepts/spotify-uris-ids) for the tracks.
 	// Maximum: 100 IDs.
@@ -302,8 +302,9 @@ type AudioFeatureListParams struct {
 	paramObj
 }
 
-// URLQuery serializes [AudioFeatureListParams]'s query parameters as `url.Values`.
-func (r AudioFeatureListParams) URLQuery() (v url.Values, err error) {
+// URLQuery serializes [AudioFeatureBulkGetParams]'s query parameters as
+// `url.Values`.
+func (r AudioFeatureBulkGetParams) URLQuery() (v url.Values, err error) {
 	return apiquery.MarshalWithSettings(r, apiquery.QuerySettings{
 		ArrayFormat:  apiquery.ArrayQueryFormatComma,
 		NestedFormat: apiquery.NestedQueryFormatBrackets,

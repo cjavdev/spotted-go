@@ -39,21 +39,21 @@ func NewSearchService(opts ...option.RequestOption) (r SearchService) {
 // Get Spotify catalog information about albums, artists, playlists, tracks, shows,
 // episodes or audiobooks that match a keyword string. Audiobooks are only
 // available within the US, UK, Canada, Ireland, New Zealand and Australia markets.
-func (r *SearchService) Search(ctx context.Context, query SearchSearchParams, opts ...option.RequestOption) (res *SearchSearchResponse, err error) {
+func (r *SearchService) Query(ctx context.Context, query SearchQueryParams, opts ...option.RequestOption) (res *SearchQueryResponse, err error) {
 	opts = slices.Concat(r.Options, opts)
 	path := "search"
 	err = requestconfig.ExecuteNewRequest(ctx, http.MethodGet, path, query, &res, opts...)
 	return
 }
 
-type SearchSearchResponse struct {
-	Albums     SearchSearchResponseAlbums     `json:"albums"`
-	Artists    SearchSearchResponseArtists    `json:"artists"`
-	Audiobooks SearchSearchResponseAudiobooks `json:"audiobooks"`
-	Episodes   SearchSearchResponseEpisodes   `json:"episodes"`
-	Playlists  shared.PagingPlaylistObject    `json:"playlists"`
-	Shows      SearchSearchResponseShows      `json:"shows"`
-	Tracks     SearchSearchResponseTracks     `json:"tracks"`
+type SearchQueryResponse struct {
+	Albums     SearchQueryResponseAlbums     `json:"albums"`
+	Artists    SearchQueryResponseArtists    `json:"artists"`
+	Audiobooks SearchQueryResponseAudiobooks `json:"audiobooks"`
+	Episodes   SearchQueryResponseEpisodes   `json:"episodes"`
+	Playlists  shared.PagingPlaylistObject   `json:"playlists"`
+	Shows      SearchQueryResponseShows      `json:"shows"`
+	Tracks     SearchQueryResponseTracks     `json:"tracks"`
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
 		Albums      respjson.Field
@@ -69,15 +69,15 @@ type SearchSearchResponse struct {
 }
 
 // Returns the unmodified JSON received from the API
-func (r SearchSearchResponse) RawJSON() string { return r.JSON.raw }
-func (r *SearchSearchResponse) UnmarshalJSON(data []byte) error {
+func (r SearchQueryResponse) RawJSON() string { return r.JSON.raw }
+func (r *SearchQueryResponse) UnmarshalJSON(data []byte) error {
 	return apijson.UnmarshalRoot(data, r)
 }
 
-type SearchSearchResponseAlbums struct {
+type SearchQueryResponseAlbums struct {
 	// A link to the Web API endpoint returning the full result of the request
-	Href  string                           `json:"href,required"`
-	Items []SearchSearchResponseAlbumsItem `json:"items,required"`
+	Href  string                          `json:"href,required"`
+	Items []SearchQueryResponseAlbumsItem `json:"items,required"`
 	// The maximum number of items in the response (as set in the query or by default).
 	Limit int64 `json:"limit,required"`
 	// URL to the next page of items. ( `null` if none)
@@ -103,12 +103,12 @@ type SearchSearchResponseAlbums struct {
 }
 
 // Returns the unmodified JSON received from the API
-func (r SearchSearchResponseAlbums) RawJSON() string { return r.JSON.raw }
-func (r *SearchSearchResponseAlbums) UnmarshalJSON(data []byte) error {
+func (r SearchQueryResponseAlbums) RawJSON() string { return r.JSON.raw }
+func (r *SearchQueryResponseAlbums) UnmarshalJSON(data []byte) error {
 	return apijson.UnmarshalRoot(data, r)
 }
 
-type SearchSearchResponseAlbumsItem struct {
+type SearchQueryResponseAlbumsItem struct {
 	// The [Spotify ID](/documentation/web-api/concepts/spotify-uris-ids) for the
 	// album.
 	ID string `json:"id,required"`
@@ -172,12 +172,12 @@ type SearchSearchResponseAlbumsItem struct {
 }
 
 // Returns the unmodified JSON received from the API
-func (r SearchSearchResponseAlbumsItem) RawJSON() string { return r.JSON.raw }
-func (r *SearchSearchResponseAlbumsItem) UnmarshalJSON(data []byte) error {
+func (r SearchQueryResponseAlbumsItem) RawJSON() string { return r.JSON.raw }
+func (r *SearchQueryResponseAlbumsItem) UnmarshalJSON(data []byte) error {
 	return apijson.UnmarshalRoot(data, r)
 }
 
-type SearchSearchResponseArtists struct {
+type SearchQueryResponseArtists struct {
 	// A link to the Web API endpoint returning the full result of the request
 	Href  string                `json:"href,required"`
 	Items []shared.ArtistObject `json:"items,required"`
@@ -206,12 +206,12 @@ type SearchSearchResponseArtists struct {
 }
 
 // Returns the unmodified JSON received from the API
-func (r SearchSearchResponseArtists) RawJSON() string { return r.JSON.raw }
-func (r *SearchSearchResponseArtists) UnmarshalJSON(data []byte) error {
+func (r SearchQueryResponseArtists) RawJSON() string { return r.JSON.raw }
+func (r *SearchQueryResponseArtists) UnmarshalJSON(data []byte) error {
 	return apijson.UnmarshalRoot(data, r)
 }
 
-type SearchSearchResponseAudiobooks struct {
+type SearchQueryResponseAudiobooks struct {
 	// A link to the Web API endpoint returning the full result of the request
 	Href  string                 `json:"href,required"`
 	Items []shared.AudiobookBase `json:"items,required"`
@@ -240,12 +240,12 @@ type SearchSearchResponseAudiobooks struct {
 }
 
 // Returns the unmodified JSON received from the API
-func (r SearchSearchResponseAudiobooks) RawJSON() string { return r.JSON.raw }
-func (r *SearchSearchResponseAudiobooks) UnmarshalJSON(data []byte) error {
+func (r SearchQueryResponseAudiobooks) RawJSON() string { return r.JSON.raw }
+func (r *SearchQueryResponseAudiobooks) UnmarshalJSON(data []byte) error {
 	return apijson.UnmarshalRoot(data, r)
 }
 
-type SearchSearchResponseEpisodes struct {
+type SearchQueryResponseEpisodes struct {
 	// A link to the Web API endpoint returning the full result of the request
 	Href  string                           `json:"href,required"`
 	Items []shared.SimplifiedEpisodeObject `json:"items,required"`
@@ -274,12 +274,12 @@ type SearchSearchResponseEpisodes struct {
 }
 
 // Returns the unmodified JSON received from the API
-func (r SearchSearchResponseEpisodes) RawJSON() string { return r.JSON.raw }
-func (r *SearchSearchResponseEpisodes) UnmarshalJSON(data []byte) error {
+func (r SearchQueryResponseEpisodes) RawJSON() string { return r.JSON.raw }
+func (r *SearchQueryResponseEpisodes) UnmarshalJSON(data []byte) error {
 	return apijson.UnmarshalRoot(data, r)
 }
 
-type SearchSearchResponseShows struct {
+type SearchQueryResponseShows struct {
 	// A link to the Web API endpoint returning the full result of the request
 	Href  string            `json:"href,required"`
 	Items []shared.ShowBase `json:"items,required"`
@@ -308,12 +308,12 @@ type SearchSearchResponseShows struct {
 }
 
 // Returns the unmodified JSON received from the API
-func (r SearchSearchResponseShows) RawJSON() string { return r.JSON.raw }
-func (r *SearchSearchResponseShows) UnmarshalJSON(data []byte) error {
+func (r SearchQueryResponseShows) RawJSON() string { return r.JSON.raw }
+func (r *SearchQueryResponseShows) UnmarshalJSON(data []byte) error {
 	return apijson.UnmarshalRoot(data, r)
 }
 
-type SearchSearchResponseTracks struct {
+type SearchQueryResponseTracks struct {
 	// A link to the Web API endpoint returning the full result of the request
 	Href  string               `json:"href,required"`
 	Items []shared.TrackObject `json:"items,required"`
@@ -342,12 +342,12 @@ type SearchSearchResponseTracks struct {
 }
 
 // Returns the unmodified JSON received from the API
-func (r SearchSearchResponseTracks) RawJSON() string { return r.JSON.raw }
-func (r *SearchSearchResponseTracks) UnmarshalJSON(data []byte) error {
+func (r SearchQueryResponseTracks) RawJSON() string { return r.JSON.raw }
+func (r *SearchQueryResponseTracks) UnmarshalJSON(data []byte) error {
 	return apijson.UnmarshalRoot(data, r)
 }
 
-type SearchSearchParams struct {
+type SearchQueryParams struct {
 	// Your search query.
 	//
 	// You can narrow down your search using field filters. The available filters are
@@ -390,12 +390,12 @@ type SearchSearchParams struct {
 	// the response.
 	//
 	// Any of "audio".
-	IncludeExternal SearchSearchParamsIncludeExternal `query:"include_external,omitzero" json:"-"`
+	IncludeExternal SearchQueryParamsIncludeExternal `query:"include_external,omitzero" json:"-"`
 	paramObj
 }
 
-// URLQuery serializes [SearchSearchParams]'s query parameters as `url.Values`.
-func (r SearchSearchParams) URLQuery() (v url.Values, err error) {
+// URLQuery serializes [SearchQueryParams]'s query parameters as `url.Values`.
+func (r SearchQueryParams) URLQuery() (v url.Values, err error) {
 	return apiquery.MarshalWithSettings(r, apiquery.QuerySettings{
 		ArrayFormat:  apiquery.ArrayQueryFormatComma,
 		NestedFormat: apiquery.NestedQueryFormatBrackets,
@@ -406,8 +406,8 @@ func (r SearchSearchParams) URLQuery() (v url.Values, err error) {
 // externally hosted audio content, and marks the content as playable in the
 // response. By default externally hosted audio content is marked as unplayable in
 // the response.
-type SearchSearchParamsIncludeExternal string
+type SearchQueryParamsIncludeExternal string
 
 const (
-	SearchSearchParamsIncludeExternalAudio SearchSearchParamsIncludeExternal = "audio"
+	SearchQueryParamsIncludeExternalAudio SearchQueryParamsIncludeExternal = "audio"
 )

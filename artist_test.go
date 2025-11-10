@@ -120,7 +120,7 @@ func TestArtistListRelatedArtists(t *testing.T) {
 	}
 }
 
-func TestArtistListTopTracksWithOptionalParams(t *testing.T) {
+func TestArtistTopTracksWithOptionalParams(t *testing.T) {
 	t.Skip("Prism tests are disabled")
 	baseURL := "http://localhost:4010"
 	if envURL, ok := os.LookupEnv("TEST_API_BASE_URL"); ok {
@@ -134,10 +134,10 @@ func TestArtistListTopTracksWithOptionalParams(t *testing.T) {
 		option.WithClientID("My Client ID"),
 		option.WithClientSecret("My Client Secret"),
 	)
-	_, err := client.Artists.ListTopTracks(
+	_, err := client.Artists.TopTracks(
 		context.TODO(),
 		"0TnOYISbd1XYRBk9myaseg",
-		spotted.ArtistListTopTracksParams{
+		spotted.ArtistTopTracksParams{
 			Market: spotted.String("ES"),
 		},
 	)

@@ -1,0 +1,52 @@
+// File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
+
+package spotted_test
+
+import (
+	"context"
+	"os"
+	"testing"
+
+	"github.com/stainless-sdks/spotted-go"
+	"github.com/stainless-sdks/spotted-go/internal/testutil"
+	"github.com/stainless-sdks/spotted-go/option"
+)
+
+func TestManualPagination(t *testing.T) {
+	baseURL := "http://localhost:4010"
+	if envURL, ok := os.LookupEnv("TEST_API_BASE_URL"); ok {
+		baseURL = envURL
+	}
+	if !testutil.CheckTestServer(t, baseURL) {
+		return
+	}
+	client := spotted.NewClient(
+		option.WithBaseURL(baseURL),
+		option.WithClientID("My Client ID"),
+		option.WithClientSecret("My Client Secret"),
+	)
+	page, err := client.Shows.ListEpisodes(
+		context.TODO(),
+		"38bS44xjbVVZ3No3ByF1dJ",
+		spotted.ShowListEpisodesParams{
+			Limit:  spotted.Int(5),
+			Offset: spotted.Int(10),
+		},
+	)
+	if err != nil {
+		t.Fatalf("err should be nil: %s", err.Error())
+	}
+	for _, show := range page.Items {
+		t.Logf("%+v\n", show.ID)
+	}
+	// Prism mock isn't going to give us real pagination
+	page, err = page.GetNextPage()
+	if err != nil {
+		t.Fatalf("err should be nil: %s", err.Error())
+	}
+	if page != nil {
+		for _, show := range page.Items {
+			t.Logf("%+v\n", show.ID)
+		}
+	}
+}

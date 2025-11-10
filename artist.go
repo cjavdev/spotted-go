@@ -103,7 +103,7 @@ func (r *ArtistService) ListRelatedArtists(ctx context.Context, id string, opts 
 }
 
 // Get Spotify catalog information about an artist's top tracks by country.
-func (r *ArtistService) ListTopTracks(ctx context.Context, id string, query ArtistListTopTracksParams, opts ...option.RequestOption) (res *ArtistListTopTracksResponse, err error) {
+func (r *ArtistService) TopTracks(ctx context.Context, id string, query ArtistTopTracksParams, opts ...option.RequestOption) (res *ArtistTopTracksResponse, err error) {
 	opts = slices.Concat(r.Options, opts)
 	if id == "" {
 		err = errors.New("missing required id parameter")
@@ -255,7 +255,7 @@ func (r *ArtistListRelatedArtistsResponse) UnmarshalJSON(data []byte) error {
 	return apijson.UnmarshalRoot(data, r)
 }
 
-type ArtistListTopTracksResponse struct {
+type ArtistTopTracksResponse struct {
 	Tracks []shared.TrackObject `json:"tracks,required"`
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
@@ -266,8 +266,8 @@ type ArtistListTopTracksResponse struct {
 }
 
 // Returns the unmodified JSON received from the API
-func (r ArtistListTopTracksResponse) RawJSON() string { return r.JSON.raw }
-func (r *ArtistListTopTracksResponse) UnmarshalJSON(data []byte) error {
+func (r ArtistTopTracksResponse) RawJSON() string { return r.JSON.raw }
+func (r *ArtistTopTracksResponse) UnmarshalJSON(data []byte) error {
 	return apijson.UnmarshalRoot(data, r)
 }
 
@@ -319,7 +319,7 @@ func (r ArtistListAlbumsParams) URLQuery() (v url.Values, err error) {
 	})
 }
 
-type ArtistListTopTracksParams struct {
+type ArtistTopTracksParams struct {
 	// An
 	// [ISO 3166-1 alpha-2 country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2).
 	// If a country code is specified, only content that is available in that market
@@ -333,9 +333,8 @@ type ArtistListTopTracksParams struct {
 	paramObj
 }
 
-// URLQuery serializes [ArtistListTopTracksParams]'s query parameters as
-// `url.Values`.
-func (r ArtistListTopTracksParams) URLQuery() (v url.Values, err error) {
+// URLQuery serializes [ArtistTopTracksParams]'s query parameters as `url.Values`.
+func (r ArtistTopTracksParams) URLQuery() (v url.Values, err error) {
 	return apiquery.MarshalWithSettings(r, apiquery.QuerySettings{
 		ArrayFormat:  apiquery.ArrayQueryFormatComma,
 		NestedFormat: apiquery.NestedQueryFormatBrackets,

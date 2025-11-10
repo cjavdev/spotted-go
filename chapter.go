@@ -55,7 +55,7 @@ func (r *ChapterService) Get(ctx context.Context, id string, query ChapterGetPar
 // Get Spotify catalog information for several audiobook chapters identified by
 // their Spotify IDs. Chapters are only available within the US, UK, Canada,
 // Ireland, New Zealand and Australia markets.
-func (r *ChapterService) List(ctx context.Context, query ChapterListParams, opts ...option.RequestOption) (res *ChapterListResponse, err error) {
+func (r *ChapterService) BulkGet(ctx context.Context, query ChapterBulkGetParams, opts ...option.RequestOption) (res *ChapterBulkGetResponse, err error) {
 	opts = slices.Concat(r.Options, opts)
 	path := "chapters"
 	err = requestconfig.ExecuteNewRequest(ctx, http.MethodGet, path, query, &res, opts...)
@@ -170,8 +170,8 @@ const (
 	ChapterGetResponseTypeEpisode ChapterGetResponseType = "episode"
 )
 
-type ChapterListResponse struct {
-	Chapters []ChapterListResponseChapter `json:"chapters,required"`
+type ChapterBulkGetResponse struct {
+	Chapters []ChapterBulkGetResponseChapter `json:"chapters,required"`
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
 		Chapters    respjson.Field
@@ -181,12 +181,12 @@ type ChapterListResponse struct {
 }
 
 // Returns the unmodified JSON received from the API
-func (r ChapterListResponse) RawJSON() string { return r.JSON.raw }
-func (r *ChapterListResponse) UnmarshalJSON(data []byte) error {
+func (r ChapterBulkGetResponse) RawJSON() string { return r.JSON.raw }
+func (r *ChapterBulkGetResponse) UnmarshalJSON(data []byte) error {
 	return apijson.UnmarshalRoot(data, r)
 }
 
-type ChapterListResponseChapter struct {
+type ChapterBulkGetResponseChapter struct {
 	// The [Spotify ID](/documentation/web-api/concepts/spotify-uris-ids) for the
 	// chapter.
 	ID string `json:"id,required"`
@@ -273,8 +273,8 @@ type ChapterListResponseChapter struct {
 }
 
 // Returns the unmodified JSON received from the API
-func (r ChapterListResponseChapter) RawJSON() string { return r.JSON.raw }
-func (r *ChapterListResponseChapter) UnmarshalJSON(data []byte) error {
+func (r ChapterBulkGetResponseChapter) RawJSON() string { return r.JSON.raw }
+func (r *ChapterBulkGetResponseChapter) UnmarshalJSON(data []byte) error {
 	return apijson.UnmarshalRoot(data, r)
 }
 
@@ -300,7 +300,7 @@ func (r ChapterGetParams) URLQuery() (v url.Values, err error) {
 	})
 }
 
-type ChapterListParams struct {
+type ChapterBulkGetParams struct {
 	// A comma-separated list of the
 	// [Spotify IDs](/documentation/web-api/concepts/spotify-uris-ids). For example:
 	// `ids=0IsXVP0JmcB2adSE338GkK,3ZXb8FKZGU0EHALYX6uCzU`. Maximum: 50 IDs.
@@ -318,8 +318,8 @@ type ChapterListParams struct {
 	paramObj
 }
 
-// URLQuery serializes [ChapterListParams]'s query parameters as `url.Values`.
-func (r ChapterListParams) URLQuery() (v url.Values, err error) {
+// URLQuery serializes [ChapterBulkGetParams]'s query parameters as `url.Values`.
+func (r ChapterBulkGetParams) URLQuery() (v url.Values, err error) {
 	return apiquery.MarshalWithSettings(r, apiquery.QuerySettings{
 		ArrayFormat:  apiquery.ArrayQueryFormatComma,
 		NestedFormat: apiquery.NestedQueryFormatBrackets,

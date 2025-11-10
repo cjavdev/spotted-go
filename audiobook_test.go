@@ -43,7 +43,7 @@ func TestAudiobookGetWithOptionalParams(t *testing.T) {
 	}
 }
 
-func TestAudiobookListWithOptionalParams(t *testing.T) {
+func TestAudiobookBulkGetWithOptionalParams(t *testing.T) {
 	t.Skip("Prism tests are disabled")
 	baseURL := "http://localhost:4010"
 	if envURL, ok := os.LookupEnv("TEST_API_BASE_URL"); ok {
@@ -57,7 +57,7 @@ func TestAudiobookListWithOptionalParams(t *testing.T) {
 		option.WithClientID("My Client ID"),
 		option.WithClientSecret("My Client Secret"),
 	)
-	_, err := client.Audiobooks.List(context.TODO(), spotted.AudiobookListParams{
+	_, err := client.Audiobooks.BulkGet(context.TODO(), spotted.AudiobookBulkGetParams{
 		IDs:    "18yVqkdbdRvS24c0Ilj2ci,1HGw3J3NxZO1TP1BTtVhpZ,7iHfbu1YPACw6oZPAFJtqe",
 		Market: spotted.String("ES"),
 	})

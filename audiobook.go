@@ -55,7 +55,7 @@ func (r *AudiobookService) Get(ctx context.Context, id string, query AudiobookGe
 // Get Spotify catalog information for several audiobooks identified by their
 // Spotify IDs. Audiobooks are only available within the US, UK, Canada, Ireland,
 // New Zealand and Australia markets.
-func (r *AudiobookService) List(ctx context.Context, query AudiobookListParams, opts ...option.RequestOption) (res *AudiobookListResponse, err error) {
+func (r *AudiobookService) BulkGet(ctx context.Context, query AudiobookBulkGetParams, opts ...option.RequestOption) (res *AudiobookBulkGetResponse, err error) {
 	opts = slices.Concat(r.Options, opts)
 	path := "audiobooks"
 	err = requestconfig.ExecuteNewRequest(ctx, http.MethodGet, path, query, &res, opts...)
@@ -251,8 +251,8 @@ func (r *AudiobookGetResponseChapters) UnmarshalJSON(data []byte) error {
 	return apijson.UnmarshalRoot(data, r)
 }
 
-type AudiobookListResponse struct {
-	Audiobooks []AudiobookListResponseAudiobook `json:"audiobooks,required"`
+type AudiobookBulkGetResponse struct {
+	Audiobooks []AudiobookBulkGetResponseAudiobook `json:"audiobooks,required"`
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
 		Audiobooks  respjson.Field
@@ -262,14 +262,14 @@ type AudiobookListResponse struct {
 }
 
 // Returns the unmodified JSON received from the API
-func (r AudiobookListResponse) RawJSON() string { return r.JSON.raw }
-func (r *AudiobookListResponse) UnmarshalJSON(data []byte) error {
+func (r AudiobookBulkGetResponse) RawJSON() string { return r.JSON.raw }
+func (r *AudiobookBulkGetResponse) UnmarshalJSON(data []byte) error {
 	return apijson.UnmarshalRoot(data, r)
 }
 
-type AudiobookListResponseAudiobook struct {
+type AudiobookBulkGetResponseAudiobook struct {
 	// The chapters of the audiobook.
-	Chapters AudiobookListResponseAudiobookChapters `json:"chapters,required"`
+	Chapters AudiobookBulkGetResponseAudiobookChapters `json:"chapters,required"`
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
 		Chapters    respjson.Field
@@ -280,13 +280,13 @@ type AudiobookListResponseAudiobook struct {
 }
 
 // Returns the unmodified JSON received from the API
-func (r AudiobookListResponseAudiobook) RawJSON() string { return r.JSON.raw }
-func (r *AudiobookListResponseAudiobook) UnmarshalJSON(data []byte) error {
+func (r AudiobookBulkGetResponseAudiobook) RawJSON() string { return r.JSON.raw }
+func (r *AudiobookBulkGetResponseAudiobook) UnmarshalJSON(data []byte) error {
 	return apijson.UnmarshalRoot(data, r)
 }
 
 // The chapters of the audiobook.
-type AudiobookListResponseAudiobookChapters struct {
+type AudiobookBulkGetResponseAudiobookChapters struct {
 	// A link to the Web API endpoint returning the full result of the request
 	Href  string                    `json:"href,required"`
 	Items []SimplifiedChapterObject `json:"items,required"`
@@ -315,8 +315,8 @@ type AudiobookListResponseAudiobookChapters struct {
 }
 
 // Returns the unmodified JSON received from the API
-func (r AudiobookListResponseAudiobookChapters) RawJSON() string { return r.JSON.raw }
-func (r *AudiobookListResponseAudiobookChapters) UnmarshalJSON(data []byte) error {
+func (r AudiobookBulkGetResponseAudiobookChapters) RawJSON() string { return r.JSON.raw }
+func (r *AudiobookBulkGetResponseAudiobookChapters) UnmarshalJSON(data []byte) error {
 	return apijson.UnmarshalRoot(data, r)
 }
 
@@ -342,7 +342,7 @@ func (r AudiobookGetParams) URLQuery() (v url.Values, err error) {
 	})
 }
 
-type AudiobookListParams struct {
+type AudiobookBulkGetParams struct {
 	// A comma-separated list of the
 	// [Spotify IDs](/documentation/web-api/concepts/spotify-uris-ids). For example:
 	// `ids=18yVqkdbdRvS24c0Ilj2ci,1HGw3J3NxZO1TP1BTtVhpZ`. Maximum: 50 IDs.
@@ -360,8 +360,8 @@ type AudiobookListParams struct {
 	paramObj
 }
 
-// URLQuery serializes [AudiobookListParams]'s query parameters as `url.Values`.
-func (r AudiobookListParams) URLQuery() (v url.Values, err error) {
+// URLQuery serializes [AudiobookBulkGetParams]'s query parameters as `url.Values`.
+func (r AudiobookBulkGetParams) URLQuery() (v url.Values, err error) {
 	return apiquery.MarshalWithSettings(r, apiquery.QuerySettings{
 		ArrayFormat:  apiquery.ArrayQueryFormatComma,
 		NestedFormat: apiquery.NestedQueryFormatBrackets,

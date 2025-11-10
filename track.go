@@ -52,14 +52,14 @@ func (r *TrackService) Get(ctx context.Context, id string, query TrackGetParams,
 }
 
 // Get Spotify catalog information for multiple tracks based on their Spotify IDs.
-func (r *TrackService) List(ctx context.Context, query TrackListParams, opts ...option.RequestOption) (res *TrackListResponse, err error) {
+func (r *TrackService) BulkGet(ctx context.Context, query TrackBulkGetParams, opts ...option.RequestOption) (res *TrackBulkGetResponse, err error) {
 	opts = slices.Concat(r.Options, opts)
 	path := "tracks"
 	err = requestconfig.ExecuteNewRequest(ctx, http.MethodGet, path, query, &res, opts...)
 	return
 }
 
-type TrackListResponse struct {
+type TrackBulkGetResponse struct {
 	Tracks []shared.TrackObject `json:"tracks,required"`
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
@@ -70,8 +70,8 @@ type TrackListResponse struct {
 }
 
 // Returns the unmodified JSON received from the API
-func (r TrackListResponse) RawJSON() string { return r.JSON.raw }
-func (r *TrackListResponse) UnmarshalJSON(data []byte) error {
+func (r TrackBulkGetResponse) RawJSON() string { return r.JSON.raw }
+func (r *TrackBulkGetResponse) UnmarshalJSON(data []byte) error {
 	return apijson.UnmarshalRoot(data, r)
 }
 
@@ -97,7 +97,7 @@ func (r TrackGetParams) URLQuery() (v url.Values, err error) {
 	})
 }
 
-type TrackListParams struct {
+type TrackBulkGetParams struct {
 	// A comma-separated list of the
 	// [Spotify IDs](/documentation/web-api/concepts/spotify-uris-ids). For example:
 	// `ids=4iV5W9uYEdYUVa79Axb7Rh,1301WleyT98MSxVHPZCA6M`. Maximum: 50 IDs.
@@ -115,8 +115,8 @@ type TrackListParams struct {
 	paramObj
 }
 
-// URLQuery serializes [TrackListParams]'s query parameters as `url.Values`.
-func (r TrackListParams) URLQuery() (v url.Values, err error) {
+// URLQuery serializes [TrackBulkGetParams]'s query parameters as `url.Values`.
+func (r TrackBulkGetParams) URLQuery() (v url.Values, err error) {
 	return apiquery.MarshalWithSettings(r, apiquery.QuerySettings{
 		ArrayFormat:  apiquery.ArrayQueryFormatComma,
 		NestedFormat: apiquery.NestedQueryFormatBrackets,

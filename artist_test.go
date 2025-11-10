@@ -37,7 +37,7 @@ func TestArtistGet(t *testing.T) {
 	}
 }
 
-func TestArtistList(t *testing.T) {
+func TestArtistBulkGet(t *testing.T) {
 	t.Skip("Prism tests are disabled")
 	baseURL := "http://localhost:4010"
 	if envURL, ok := os.LookupEnv("TEST_API_BASE_URL"); ok {
@@ -51,7 +51,7 @@ func TestArtistList(t *testing.T) {
 		option.WithClientID("My Client ID"),
 		option.WithClientSecret("My Client Secret"),
 	)
-	_, err := client.Artists.List(context.TODO(), spotted.ArtistListParams{
+	_, err := client.Artists.BulkGet(context.TODO(), spotted.ArtistBulkGetParams{
 		IDs: "2CIMQHirSU0MQqyYHq0eOx,57dN52uHvrHOxijzpIgu3E,1vCWHaC5f2uS3yhpwWbIA6",
 	})
 	if err != nil {

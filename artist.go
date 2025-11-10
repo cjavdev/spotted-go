@@ -53,7 +53,7 @@ func (r *ArtistService) Get(ctx context.Context, id string, opts ...option.Reque
 }
 
 // Get Spotify catalog information for several artists based on their Spotify IDs.
-func (r *ArtistService) List(ctx context.Context, query ArtistListParams, opts ...option.RequestOption) (res *ArtistListResponse, err error) {
+func (r *ArtistService) BulkGet(ctx context.Context, query ArtistBulkGetParams, opts ...option.RequestOption) (res *ArtistBulkGetResponse, err error) {
 	opts = slices.Concat(r.Options, opts)
 	path := "artists"
 	err = requestconfig.ExecuteNewRequest(ctx, http.MethodGet, path, query, &res, opts...)
@@ -114,7 +114,7 @@ func (r *ArtistService) ListTopTracks(ctx context.Context, id string, query Arti
 	return
 }
 
-type ArtistListResponse struct {
+type ArtistBulkGetResponse struct {
 	Artists []shared.ArtistObject `json:"artists,required"`
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
@@ -125,8 +125,8 @@ type ArtistListResponse struct {
 }
 
 // Returns the unmodified JSON received from the API
-func (r ArtistListResponse) RawJSON() string { return r.JSON.raw }
-func (r *ArtistListResponse) UnmarshalJSON(data []byte) error {
+func (r ArtistBulkGetResponse) RawJSON() string { return r.JSON.raw }
+func (r *ArtistBulkGetResponse) UnmarshalJSON(data []byte) error {
 	return apijson.UnmarshalRoot(data, r)
 }
 
@@ -271,7 +271,7 @@ func (r *ArtistListTopTracksResponse) UnmarshalJSON(data []byte) error {
 	return apijson.UnmarshalRoot(data, r)
 }
 
-type ArtistListParams struct {
+type ArtistBulkGetParams struct {
 	// A comma-separated list of the
 	// [Spotify IDs](/documentation/web-api/concepts/spotify-uris-ids) for the artists.
 	// Maximum: 50 IDs.
@@ -279,8 +279,8 @@ type ArtistListParams struct {
 	paramObj
 }
 
-// URLQuery serializes [ArtistListParams]'s query parameters as `url.Values`.
-func (r ArtistListParams) URLQuery() (v url.Values, err error) {
+// URLQuery serializes [ArtistBulkGetParams]'s query parameters as `url.Values`.
+func (r ArtistBulkGetParams) URLQuery() (v url.Values, err error) {
 	return apiquery.MarshalWithSettings(r, apiquery.QuerySettings{
 		ArrayFormat:  apiquery.ArrayQueryFormatComma,
 		NestedFormat: apiquery.NestedQueryFormatBrackets,

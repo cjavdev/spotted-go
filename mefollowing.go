@@ -37,7 +37,7 @@ func NewMeFollowingService(opts ...option.RequestOption) (r MeFollowingService) 
 }
 
 // Get the current user's followed artists.
-func (r *MeFollowingService) List(ctx context.Context, query MeFollowingListParams, opts ...option.RequestOption) (res *MeFollowingListResponse, err error) {
+func (r *MeFollowingService) BulkGet(ctx context.Context, query MeFollowingBulkGetParams, opts ...option.RequestOption) (res *MeFollowingBulkGetResponse, err error) {
 	opts = slices.Concat(r.Options, opts)
 	path := "me/following"
 	err = requestconfig.ExecuteNewRequest(ctx, http.MethodGet, path, query, &res, opts...)
@@ -73,8 +73,8 @@ func (r *MeFollowingService) Unfollow(ctx context.Context, body MeFollowingUnfol
 	return
 }
 
-type MeFollowingListResponse struct {
-	Artists MeFollowingListResponseArtists `json:"artists,required"`
+type MeFollowingBulkGetResponse struct {
+	Artists MeFollowingBulkGetResponseArtists `json:"artists,required"`
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
 		Artists     respjson.Field
@@ -84,14 +84,14 @@ type MeFollowingListResponse struct {
 }
 
 // Returns the unmodified JSON received from the API
-func (r MeFollowingListResponse) RawJSON() string { return r.JSON.raw }
-func (r *MeFollowingListResponse) UnmarshalJSON(data []byte) error {
+func (r MeFollowingBulkGetResponse) RawJSON() string { return r.JSON.raw }
+func (r *MeFollowingBulkGetResponse) UnmarshalJSON(data []byte) error {
 	return apijson.UnmarshalRoot(data, r)
 }
 
-type MeFollowingListResponseArtists struct {
+type MeFollowingBulkGetResponseArtists struct {
 	// The cursors used to find the next set of items.
-	Cursors MeFollowingListResponseArtistsCursors `json:"cursors"`
+	Cursors MeFollowingBulkGetResponseArtistsCursors `json:"cursors"`
 	// A link to the Web API endpoint returning the full result of the request.
 	Href  string                `json:"href"`
 	Items []shared.ArtistObject `json:"items"`
@@ -115,13 +115,13 @@ type MeFollowingListResponseArtists struct {
 }
 
 // Returns the unmodified JSON received from the API
-func (r MeFollowingListResponseArtists) RawJSON() string { return r.JSON.raw }
-func (r *MeFollowingListResponseArtists) UnmarshalJSON(data []byte) error {
+func (r MeFollowingBulkGetResponseArtists) RawJSON() string { return r.JSON.raw }
+func (r *MeFollowingBulkGetResponseArtists) UnmarshalJSON(data []byte) error {
 	return apijson.UnmarshalRoot(data, r)
 }
 
 // The cursors used to find the next set of items.
-type MeFollowingListResponseArtistsCursors struct {
+type MeFollowingBulkGetResponseArtistsCursors struct {
 	// The cursor to use as key to find the next page of items.
 	After string `json:"after"`
 	// The cursor to use as key to find the previous page of items.
@@ -136,16 +136,16 @@ type MeFollowingListResponseArtistsCursors struct {
 }
 
 // Returns the unmodified JSON received from the API
-func (r MeFollowingListResponseArtistsCursors) RawJSON() string { return r.JSON.raw }
-func (r *MeFollowingListResponseArtistsCursors) UnmarshalJSON(data []byte) error {
+func (r MeFollowingBulkGetResponseArtistsCursors) RawJSON() string { return r.JSON.raw }
+func (r *MeFollowingBulkGetResponseArtistsCursors) UnmarshalJSON(data []byte) error {
 	return apijson.UnmarshalRoot(data, r)
 }
 
-type MeFollowingListParams struct {
+type MeFollowingBulkGetParams struct {
 	// The ID type: currently only `artist` is supported.
 	//
 	// Any of "artist".
-	Type MeFollowingListParamsType `query:"type,omitzero,required" json:"-"`
+	Type MeFollowingBulkGetParamsType `query:"type,omitzero,required" json:"-"`
 	// The last artist ID retrieved from the previous request.
 	After param.Opt[string] `query:"after,omitzero" json:"-"`
 	// The maximum number of items to return. Default: 20. Minimum: 1. Maximum: 50.
@@ -153,8 +153,9 @@ type MeFollowingListParams struct {
 	paramObj
 }
 
-// URLQuery serializes [MeFollowingListParams]'s query parameters as `url.Values`.
-func (r MeFollowingListParams) URLQuery() (v url.Values, err error) {
+// URLQuery serializes [MeFollowingBulkGetParams]'s query parameters as
+// `url.Values`.
+func (r MeFollowingBulkGetParams) URLQuery() (v url.Values, err error) {
 	return apiquery.MarshalWithSettings(r, apiquery.QuerySettings{
 		ArrayFormat:  apiquery.ArrayQueryFormatComma,
 		NestedFormat: apiquery.NestedQueryFormatBrackets,
@@ -162,10 +163,10 @@ func (r MeFollowingListParams) URLQuery() (v url.Values, err error) {
 }
 
 // The ID type: currently only `artist` is supported.
-type MeFollowingListParamsType string
+type MeFollowingBulkGetParamsType string
 
 const (
-	MeFollowingListParamsTypeArtist MeFollowingListParamsType = "artist"
+	MeFollowingBulkGetParamsTypeArtist MeFollowingBulkGetParamsType = "artist"
 )
 
 type MeFollowingCheckParams struct {

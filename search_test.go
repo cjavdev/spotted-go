@@ -13,7 +13,7 @@ import (
 	"github.com/stainless-sdks/spotted-go/option"
 )
 
-func TestSearchGetWithOptionalParams(t *testing.T) {
+func TestSearchSearchWithOptionalParams(t *testing.T) {
 	t.Skip("Prism tests are disabled")
 	baseURL := "http://localhost:4010"
 	if envURL, ok := os.LookupEnv("TEST_API_BASE_URL"); ok {
@@ -27,10 +27,10 @@ func TestSearchGetWithOptionalParams(t *testing.T) {
 		option.WithClientID("My Client ID"),
 		option.WithClientSecret("My Client Secret"),
 	)
-	_, err := client.Search.Get(context.TODO(), spotted.SearchGetParams{
+	_, err := client.Search.Search(context.TODO(), spotted.SearchSearchParams{
 		Q:               "remaster%20track:Doxy%20artist:Miles%20Davis",
 		Type:            []string{"album"},
-		IncludeExternal: spotted.SearchGetParamsIncludeExternalAudio,
+		IncludeExternal: spotted.SearchSearchParamsIncludeExternalAudio,
 		Limit:           spotted.Int(10),
 		Market:          spotted.String("ES"),
 		Offset:          spotted.Int(5),

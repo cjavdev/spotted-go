@@ -261,11 +261,11 @@ Methods:
 
 Response Types:
 
-- <a href="https://pkg.go.dev/github.com/stainless-sdks/spotted-go">spotted</a>.<a href="https://pkg.go.dev/github.com/stainless-sdks/spotted-go#SearchGetResponse">SearchGetResponse</a>
+- <a href="https://pkg.go.dev/github.com/stainless-sdks/spotted-go">spotted</a>.<a href="https://pkg.go.dev/github.com/stainless-sdks/spotted-go#SearchSearchResponse">SearchSearchResponse</a>
 
 Methods:
 
-- <code title="get /search">client.Search.<a href="https://pkg.go.dev/github.com/stainless-sdks/spotted-go#SearchService.Get">Get</a>(ctx <a href="https://pkg.go.dev/context">context</a>.<a href="https://pkg.go.dev/context#Context">Context</a>, query <a href="https://pkg.go.dev/github.com/stainless-sdks/spotted-go">spotted</a>.<a href="https://pkg.go.dev/github.com/stainless-sdks/spotted-go#SearchGetParams">SearchGetParams</a>) (<a href="https://pkg.go.dev/github.com/stainless-sdks/spotted-go">spotted</a>.<a href="https://pkg.go.dev/github.com/stainless-sdks/spotted-go#SearchGetResponse">SearchGetResponse</a>, <a href="https://pkg.go.dev/builtin#error">error</a>)</code>
+- <code title="get /search">client.Search.<a href="https://pkg.go.dev/github.com/stainless-sdks/spotted-go#SearchService.Search">Search</a>(ctx <a href="https://pkg.go.dev/context">context</a>.<a href="https://pkg.go.dev/context#Context">Context</a>, query <a href="https://pkg.go.dev/github.com/stainless-sdks/spotted-go">spotted</a>.<a href="https://pkg.go.dev/github.com/stainless-sdks/spotted-go#SearchSearchParams">SearchSearchParams</a>) (<a href="https://pkg.go.dev/github.com/stainless-sdks/spotted-go">spotted</a>.<a href="https://pkg.go.dev/github.com/stainless-sdks/spotted-go#SearchSearchResponse">SearchSearchResponse</a>, <a href="https://pkg.go.dev/builtin#error">error</a>)</code>
 
 # Playlists
 

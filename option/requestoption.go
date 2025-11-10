@@ -285,3 +285,11 @@ func WithClientSecret(value string) RequestOption {
 		return nil
 	})
 }
+
+// WithAccessToken returns a RequestOption that sets the client setting "access_token".
+func WithAccessToken(value string) RequestOption {
+	return requestconfig.RequestOptionFunc(func(r *requestconfig.RequestConfig) error {
+		r.AccessToken = value
+		return r.Apply(WithHeader("authorization", fmt.Sprintf("Bearer %s", r.AccessToken)))
+	})
+}

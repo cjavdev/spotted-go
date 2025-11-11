@@ -110,8 +110,7 @@ func (r *ShowGetResponse) UnmarshalJSON(data []byte) error {
 // The episodes of the show.
 type ShowGetResponseEpisodes struct {
 	// A link to the Web API endpoint returning the full result of the request
-	Href  string                           `json:"href,required"`
-	Items []shared.SimplifiedEpisodeObject `json:"items,required"`
+	Href string `json:"href,required"`
 	// The maximum number of items in the response (as set in the query or by default).
 	Limit int64 `json:"limit,required"`
 	// URL to the next page of items. ( `null` if none)
@@ -121,16 +120,17 @@ type ShowGetResponseEpisodes struct {
 	// URL to the previous page of items. ( `null` if none)
 	Previous string `json:"previous,required"`
 	// The total number of items available to return.
-	Total int64 `json:"total,required"`
+	Total int64                            `json:"total,required"`
+	Items []shared.SimplifiedEpisodeObject `json:"items"`
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
 		Href        respjson.Field
-		Items       respjson.Field
 		Limit       respjson.Field
 		Next        respjson.Field
 		Offset      respjson.Field
 		Previous    respjson.Field
 		Total       respjson.Field
+		Items       respjson.Field
 		ExtraFields map[string]respjson.Field
 		raw         string
 	} `json:"-"`

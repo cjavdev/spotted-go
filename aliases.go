@@ -50,14 +50,6 @@ const ArtistObjectTypeArtist = shared.ArtistObjectTypeArtist
 // This is an alias to an internal type.
 type AudiobookBase = shared.AudiobookBase
 
-// The object type.
-//
-// This is an alias to an internal type.
-type AudiobookBaseType = shared.AudiobookBaseType
-
-// Equals "audiobook"
-const AudiobookBaseTypeAudiobook = shared.AudiobookBaseTypeAudiobook
-
 // This is an alias to an internal type.
 type AuthorObject = shared.AuthorObject
 
@@ -83,14 +75,6 @@ const EpisodeObjectReleaseDatePrecisionMonth = shared.EpisodeObjectReleaseDatePr
 
 // Equals "day"
 const EpisodeObjectReleaseDatePrecisionDay = shared.EpisodeObjectReleaseDatePrecisionDay
-
-// The object type.
-//
-// This is an alias to an internal type.
-type EpisodeObjectType = shared.EpisodeObjectType
-
-// Equals "episode"
-const EpisodeObjectTypeEpisode = shared.EpisodeObjectTypeEpisode
 
 // This is an alias to an internal type.
 type EpisodeRestrictionObject = shared.EpisodeRestrictionObject
@@ -144,14 +128,6 @@ type ResumePointObject = shared.ResumePointObject
 // This is an alias to an internal type.
 type ShowBase = shared.ShowBase
 
-// The object type.
-//
-// This is an alias to an internal type.
-type ShowBaseType = shared.ShowBaseType
-
-// Equals "show"
-const ShowBaseTypeShow = shared.ShowBaseTypeShow
-
 // This is an alias to an internal type.
 type SimplifiedArtistObject = shared.SimplifiedArtistObject
 
@@ -179,14 +155,6 @@ const SimplifiedEpisodeObjectReleaseDatePrecisionMonth = shared.SimplifiedEpisod
 
 // Equals "day"
 const SimplifiedEpisodeObjectReleaseDatePrecisionDay = shared.SimplifiedEpisodeObjectReleaseDatePrecisionDay
-
-// The object type.
-//
-// This is an alias to an internal type.
-type SimplifiedEpisodeObjectType = shared.SimplifiedEpisodeObjectType
-
-// Equals "episode"
-const SimplifiedEpisodeObjectTypeEpisode = shared.SimplifiedEpisodeObjectTypeEpisode
 
 // This is an alias to an internal type.
 type SimplifiedPlaylistObject = shared.SimplifiedPlaylistObject

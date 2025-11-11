@@ -18,6 +18,7 @@ import (
 	"github.com/stainless-sdks/spotted-go/packages/param"
 	"github.com/stainless-sdks/spotted-go/packages/respjson"
 	"github.com/stainless-sdks/spotted-go/shared"
+	"github.com/stainless-sdks/spotted-go/shared/constant"
 )
 
 // AlbumService contains methods and other services that help with interacting with
@@ -120,9 +121,7 @@ type AlbumGetResponse struct {
 	// The number of tracks in the album.
 	TotalTracks int64 `json:"total_tracks,required"`
 	// The object type.
-	//
-	// Any of "album".
-	Type AlbumGetResponseType `json:"type,required"`
+	Type constant.Album `json:"type,required"`
 	// The [Spotify URI](/documentation/web-api/concepts/spotify-uris-ids) for the
 	// album.
 	Uri string `json:"uri,required"`
@@ -195,13 +194,6 @@ const (
 	AlbumGetResponseReleaseDatePrecisionYear  AlbumGetResponseReleaseDatePrecision = "year"
 	AlbumGetResponseReleaseDatePrecisionMonth AlbumGetResponseReleaseDatePrecision = "month"
 	AlbumGetResponseReleaseDatePrecisionDay   AlbumGetResponseReleaseDatePrecision = "day"
-)
-
-// The object type.
-type AlbumGetResponseType string
-
-const (
-	AlbumGetResponseTypeAlbum AlbumGetResponseType = "album"
 )
 
 // The tracks of the album.
@@ -286,9 +278,7 @@ type AlbumBulkGetResponseAlbum struct {
 	// The number of tracks in the album.
 	TotalTracks int64 `json:"total_tracks,required"`
 	// The object type.
-	//
-	// Any of "album".
-	Type string `json:"type,required"`
+	Type constant.Album `json:"type,required"`
 	// The [Spotify URI](/documentation/web-api/concepts/spotify-uris-ids) for the
 	// album.
 	Uri string `json:"uri,required"`

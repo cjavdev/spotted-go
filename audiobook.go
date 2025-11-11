@@ -18,6 +18,7 @@ import (
 	"github.com/stainless-sdks/spotted-go/packages/param"
 	"github.com/stainless-sdks/spotted-go/packages/respjson"
 	"github.com/stainless-sdks/spotted-go/shared"
+	"github.com/stainless-sdks/spotted-go/shared/constant"
 )
 
 // AudiobookService contains methods and other services that help with interacting
@@ -135,9 +136,7 @@ type SimplifiedChapterObject struct {
 	// Any of "year", "month", "day".
 	ReleaseDatePrecision SimplifiedChapterObjectReleaseDatePrecision `json:"release_date_precision,required"`
 	// The object type.
-	//
-	// Any of "episode".
-	Type SimplifiedChapterObjectType `json:"type,required"`
+	Type constant.Episode `json:"type,required"`
 	// The [Spotify URI](/documentation/web-api/concepts/spotify-uris-ids) for the
 	// chapter.
 	Uri string `json:"uri,required"`
@@ -189,13 +188,6 @@ const (
 	SimplifiedChapterObjectReleaseDatePrecisionYear  SimplifiedChapterObjectReleaseDatePrecision = "year"
 	SimplifiedChapterObjectReleaseDatePrecisionMonth SimplifiedChapterObjectReleaseDatePrecision = "month"
 	SimplifiedChapterObjectReleaseDatePrecisionDay   SimplifiedChapterObjectReleaseDatePrecision = "day"
-)
-
-// The object type.
-type SimplifiedChapterObjectType string
-
-const (
-	SimplifiedChapterObjectTypeEpisode SimplifiedChapterObjectType = "episode"
 )
 
 type AudiobookGetResponse struct {

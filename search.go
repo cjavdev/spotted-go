@@ -76,8 +76,7 @@ func (r *SearchQueryResponse) UnmarshalJSON(data []byte) error {
 
 type SearchQueryResponseAlbums struct {
 	// A link to the Web API endpoint returning the full result of the request
-	Href  string                          `json:"href,required"`
-	Items []SearchQueryResponseAlbumsItem `json:"items,required"`
+	Href string `json:"href,required"`
 	// The maximum number of items in the response (as set in the query or by default).
 	Limit int64 `json:"limit,required"`
 	// URL to the next page of items. ( `null` if none)
@@ -87,16 +86,17 @@ type SearchQueryResponseAlbums struct {
 	// URL to the previous page of items. ( `null` if none)
 	Previous string `json:"previous,required"`
 	// The total number of items available to return.
-	Total int64 `json:"total,required"`
+	Total int64                           `json:"total,required"`
+	Items []SearchQueryResponseAlbumsItem `json:"items"`
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
 		Href        respjson.Field
-		Items       respjson.Field
 		Limit       respjson.Field
 		Next        respjson.Field
 		Offset      respjson.Field
 		Previous    respjson.Field
 		Total       respjson.Field
+		Items       respjson.Field
 		ExtraFields map[string]respjson.Field
 		raw         string
 	} `json:"-"`
@@ -179,8 +179,7 @@ func (r *SearchQueryResponseAlbumsItem) UnmarshalJSON(data []byte) error {
 
 type SearchQueryResponseArtists struct {
 	// A link to the Web API endpoint returning the full result of the request
-	Href  string                `json:"href,required"`
-	Items []shared.ArtistObject `json:"items,required"`
+	Href string `json:"href,required"`
 	// The maximum number of items in the response (as set in the query or by default).
 	Limit int64 `json:"limit,required"`
 	// URL to the next page of items. ( `null` if none)
@@ -190,16 +189,17 @@ type SearchQueryResponseArtists struct {
 	// URL to the previous page of items. ( `null` if none)
 	Previous string `json:"previous,required"`
 	// The total number of items available to return.
-	Total int64 `json:"total,required"`
+	Total int64                 `json:"total,required"`
+	Items []shared.ArtistObject `json:"items"`
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
 		Href        respjson.Field
-		Items       respjson.Field
 		Limit       respjson.Field
 		Next        respjson.Field
 		Offset      respjson.Field
 		Previous    respjson.Field
 		Total       respjson.Field
+		Items       respjson.Field
 		ExtraFields map[string]respjson.Field
 		raw         string
 	} `json:"-"`
@@ -213,8 +213,7 @@ func (r *SearchQueryResponseArtists) UnmarshalJSON(data []byte) error {
 
 type SearchQueryResponseAudiobooks struct {
 	// A link to the Web API endpoint returning the full result of the request
-	Href  string                 `json:"href,required"`
-	Items []shared.AudiobookBase `json:"items,required"`
+	Href string `json:"href,required"`
 	// The maximum number of items in the response (as set in the query or by default).
 	Limit int64 `json:"limit,required"`
 	// URL to the next page of items. ( `null` if none)
@@ -224,16 +223,17 @@ type SearchQueryResponseAudiobooks struct {
 	// URL to the previous page of items. ( `null` if none)
 	Previous string `json:"previous,required"`
 	// The total number of items available to return.
-	Total int64 `json:"total,required"`
+	Total int64                  `json:"total,required"`
+	Items []shared.AudiobookBase `json:"items"`
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
 		Href        respjson.Field
-		Items       respjson.Field
 		Limit       respjson.Field
 		Next        respjson.Field
 		Offset      respjson.Field
 		Previous    respjson.Field
 		Total       respjson.Field
+		Items       respjson.Field
 		ExtraFields map[string]respjson.Field
 		raw         string
 	} `json:"-"`
@@ -247,8 +247,7 @@ func (r *SearchQueryResponseAudiobooks) UnmarshalJSON(data []byte) error {
 
 type SearchQueryResponseEpisodes struct {
 	// A link to the Web API endpoint returning the full result of the request
-	Href  string                           `json:"href,required"`
-	Items []shared.SimplifiedEpisodeObject `json:"items,required"`
+	Href string `json:"href,required"`
 	// The maximum number of items in the response (as set in the query or by default).
 	Limit int64 `json:"limit,required"`
 	// URL to the next page of items. ( `null` if none)
@@ -258,16 +257,17 @@ type SearchQueryResponseEpisodes struct {
 	// URL to the previous page of items. ( `null` if none)
 	Previous string `json:"previous,required"`
 	// The total number of items available to return.
-	Total int64 `json:"total,required"`
+	Total int64                            `json:"total,required"`
+	Items []shared.SimplifiedEpisodeObject `json:"items"`
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
 		Href        respjson.Field
-		Items       respjson.Field
 		Limit       respjson.Field
 		Next        respjson.Field
 		Offset      respjson.Field
 		Previous    respjson.Field
 		Total       respjson.Field
+		Items       respjson.Field
 		ExtraFields map[string]respjson.Field
 		raw         string
 	} `json:"-"`
@@ -281,8 +281,7 @@ func (r *SearchQueryResponseEpisodes) UnmarshalJSON(data []byte) error {
 
 type SearchQueryResponseShows struct {
 	// A link to the Web API endpoint returning the full result of the request
-	Href  string            `json:"href,required"`
-	Items []shared.ShowBase `json:"items,required"`
+	Href string `json:"href,required"`
 	// The maximum number of items in the response (as set in the query or by default).
 	Limit int64 `json:"limit,required"`
 	// URL to the next page of items. ( `null` if none)
@@ -292,16 +291,17 @@ type SearchQueryResponseShows struct {
 	// URL to the previous page of items. ( `null` if none)
 	Previous string `json:"previous,required"`
 	// The total number of items available to return.
-	Total int64 `json:"total,required"`
+	Total int64             `json:"total,required"`
+	Items []shared.ShowBase `json:"items"`
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
 		Href        respjson.Field
-		Items       respjson.Field
 		Limit       respjson.Field
 		Next        respjson.Field
 		Offset      respjson.Field
 		Previous    respjson.Field
 		Total       respjson.Field
+		Items       respjson.Field
 		ExtraFields map[string]respjson.Field
 		raw         string
 	} `json:"-"`
@@ -315,8 +315,7 @@ func (r *SearchQueryResponseShows) UnmarshalJSON(data []byte) error {
 
 type SearchQueryResponseTracks struct {
 	// A link to the Web API endpoint returning the full result of the request
-	Href  string               `json:"href,required"`
-	Items []shared.TrackObject `json:"items,required"`
+	Href string `json:"href,required"`
 	// The maximum number of items in the response (as set in the query or by default).
 	Limit int64 `json:"limit,required"`
 	// URL to the next page of items. ( `null` if none)
@@ -326,16 +325,17 @@ type SearchQueryResponseTracks struct {
 	// URL to the previous page of items. ( `null` if none)
 	Previous string `json:"previous,required"`
 	// The total number of items available to return.
-	Total int64 `json:"total,required"`
+	Total int64                `json:"total,required"`
+	Items []shared.TrackObject `json:"items"`
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
 		Href        respjson.Field
-		Items       respjson.Field
 		Limit       respjson.Field
 		Next        respjson.Field
 		Offset      respjson.Field
 		Previous    respjson.Field
 		Total       respjson.Field
+		Items       respjson.Field
 		ExtraFields map[string]respjson.Field
 		raw         string
 	} `json:"-"`

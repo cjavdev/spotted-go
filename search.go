@@ -15,6 +15,7 @@ import (
 	"github.com/stainless-sdks/spotted-go/packages/param"
 	"github.com/stainless-sdks/spotted-go/packages/respjson"
 	"github.com/stainless-sdks/spotted-go/shared"
+	"github.com/stainless-sdks/spotted-go/shared/constant"
 )
 
 // SearchService contains methods and other services that help with interacting
@@ -142,9 +143,7 @@ type SearchQueryResponseAlbumsItem struct {
 	// The number of tracks in the album.
 	TotalTracks int64 `json:"total_tracks,required"`
 	// The object type.
-	//
-	// Any of "album".
-	Type string `json:"type,required"`
+	Type constant.Album `json:"type,required"`
 	// The [Spotify URI](/documentation/web-api/concepts/spotify-uris-ids) for the
 	// album.
 	Uri string `json:"uri,required"`

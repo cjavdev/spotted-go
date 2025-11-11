@@ -15,6 +15,7 @@ import (
 	"github.com/stainless-sdks/spotted-go/packages/param"
 	"github.com/stainless-sdks/spotted-go/packages/respjson"
 	"github.com/stainless-sdks/spotted-go/shared"
+	"github.com/stainless-sdks/spotted-go/shared/constant"
 )
 
 // MeFollowingService contains methods and other services that help with
@@ -142,14 +143,14 @@ func (r *MeFollowingBulkGetResponseArtistsCursors) UnmarshalJSON(data []byte) er
 }
 
 type MeFollowingBulkGetParams struct {
-	// The ID type: currently only `artist` is supported.
-	//
-	// Any of "artist".
-	Type MeFollowingBulkGetParamsType `query:"type,omitzero,required" json:"-"`
 	// The last artist ID retrieved from the previous request.
 	After param.Opt[string] `query:"after,omitzero" json:"-"`
 	// The maximum number of items to return. Default: 20. Minimum: 1. Maximum: 50.
 	Limit param.Opt[int64] `query:"limit,omitzero" json:"-"`
+	// The ID type: currently only `artist` is supported.
+	//
+	// This field can be elided, and will marshal its zero value as "artist".
+	Type constant.Artist `query:"type,required" json:"-"`
 	paramObj
 }
 
@@ -161,13 +162,6 @@ func (r MeFollowingBulkGetParams) URLQuery() (v url.Values, err error) {
 		NestedFormat: apiquery.NestedQueryFormatBrackets,
 	})
 }
-
-// The ID type: currently only `artist` is supported.
-type MeFollowingBulkGetParamsType string
-
-const (
-	MeFollowingBulkGetParamsTypeArtist MeFollowingBulkGetParamsType = "artist"
-)
 
 type MeFollowingCheckParams struct {
 	// A comma-separated list of the artist or the user

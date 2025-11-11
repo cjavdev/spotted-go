@@ -9,6 +9,7 @@ import (
 	"github.com/stainless-sdks/spotted-go/internal/apijson"
 	"github.com/stainless-sdks/spotted-go/packages/param"
 	"github.com/stainless-sdks/spotted-go/packages/respjson"
+	"github.com/stainless-sdks/spotted-go/shared/constant"
 )
 
 // aliased to make [param.APIUnion] private when embedding
@@ -149,9 +150,7 @@ type AudiobookBase struct {
 	// The number of chapters in this audiobook.
 	TotalChapters int64 `json:"total_chapters,required"`
 	// The object type.
-	//
-	// Any of "audiobook".
-	Type AudiobookBaseType `json:"type,required"`
+	Type constant.Audiobook `json:"type,required"`
 	// The [Spotify URI](/documentation/web-api/concepts/spotify-uris-ids) for the
 	// audiobook.
 	Uri string `json:"uri,required"`
@@ -188,13 +187,6 @@ func (r AudiobookBase) RawJSON() string { return r.JSON.raw }
 func (r *AudiobookBase) UnmarshalJSON(data []byte) error {
 	return apijson.UnmarshalRoot(data, r)
 }
-
-// The object type.
-type AudiobookBaseType string
-
-const (
-	AudiobookBaseTypeAudiobook AudiobookBaseType = "audiobook"
-)
 
 type AuthorObject struct {
 	// The name of the author.
@@ -305,9 +297,7 @@ type EpisodeObject struct {
 	// The show on which the episode belongs.
 	Show ShowBase `json:"show,required"`
 	// The object type.
-	//
-	// Any of "episode".
-	Type EpisodeObjectType `json:"type,required"`
+	Type constant.Episode `json:"type,required"`
 	// The [Spotify URI](/documentation/web-api/concepts/spotify-uris-ids) for the
 	// episode.
 	Uri string `json:"uri,required"`
@@ -369,13 +359,6 @@ const (
 	EpisodeObjectReleaseDatePrecisionYear  EpisodeObjectReleaseDatePrecision = "year"
 	EpisodeObjectReleaseDatePrecisionMonth EpisodeObjectReleaseDatePrecision = "month"
 	EpisodeObjectReleaseDatePrecisionDay   EpisodeObjectReleaseDatePrecision = "day"
-)
-
-// The object type.
-type EpisodeObjectType string
-
-const (
-	EpisodeObjectTypeEpisode EpisodeObjectType = "episode"
 )
 
 type EpisodeRestrictionObject struct {
@@ -876,9 +859,7 @@ type ShowBase struct {
 	// The total number of episodes in the show.
 	TotalEpisodes int64 `json:"total_episodes,required"`
 	// The object type.
-	//
-	// Any of "show".
-	Type ShowBaseType `json:"type,required"`
+	Type constant.Show `json:"type,required"`
 	// The [Spotify URI](/documentation/web-api/concepts/spotify-uris-ids) for the
 	// show.
 	Uri string `json:"uri,required"`
@@ -911,13 +892,6 @@ func (r ShowBase) RawJSON() string { return r.JSON.raw }
 func (r *ShowBase) UnmarshalJSON(data []byte) error {
 	return apijson.UnmarshalRoot(data, r)
 }
-
-// The object type.
-type ShowBaseType string
-
-const (
-	ShowBaseTypeShow ShowBaseType = "show"
-)
 
 type SimplifiedArtistObject struct {
 	// The [Spotify ID](/documentation/web-api/concepts/spotify-uris-ids) for the
@@ -1004,9 +978,7 @@ type SimplifiedEpisodeObject struct {
 	// Any of "year", "month", "day".
 	ReleaseDatePrecision SimplifiedEpisodeObjectReleaseDatePrecision `json:"release_date_precision,required"`
 	// The object type.
-	//
-	// Any of "episode".
-	Type SimplifiedEpisodeObjectType `json:"type,required"`
+	Type constant.Episode `json:"type,required"`
 	// The [Spotify URI](/documentation/web-api/concepts/spotify-uris-ids) for the
 	// episode.
 	Uri string `json:"uri,required"`
@@ -1061,13 +1033,6 @@ const (
 	SimplifiedEpisodeObjectReleaseDatePrecisionYear  SimplifiedEpisodeObjectReleaseDatePrecision = "year"
 	SimplifiedEpisodeObjectReleaseDatePrecisionMonth SimplifiedEpisodeObjectReleaseDatePrecision = "month"
 	SimplifiedEpisodeObjectReleaseDatePrecisionDay   SimplifiedEpisodeObjectReleaseDatePrecision = "day"
-)
-
-// The object type.
-type SimplifiedEpisodeObjectType string
-
-const (
-	SimplifiedEpisodeObjectTypeEpisode SimplifiedEpisodeObjectType = "episode"
 )
 
 type SimplifiedPlaylistObject struct {
@@ -1376,9 +1341,7 @@ type TrackObjectAlbum struct {
 	// The number of tracks in the album.
 	TotalTracks int64 `json:"total_tracks,required"`
 	// The object type.
-	//
-	// Any of "album".
-	Type string `json:"type,required"`
+	Type constant.Album `json:"type,required"`
 	// The [Spotify URI](/documentation/web-api/concepts/spotify-uris-ids) for the
 	// album.
 	Uri string `json:"uri,required"`

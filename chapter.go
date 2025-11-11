@@ -17,6 +17,7 @@ import (
 	"github.com/stainless-sdks/spotted-go/packages/param"
 	"github.com/stainless-sdks/spotted-go/packages/respjson"
 	"github.com/stainless-sdks/spotted-go/shared"
+	"github.com/stainless-sdks/spotted-go/shared/constant"
 )
 
 // ChapterService contains methods and other services that help with interacting
@@ -106,9 +107,7 @@ type ChapterGetResponse struct {
 	// Any of "year", "month", "day".
 	ReleaseDatePrecision ChapterGetResponseReleaseDatePrecision `json:"release_date_precision,required"`
 	// The object type.
-	//
-	// Any of "episode".
-	Type ChapterGetResponseType `json:"type,required"`
+	Type constant.Episode `json:"type,required"`
 	// The [Spotify URI](/documentation/web-api/concepts/spotify-uris-ids) for the
 	// chapter.
 	Uri string `json:"uri,required"`
@@ -161,13 +160,6 @@ const (
 	ChapterGetResponseReleaseDatePrecisionYear  ChapterGetResponseReleaseDatePrecision = "year"
 	ChapterGetResponseReleaseDatePrecisionMonth ChapterGetResponseReleaseDatePrecision = "month"
 	ChapterGetResponseReleaseDatePrecisionDay   ChapterGetResponseReleaseDatePrecision = "day"
-)
-
-// The object type.
-type ChapterGetResponseType string
-
-const (
-	ChapterGetResponseTypeEpisode ChapterGetResponseType = "episode"
 )
 
 type ChapterBulkGetResponse struct {
@@ -230,9 +222,7 @@ type ChapterBulkGetResponseChapter struct {
 	// Any of "year", "month", "day".
 	ReleaseDatePrecision string `json:"release_date_precision,required"`
 	// The object type.
-	//
-	// Any of "episode".
-	Type string `json:"type,required"`
+	Type constant.Episode `json:"type,required"`
 	// The [Spotify URI](/documentation/web-api/concepts/spotify-uris-ids) for the
 	// chapter.
 	Uri string `json:"uri,required"`

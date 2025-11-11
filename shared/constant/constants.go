@@ -18,6 +18,24 @@ func ValueOf[T Constant[T]]() T {
 	return t.Default()
 }
 
+type Album string     // Always "album"
+type Artist string    // Always "artist"
+type Audiobook string // Always "audiobook"
+type Episode string   // Always "episode"
+type Show string      // Always "show"
+
+func (c Album) Default() Album         { return "album" }
+func (c Artist) Default() Artist       { return "artist" }
+func (c Audiobook) Default() Audiobook { return "audiobook" }
+func (c Episode) Default() Episode     { return "episode" }
+func (c Show) Default() Show           { return "show" }
+
+func (c Album) MarshalJSON() ([]byte, error)     { return marshalString(c) }
+func (c Artist) MarshalJSON() ([]byte, error)    { return marshalString(c) }
+func (c Audiobook) MarshalJSON() ([]byte, error) { return marshalString(c) }
+func (c Episode) MarshalJSON() ([]byte, error)   { return marshalString(c) }
+func (c Show) MarshalJSON() ([]byte, error)      { return marshalString(c) }
+
 type constant[T any] interface {
 	Constant[T]
 	*T

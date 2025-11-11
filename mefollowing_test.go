@@ -28,7 +28,7 @@ func TestMeFollowingBulkGetWithOptionalParams(t *testing.T) {
 		option.WithClientSecret("My Client Secret"),
 	)
 	_, err := client.Me.Following.BulkGet(context.TODO(), spotted.MeFollowingBulkGetParams{
-		Type:  spotted.MeFollowingBulkGetParamsTypeArtist,
+		Type:  "artist",
 		After: spotted.String("0I2XqVXqHScXjHhk6AYYRe"),
 		Limit: spotted.Int(10),
 	})

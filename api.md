@@ -305,7 +305,7 @@ Methods:
 
 Methods:
 
-- <code title="put /playlists/{playlist_id}/images">client.Playlists.Images.<a href="https://pkg.go.dev/github.com/stainless-sdks/spotted-go#PlaylistImageService.Update">Update</a>(ctx <a href="https://pkg.go.dev/context">context</a>.<a href="https://pkg.go.dev/context#Context">Context</a>, playlistID <a href="https://pkg.go.dev/builtin#string">string</a>, body <a href="https://pkg.go.dev/builtin#io.Reader">io.Reader</a>) <a href="https://pkg.go.dev/builtin#error">error</a></code>
+- <code title="put /playlists/{playlist_id}/images">client.Playlists.Images.<a href="https://pkg.go.dev/github.com/stainless-sdks/spotted-go#PlaylistImageService.Update">Update</a>(ctx <a href="https://pkg.go.dev/context">context</a>.<a href="https://pkg.go.dev/context#Context">Context</a>, playlistID <a href="https://pkg.go.dev/builtin#string">string</a>, body <a href="https://pkg.go.dev/github.com/stainless-sdks/spotted-go">spotted</a>.<a href="https://pkg.go.dev/github.com/stainless-sdks/spotted-go#PlaylistImageUpdateParams">PlaylistImageUpdateParams</a>) (http.Response, <a href="https://pkg.go.dev/builtin#error">error</a>)</code>
 - <code title="get /playlists/{playlist_id}/images">client.Playlists.Images.<a href="https://pkg.go.dev/github.com/stainless-sdks/spotted-go#PlaylistImageService.List">List</a>(ctx <a href="https://pkg.go.dev/context">context</a>.<a href="https://pkg.go.dev/context#Context">Context</a>, playlistID <a href="https://pkg.go.dev/builtin#string">string</a>) ([]<a href="https://pkg.go.dev/github.com/stainless-sdks/spotted-go/shared">shared</a>.<a href="https://pkg.go.dev/github.com/stainless-sdks/spotted-go/shared#ImageObject">ImageObject</a>, <a href="https://pkg.go.dev/builtin#error">error</a>)</code>
 
 # Users

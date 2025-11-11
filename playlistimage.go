@@ -4,12 +4,13 @@ package spotted
 
 import (
 	"context"
+	"encoding/json"
 	"errors"
 	"fmt"
-	"io"
 	"net/http"
 	"slices"
 
+	shimjson "github.com/stainless-sdks/spotted-go/internal/encoding/json"
 	"github.com/stainless-sdks/spotted-go/internal/requestconfig"
 	"github.com/stainless-sdks/spotted-go/option"
 	"github.com/stainless-sdks/spotted-go/shared"
@@ -35,15 +36,15 @@ func NewPlaylistImageService(opts ...option.RequestOption) (r PlaylistImageServi
 }
 
 // Replace the image used to represent a specific playlist.
-func (r *PlaylistImageService) Update(ctx context.Context, playlistID string, body io.Reader, opts ...option.RequestOption) (err error) {
+func (r *PlaylistImageService) Update(ctx context.Context, playlistID string, body PlaylistImageUpdateParams, opts ...option.RequestOption) (res *http.Response, err error) {
 	opts = slices.Concat(r.Options, opts)
-	opts = append([]option.RequestOption{option.WithHeader("Accept", ""), option.WithRequestBody("image/jpeg", body)}, opts...)
+	opts = append([]option.RequestOption{option.WithHeader("Accept", "application/binary")}, opts...)
 	if playlistID == "" {
 		err = errors.New("missing required playlist_id parameter")
 		return
 	}
 	path := fmt.Sprintf("playlists/%s/images", playlistID)
-	err = requestconfig.ExecuteNewRequest(ctx, http.MethodPut, path, nil, nil, opts...)
+	err = requestconfig.ExecuteNewRequest(ctx, http.MethodPut, path, body, &res, opts...)
 	return
 }
 
@@ -57,4 +58,17 @@ func (r *PlaylistImageService) List(ctx context.Context, playlistID string, opts
 	path := fmt.Sprintf("playlists/%s/images", playlistID)
 	err = requestconfig.ExecuteNewRequest(ctx, http.MethodGet, path, nil, &res, opts...)
 	return
+}
+
+type PlaylistImageUpdateParams struct {
+	// Base64 encoded JPEG image data, maximum payload size is 256 KB.
+	Body string
+	paramObj
+}
+
+func (r PlaylistImageUpdateParams) MarshalJSON() (data []byte, err error) {
+	return shimjson.Marshal(r.Body)
+}
+func (r *PlaylistImageUpdateParams) UnmarshalJSON(data []byte) error {
+	return json.Unmarshal(data, &r.Body)
 }

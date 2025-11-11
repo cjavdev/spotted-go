@@ -32,9 +32,7 @@ func TestPlaylistImageUpdate(t *testing.T) {
 	resp, err := client.Playlists.Images.Update(
 		context.TODO(),
 		"3cEYpjA9oz9GiPac4AsH4n",
-		spotted.PlaylistImageUpdateParams{
-			Body: "/9j/2wCEABoZGSccJz4lJT5CLy8vQkc9Ozs9R0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0cBHCcnMyYzPSYmPUc9Mj1HR0dEREdHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR//dAAQAAf/uAA5BZG9iZQBkwAAAAAH/wAARCAABAAEDACIAAREBAhEB/8QASwABAQAAAAAAAAAAAAAAAAAAAAYBAQAAAAAAAAAAAAAAAAAAAAAQAQAAAAAAAAAAAAAAAAAAAAARAQAAAAAAAAAAAAAAAAAAAAD/2gAMAwAAARECEQA/AJgAH//Z",
-		},
+		io.Reader(bytes.NewBuffer([]byte("some file contents"))),
 	)
 	if err != nil {
 		var apierr *spotted.Error

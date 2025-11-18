@@ -1,7 +1,7 @@
 package apijson
 
 import (
-	"github.com/stainless-sdks/spotted-go/packages/respjson"
+	"github.com/cjavdev/spotted-go/packages/respjson"
 	"reflect"
 )
 

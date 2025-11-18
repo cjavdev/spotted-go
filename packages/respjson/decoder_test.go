@@ -3,8 +3,8 @@ package respjson_test
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/stainless-sdks/spotted-go/internal/apijson"
-	rj "github.com/stainless-sdks/spotted-go/packages/respjson"
+	"github.com/cjavdev/spotted-go/internal/apijson"
+	rj "github.com/cjavdev/spotted-go/packages/respjson"
 	"reflect"
 	"testing"
 )

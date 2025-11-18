@@ -3,7 +3,7 @@
 package constant
 
 import (
-	shimjson "github.com/stainless-sdks/spotted-go/internal/encoding/json"
+	shimjson "github.com/cjavdev/spotted-go/internal/encoding/json"
 )
 
 type Constant[T any] interface {

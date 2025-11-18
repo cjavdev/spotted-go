@@ -9,7 +9,7 @@ import (
 	"sync"
 	"time"
 
-	"github.com/stainless-sdks/spotted-go/packages/param"
+	"github.com/cjavdev/spotted-go/packages/param"
 )
 
 var encoders sync.Map // map[reflect.Type]encoderFunc

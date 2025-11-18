@@ -18,10 +18,10 @@ import (
 	"strings"
 	"time"
 
-	"github.com/stainless-sdks/spotted-go/internal"
-	"github.com/stainless-sdks/spotted-go/internal/apierror"
-	"github.com/stainless-sdks/spotted-go/internal/apiform"
-	"github.com/stainless-sdks/spotted-go/internal/apiquery"
+	"github.com/cjavdev/spotted-go/internal"
+	"github.com/cjavdev/spotted-go/internal/apierror"
+	"github.com/cjavdev/spotted-go/internal/apiform"
+	"github.com/cjavdev/spotted-go/internal/apiquery"
 )
 
 func getDefaultHeaders() map[string]string {

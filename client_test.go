@@ -10,9 +10,9 @@ import (
 	"testing"
 	"time"
 
-	"github.com/stainless-sdks/spotted-go"
-	"github.com/stainless-sdks/spotted-go/internal"
-	"github.com/stainless-sdks/spotted-go/option"
+	"github.com/cjavdev/spotted-go"
+	"github.com/cjavdev/spotted-go/internal"
+	"github.com/cjavdev/spotted-go/option"
 )
 
 type closureTransport struct {

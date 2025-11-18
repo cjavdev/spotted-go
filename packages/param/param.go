@@ -2,7 +2,7 @@ package param
 
 import (
 	"encoding/json"
-	"github.com/stainless-sdks/spotted-go/internal/encoding/json/sentinel"
+	"github.com/cjavdev/spotted-go/internal/encoding/json/sentinel"
 	"reflect"
 )
 

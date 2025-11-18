@@ -2,8 +2,8 @@ package apijson_test
 
 import (
 	"encoding/json"
-	"github.com/stainless-sdks/spotted-go/internal/apijson"
-	"github.com/stainless-sdks/spotted-go/packages/respjson"
+	"github.com/cjavdev/spotted-go/internal/apijson"
+	"github.com/cjavdev/spotted-go/packages/respjson"
 	"testing"
 )
 

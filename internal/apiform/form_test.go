@@ -2,7 +2,7 @@ package apiform
 
 import (
 	"bytes"
-	"github.com/stainless-sdks/spotted-go/packages/param"
+	"github.com/cjavdev/spotted-go/packages/param"
 	"io"
 	"mime/multipart"
 	"strings"

@@ -1,4 +1,4 @@
-module github.com/stainless-sdks/spotted-go
+module github.com/cjavdev/spotted-go
 
 go 1.22
 

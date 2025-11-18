@@ -7,11 +7,11 @@ import (
 	"net/http"
 	"slices"
 
-	"github.com/stainless-sdks/spotted-go/internal/apijson"
-	"github.com/stainless-sdks/spotted-go/internal/requestconfig"
-	"github.com/stainless-sdks/spotted-go/option"
-	"github.com/stainless-sdks/spotted-go/packages/respjson"
-	"github.com/stainless-sdks/spotted-go/shared"
+	"github.com/cjavdev/spotted-go/internal/apijson"
+	"github.com/cjavdev/spotted-go/internal/requestconfig"
+	"github.com/cjavdev/spotted-go/option"
+	"github.com/cjavdev/spotted-go/packages/respjson"
+	"github.com/cjavdev/spotted-go/shared"
 )
 
 // MeService contains methods and other services that help with interacting with

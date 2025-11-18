@@ -7,8 +7,8 @@ import (
 	"net/http"
 	"net/http/httputil"
 
-	"github.com/stainless-sdks/spotted-go/internal/apijson"
-	"github.com/stainless-sdks/spotted-go/packages/respjson"
+	"github.com/cjavdev/spotted-go/internal/apijson"
+	"github.com/cjavdev/spotted-go/packages/respjson"
 )
 
 // Error represents an error that originates from the API, i.e. when a request is

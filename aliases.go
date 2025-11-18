@@ -3,9 +3,9 @@
 package spotted
 
 import (
-	"github.com/stainless-sdks/spotted-go/internal/apierror"
-	"github.com/stainless-sdks/spotted-go/packages/param"
-	"github.com/stainless-sdks/spotted-go/shared"
+	"github.com/cjavdev/spotted-go/internal/apierror"
+	"github.com/cjavdev/spotted-go/packages/param"
+	"github.com/cjavdev/spotted-go/shared"
 )
 
 // aliased to make [param.APIUnion] private when embedding

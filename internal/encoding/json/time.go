@@ -2,7 +2,7 @@
 package json
 
 import (
-	"github.com/stainless-sdks/spotted-go/internal/encoding/json/shims"
+	"github.com/cjavdev/spotted-go/internal/encoding/json/shims"
 	"reflect"
 	"time"
 )

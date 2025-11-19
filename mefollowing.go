@@ -58,7 +58,7 @@ func (r *MeFollowingService) Check(ctx context.Context, query MeFollowingCheckPa
 // users.
 func (r *MeFollowingService) Follow(ctx context.Context, body MeFollowingFollowParams, opts ...option.RequestOption) (err error) {
 	opts = slices.Concat(r.Options, opts)
-	opts = append([]option.RequestOption{option.WithHeader("Accept", "")}, opts...)
+	opts = append([]option.RequestOption{option.WithHeader("Accept", "*/*")}, opts...)
 	path := "me/following"
 	err = requestconfig.ExecuteNewRequest(ctx, http.MethodPut, path, body, nil, opts...)
 	return
@@ -68,7 +68,7 @@ func (r *MeFollowingService) Follow(ctx context.Context, body MeFollowingFollowP
 // users.
 func (r *MeFollowingService) Unfollow(ctx context.Context, body MeFollowingUnfollowParams, opts ...option.RequestOption) (err error) {
 	opts = slices.Concat(r.Options, opts)
-	opts = append([]option.RequestOption{option.WithHeader("Accept", "")}, opts...)
+	opts = append([]option.RequestOption{option.WithHeader("Accept", "*/*")}, opts...)
 	path := "me/following"
 	err = requestconfig.ExecuteNewRequest(ctx, http.MethodDelete, path, body, nil, opts...)
 	return

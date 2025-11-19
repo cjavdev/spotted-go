@@ -75,7 +75,7 @@ func (r *MeAudiobookService) Check(ctx context.Context, query MeAudiobookCheckPa
 // Remove one or more audiobooks from the Spotify user's library.
 func (r *MeAudiobookService) Remove(ctx context.Context, body MeAudiobookRemoveParams, opts ...option.RequestOption) (err error) {
 	opts = slices.Concat(r.Options, opts)
-	opts = append([]option.RequestOption{option.WithHeader("Accept", "")}, opts...)
+	opts = append([]option.RequestOption{option.WithHeader("Accept", "*/*")}, opts...)
 	path := "me/audiobooks"
 	err = requestconfig.ExecuteNewRequest(ctx, http.MethodDelete, path, body, nil, opts...)
 	return
@@ -84,7 +84,7 @@ func (r *MeAudiobookService) Remove(ctx context.Context, body MeAudiobookRemoveP
 // Save one or more audiobooks to the current Spotify user's library.
 func (r *MeAudiobookService) Save(ctx context.Context, body MeAudiobookSaveParams, opts ...option.RequestOption) (err error) {
 	opts = slices.Concat(r.Options, opts)
-	opts = append([]option.RequestOption{option.WithHeader("Accept", "")}, opts...)
+	opts = append([]option.RequestOption{option.WithHeader("Accept", "*/*")}, opts...)
 	path := "me/audiobooks"
 	err = requestconfig.ExecuteNewRequest(ctx, http.MethodPut, path, body, nil, opts...)
 	return

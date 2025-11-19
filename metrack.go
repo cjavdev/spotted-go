@@ -75,7 +75,7 @@ func (r *MeTrackService) Check(ctx context.Context, query MeTrackCheckParams, op
 // Remove one or more tracks from the current user's 'Your Music' library.
 func (r *MeTrackService) Remove(ctx context.Context, body MeTrackRemoveParams, opts ...option.RequestOption) (err error) {
 	opts = slices.Concat(r.Options, opts)
-	opts = append([]option.RequestOption{option.WithHeader("Accept", "")}, opts...)
+	opts = append([]option.RequestOption{option.WithHeader("Accept", "*/*")}, opts...)
 	path := "me/tracks"
 	err = requestconfig.ExecuteNewRequest(ctx, http.MethodDelete, path, body, nil, opts...)
 	return
@@ -84,7 +84,7 @@ func (r *MeTrackService) Remove(ctx context.Context, body MeTrackRemoveParams, o
 // Save one or more tracks to the current user's 'Your Music' library.
 func (r *MeTrackService) Save(ctx context.Context, body MeTrackSaveParams, opts ...option.RequestOption) (err error) {
 	opts = slices.Concat(r.Options, opts)
-	opts = append([]option.RequestOption{option.WithHeader("Accept", "")}, opts...)
+	opts = append([]option.RequestOption{option.WithHeader("Accept", "*/*")}, opts...)
 	path := "me/tracks"
 	err = requestconfig.ExecuteNewRequest(ctx, http.MethodPut, path, body, nil, opts...)
 	return

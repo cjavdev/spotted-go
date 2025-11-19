@@ -60,7 +60,7 @@ func (r *PlaylistService) Get(ctx context.Context, playlistID string, query Play
 // own the playlist.)
 func (r *PlaylistService) Update(ctx context.Context, playlistID string, body PlaylistUpdateParams, opts ...option.RequestOption) (err error) {
 	opts = slices.Concat(r.Options, opts)
-	opts = append([]option.RequestOption{option.WithHeader("Accept", "")}, opts...)
+	opts = append([]option.RequestOption{option.WithHeader("Accept", "*/*")}, opts...)
 	if playlistID == "" {
 		err = errors.New("missing required playlist_id parameter")
 		return

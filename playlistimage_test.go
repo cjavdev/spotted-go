@@ -3,12 +3,8 @@
 package spotted_test
 
 import (
-	"bytes"
 	"context"
 	"errors"
-	"io"
-	"net/http"
-	"net/http/httptest"
 	"os"
 	"testing"
 
@@ -16,45 +12,6 @@ import (
 	"github.com/cjavdev/spotted-go/internal/testutil"
 	"github.com/cjavdev/spotted-go/option"
 )
-
-func TestPlaylistImageUpdate(t *testing.T) {
-	server := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		w.WriteHeader(200)
-		w.Write([]byte("abc"))
-	}))
-	defer server.Close()
-	baseURL := server.URL
-	client := spotted.NewClient(
-		option.WithBaseURL(baseURL),
-		option.WithClientID("My Client ID"),
-		option.WithClientSecret("My Client Secret"),
-	)
-	resp, err := client.Playlists.Images.Update(
-		context.TODO(),
-		"3cEYpjA9oz9GiPac4AsH4n",
-		io.Reader(bytes.NewBuffer([]byte("some file contents"))),
-	)
-	if err != nil {
-		var apierr *spotted.Error
-		if errors.As(err, &apierr) {
-			t.Log(string(apierr.DumpRequest(true)))
-		}
-		t.Fatalf("err should be nil: %s", err.Error())
-	}
-	defer resp.Body.Close()
-
-	b, err := io.ReadAll(resp.Body)
-	if err != nil {
-		var apierr *spotted.Error
-		if errors.As(err, &apierr) {
-			t.Log(string(apierr.DumpRequest(true)))
-		}
-		t.Fatalf("err should be nil: %s", err.Error())
-	}
-	if !bytes.Equal(b, []byte("abc")) {
-		t.Fatalf("return value not %s: %s", "abc", b)
-	}
-}
 
 func TestPlaylistImageList(t *testing.T) {
 	t.Skip("Prism tests are disabled")

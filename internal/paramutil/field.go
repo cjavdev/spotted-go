@@ -1,8 +1,8 @@
 package paramutil
 
 import (
-	"github.com/stainless-sdks/spotted-go/packages/param"
-	"github.com/stainless-sdks/spotted-go/packages/respjson"
+	"github.com/cjavdev/spotted-go/packages/param"
+	"github.com/cjavdev/spotted-go/packages/respjson"
 )
 
 func AddrIfPresent[T comparable](v param.Opt[T]) *T {

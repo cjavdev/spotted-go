@@ -7,7 +7,7 @@ import (
 	"strings"
 	"time"
 
-	shimjson "github.com/stainless-sdks/spotted-go/internal/encoding/json"
+	shimjson "github.com/cjavdev/spotted-go/internal/encoding/json"
 
 	"github.com/tidwall/sjson"
 )

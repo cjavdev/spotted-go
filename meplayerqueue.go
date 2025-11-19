@@ -9,13 +9,13 @@ import (
 	"net/url"
 	"slices"
 
-	"github.com/stainless-sdks/spotted-go/internal/apijson"
-	"github.com/stainless-sdks/spotted-go/internal/apiquery"
-	"github.com/stainless-sdks/spotted-go/internal/requestconfig"
-	"github.com/stainless-sdks/spotted-go/option"
-	"github.com/stainless-sdks/spotted-go/packages/param"
-	"github.com/stainless-sdks/spotted-go/packages/respjson"
-	"github.com/stainless-sdks/spotted-go/shared"
+	"github.com/cjavdev/spotted-go/internal/apijson"
+	"github.com/cjavdev/spotted-go/internal/apiquery"
+	"github.com/cjavdev/spotted-go/internal/requestconfig"
+	"github.com/cjavdev/spotted-go/option"
+	"github.com/cjavdev/spotted-go/packages/param"
+	"github.com/cjavdev/spotted-go/packages/respjson"
+	"github.com/cjavdev/spotted-go/shared"
 )
 
 // MePlayerQueueService contains methods and other services that help with
@@ -42,7 +42,7 @@ func NewMePlayerQueueService(opts ...option.RequestOption) (r MePlayerQueueServi
 // guaranteed when you use this API with other Player API endpoints.
 func (r *MePlayerQueueService) Add(ctx context.Context, body MePlayerQueueAddParams, opts ...option.RequestOption) (err error) {
 	opts = slices.Concat(r.Options, opts)
-	opts = append([]option.RequestOption{option.WithHeader("Accept", "")}, opts...)
+	opts = append([]option.RequestOption{option.WithHeader("Accept", "*/*")}, opts...)
 	path := "me/player/queue"
 	err = requestconfig.ExecuteNewRequest(ctx, http.MethodPost, path, body, nil, opts...)
 	return

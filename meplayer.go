@@ -10,14 +10,14 @@ import (
 	"slices"
 	"time"
 
-	"github.com/stainless-sdks/spotted-go/internal/apijson"
-	"github.com/stainless-sdks/spotted-go/internal/apiquery"
-	"github.com/stainless-sdks/spotted-go/internal/requestconfig"
-	"github.com/stainless-sdks/spotted-go/option"
-	"github.com/stainless-sdks/spotted-go/packages/pagination"
-	"github.com/stainless-sdks/spotted-go/packages/param"
-	"github.com/stainless-sdks/spotted-go/packages/respjson"
-	"github.com/stainless-sdks/spotted-go/shared"
+	"github.com/cjavdev/spotted-go/internal/apijson"
+	"github.com/cjavdev/spotted-go/internal/apiquery"
+	"github.com/cjavdev/spotted-go/internal/requestconfig"
+	"github.com/cjavdev/spotted-go/option"
+	"github.com/cjavdev/spotted-go/packages/pagination"
+	"github.com/cjavdev/spotted-go/packages/param"
+	"github.com/cjavdev/spotted-go/packages/respjson"
+	"github.com/cjavdev/spotted-go/shared"
 )
 
 // MePlayerService contains methods and other services that help with interacting
@@ -97,7 +97,7 @@ func (r *MePlayerService) ListRecentlyPlayedAutoPaging(ctx context.Context, quer
 // with other Player API endpoints.
 func (r *MePlayerService) PausePlayback(ctx context.Context, body MePlayerPausePlaybackParams, opts ...option.RequestOption) (err error) {
 	opts = slices.Concat(r.Options, opts)
-	opts = append([]option.RequestOption{option.WithHeader("Accept", "")}, opts...)
+	opts = append([]option.RequestOption{option.WithHeader("Accept", "*/*")}, opts...)
 	path := "me/player/pause"
 	err = requestconfig.ExecuteNewRequest(ctx, http.MethodPut, path, body, nil, opts...)
 	return
@@ -108,7 +108,7 @@ func (r *MePlayerService) PausePlayback(ctx context.Context, body MePlayerPauseP
 // guaranteed when you use this API with other Player API endpoints.
 func (r *MePlayerService) SeekToPosition(ctx context.Context, body MePlayerSeekToPositionParams, opts ...option.RequestOption) (err error) {
 	opts = slices.Concat(r.Options, opts)
-	opts = append([]option.RequestOption{option.WithHeader("Accept", "")}, opts...)
+	opts = append([]option.RequestOption{option.WithHeader("Accept", "*/*")}, opts...)
 	path := "me/player/seek"
 	err = requestconfig.ExecuteNewRequest(ctx, http.MethodPut, path, body, nil, opts...)
 	return
@@ -119,7 +119,7 @@ func (r *MePlayerService) SeekToPosition(ctx context.Context, body MePlayerSeekT
 // API with other Player API endpoints.
 func (r *MePlayerService) SetRepeatMode(ctx context.Context, body MePlayerSetRepeatModeParams, opts ...option.RequestOption) (err error) {
 	opts = slices.Concat(r.Options, opts)
-	opts = append([]option.RequestOption{option.WithHeader("Accept", "")}, opts...)
+	opts = append([]option.RequestOption{option.WithHeader("Accept", "*/*")}, opts...)
 	path := "me/player/repeat"
 	err = requestconfig.ExecuteNewRequest(ctx, http.MethodPut, path, body, nil, opts...)
 	return
@@ -130,7 +130,7 @@ func (r *MePlayerService) SetRepeatMode(ctx context.Context, body MePlayerSetRep
 // you use this API with other Player API endpoints.
 func (r *MePlayerService) SetVolume(ctx context.Context, body MePlayerSetVolumeParams, opts ...option.RequestOption) (err error) {
 	opts = slices.Concat(r.Options, opts)
-	opts = append([]option.RequestOption{option.WithHeader("Accept", "")}, opts...)
+	opts = append([]option.RequestOption{option.WithHeader("Accept", "*/*")}, opts...)
 	path := "me/player/volume"
 	err = requestconfig.ExecuteNewRequest(ctx, http.MethodPut, path, body, nil, opts...)
 	return
@@ -141,7 +141,7 @@ func (r *MePlayerService) SetVolume(ctx context.Context, body MePlayerSetVolumeP
 // with other Player API endpoints.
 func (r *MePlayerService) SkipNext(ctx context.Context, body MePlayerSkipNextParams, opts ...option.RequestOption) (err error) {
 	opts = slices.Concat(r.Options, opts)
-	opts = append([]option.RequestOption{option.WithHeader("Accept", "")}, opts...)
+	opts = append([]option.RequestOption{option.WithHeader("Accept", "*/*")}, opts...)
 	path := "me/player/next"
 	err = requestconfig.ExecuteNewRequest(ctx, http.MethodPost, path, body, nil, opts...)
 	return
@@ -152,7 +152,7 @@ func (r *MePlayerService) SkipNext(ctx context.Context, body MePlayerSkipNextPar
 // API with other Player API endpoints.
 func (r *MePlayerService) SkipPrevious(ctx context.Context, body MePlayerSkipPreviousParams, opts ...option.RequestOption) (err error) {
 	opts = slices.Concat(r.Options, opts)
-	opts = append([]option.RequestOption{option.WithHeader("Accept", "")}, opts...)
+	opts = append([]option.RequestOption{option.WithHeader("Accept", "*/*")}, opts...)
 	path := "me/player/previous"
 	err = requestconfig.ExecuteNewRequest(ctx, http.MethodPost, path, body, nil, opts...)
 	return
@@ -163,7 +163,7 @@ func (r *MePlayerService) SkipPrevious(ctx context.Context, body MePlayerSkipPre
 // guaranteed when you use this API with other Player API endpoints.
 func (r *MePlayerService) StartPlayback(ctx context.Context, params MePlayerStartPlaybackParams, opts ...option.RequestOption) (err error) {
 	opts = slices.Concat(r.Options, opts)
-	opts = append([]option.RequestOption{option.WithHeader("Accept", "")}, opts...)
+	opts = append([]option.RequestOption{option.WithHeader("Accept", "*/*")}, opts...)
 	path := "me/player/play"
 	err = requestconfig.ExecuteNewRequest(ctx, http.MethodPut, path, params, nil, opts...)
 	return
@@ -174,7 +174,7 @@ func (r *MePlayerService) StartPlayback(ctx context.Context, params MePlayerStar
 // API with other Player API endpoints.
 func (r *MePlayerService) ToggleShuffle(ctx context.Context, body MePlayerToggleShuffleParams, opts ...option.RequestOption) (err error) {
 	opts = slices.Concat(r.Options, opts)
-	opts = append([]option.RequestOption{option.WithHeader("Accept", "")}, opts...)
+	opts = append([]option.RequestOption{option.WithHeader("Accept", "*/*")}, opts...)
 	path := "me/player/shuffle"
 	err = requestconfig.ExecuteNewRequest(ctx, http.MethodPut, path, body, nil, opts...)
 	return
@@ -185,7 +185,7 @@ func (r *MePlayerService) ToggleShuffle(ctx context.Context, body MePlayerToggle
 // guaranteed when you use this API with other Player API endpoints.
 func (r *MePlayerService) Transfer(ctx context.Context, body MePlayerTransferParams, opts ...option.RequestOption) (err error) {
 	opts = slices.Concat(r.Options, opts)
-	opts = append([]option.RequestOption{option.WithHeader("Accept", "")}, opts...)
+	opts = append([]option.RequestOption{option.WithHeader("Accept", "*/*")}, opts...)
 	path := "me/player"
 	err = requestconfig.ExecuteNewRequest(ctx, http.MethodPut, path, body, nil, opts...)
 	return

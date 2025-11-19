@@ -9,14 +9,14 @@ import (
 	"slices"
 	"time"
 
-	"github.com/stainless-sdks/spotted-go/internal/apijson"
-	"github.com/stainless-sdks/spotted-go/internal/apiquery"
-	"github.com/stainless-sdks/spotted-go/internal/requestconfig"
-	"github.com/stainless-sdks/spotted-go/option"
-	"github.com/stainless-sdks/spotted-go/packages/pagination"
-	"github.com/stainless-sdks/spotted-go/packages/param"
-	"github.com/stainless-sdks/spotted-go/packages/respjson"
-	"github.com/stainless-sdks/spotted-go/shared"
+	"github.com/cjavdev/spotted-go/internal/apijson"
+	"github.com/cjavdev/spotted-go/internal/apiquery"
+	"github.com/cjavdev/spotted-go/internal/requestconfig"
+	"github.com/cjavdev/spotted-go/option"
+	"github.com/cjavdev/spotted-go/packages/pagination"
+	"github.com/cjavdev/spotted-go/packages/param"
+	"github.com/cjavdev/spotted-go/packages/respjson"
+	"github.com/cjavdev/spotted-go/shared"
 )
 
 // MeShowService contains methods and other services that help with interacting
@@ -75,7 +75,7 @@ func (r *MeShowService) Check(ctx context.Context, query MeShowCheckParams, opts
 // Delete one or more shows from current Spotify user's library.
 func (r *MeShowService) Remove(ctx context.Context, body MeShowRemoveParams, opts ...option.RequestOption) (err error) {
 	opts = slices.Concat(r.Options, opts)
-	opts = append([]option.RequestOption{option.WithHeader("Accept", "")}, opts...)
+	opts = append([]option.RequestOption{option.WithHeader("Accept", "*/*")}, opts...)
 	path := "me/shows"
 	err = requestconfig.ExecuteNewRequest(ctx, http.MethodDelete, path, body, nil, opts...)
 	return
@@ -84,7 +84,7 @@ func (r *MeShowService) Remove(ctx context.Context, body MeShowRemoveParams, opt
 // Save one or more shows to current Spotify user's library.
 func (r *MeShowService) Save(ctx context.Context, body MeShowSaveParams, opts ...option.RequestOption) (err error) {
 	opts = slices.Concat(r.Options, opts)
-	opts = append([]option.RequestOption{option.WithHeader("Accept", "")}, opts...)
+	opts = append([]option.RequestOption{option.WithHeader("Accept", "*/*")}, opts...)
 	path := "me/shows"
 	err = requestconfig.ExecuteNewRequest(ctx, http.MethodPut, path, body, nil, opts...)
 	return

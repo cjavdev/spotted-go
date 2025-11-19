@@ -9,14 +9,14 @@ import (
 	"slices"
 	"time"
 
-	"github.com/stainless-sdks/spotted-go/internal/apijson"
-	"github.com/stainless-sdks/spotted-go/internal/apiquery"
-	"github.com/stainless-sdks/spotted-go/internal/requestconfig"
-	"github.com/stainless-sdks/spotted-go/option"
-	"github.com/stainless-sdks/spotted-go/packages/pagination"
-	"github.com/stainless-sdks/spotted-go/packages/param"
-	"github.com/stainless-sdks/spotted-go/packages/respjson"
-	"github.com/stainless-sdks/spotted-go/shared"
+	"github.com/cjavdev/spotted-go/internal/apijson"
+	"github.com/cjavdev/spotted-go/internal/apiquery"
+	"github.com/cjavdev/spotted-go/internal/requestconfig"
+	"github.com/cjavdev/spotted-go/option"
+	"github.com/cjavdev/spotted-go/packages/pagination"
+	"github.com/cjavdev/spotted-go/packages/param"
+	"github.com/cjavdev/spotted-go/packages/respjson"
+	"github.com/cjavdev/spotted-go/shared"
 )
 
 // MeEpisodeService contains methods and other services that help with interacting
@@ -85,7 +85,7 @@ func (r *MeEpisodeService) Check(ctx context.Context, query MeEpisodeCheckParams
 // [developer community forum](https://community.spotify.com/t5/Spotify-for-Developers/bd-p/Spotify_Developer).
 func (r *MeEpisodeService) Remove(ctx context.Context, body MeEpisodeRemoveParams, opts ...option.RequestOption) (err error) {
 	opts = slices.Concat(r.Options, opts)
-	opts = append([]option.RequestOption{option.WithHeader("Accept", "")}, opts...)
+	opts = append([]option.RequestOption{option.WithHeader("Accept", "*/*")}, opts...)
 	path := "me/episodes"
 	err = requestconfig.ExecuteNewRequest(ctx, http.MethodDelete, path, body, nil, opts...)
 	return
@@ -97,7 +97,7 @@ func (r *MeEpisodeService) Remove(ctx context.Context, body MeEpisodeRemoveParam
 // [developer community forum](https://community.spotify.com/t5/Spotify-for-Developers/bd-p/Spotify_Developer).
 func (r *MeEpisodeService) Save(ctx context.Context, body MeEpisodeSaveParams, opts ...option.RequestOption) (err error) {
 	opts = slices.Concat(r.Options, opts)
-	opts = append([]option.RequestOption{option.WithHeader("Accept", "")}, opts...)
+	opts = append([]option.RequestOption{option.WithHeader("Accept", "*/*")}, opts...)
 	path := "me/episodes"
 	err = requestconfig.ExecuteNewRequest(ctx, http.MethodPut, path, body, nil, opts...)
 	return

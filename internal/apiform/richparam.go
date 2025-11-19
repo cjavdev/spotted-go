@@ -1,7 +1,7 @@
 package apiform
 
 import (
-	"github.com/stainless-sdks/spotted-go/packages/param"
+	"github.com/cjavdev/spotted-go/packages/param"
 	"mime/multipart"
 	"reflect"
 )

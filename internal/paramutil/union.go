@@ -2,7 +2,7 @@ package paramutil
 
 import (
 	"fmt"
-	"github.com/stainless-sdks/spotted-go/packages/param"
+	"github.com/cjavdev/spotted-go/packages/param"
 	"reflect"
 )
 

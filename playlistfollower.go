@@ -10,11 +10,11 @@ import (
 	"net/url"
 	"slices"
 
-	"github.com/stainless-sdks/spotted-go/internal/apijson"
-	"github.com/stainless-sdks/spotted-go/internal/apiquery"
-	"github.com/stainless-sdks/spotted-go/internal/requestconfig"
-	"github.com/stainless-sdks/spotted-go/option"
-	"github.com/stainless-sdks/spotted-go/packages/param"
+	"github.com/cjavdev/spotted-go/internal/apijson"
+	"github.com/cjavdev/spotted-go/internal/apiquery"
+	"github.com/cjavdev/spotted-go/internal/requestconfig"
+	"github.com/cjavdev/spotted-go/option"
+	"github.com/cjavdev/spotted-go/packages/param"
 )
 
 // PlaylistFollowerService contains methods and other services that help with
@@ -51,7 +51,7 @@ func (r *PlaylistFollowerService) Check(ctx context.Context, playlistID string, 
 // Add the current user as a follower of a playlist.
 func (r *PlaylistFollowerService) Follow(ctx context.Context, playlistID string, body PlaylistFollowerFollowParams, opts ...option.RequestOption) (err error) {
 	opts = slices.Concat(r.Options, opts)
-	opts = append([]option.RequestOption{option.WithHeader("Accept", "")}, opts...)
+	opts = append([]option.RequestOption{option.WithHeader("Accept", "*/*")}, opts...)
 	if playlistID == "" {
 		err = errors.New("missing required playlist_id parameter")
 		return
@@ -64,7 +64,7 @@ func (r *PlaylistFollowerService) Follow(ctx context.Context, playlistID string,
 // Remove the current user as a follower of a playlist.
 func (r *PlaylistFollowerService) Unfollow(ctx context.Context, playlistID string, opts ...option.RequestOption) (err error) {
 	opts = slices.Concat(r.Options, opts)
-	opts = append([]option.RequestOption{option.WithHeader("Accept", "")}, opts...)
+	opts = append([]option.RequestOption{option.WithHeader("Accept", "*/*")}, opts...)
 	if playlistID == "" {
 		err = errors.New("missing required playlist_id parameter")
 		return

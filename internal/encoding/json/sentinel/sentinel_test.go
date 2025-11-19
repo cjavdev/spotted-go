@@ -1,8 +1,8 @@
 package sentinel_test
 
 import (
-	"github.com/stainless-sdks/spotted-go/internal/encoding/json/sentinel"
-	"github.com/stainless-sdks/spotted-go/packages/param"
+	"github.com/cjavdev/spotted-go/internal/encoding/json/sentinel"
+	"github.com/cjavdev/spotted-go/packages/param"
 	"reflect"
 	"slices"
 	"testing"

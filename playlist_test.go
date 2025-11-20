@@ -63,10 +63,10 @@ func TestPlaylistUpdateWithOptionalParams(t *testing.T) {
 		context.TODO(),
 		"3cEYpjA9oz9GiPac4AsH4n",
 		spotted.PlaylistUpdateParams{
-			PathsRequestBodyContentApplicationJsonSchemaPropertiesPublished: spotted.Bool(true),
 			Collaborative: spotted.Bool(true),
 			Description:   spotted.String("Updated playlist description"),
 			Name:          spotted.String("Updated Playlist Name"),
+			Public:        spotted.Bool(false),
 		},
 	)
 	if err != nil {

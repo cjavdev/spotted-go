@@ -232,12 +232,6 @@ func (r PlaylistGetParams) URLQuery() (v url.Values, err error) {
 }
 
 type PlaylistUpdateParams struct {
-	// The playlist's public/private status (if it should be added to the user's
-	// profile or not): `true` the playlist will be public, `false` the playlist will
-	// be private, `null` the playlist status is not relevant. For more about
-	// public/private status, see
-	// [Working with Playlists](/documentation/web-api/concepts/playlists)
-	PathsRequestBodyContentApplicationJsonSchemaPropertiesPublished param.Opt[bool] `json:"$.paths['*'].*.requestBody.content['application/json'].schema.properties.published,omitzero"`
 	// If `true`, the playlist will become collaborative and other users will be able
 	// to modify the playlist in their Spotify client. <br/> _**Note**: You can only
 	// set `collaborative` to `true` on non-public playlists._
@@ -247,6 +241,12 @@ type PlaylistUpdateParams struct {
 	Description param.Opt[string] `json:"description,omitzero"`
 	// The new name for the playlist, for example `"My New Playlist Title"`
 	Name param.Opt[string] `json:"name,omitzero"`
+	// The playlist's public/private status (if it should be added to the user's
+	// profile or not): `true` the playlist will be public, `false` the playlist will
+	// be private, `null` the playlist status is not relevant. For more about
+	// public/private status, see
+	// [Working with Playlists](/documentation/web-api/concepts/playlists)
+	Public param.Opt[bool] `json:"public,omitzero"`
 	paramObj
 }
 

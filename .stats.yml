@@ -1,4 +1,4 @@
-configured_endpoints: 88
-openapi_spec_url: https://storage.googleapis.com/stainless-sdk-openapi-specs/testspotify%2Fspotted-5609bb77b3e88f12841947f2ff520cd782e247931219192aacc9b8dc45a5de45.yml
+configured_endpoints: 89
+openapi_spec_url: https://storage.googleapis.com/stainless-sdk-openapi-specs/testspotify%2Fspotted-bf330345a2b6298fbcb0d1d9210ca2226717ae656670497082407f13e9095882.yml
 openapi_spec_hash: e96ace8fb2e27de2e776bd575bcf93a1
-config_hash: f326af411a6eaa9186edbf80a27891b8
+config_hash: e21a0338695fa9daaf983c899304980a

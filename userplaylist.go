@@ -88,7 +88,7 @@ type UserPlaylistNewResponse struct {
 	// `true` the playlist is public, `false` the playlist is private, `null` the
 	// playlist status is not relevant. For more about public/private status, see
 	// [Working with Playlists](/documentation/web-api/concepts/playlists)
-	ComponentsSchemasPropertiesIsPublic bool `json:"$.components.schemas.*.properties.is_public"`
+	ComponentsSchemasPropertiesPublished bool `json:"$.components.schemas.*.properties.published"`
 	// `true` if the owner allows other users to modify the playlist.
 	Collaborative bool `json:"collaborative"`
 	// The playlist description. _Only returned for modified, verified playlists,
@@ -122,22 +122,22 @@ type UserPlaylistNewResponse struct {
 	Uri string `json:"uri"`
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
-		ID                                  respjson.Field
-		ComponentsSchemasPropertiesIsPublic respjson.Field
-		Collaborative                       respjson.Field
-		Description                         respjson.Field
-		ExternalURLs                        respjson.Field
-		Followers                           respjson.Field
-		Href                                respjson.Field
-		Images                              respjson.Field
-		Name                                respjson.Field
-		Owner                               respjson.Field
-		SnapshotID                          respjson.Field
-		Tracks                              respjson.Field
-		Type                                respjson.Field
-		Uri                                 respjson.Field
-		ExtraFields                         map[string]respjson.Field
-		raw                                 string
+		ID                                   respjson.Field
+		ComponentsSchemasPropertiesPublished respjson.Field
+		Collaborative                        respjson.Field
+		Description                          respjson.Field
+		ExternalURLs                         respjson.Field
+		Followers                            respjson.Field
+		Href                                 respjson.Field
+		Images                               respjson.Field
+		Name                                 respjson.Field
+		Owner                                respjson.Field
+		SnapshotID                           respjson.Field
+		Tracks                               respjson.Field
+		Type                                 respjson.Field
+		Uri                                  respjson.Field
+		ExtraFields                          map[string]respjson.Field
+		raw                                  string
 	} `json:"-"`
 }
 
@@ -206,6 +206,14 @@ type UserPlaylistNewParams struct {
 	// does not need to be unique; a user may have several playlists with the same
 	// name.
 	Name string `json:"name,required"`
+	// Defaults to `true`. The playlist's public/private status (if it should be added
+	// to the user's profile or not): `true` the playlist will be public, `false` the
+	// playlist will be private. To be able to create private playlists, the user must
+	// have granted the `playlist-modify-private`
+	// [scope](/documentation/web-api/concepts/scopes/#list-of-scopes). For more about
+	// public/private status, see
+	// [Working with Playlists](/documentation/web-api/concepts/playlists)
+	ComponentsSchemasPropertiesPublished param.Opt[bool] `json:"$.components.schemas.*.properties.published,omitzero"`
 	// Defaults to `false`. If `true` the playlist will be collaborative. _**Note**: to
 	// create a collaborative playlist you must also set `public` to `false`. To create
 	// collaborative playlists you must have granted `playlist-modify-private` and
@@ -215,14 +223,6 @@ type UserPlaylistNewParams struct {
 	// value for playlist description as displayed in Spotify Clients and in the Web
 	// API.
 	Description param.Opt[string] `json:"description,omitzero"`
-	// Defaults to `true`. The playlist's public/private status (if it should be added
-	// to the user's profile or not): `true` the playlist will be public, `false` the
-	// playlist will be private. To be able to create private playlists, the user must
-	// have granted the `playlist-modify-private`
-	// [scope](/documentation/web-api/concepts/scopes/#list-of-scopes). For more about
-	// public/private status, see
-	// [Working with Playlists](/documentation/web-api/concepts/playlists)
-	Public param.Opt[bool] `json:"public,omitzero"`
 	paramObj
 }
 

@@ -213,7 +213,7 @@ type UserPlaylistNewParams struct {
 	// [scope](/documentation/web-api/concepts/scopes/#list-of-scopes). For more about
 	// public/private status, see
 	// [Working with Playlists](/documentation/web-api/concepts/playlists)
-	ComponentsSchemasPropertiesPublished param.Opt[bool] `json:"$.components.schemas.*.properties.published,omitzero"`
+	PathsRequestBodyContentApplicationJsonSchemaPropertiesPublished param.Opt[bool] `json:"$.paths['*'].*.requestBody.content['application/json'].schema.properties.published,omitzero"`
 	// Defaults to `false`. If `true` the playlist will be collaborative. _**Note**: to
 	// create a collaborative playlist you must also set `public` to `false`. To create
 	// collaborative playlists you must have granted `playlist-modify-private` and

@@ -31,10 +31,10 @@ func TestUserPlaylistNewWithOptionalParams(t *testing.T) {
 		context.TODO(),
 		"smedjan",
 		spotted.UserPlaylistNewParams{
-			Name:                                 "New Playlist",
-			ComponentsSchemasPropertiesPublished: spotted.Bool(true),
-			Collaborative:                        spotted.Bool(true),
-			Description:                          spotted.String("New playlist description"),
+			Name: "New Playlist",
+			PathsRequestBodyContentApplicationJsonSchemaPropertiesPublished: spotted.Bool(true),
+			Collaborative: spotted.Bool(true),
+			Description:   spotted.String("New playlist description"),
 		},
 	)
 	if err != nil {

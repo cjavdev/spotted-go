@@ -237,7 +237,7 @@ type PlaylistUpdateParams struct {
 	// be private, `null` the playlist status is not relevant. For more about
 	// public/private status, see
 	// [Working with Playlists](/documentation/web-api/concepts/playlists)
-	ComponentsSchemasPropertiesPublished param.Opt[bool] `json:"$.components.schemas.*.properties.published,omitzero"`
+	PathsRequestBodyContentApplicationJsonSchemaPropertiesPublished param.Opt[bool] `json:"$.paths['*'].*.requestBody.content['application/json'].schema.properties.published,omitzero"`
 	// If `true`, the playlist will become collaborative and other users will be able
 	// to modify the playlist in their Spotify client. <br/> _**Note**: You can only
 	// set `collaborative` to `true` on non-public playlists._

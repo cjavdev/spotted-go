@@ -74,11 +74,6 @@ type PlaylistGetResponse struct {
 	// The [Spotify ID](/documentation/web-api/concepts/spotify-uris-ids) for the
 	// playlist.
 	ID string `json:"id"`
-	// The playlist's public/private status (if it is added to the user's profile):
-	// `true` the playlist is public, `false` the playlist is private, `null` the
-	// playlist status is not relevant. For more about public/private status, see
-	// [Working with Playlists](/documentation/web-api/concepts/playlists)
-	ComponentsSchemasPropertiesPublished bool `json:"$.components.schemas.*.properties.published"`
 	// `true` if the owner allows other users to modify the playlist.
 	Collaborative bool `json:"collaborative"`
 	// The playlist description. _Only returned for modified, verified playlists,
@@ -100,6 +95,11 @@ type PlaylistGetResponse struct {
 	Name string `json:"name"`
 	// The user who owns the playlist
 	Owner PlaylistGetResponseOwner `json:"owner"`
+	// The playlist's public/private status (if it is added to the user's profile):
+	// `true` the playlist is public, `false` the playlist is private, `null` the
+	// playlist status is not relevant. For more about public/private status, see
+	// [Working with Playlists](/documentation/web-api/concepts/playlists)
+	Published bool `json:"published"`
 	// The version identifier for the current playlist. Can be supplied in other
 	// requests to target a specific playlist version
 	SnapshotID string `json:"snapshot_id"`
@@ -112,22 +112,22 @@ type PlaylistGetResponse struct {
 	Uri string `json:"uri"`
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
-		ID                                   respjson.Field
-		ComponentsSchemasPropertiesPublished respjson.Field
-		Collaborative                        respjson.Field
-		Description                          respjson.Field
-		ExternalURLs                         respjson.Field
-		Followers                            respjson.Field
-		Href                                 respjson.Field
-		Images                               respjson.Field
-		Name                                 respjson.Field
-		Owner                                respjson.Field
-		SnapshotID                           respjson.Field
-		Tracks                               respjson.Field
-		Type                                 respjson.Field
-		Uri                                  respjson.Field
-		ExtraFields                          map[string]respjson.Field
-		raw                                  string
+		ID            respjson.Field
+		Collaborative respjson.Field
+		Description   respjson.Field
+		ExternalURLs  respjson.Field
+		Followers     respjson.Field
+		Href          respjson.Field
+		Images        respjson.Field
+		Name          respjson.Field
+		Owner         respjson.Field
+		Published     respjson.Field
+		SnapshotID    respjson.Field
+		Tracks        respjson.Field
+		Type          respjson.Field
+		Uri           respjson.Field
+		ExtraFields   map[string]respjson.Field
+		raw           string
 	} `json:"-"`
 }
 

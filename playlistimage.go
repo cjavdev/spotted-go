@@ -6,6 +6,7 @@ import (
 	"context"
 	"errors"
 	"fmt"
+	"io"
 	"net/http"
 	"slices"
 
@@ -30,6 +31,19 @@ type PlaylistImageService struct {
 func NewPlaylistImageService(opts ...option.RequestOption) (r PlaylistImageService) {
 	r = PlaylistImageService{}
 	r.Options = opts
+	return
+}
+
+// Replace the image used to represent a specific playlist.
+func (r *PlaylistImageService) Update(ctx context.Context, playlistID string, body io.Reader, opts ...option.RequestOption) (res *http.Response, err error) {
+	opts = slices.Concat(r.Options, opts)
+	opts = append([]option.RequestOption{option.WithRequestBody("image/jpeg", body), option.WithHeader("Accept", "application/binary")}, opts...)
+	if playlistID == "" {
+		err = errors.New("missing required playlist_id parameter")
+		return
+	}
+	path := fmt.Sprintf("playlists/%s/images", playlistID)
+	err = requestconfig.ExecuteNewRequest(ctx, http.MethodPut, path, nil, &res, opts...)
 	return
 }
 

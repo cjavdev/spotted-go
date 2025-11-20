@@ -1043,7 +1043,7 @@ type SimplifiedPlaylistObject struct {
 	// `true` the playlist is public, `false` the playlist is private, `null` the
 	// playlist status is not relevant. For more about public/private status, see
 	// [Working with Playlists](/documentation/web-api/concepts/playlists)
-	ComponentsSchemasPropertiesIsPublic bool `json:"$.components.schemas.*.properties.is_public"`
+	ComponentsSchemasPropertiesPublished bool `json:"$.components.schemas.*.properties.published"`
 	// `true` if the owner allows other users to modify the playlist.
 	Collaborative bool `json:"collaborative"`
 	// The playlist description. _Only returned for modified, verified playlists,
@@ -1078,21 +1078,21 @@ type SimplifiedPlaylistObject struct {
 	Uri string `json:"uri"`
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
-		ID                                  respjson.Field
-		ComponentsSchemasPropertiesIsPublic respjson.Field
-		Collaborative                       respjson.Field
-		Description                         respjson.Field
-		ExternalURLs                        respjson.Field
-		Href                                respjson.Field
-		Images                              respjson.Field
-		Name                                respjson.Field
-		Owner                               respjson.Field
-		SnapshotID                          respjson.Field
-		Tracks                              respjson.Field
-		Type                                respjson.Field
-		Uri                                 respjson.Field
-		ExtraFields                         map[string]respjson.Field
-		raw                                 string
+		ID                                   respjson.Field
+		ComponentsSchemasPropertiesPublished respjson.Field
+		Collaborative                        respjson.Field
+		Description                          respjson.Field
+		ExternalURLs                         respjson.Field
+		Href                                 respjson.Field
+		Images                               respjson.Field
+		Name                                 respjson.Field
+		Owner                                respjson.Field
+		SnapshotID                           respjson.Field
+		Tracks                               respjson.Field
+		Type                                 respjson.Field
+		Uri                                  respjson.Field
+		ExtraFields                          map[string]respjson.Field
+		raw                                  string
 	} `json:"-"`
 }
 

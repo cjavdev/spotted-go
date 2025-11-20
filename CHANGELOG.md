@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.2.0 (2025-11-20)
+
+Full Changelog: [v0.1.1...v0.2.0](https://github.com/cjavdev/spotted-go/compare/v0.1.1...v0.2.0)
+
+### Features
+
+* **api:** manual updates ([9152d9b](https://github.com/cjavdev/spotted-go/commit/9152d9bec42534c2834f3b26bc08790dfc95d791))
+* **api:** manual updates ([d3a1665](https://github.com/cjavdev/spotted-go/commit/d3a166502975e25fa7f8f49baacf8fd964faef9e))
+* **api:** manual updates ([e317d17](https://github.com/cjavdev/spotted-go/commit/e317d170b0b3fd8edd9a8c0ccdd098de88ac50e0))
+* **api:** manual updates ([b44249f](https://github.com/cjavdev/spotted-go/commit/b44249fa39d6e6c4769225c11290f967f1ba8319))
+* **api:** manual updates ([a398e0e](https://github.com/cjavdev/spotted-go/commit/a398e0e1f2783867d1a2d3abe06676d22e793631))
+* **api:** rename public to published for java ([7477872](https://github.com/cjavdev/spotted-go/commit/7477872af11e27a552c39ab39e968f70b503de96))
+
 ## 0.1.1 (2025-11-19)
 
 Full Changelog: [v0.1.0...v0.1.1](https://github.com/cjavdev/spotted-go/compare/v0.1.0...v0.1.1)

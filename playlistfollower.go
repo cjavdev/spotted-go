@@ -96,7 +96,7 @@ type PlaylistFollowerFollowParams struct {
 	// playlists (added to profile), if `false` it will remain private. For more about
 	// public/private status, see
 	// [Working with Playlists](/documentation/web-api/concepts/playlists)
-	PathsRequestBodyContentApplicationJsonSchemaPropertiesPublished param.Opt[bool] `json:"$.paths['*'].*.requestBody.content['application/json'].schema.properties.published,omitzero"`
+	Public param.Opt[bool] `json:"public,omitzero"`
 	paramObj
 }
 

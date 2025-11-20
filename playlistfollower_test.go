@@ -61,7 +61,7 @@ func TestPlaylistFollowerFollowWithOptionalParams(t *testing.T) {
 		context.TODO(),
 		"3cEYpjA9oz9GiPac4AsH4n",
 		spotted.PlaylistFollowerFollowParams{
-			ComponentsSchemasPropertiesPublished: spotted.Bool(true),
+			PathsRequestBodyContentApplicationJsonSchemaPropertiesPublished: spotted.Bool(true),
 		},
 	)
 	if err != nil {

@@ -66,7 +66,7 @@ func TestPlaylistUpdateWithOptionalParams(t *testing.T) {
 			Collaborative: spotted.Bool(true),
 			Description:   spotted.String("Updated playlist description"),
 			Name:          spotted.String("Updated Playlist Name"),
-			Published:     spotted.Bool(true),
+			Public:        spotted.Bool(false),
 		},
 	)
 	if err != nil {

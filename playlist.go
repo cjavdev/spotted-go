@@ -246,7 +246,7 @@ type PlaylistUpdateParams struct {
 	// be private, `null` the playlist status is not relevant. For more about
 	// public/private status, see
 	// [Working with Playlists](/documentation/web-api/concepts/playlists)
-	Published param.Opt[bool] `json:"published,omitzero"`
+	Public param.Opt[bool] `json:"public,omitzero"`
 	paramObj
 }
 

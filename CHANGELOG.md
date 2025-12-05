@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.5.0 (2025-12-05)
+
+Full Changelog: [v0.4.0...v0.5.0](https://github.com/cjavdev/spotted-go/compare/v0.4.0...v0.5.0)
+
+### Features
+
+* **api:** Update readme titles. ([a256144](https://github.com/cjavdev/spotted-go/commit/a2561448f37e3a218d53572adab1366f8f00e06b))
+
 ## 0.4.0 (2025-11-26)
 
 Full Changelog: [v0.4.0...v0.4.0](https://github.com/cjavdev/spotted-go/compare/v0.4.0...v0.4.0)

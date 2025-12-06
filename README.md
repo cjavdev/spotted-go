@@ -28,7 +28,7 @@ Or to pin the version:
 <!-- x-release-please-start-version -->
 
 ```sh
-go get -u 'github.com/cjavdev/spotted-go@v0.5.0'
+go get -u 'github.com/cjavdev/spotted-go@v0.5.1'
 ```
 
 <!-- x-release-please-end -->

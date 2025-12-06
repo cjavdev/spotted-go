@@ -1,5 +1,20 @@
 # Changelog
 
+## 0.5.1 (2025-12-06)
+
+Full Changelog: [v0.5.0...v0.5.1](https://github.com/cjavdev/spotted-go/compare/v0.5.0...v0.5.1)
+
+### Bug Fixes
+
+* **mcp:** correct code tool API endpoint ([b7dc6bb](https://github.com/cjavdev/spotted-go/commit/b7dc6bb844ccc33931be69c5c9a203380d8c8e8d))
+* rename param to avoid collision ([5f7f948](https://github.com/cjavdev/spotted-go/commit/5f7f948165afa52d64c29b5846bc52d49b9ddd98))
+
+
+### Chores
+
+* elide duplicate aliases ([e7f61c2](https://github.com/cjavdev/spotted-go/commit/e7f61c29506c337f85fb5271a5e0a22fd4d209c7))
+* **internal:** codegen related update ([765bcf4](https://github.com/cjavdev/spotted-go/commit/765bcf49695109f38016c780ff731c23425adf7e))
+
 ## 0.5.0 (2025-12-05)
 
 Full Changelog: [v0.4.0...v0.5.0](https://github.com/cjavdev/spotted-go/compare/v0.4.0...v0.5.0)

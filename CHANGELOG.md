@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.7.0 (2025-12-10)
+
+Full Changelog: [v0.6.0...v0.7.0](https://github.com/cjavdev/spotted-go/compare/v0.6.0...v0.7.0)
+
+### Features
+
+* **api:** manual updates ([746e1e2](https://github.com/cjavdev/spotted-go/commit/746e1e2bba9a048e0ab5744d26a6cd32df5d5ac8))
+
 ## 0.6.0 (2025-12-10)
 
 Full Changelog: [v0.5.1...v0.6.0](https://github.com/cjavdev/spotted-go/compare/v0.5.1...v0.6.0)

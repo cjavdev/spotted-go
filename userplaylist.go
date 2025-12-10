@@ -109,7 +109,7 @@ type UserPlaylistNewResponse struct {
 	// `true` the playlist is public, `false` the playlist is private, `null` the
 	// playlist status is not relevant. For more about public/private status, see
 	// [Working with Playlists](/documentation/web-api/concepts/playlists)
-	Published bool `json:"published"`
+	Public bool `json:"public"`
 	// The version identifier for the current playlist. Can be supplied in other
 	// requests to target a specific playlist version
 	SnapshotID string `json:"snapshot_id"`
@@ -131,7 +131,7 @@ type UserPlaylistNewResponse struct {
 		Images        respjson.Field
 		Name          respjson.Field
 		Owner         respjson.Field
-		Published     respjson.Field
+		Public        respjson.Field
 		SnapshotID    respjson.Field
 		Tracks        respjson.Field
 		Type          respjson.Field

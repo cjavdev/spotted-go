@@ -34,7 +34,6 @@ func TestUserPlaylistNewWithOptionalParams(t *testing.T) {
 			Name:          "New Playlist",
 			Collaborative: spotted.Bool(true),
 			Description:   spotted.String("New playlist description"),
-			Public:        spotted.Bool(false),
 			Published:     spotted.Bool(true),
 		},
 	)

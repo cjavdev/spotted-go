@@ -223,14 +223,6 @@ type UserPlaylistNewParams struct {
 	// value for playlist description as displayed in Spotify Clients and in the Web
 	// API.
 	Description param.Opt[string] `json:"description,omitzero"`
-	// Defaults to `true`. The playlist's public/private status (if it should be added
-	// to the user's profile or not): `true` the playlist will be public, `false` the
-	// playlist will be private. To be able to create private playlists, the user must
-	// have granted the `playlist-modify-private`
-	// [scope](/documentation/web-api/concepts/scopes/#list-of-scopes). For more about
-	// public/private status, see
-	// [Working with Playlists](/documentation/web-api/concepts/playlists)
-	Public param.Opt[bool] `json:"public,omitzero"`
 	// The playlist's public/private status (if it should be added to the user's
 	// profile or not): `true` the playlist will be public, `false` the playlist will
 	// be private, `null` the playlist status is not relevant. For more about

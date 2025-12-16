@@ -59,11 +59,18 @@ func (r *MePlayerQueueService) Get(ctx context.Context, opts ...option.RequestOp
 type MePlayerQueueGetResponse struct {
 	// The currently playing track or episode. Can be `null`.
 	CurrentlyPlaying MePlayerQueueGetResponseCurrentlyPlayingUnion `json:"currently_playing"`
+	// The playlist's public/private status (if it should be added to the user's
+	// profile or not): `true` the playlist will be public, `false` the playlist will
+	// be private, `null` the playlist status is not relevant. For more about
+	// public/private status, see
+	// [Working with Playlists](/documentation/web-api/concepts/playlists)
+	Published bool `json:"published"`
 	// The tracks or episodes in the queue. Can be empty.
 	Queue []MePlayerQueueGetResponseQueueUnion `json:"queue"`
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
 		CurrentlyPlaying respjson.Field
+		Published        respjson.Field
 		Queue            respjson.Field
 		ExtraFields      map[string]respjson.Field
 		raw              string
@@ -110,6 +117,7 @@ type MePlayerQueueGetResponseCurrentlyPlayingUnion struct {
 	Popularity int64 `json:"popularity"`
 	// This field is from variant [shared.TrackObject].
 	PreviewURL string `json:"preview_url"`
+	Published  bool   `json:"published"`
 	// This field is a union of [shared.TrackRestrictionObject],
 	// [shared.EpisodeRestrictionObject]
 	Restrictions MePlayerQueueGetResponseCurrentlyPlayingUnionRestrictions `json:"restrictions"`
@@ -157,6 +165,7 @@ type MePlayerQueueGetResponseCurrentlyPlayingUnion struct {
 		Name                 respjson.Field
 		Popularity           respjson.Field
 		PreviewURL           respjson.Field
+		Published            respjson.Field
 		Restrictions         respjson.Field
 		TrackNumber          respjson.Field
 		Type                 respjson.Field
@@ -226,10 +235,12 @@ func (r *MePlayerQueueGetResponseCurrentlyPlayingUnion) UnmarshalJSON(data []byt
 // For type safety it is recommended to directly use a variant of the
 // [MePlayerQueueGetResponseCurrentlyPlayingUnion].
 type MePlayerQueueGetResponseCurrentlyPlayingUnionRestrictions struct {
-	Reason string `json:"reason"`
-	JSON   struct {
-		Reason respjson.Field
-		raw    string
+	Published bool   `json:"published"`
+	Reason    string `json:"reason"`
+	JSON      struct {
+		Published respjson.Field
+		Reason    respjson.Field
+		raw       string
 	} `json:"-"`
 }
 
@@ -271,6 +282,7 @@ type MePlayerQueueGetResponseQueueUnion struct {
 	Popularity int64 `json:"popularity"`
 	// This field is from variant [shared.TrackObject].
 	PreviewURL string `json:"preview_url"`
+	Published  bool   `json:"published"`
 	// This field is a union of [shared.TrackRestrictionObject],
 	// [shared.EpisodeRestrictionObject]
 	Restrictions MePlayerQueueGetResponseQueueUnionRestrictions `json:"restrictions"`
@@ -318,6 +330,7 @@ type MePlayerQueueGetResponseQueueUnion struct {
 		Name                 respjson.Field
 		Popularity           respjson.Field
 		PreviewURL           respjson.Field
+		Published            respjson.Field
 		Restrictions         respjson.Field
 		TrackNumber          respjson.Field
 		Type                 respjson.Field
@@ -387,10 +400,12 @@ func (r *MePlayerQueueGetResponseQueueUnion) UnmarshalJSON(data []byte) error {
 // For type safety it is recommended to directly use a variant of the
 // [MePlayerQueueGetResponseQueueUnion].
 type MePlayerQueueGetResponseQueueUnionRestrictions struct {
-	Reason string `json:"reason"`
-	JSON   struct {
-		Reason respjson.Field
-		raw    string
+	Published bool   `json:"published"`
+	Reason    string `json:"reason"`
+	JSON      struct {
+		Published respjson.Field
+		Reason    respjson.Field
+		raw       string
 	} `json:"-"`
 }
 

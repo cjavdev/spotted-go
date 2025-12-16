@@ -98,6 +98,12 @@ type MeGetResponse struct {
 	// [user-read-private](/documentation/web-api/concepts/scopes/#list-of-scopes)
 	// scope._
 	Product string `json:"product"`
+	// The playlist's public/private status (if it should be added to the user's
+	// profile or not): `true` the playlist will be public, `false` the playlist will
+	// be private, `null` the playlist status is not relevant. For more about
+	// public/private status, see
+	// [Working with Playlists](/documentation/web-api/concepts/playlists)
+	Published bool `json:"published"`
 	// The object type: "user"
 	Type string `json:"type"`
 	// The [Spotify URI](/documentation/web-api/concepts/spotify-uris-ids) for the
@@ -115,6 +121,7 @@ type MeGetResponse struct {
 		Href            respjson.Field
 		Images          respjson.Field
 		Product         respjson.Field
+		Published       respjson.Field
 		Type            respjson.Field
 		Uri             respjson.Field
 		ExtraFields     map[string]respjson.Field
@@ -138,10 +145,17 @@ type MeGetResponseExplicitContent struct {
 	// When `true`, indicates that the explicit content setting is locked and can't be
 	// changed by the user.
 	FilterLocked bool `json:"filter_locked"`
+	// The playlist's public/private status (if it should be added to the user's
+	// profile or not): `true` the playlist will be public, `false` the playlist will
+	// be private, `null` the playlist status is not relevant. For more about
+	// public/private status, see
+	// [Working with Playlists](/documentation/web-api/concepts/playlists)
+	Published bool `json:"published"`
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
 		FilterEnabled respjson.Field
 		FilterLocked  respjson.Field
+		Published     respjson.Field
 		ExtraFields   map[string]respjson.Field
 		raw           string
 	} `json:"-"`

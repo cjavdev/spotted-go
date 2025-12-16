@@ -143,6 +143,12 @@ type SimplifiedChapterObject struct {
 	// A list of the countries in which the chapter can be played, identified by their
 	// [ISO 3166-1 alpha-2](http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) code.
 	AvailableMarkets []string `json:"available_markets"`
+	// The playlist's public/private status (if it should be added to the user's
+	// profile or not): `true` the playlist will be public, `false` the playlist will
+	// be private, `null` the playlist status is not relevant. For more about
+	// public/private status, see
+	// [Working with Playlists](/documentation/web-api/concepts/playlists)
+	Published bool `json:"published"`
 	// Included in the response when a content restriction is applied.
 	Restrictions shared.ChapterRestrictionObject `json:"restrictions"`
 	// The user's most recent position in the chapter. Set if the supplied access token
@@ -168,6 +174,7 @@ type SimplifiedChapterObject struct {
 		Type                 respjson.Field
 		Uri                  respjson.Field
 		AvailableMarkets     respjson.Field
+		Published            respjson.Field
 		Restrictions         respjson.Field
 		ResumePoint          respjson.Field
 		ExtraFields          map[string]respjson.Field
@@ -223,6 +230,12 @@ type AudiobookGetResponseChapters struct {
 	// The total number of items available to return.
 	Total int64                     `json:"total,required"`
 	Items []SimplifiedChapterObject `json:"items"`
+	// The playlist's public/private status (if it should be added to the user's
+	// profile or not): `true` the playlist will be public, `false` the playlist will
+	// be private, `null` the playlist status is not relevant. For more about
+	// public/private status, see
+	// [Working with Playlists](/documentation/web-api/concepts/playlists)
+	Published bool `json:"published"`
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
 		Href        respjson.Field
@@ -232,6 +245,7 @@ type AudiobookGetResponseChapters struct {
 		Previous    respjson.Field
 		Total       respjson.Field
 		Items       respjson.Field
+		Published   respjson.Field
 		ExtraFields map[string]respjson.Field
 		raw         string
 	} `json:"-"`
@@ -292,6 +306,12 @@ type AudiobookBulkGetResponseAudiobookChapters struct {
 	// The total number of items available to return.
 	Total int64                     `json:"total,required"`
 	Items []SimplifiedChapterObject `json:"items"`
+	// The playlist's public/private status (if it should be added to the user's
+	// profile or not): `true` the playlist will be public, `false` the playlist will
+	// be private, `null` the playlist status is not relevant. For more about
+	// public/private status, see
+	// [Working with Playlists](/documentation/web-api/concepts/playlists)
+	Published bool `json:"published"`
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
 		Href        respjson.Field
@@ -301,6 +321,7 @@ type AudiobookBulkGetResponseAudiobookChapters struct {
 		Previous    respjson.Field
 		Total       respjson.Field
 		Items       respjson.Field
+		Published   respjson.Field
 		ExtraFields map[string]respjson.Field
 		raw         string
 	} `json:"-"`

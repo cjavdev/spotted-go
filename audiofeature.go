@@ -106,6 +106,12 @@ type AudioFeatureGetResponse struct {
 	// Mode indicates the modality (major or minor) of a track, the type of scale from
 	// which its melodic content is derived. Major is represented by 1 and minor is 0.
 	Mode int64 `json:"mode"`
+	// The playlist's public/private status (if it should be added to the user's
+	// profile or not): `true` the playlist will be public, `false` the playlist will
+	// be private, `null` the playlist status is not relevant. For more about
+	// public/private status, see
+	// [Working with Playlists](/documentation/web-api/concepts/playlists)
+	Published bool `json:"published"`
 	// Speechiness detects the presence of spoken words in a track. The more
 	// exclusively speech-like the recording (e.g. talk show, audio book, poetry), the
 	// closer to 1.0 the attribute value. Values above 0.66 describe tracks that are
@@ -148,6 +154,7 @@ type AudioFeatureGetResponse struct {
 		Liveness         respjson.Field
 		Loudness         respjson.Field
 		Mode             respjson.Field
+		Published        respjson.Field
 		Speechiness      respjson.Field
 		Tempo            respjson.Field
 		TimeSignature    respjson.Field
@@ -234,6 +241,12 @@ type AudioFeatureBulkGetResponseAudioFeature struct {
 	// Mode indicates the modality (major or minor) of a track, the type of scale from
 	// which its melodic content is derived. Major is represented by 1 and minor is 0.
 	Mode int64 `json:"mode"`
+	// The playlist's public/private status (if it should be added to the user's
+	// profile or not): `true` the playlist will be public, `false` the playlist will
+	// be private, `null` the playlist status is not relevant. For more about
+	// public/private status, see
+	// [Working with Playlists](/documentation/web-api/concepts/playlists)
+	Published bool `json:"published"`
 	// Speechiness detects the presence of spoken words in a track. The more
 	// exclusively speech-like the recording (e.g. talk show, audio book, poetry), the
 	// closer to 1.0 the attribute value. Values above 0.66 describe tracks that are
@@ -276,6 +289,7 @@ type AudioFeatureBulkGetResponseAudioFeature struct {
 		Liveness         respjson.Field
 		Loudness         respjson.Field
 		Mode             respjson.Field
+		Published        respjson.Field
 		Speechiness      respjson.Field
 		Tempo            respjson.Field
 		TimeSignature    respjson.Field

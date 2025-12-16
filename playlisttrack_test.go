@@ -32,6 +32,7 @@ func TestPlaylistTrackUpdateWithOptionalParams(t *testing.T) {
 		"3cEYpjA9oz9GiPac4AsH4n",
 		spotted.PlaylistTrackUpdateParams{
 			InsertBefore: spotted.Int(3),
+			Published:    spotted.Bool(true),
 			RangeLength:  spotted.Int(2),
 			RangeStart:   spotted.Int(1),
 			SnapshotID:   spotted.String("snapshot_id"),
@@ -99,8 +100,9 @@ func TestPlaylistTrackAddWithOptionalParams(t *testing.T) {
 		context.TODO(),
 		"3cEYpjA9oz9GiPac4AsH4n",
 		spotted.PlaylistTrackAddParams{
-			Position: spotted.Int(0),
-			Uris:     []string{"string"},
+			Position:  spotted.Int(0),
+			Published: spotted.Bool(true),
+			Uris:      []string{"string"},
 		},
 	)
 	if err != nil {
@@ -133,6 +135,7 @@ func TestPlaylistTrackRemoveWithOptionalParams(t *testing.T) {
 			Tracks: []spotted.PlaylistTrackRemoveParamsTrack{{
 				Uri: spotted.String("uri"),
 			}},
+			Published:  spotted.Bool(true),
 			SnapshotID: spotted.String("snapshot_id"),
 		},
 	)

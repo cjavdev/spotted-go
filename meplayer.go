@@ -1051,6 +1051,12 @@ type MePlayerStartPlaybackParams struct {
 	// Passing in a position that is greater than the length of the track will cause
 	// the player to start playing the next song.
 	PositionMs param.Opt[int64] `json:"position_ms,omitzero"`
+	// The playlist's public/private status (if it should be added to the user's
+	// profile or not): `true` the playlist will be public, `false` the playlist will
+	// be private, `null` the playlist status is not relevant. For more about
+	// public/private status, see
+	// [Working with Playlists](/documentation/web-api/concepts/playlists)
+	Published param.Opt[bool] `json:"published,omitzero"`
 	// Optional. Indicates from where in the context playback should start. Only
 	// available when context_uri corresponds to an album or playlist object "position"
 	// is zero based and can’t be negative. Example: `"offset": {"position": 5}` "uri"
@@ -1109,6 +1115,12 @@ type MePlayerTransferParams struct {
 	// **true**: ensure playback happens on new device.<br/>**false** or not provided:
 	// keep the current playback state.
 	Play param.Opt[bool] `json:"play,omitzero"`
+	// The playlist's public/private status (if it should be added to the user's
+	// profile or not): `true` the playlist will be public, `false` the playlist will
+	// be private, `null` the playlist status is not relevant. For more about
+	// public/private status, see
+	// [Working with Playlists](/documentation/web-api/concepts/playlists)
+	Published param.Opt[bool] `json:"published,omitzero"`
 	paramObj
 }
 

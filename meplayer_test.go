@@ -299,6 +299,7 @@ func TestMePlayerStartPlaybackWithOptionalParams(t *testing.T) {
 			"position": "bar",
 		},
 		PositionMs: spotted.Int(0),
+		Published:  spotted.Bool(true),
 		Uris:       []string{"string"},
 	})
 	if err != nil {
@@ -354,6 +355,7 @@ func TestMePlayerTransferWithOptionalParams(t *testing.T) {
 	err := client.Me.Player.Transfer(context.TODO(), spotted.MePlayerTransferParams{
 		DeviceIDs: []string{"74ASZWbe4lXaubB36ztrGX"},
 		Play:      spotted.Bool(true),
+		Published: spotted.Bool(true),
 	})
 	if err != nil {
 		var apierr *spotted.Error

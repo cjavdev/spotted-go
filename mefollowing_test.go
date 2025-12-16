@@ -68,7 +68,7 @@ func TestMeFollowingCheck(t *testing.T) {
 	}
 }
 
-func TestMeFollowingFollow(t *testing.T) {
+func TestMeFollowingFollowWithOptionalParams(t *testing.T) {
 	t.Skip("Prism tests are disabled")
 	baseURL := "http://localhost:4010"
 	if envURL, ok := os.LookupEnv("TEST_API_BASE_URL"); ok {
@@ -83,7 +83,8 @@ func TestMeFollowingFollow(t *testing.T) {
 		option.WithClientSecret("My Client Secret"),
 	)
 	err := client.Me.Following.Follow(context.TODO(), spotted.MeFollowingFollowParams{
-		IDs: []string{"string"},
+		IDs:       []string{"string"},
+		Published: spotted.Bool(true),
 	})
 	if err != nil {
 		var apierr *spotted.Error
@@ -109,7 +110,8 @@ func TestMeFollowingUnfollowWithOptionalParams(t *testing.T) {
 		option.WithClientSecret("My Client Secret"),
 	)
 	err := client.Me.Following.Unfollow(context.TODO(), spotted.MeFollowingUnfollowParams{
-		IDs: []string{"string"},
+		IDs:       []string{"string"},
+		Published: spotted.Bool(true),
 	})
 	if err != nil {
 		var apierr *spotted.Error

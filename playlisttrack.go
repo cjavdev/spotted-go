@@ -166,6 +166,12 @@ type PlaylistTrackUpdateParams struct {
 	// to 10.<br/>To reorder the last item in a playlist with 10 items to the start of
 	// the playlist, set _range_start_ to 9, and _insert_before_ to 0.
 	InsertBefore param.Opt[int64] `json:"insert_before,omitzero"`
+	// The playlist's public/private status (if it should be added to the user's
+	// profile or not): `true` the playlist will be public, `false` the playlist will
+	// be private, `null` the playlist status is not relevant. For more about
+	// public/private status, see
+	// [Working with Playlists](/documentation/web-api/concepts/playlists)
+	Published param.Opt[bool] `json:"published,omitzero"`
 	// The amount of items to be reordered. Defaults to 1 if not set.<br/>The range of
 	// items to be reordered begins from the _range_start_ position, and includes the
 	// _range_length_ subsequent items.<br/>Example:<br/>To move the items at index
@@ -241,6 +247,12 @@ type PlaylistTrackAddParams struct {
 	// Items are added in the order they appear in the uris array. For example:
 	// `{"uris": ["spotify:track:4iV5W9uYEdYUVa79Axb7Rh","spotify:track:1301WleyT98MSxVHPZCA6M"], "position": 3}`
 	Position param.Opt[int64] `json:"position,omitzero"`
+	// The playlist's public/private status (if it should be added to the user's
+	// profile or not): `true` the playlist will be public, `false` the playlist will
+	// be private, `null` the playlist status is not relevant. For more about
+	// public/private status, see
+	// [Working with Playlists](/documentation/web-api/concepts/playlists)
+	Published param.Opt[bool] `json:"published,omitzero"`
 	// A JSON array of the
 	// [Spotify URIs](/documentation/web-api/concepts/spotify-uris-ids) to add. For
 	// example:
@@ -267,6 +279,12 @@ type PlaylistTrackRemoveParams struct {
 	// `{ "tracks": [{ "uri": "spotify:track:4iV5W9uYEdYUVa79Axb7Rh" },{ "uri": "spotify:track:1301WleyT98MSxVHPZCA6M" }] }`.
 	// A maximum of 100 objects can be sent at once.
 	Tracks []PlaylistTrackRemoveParamsTrack `json:"tracks,omitzero,required"`
+	// The playlist's public/private status (if it should be added to the user's
+	// profile or not): `true` the playlist will be public, `false` the playlist will
+	// be private, `null` the playlist status is not relevant. For more about
+	// public/private status, see
+	// [Working with Playlists](/documentation/web-api/concepts/playlists)
+	Published param.Opt[bool] `json:"published,omitzero"`
 	// The playlist's snapshot ID against which you want to make the changes. The API
 	// will validate that the specified items exist and in the specified positions and
 	// make the changes, even if more recent changes have been made to the playlist.

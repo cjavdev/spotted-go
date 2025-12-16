@@ -176,6 +176,12 @@ func (r MeEpisodeCheckParams) URLQuery() (v url.Values, err error) {
 }
 
 type MeEpisodeRemoveParams struct {
+	// The playlist's public/private status (if it should be added to the user's
+	// profile or not): `true` the playlist will be public, `false` the playlist will
+	// be private, `null` the playlist status is not relevant. For more about
+	// public/private status, see
+	// [Working with Playlists](/documentation/web-api/concepts/playlists)
+	Published param.Opt[bool] `json:"published,omitzero"`
 	// A JSON array of the
 	// [Spotify IDs](/documentation/web-api/concepts/spotify-uris-ids). <br/>A maximum
 	// of 50 items can be specified in one request. _**Note**: if the `ids` parameter
@@ -200,6 +206,12 @@ type MeEpisodeSaveParams struct {
 	// is present in the query string, any IDs listed here in the body will be
 	// ignored._
 	IDs []string `json:"ids,omitzero,required"`
+	// The playlist's public/private status (if it should be added to the user's
+	// profile or not): `true` the playlist will be public, `false` the playlist will
+	// be private, `null` the playlist status is not relevant. For more about
+	// public/private status, see
+	// [Working with Playlists](/documentation/web-api/concepts/playlists)
+	Published param.Opt[bool] `json:"published,omitzero"`
 	paramObj
 }
 

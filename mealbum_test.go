@@ -82,7 +82,8 @@ func TestMeAlbumRemoveWithOptionalParams(t *testing.T) {
 		option.WithClientSecret("My Client Secret"),
 	)
 	err := client.Me.Albums.Remove(context.TODO(), spotted.MeAlbumRemoveParams{
-		IDs: []string{"string"},
+		IDs:       []string{"string"},
+		Published: spotted.Bool(true),
 	})
 	if err != nil {
 		var apierr *spotted.Error
@@ -108,7 +109,8 @@ func TestMeAlbumSaveWithOptionalParams(t *testing.T) {
 		option.WithClientSecret("My Client Secret"),
 	)
 	err := client.Me.Albums.Save(context.TODO(), spotted.MeAlbumSaveParams{
-		IDs: []string{"string"},
+		IDs:       []string{"string"},
+		Published: spotted.Bool(true),
 	})
 	if err != nil {
 		var apierr *spotted.Error

@@ -82,7 +82,8 @@ func TestMeEpisodeRemoveWithOptionalParams(t *testing.T) {
 		option.WithClientSecret("My Client Secret"),
 	)
 	err := client.Me.Episodes.Remove(context.TODO(), spotted.MeEpisodeRemoveParams{
-		IDs: []string{"string"},
+		IDs:       []string{"string"},
+		Published: spotted.Bool(true),
 	})
 	if err != nil {
 		var apierr *spotted.Error
@@ -93,7 +94,7 @@ func TestMeEpisodeRemoveWithOptionalParams(t *testing.T) {
 	}
 }
 
-func TestMeEpisodeSave(t *testing.T) {
+func TestMeEpisodeSaveWithOptionalParams(t *testing.T) {
 	t.Skip("Prism tests are disabled")
 	baseURL := "http://localhost:4010"
 	if envURL, ok := os.LookupEnv("TEST_API_BASE_URL"); ok {
@@ -108,7 +109,8 @@ func TestMeEpisodeSave(t *testing.T) {
 		option.WithClientSecret("My Client Secret"),
 	)
 	err := client.Me.Episodes.Save(context.TODO(), spotted.MeEpisodeSaveParams{
-		IDs: []string{"string"},
+		IDs:       []string{"string"},
+		Published: spotted.Bool(true),
 	})
 	if err != nil {
 		var apierr *spotted.Error

@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.10.0 (2025-12-16)
+
+Full Changelog: [v0.9.0...v0.10.0](https://github.com/cjavdev/spotted-go/compare/v0.9.0...v0.10.0)
+
+### Features
+
+* **api:** manual updates ([a45cbeb](https://github.com/cjavdev/spotted-go/commit/a45cbebe10ee2ae34b18c4cef3bb3ded7acbc156))
+* **encoder:** support bracket encoding form-data object members ([6352d36](https://github.com/cjavdev/spotted-go/commit/6352d3668174412e5cc52d0b9e49001d4bf5afe0))
+
 ## 0.9.0 (2025-12-10)
 
 Full Changelog: [v0.8.0...v0.9.0](https://github.com/cjavdev/spotted-go/compare/v0.8.0...v0.9.0)

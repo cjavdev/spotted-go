@@ -61,7 +61,8 @@ func TestPlaylistFollowerFollowWithOptionalParams(t *testing.T) {
 		context.TODO(),
 		"3cEYpjA9oz9GiPac4AsH4n",
 		spotted.PlaylistFollowerFollowParams{
-			Public: spotted.Bool(false),
+			Public:    spotted.Bool(false),
+			Published: spotted.Bool(true),
 		},
 	)
 	if err != nil {

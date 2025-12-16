@@ -83,7 +83,8 @@ func TestMeTrackRemoveWithOptionalParams(t *testing.T) {
 		option.WithClientSecret("My Client Secret"),
 	)
 	err := client.Me.Tracks.Remove(context.TODO(), spotted.MeTrackRemoveParams{
-		IDs: []string{"string"},
+		IDs:       []string{"string"},
+		Published: spotted.Bool(true),
 	})
 	if err != nil {
 		var apierr *spotted.Error
@@ -109,7 +110,8 @@ func TestMeTrackSaveWithOptionalParams(t *testing.T) {
 		option.WithClientSecret("My Client Secret"),
 	)
 	err := client.Me.Tracks.Save(context.TODO(), spotted.MeTrackSaveParams{
-		IDs: []string{"string"},
+		IDs:       []string{"string"},
+		Published: spotted.Bool(true),
 		TimestampedIDs: []spotted.MeTrackSaveParamsTimestampedID{{
 			ID:      "id",
 			AddedAt: time.Now(),

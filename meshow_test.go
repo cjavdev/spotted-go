@@ -81,7 +81,8 @@ func TestMeShowRemoveWithOptionalParams(t *testing.T) {
 		option.WithClientSecret("My Client Secret"),
 	)
 	err := client.Me.Shows.Remove(context.TODO(), spotted.MeShowRemoveParams{
-		IDs: []string{"string"},
+		IDs:       []string{"string"},
+		Published: spotted.Bool(true),
 	})
 	if err != nil {
 		var apierr *spotted.Error
@@ -107,7 +108,8 @@ func TestMeShowSaveWithOptionalParams(t *testing.T) {
 		option.WithClientSecret("My Client Secret"),
 	)
 	err := client.Me.Shows.Save(context.TODO(), spotted.MeShowSaveParams{
-		IDs: []string{"string"},
+		IDs:       []string{"string"},
+		Published: spotted.Bool(true),
 	})
 	if err != nil {
 		var apierr *spotted.Error

@@ -95,9 +95,10 @@ type PlaylistGetResponse struct {
 	Name string `json:"name"`
 	// The user who owns the playlist
 	Owner PlaylistGetResponseOwner `json:"owner"`
-	// The playlist's public/private status (if it is added to the user's profile):
-	// `true` the playlist is public, `false` the playlist is private, `null` the
-	// playlist status is not relevant. For more about public/private status, see
+	// The playlist's public/private status (if it should be added to the user's
+	// profile or not): `true` the playlist will be public, `false` the playlist will
+	// be private, `null` the playlist status is not relevant. For more about
+	// public/private status, see
 	// [Working with Playlists](/documentation/web-api/concepts/playlists)
 	Published bool `json:"published"`
 	// The version identifier for the current playlist. Can be supplied in other
@@ -171,6 +172,12 @@ type PlaylistGetResponseTracks struct {
 	// The total number of items available to return.
 	Total int64                        `json:"total,required"`
 	Items []shared.PlaylistTrackObject `json:"items"`
+	// The playlist's public/private status (if it should be added to the user's
+	// profile or not): `true` the playlist will be public, `false` the playlist will
+	// be private, `null` the playlist status is not relevant. For more about
+	// public/private status, see
+	// [Working with Playlists](/documentation/web-api/concepts/playlists)
+	Published bool `json:"published"`
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
 		Href        respjson.Field
@@ -180,6 +187,7 @@ type PlaylistGetResponseTracks struct {
 		Previous    respjson.Field
 		Total       respjson.Field
 		Items       respjson.Field
+		Published   respjson.Field
 		ExtraFields map[string]respjson.Field
 		raw         string
 	} `json:"-"`

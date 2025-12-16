@@ -97,11 +97,18 @@ type MeTrackListResponse struct {
 	// album release), an additional field indicates the precision; see for example,
 	// release_date in an album object.
 	AddedAt time.Time `json:"added_at" format:"date-time"`
+	// The playlist's public/private status (if it should be added to the user's
+	// profile or not): `true` the playlist will be public, `false` the playlist will
+	// be private, `null` the playlist status is not relevant. For more about
+	// public/private status, see
+	// [Working with Playlists](/documentation/web-api/concepts/playlists)
+	Published bool `json:"published"`
 	// Information about the track.
 	Track shared.TrackObject `json:"track"`
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
 		AddedAt     respjson.Field
+		Published   respjson.Field
 		Track       respjson.Field
 		ExtraFields map[string]respjson.Field
 		raw         string

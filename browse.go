@@ -63,10 +63,17 @@ type BrowseGetFeaturedPlaylistsResponse struct {
 	// The localized message of a playlist.
 	Message   string                      `json:"message"`
 	Playlists shared.PagingPlaylistObject `json:"playlists"`
+	// The playlist's public/private status (if it should be added to the user's
+	// profile or not): `true` the playlist will be public, `false` the playlist will
+	// be private, `null` the playlist status is not relevant. For more about
+	// public/private status, see
+	// [Working with Playlists](/documentation/web-api/concepts/playlists)
+	Published bool `json:"published"`
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
 		Message     respjson.Field
 		Playlists   respjson.Field
+		Published   respjson.Field
 		ExtraFields map[string]respjson.Field
 		raw         string
 	} `json:"-"`
@@ -108,6 +115,12 @@ type BrowseGetNewReleasesResponseAlbums struct {
 	// The total number of items available to return.
 	Total int64                                    `json:"total,required"`
 	Items []BrowseGetNewReleasesResponseAlbumsItem `json:"items"`
+	// The playlist's public/private status (if it should be added to the user's
+	// profile or not): `true` the playlist will be public, `false` the playlist will
+	// be private, `null` the playlist status is not relevant. For more about
+	// public/private status, see
+	// [Working with Playlists](/documentation/web-api/concepts/playlists)
+	Published bool `json:"published"`
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
 		Href        respjson.Field
@@ -117,6 +130,7 @@ type BrowseGetNewReleasesResponseAlbums struct {
 		Previous    respjson.Field
 		Total       respjson.Field
 		Items       respjson.Field
+		Published   respjson.Field
 		ExtraFields map[string]respjson.Field
 		raw         string
 	} `json:"-"`
@@ -166,6 +180,12 @@ type BrowseGetNewReleasesResponseAlbumsItem struct {
 	// The [Spotify URI](/documentation/web-api/concepts/spotify-uris-ids) for the
 	// album.
 	Uri string `json:"uri,required"`
+	// The playlist's public/private status (if it should be added to the user's
+	// profile or not): `true` the playlist will be public, `false` the playlist will
+	// be private, `null` the playlist status is not relevant. For more about
+	// public/private status, see
+	// [Working with Playlists](/documentation/web-api/concepts/playlists)
+	Published bool `json:"published"`
 	// Included in the response when a content restriction is applied.
 	Restrictions shared.AlbumRestrictionObject `json:"restrictions"`
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
@@ -183,6 +203,7 @@ type BrowseGetNewReleasesResponseAlbumsItem struct {
 		TotalTracks          respjson.Field
 		Type                 respjson.Field
 		Uri                  respjson.Field
+		Published            respjson.Field
 		Restrictions         respjson.Field
 		ExtraFields          map[string]respjson.Field
 		raw                  string

@@ -63,6 +63,12 @@ type UserGetProfileResponse struct {
 	Href string `json:"href"`
 	// The user's profile image.
 	Images []shared.ImageObject `json:"images"`
+	// The playlist's public/private status (if it should be added to the user's
+	// profile or not): `true` the playlist will be public, `false` the playlist will
+	// be private, `null` the playlist status is not relevant. For more about
+	// public/private status, see
+	// [Working with Playlists](/documentation/web-api/concepts/playlists)
+	Published bool `json:"published"`
 	// The object type.
 	//
 	// Any of "user".
@@ -78,6 +84,7 @@ type UserGetProfileResponse struct {
 		Followers    respjson.Field
 		Href         respjson.Field
 		Images       respjson.Field
+		Published    respjson.Field
 		Type         respjson.Field
 		Uri          respjson.Field
 		ExtraFields  map[string]respjson.Field

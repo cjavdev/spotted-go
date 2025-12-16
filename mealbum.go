@@ -100,10 +100,17 @@ type MeAlbumListResponse struct {
 	AddedAt time.Time `json:"added_at" format:"date-time"`
 	// Information about the album.
 	Album MeAlbumListResponseAlbum `json:"album"`
+	// The playlist's public/private status (if it should be added to the user's
+	// profile or not): `true` the playlist will be public, `false` the playlist will
+	// be private, `null` the playlist status is not relevant. For more about
+	// public/private status, see
+	// [Working with Playlists](/documentation/web-api/concepts/playlists)
+	Published bool `json:"published"`
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
 		AddedAt     respjson.Field
 		Album       respjson.Field
+		Published   respjson.Field
 		ExtraFields map[string]respjson.Field
 		raw         string
 	} `json:"-"`
@@ -167,6 +174,12 @@ type MeAlbumListResponseAlbum struct {
 	// The popularity of the album. The value will be between 0 and 100, with 100 being
 	// the most popular.
 	Popularity int64 `json:"popularity"`
+	// The playlist's public/private status (if it should be added to the user's
+	// profile or not): `true` the playlist will be public, `false` the playlist will
+	// be private, `null` the playlist status is not relevant. For more about
+	// public/private status, see
+	// [Working with Playlists](/documentation/web-api/concepts/playlists)
+	Published bool `json:"published"`
 	// Included in the response when a content restriction is applied.
 	Restrictions shared.AlbumRestrictionObject `json:"restrictions"`
 	// The tracks of the album.
@@ -191,6 +204,7 @@ type MeAlbumListResponseAlbum struct {
 		Genres               respjson.Field
 		Label                respjson.Field
 		Popularity           respjson.Field
+		Published            respjson.Field
 		Restrictions         respjson.Field
 		Tracks               respjson.Field
 		ExtraFields          map[string]respjson.Field
@@ -219,6 +233,12 @@ type MeAlbumListResponseAlbumTracks struct {
 	// The total number of items available to return.
 	Total int64                          `json:"total,required"`
 	Items []shared.SimplifiedTrackObject `json:"items"`
+	// The playlist's public/private status (if it should be added to the user's
+	// profile or not): `true` the playlist will be public, `false` the playlist will
+	// be private, `null` the playlist status is not relevant. For more about
+	// public/private status, see
+	// [Working with Playlists](/documentation/web-api/concepts/playlists)
+	Published bool `json:"published"`
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
 		Href        respjson.Field
@@ -228,6 +248,7 @@ type MeAlbumListResponseAlbumTracks struct {
 		Previous    respjson.Field
 		Total       respjson.Field
 		Items       respjson.Field
+		Published   respjson.Field
 		ExtraFields map[string]respjson.Field
 		raw         string
 	} `json:"-"`

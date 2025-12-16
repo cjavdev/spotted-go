@@ -141,6 +141,12 @@ type AlbumGetResponse struct {
 	// The popularity of the album. The value will be between 0 and 100, with 100 being
 	// the most popular.
 	Popularity int64 `json:"popularity"`
+	// The playlist's public/private status (if it should be added to the user's
+	// profile or not): `true` the playlist will be public, `false` the playlist will
+	// be private, `null` the playlist status is not relevant. For more about
+	// public/private status, see
+	// [Working with Playlists](/documentation/web-api/concepts/playlists)
+	Published bool `json:"published"`
 	// Included in the response when a content restriction is applied.
 	Restrictions shared.AlbumRestrictionObject `json:"restrictions"`
 	// The tracks of the album.
@@ -165,6 +171,7 @@ type AlbumGetResponse struct {
 		Genres               respjson.Field
 		Label                respjson.Field
 		Popularity           respjson.Field
+		Published            respjson.Field
 		Restrictions         respjson.Field
 		Tracks               respjson.Field
 		ExtraFields          map[string]respjson.Field
@@ -211,6 +218,12 @@ type AlbumGetResponseTracks struct {
 	// The total number of items available to return.
 	Total int64                          `json:"total,required"`
 	Items []shared.SimplifiedTrackObject `json:"items"`
+	// The playlist's public/private status (if it should be added to the user's
+	// profile or not): `true` the playlist will be public, `false` the playlist will
+	// be private, `null` the playlist status is not relevant. For more about
+	// public/private status, see
+	// [Working with Playlists](/documentation/web-api/concepts/playlists)
+	Published bool `json:"published"`
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
 		Href        respjson.Field
@@ -220,6 +233,7 @@ type AlbumGetResponseTracks struct {
 		Previous    respjson.Field
 		Total       respjson.Field
 		Items       respjson.Field
+		Published   respjson.Field
 		ExtraFields map[string]respjson.Field
 		raw         string
 	} `json:"-"`
@@ -298,6 +312,12 @@ type AlbumBulkGetResponseAlbum struct {
 	// The popularity of the album. The value will be between 0 and 100, with 100 being
 	// the most popular.
 	Popularity int64 `json:"popularity"`
+	// The playlist's public/private status (if it should be added to the user's
+	// profile or not): `true` the playlist will be public, `false` the playlist will
+	// be private, `null` the playlist status is not relevant. For more about
+	// public/private status, see
+	// [Working with Playlists](/documentation/web-api/concepts/playlists)
+	Published bool `json:"published"`
 	// Included in the response when a content restriction is applied.
 	Restrictions shared.AlbumRestrictionObject `json:"restrictions"`
 	// The tracks of the album.
@@ -322,6 +342,7 @@ type AlbumBulkGetResponseAlbum struct {
 		Genres               respjson.Field
 		Label                respjson.Field
 		Popularity           respjson.Field
+		Published            respjson.Field
 		Restrictions         respjson.Field
 		Tracks               respjson.Field
 		ExtraFields          map[string]respjson.Field
@@ -350,6 +371,12 @@ type AlbumBulkGetResponseAlbumTracks struct {
 	// The total number of items available to return.
 	Total int64                          `json:"total,required"`
 	Items []shared.SimplifiedTrackObject `json:"items"`
+	// The playlist's public/private status (if it should be added to the user's
+	// profile or not): `true` the playlist will be public, `false` the playlist will
+	// be private, `null` the playlist status is not relevant. For more about
+	// public/private status, see
+	// [Working with Playlists](/documentation/web-api/concepts/playlists)
+	Published bool `json:"published"`
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
 		Href        respjson.Field
@@ -359,6 +386,7 @@ type AlbumBulkGetResponseAlbumTracks struct {
 		Previous    respjson.Field
 		Total       respjson.Field
 		Items       respjson.Field
+		Published   respjson.Field
 		ExtraFields map[string]respjson.Field
 		raw         string
 	} `json:"-"`

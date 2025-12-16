@@ -89,6 +89,12 @@ type SearchQueryResponseAlbums struct {
 	// The total number of items available to return.
 	Total int64                           `json:"total,required"`
 	Items []SearchQueryResponseAlbumsItem `json:"items"`
+	// The playlist's public/private status (if it should be added to the user's
+	// profile or not): `true` the playlist will be public, `false` the playlist will
+	// be private, `null` the playlist status is not relevant. For more about
+	// public/private status, see
+	// [Working with Playlists](/documentation/web-api/concepts/playlists)
+	Published bool `json:"published"`
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
 		Href        respjson.Field
@@ -98,6 +104,7 @@ type SearchQueryResponseAlbums struct {
 		Previous    respjson.Field
 		Total       respjson.Field
 		Items       respjson.Field
+		Published   respjson.Field
 		ExtraFields map[string]respjson.Field
 		raw         string
 	} `json:"-"`
@@ -147,6 +154,12 @@ type SearchQueryResponseAlbumsItem struct {
 	// The [Spotify URI](/documentation/web-api/concepts/spotify-uris-ids) for the
 	// album.
 	Uri string `json:"uri,required"`
+	// The playlist's public/private status (if it should be added to the user's
+	// profile or not): `true` the playlist will be public, `false` the playlist will
+	// be private, `null` the playlist status is not relevant. For more about
+	// public/private status, see
+	// [Working with Playlists](/documentation/web-api/concepts/playlists)
+	Published bool `json:"published"`
 	// Included in the response when a content restriction is applied.
 	Restrictions shared.AlbumRestrictionObject `json:"restrictions"`
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
@@ -164,6 +177,7 @@ type SearchQueryResponseAlbumsItem struct {
 		TotalTracks          respjson.Field
 		Type                 respjson.Field
 		Uri                  respjson.Field
+		Published            respjson.Field
 		Restrictions         respjson.Field
 		ExtraFields          map[string]respjson.Field
 		raw                  string
@@ -190,6 +204,12 @@ type SearchQueryResponseArtists struct {
 	// The total number of items available to return.
 	Total int64                 `json:"total,required"`
 	Items []shared.ArtistObject `json:"items"`
+	// The playlist's public/private status (if it should be added to the user's
+	// profile or not): `true` the playlist will be public, `false` the playlist will
+	// be private, `null` the playlist status is not relevant. For more about
+	// public/private status, see
+	// [Working with Playlists](/documentation/web-api/concepts/playlists)
+	Published bool `json:"published"`
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
 		Href        respjson.Field
@@ -199,6 +219,7 @@ type SearchQueryResponseArtists struct {
 		Previous    respjson.Field
 		Total       respjson.Field
 		Items       respjson.Field
+		Published   respjson.Field
 		ExtraFields map[string]respjson.Field
 		raw         string
 	} `json:"-"`
@@ -224,6 +245,12 @@ type SearchQueryResponseAudiobooks struct {
 	// The total number of items available to return.
 	Total int64                  `json:"total,required"`
 	Items []shared.AudiobookBase `json:"items"`
+	// The playlist's public/private status (if it should be added to the user's
+	// profile or not): `true` the playlist will be public, `false` the playlist will
+	// be private, `null` the playlist status is not relevant. For more about
+	// public/private status, see
+	// [Working with Playlists](/documentation/web-api/concepts/playlists)
+	Published bool `json:"published"`
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
 		Href        respjson.Field
@@ -233,6 +260,7 @@ type SearchQueryResponseAudiobooks struct {
 		Previous    respjson.Field
 		Total       respjson.Field
 		Items       respjson.Field
+		Published   respjson.Field
 		ExtraFields map[string]respjson.Field
 		raw         string
 	} `json:"-"`
@@ -258,6 +286,12 @@ type SearchQueryResponseEpisodes struct {
 	// The total number of items available to return.
 	Total int64                            `json:"total,required"`
 	Items []shared.SimplifiedEpisodeObject `json:"items"`
+	// The playlist's public/private status (if it should be added to the user's
+	// profile or not): `true` the playlist will be public, `false` the playlist will
+	// be private, `null` the playlist status is not relevant. For more about
+	// public/private status, see
+	// [Working with Playlists](/documentation/web-api/concepts/playlists)
+	Published bool `json:"published"`
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
 		Href        respjson.Field
@@ -267,6 +301,7 @@ type SearchQueryResponseEpisodes struct {
 		Previous    respjson.Field
 		Total       respjson.Field
 		Items       respjson.Field
+		Published   respjson.Field
 		ExtraFields map[string]respjson.Field
 		raw         string
 	} `json:"-"`
@@ -292,6 +327,12 @@ type SearchQueryResponseShows struct {
 	// The total number of items available to return.
 	Total int64             `json:"total,required"`
 	Items []shared.ShowBase `json:"items"`
+	// The playlist's public/private status (if it should be added to the user's
+	// profile or not): `true` the playlist will be public, `false` the playlist will
+	// be private, `null` the playlist status is not relevant. For more about
+	// public/private status, see
+	// [Working with Playlists](/documentation/web-api/concepts/playlists)
+	Published bool `json:"published"`
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
 		Href        respjson.Field
@@ -301,6 +342,7 @@ type SearchQueryResponseShows struct {
 		Previous    respjson.Field
 		Total       respjson.Field
 		Items       respjson.Field
+		Published   respjson.Field
 		ExtraFields map[string]respjson.Field
 		raw         string
 	} `json:"-"`
@@ -326,6 +368,12 @@ type SearchQueryResponseTracks struct {
 	// The total number of items available to return.
 	Total int64                `json:"total,required"`
 	Items []shared.TrackObject `json:"items"`
+	// The playlist's public/private status (if it should be added to the user's
+	// profile or not): `true` the playlist will be public, `false` the playlist will
+	// be private, `null` the playlist status is not relevant. For more about
+	// public/private status, see
+	// [Working with Playlists](/documentation/web-api/concepts/playlists)
+	Published bool `json:"published"`
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
 		Href        respjson.Field
@@ -335,6 +383,7 @@ type SearchQueryResponseTracks struct {
 		Previous    respjson.Field
 		Total       respjson.Field
 		Items       respjson.Field
+		Published   respjson.Field
 		ExtraFields map[string]respjson.Field
 		raw         string
 	} `json:"-"`

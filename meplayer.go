@@ -196,6 +196,12 @@ type ContextObject struct {
 	ExternalURLs shared.ExternalURLObject `json:"external_urls"`
 	// A link to the Web API endpoint providing full details of the track.
 	Href string `json:"href"`
+	// The playlist's public/private status (if it should be added to the user's
+	// profile or not): `true` the playlist will be public, `false` the playlist will
+	// be private, `null` the playlist status is not relevant. For more about
+	// public/private status, see
+	// [Working with Playlists](/documentation/web-api/concepts/playlists)
+	Published bool `json:"published"`
 	// The object type, e.g. "artist", "playlist", "album", "show".
 	Type string `json:"type"`
 	// The [Spotify URI](/documentation/web-api/concepts/spotify-uris-ids) for the
@@ -205,6 +211,7 @@ type ContextObject struct {
 	JSON struct {
 		ExternalURLs respjson.Field
 		Href         respjson.Field
+		Published    respjson.Field
 		Type         respjson.Field
 		Uri          respjson.Field
 		ExtraFields  map[string]respjson.Field
@@ -234,6 +241,12 @@ type DeviceObject struct {
 	// configure (e.g. \"Loudest speaker\") and some devices have a generic name
 	// associated with the manufacturer or device model.
 	Name string `json:"name"`
+	// The playlist's public/private status (if it should be added to the user's
+	// profile or not): `true` the playlist will be public, `false` the playlist will
+	// be private, `null` the playlist status is not relevant. For more about
+	// public/private status, see
+	// [Working with Playlists](/documentation/web-api/concepts/playlists)
+	Published bool `json:"published"`
 	// If this device can be used to set the volume.
 	SupportsVolume bool `json:"supports_volume"`
 	// Device type, such as "computer", "smartphone" or "speaker".
@@ -247,6 +260,7 @@ type DeviceObject struct {
 		IsPrivateSession respjson.Field
 		IsRestricted     respjson.Field
 		Name             respjson.Field
+		Published        respjson.Field
 		SupportsVolume   respjson.Field
 		Type             respjson.Field
 		VolumePercent    respjson.Field
@@ -276,6 +290,12 @@ type MePlayerGetCurrentlyPlayingResponse struct {
 	Item MePlayerGetCurrentlyPlayingResponseItemUnion `json:"item"`
 	// Progress into the currently playing track or episode. Can be `null`.
 	ProgressMs int64 `json:"progress_ms"`
+	// The playlist's public/private status (if it should be added to the user's
+	// profile or not): `true` the playlist will be public, `false` the playlist will
+	// be private, `null` the playlist status is not relevant. For more about
+	// public/private status, see
+	// [Working with Playlists](/documentation/web-api/concepts/playlists)
+	Published bool `json:"published"`
 	// Unix Millisecond Timestamp when data was fetched
 	Timestamp int64 `json:"timestamp"`
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
@@ -286,6 +306,7 @@ type MePlayerGetCurrentlyPlayingResponse struct {
 		IsPlaying            respjson.Field
 		Item                 respjson.Field
 		ProgressMs           respjson.Field
+		Published            respjson.Field
 		Timestamp            respjson.Field
 		ExtraFields          map[string]respjson.Field
 		raw                  string
@@ -305,6 +326,12 @@ type MePlayerGetCurrentlyPlayingResponseActions struct {
 	InterruptingPlayback bool `json:"interrupting_playback"`
 	// Pausing. Optional field.
 	Pausing bool `json:"pausing"`
+	// The playlist's public/private status (if it should be added to the user's
+	// profile or not): `true` the playlist will be public, `false` the playlist will
+	// be private, `null` the playlist status is not relevant. For more about
+	// public/private status, see
+	// [Working with Playlists](/documentation/web-api/concepts/playlists)
+	Published bool `json:"published"`
 	// Resuming. Optional field.
 	Resuming bool `json:"resuming"`
 	// Seeking playback location. Optional field.
@@ -325,6 +352,7 @@ type MePlayerGetCurrentlyPlayingResponseActions struct {
 	JSON struct {
 		InterruptingPlayback  respjson.Field
 		Pausing               respjson.Field
+		Published             respjson.Field
 		Resuming              respjson.Field
 		Seeking               respjson.Field
 		SkippingNext          respjson.Field
@@ -378,6 +406,7 @@ type MePlayerGetCurrentlyPlayingResponseItemUnion struct {
 	Popularity int64 `json:"popularity"`
 	// This field is from variant [shared.TrackObject].
 	PreviewURL string `json:"preview_url"`
+	Published  bool   `json:"published"`
 	// This field is a union of [shared.TrackRestrictionObject],
 	// [shared.EpisodeRestrictionObject]
 	Restrictions MePlayerGetCurrentlyPlayingResponseItemUnionRestrictions `json:"restrictions"`
@@ -425,6 +454,7 @@ type MePlayerGetCurrentlyPlayingResponseItemUnion struct {
 		Name                 respjson.Field
 		Popularity           respjson.Field
 		PreviewURL           respjson.Field
+		Published            respjson.Field
 		Restrictions         respjson.Field
 		TrackNumber          respjson.Field
 		Type                 respjson.Field
@@ -494,10 +524,12 @@ func (r *MePlayerGetCurrentlyPlayingResponseItemUnion) UnmarshalJSON(data []byte
 // For type safety it is recommended to directly use a variant of the
 // [MePlayerGetCurrentlyPlayingResponseItemUnion].
 type MePlayerGetCurrentlyPlayingResponseItemUnionRestrictions struct {
-	Reason string `json:"reason"`
-	JSON   struct {
-		Reason respjson.Field
-		raw    string
+	Published bool   `json:"published"`
+	Reason    string `json:"reason"`
+	JSON      struct {
+		Published respjson.Field
+		Reason    respjson.Field
+		raw       string
 	} `json:"-"`
 }
 
@@ -538,6 +570,12 @@ type MePlayerGetStateResponse struct {
 	Item MePlayerGetStateResponseItemUnion `json:"item"`
 	// Progress into the currently playing track or episode. Can be `null`.
 	ProgressMs int64 `json:"progress_ms"`
+	// The playlist's public/private status (if it should be added to the user's
+	// profile or not): `true` the playlist will be public, `false` the playlist will
+	// be private, `null` the playlist status is not relevant. For more about
+	// public/private status, see
+	// [Working with Playlists](/documentation/web-api/concepts/playlists)
+	Published bool `json:"published"`
 	// off, track, context
 	RepeatState string `json:"repeat_state"`
 	// If shuffle is on or off.
@@ -554,6 +592,7 @@ type MePlayerGetStateResponse struct {
 		IsPlaying            respjson.Field
 		Item                 respjson.Field
 		ProgressMs           respjson.Field
+		Published            respjson.Field
 		RepeatState          respjson.Field
 		ShuffleState         respjson.Field
 		Timestamp            respjson.Field
@@ -575,6 +614,12 @@ type MePlayerGetStateResponseActions struct {
 	InterruptingPlayback bool `json:"interrupting_playback"`
 	// Pausing. Optional field.
 	Pausing bool `json:"pausing"`
+	// The playlist's public/private status (if it should be added to the user's
+	// profile or not): `true` the playlist will be public, `false` the playlist will
+	// be private, `null` the playlist status is not relevant. For more about
+	// public/private status, see
+	// [Working with Playlists](/documentation/web-api/concepts/playlists)
+	Published bool `json:"published"`
 	// Resuming. Optional field.
 	Resuming bool `json:"resuming"`
 	// Seeking playback location. Optional field.
@@ -595,6 +640,7 @@ type MePlayerGetStateResponseActions struct {
 	JSON struct {
 		InterruptingPlayback  respjson.Field
 		Pausing               respjson.Field
+		Published             respjson.Field
 		Resuming              respjson.Field
 		Seeking               respjson.Field
 		SkippingNext          respjson.Field
@@ -648,6 +694,7 @@ type MePlayerGetStateResponseItemUnion struct {
 	Popularity int64 `json:"popularity"`
 	// This field is from variant [shared.TrackObject].
 	PreviewURL string `json:"preview_url"`
+	Published  bool   `json:"published"`
 	// This field is a union of [shared.TrackRestrictionObject],
 	// [shared.EpisodeRestrictionObject]
 	Restrictions MePlayerGetStateResponseItemUnionRestrictions `json:"restrictions"`
@@ -695,6 +742,7 @@ type MePlayerGetStateResponseItemUnion struct {
 		Name                 respjson.Field
 		Popularity           respjson.Field
 		PreviewURL           respjson.Field
+		Published            respjson.Field
 		Restrictions         respjson.Field
 		TrackNumber          respjson.Field
 		Type                 respjson.Field
@@ -764,10 +812,12 @@ func (r *MePlayerGetStateResponseItemUnion) UnmarshalJSON(data []byte) error {
 // For type safety it is recommended to directly use a variant of the
 // [MePlayerGetStateResponseItemUnion].
 type MePlayerGetStateResponseItemUnionRestrictions struct {
-	Reason string `json:"reason"`
-	JSON   struct {
-		Reason respjson.Field
-		raw    string
+	Published bool   `json:"published"`
+	Reason    string `json:"reason"`
+	JSON      struct {
+		Published respjson.Field
+		Reason    respjson.Field
+		raw       string
 	} `json:"-"`
 }
 
@@ -780,12 +830,19 @@ type MePlayerListRecentlyPlayedResponse struct {
 	Context ContextObject `json:"context"`
 	// The date and time the track was played.
 	PlayedAt time.Time `json:"played_at" format:"date-time"`
+	// The playlist's public/private status (if it should be added to the user's
+	// profile or not): `true` the playlist will be public, `false` the playlist will
+	// be private, `null` the playlist status is not relevant. For more about
+	// public/private status, see
+	// [Working with Playlists](/documentation/web-api/concepts/playlists)
+	Published bool `json:"published"`
 	// The track the user listened to.
 	Track shared.TrackObject `json:"track"`
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
 		Context     respjson.Field
 		PlayedAt    respjson.Field
+		Published   respjson.Field
 		Track       respjson.Field
 		ExtraFields map[string]respjson.Field
 		raw         string

@@ -55,12 +55,19 @@ type TimeIntervalObject struct {
 	Confidence float64 `json:"confidence"`
 	// The duration (in seconds) of the time interval.
 	Duration float64 `json:"duration"`
+	// The playlist's public/private status (if it should be added to the user's
+	// profile or not): `true` the playlist will be public, `false` the playlist will
+	// be private, `null` the playlist status is not relevant. For more about
+	// public/private status, see
+	// [Working with Playlists](/documentation/web-api/concepts/playlists)
+	Published bool `json:"published"`
 	// The starting point (in seconds) of the time interval.
 	Start float64 `json:"start"`
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
 		Confidence  respjson.Field
 		Duration    respjson.Field
+		Published   respjson.Field
 		Start       respjson.Field
 		ExtraFields map[string]respjson.Field
 		raw         string
@@ -82,6 +89,12 @@ type AudioAnalysisGetResponse struct {
 	// multiples of tatums.
 	Beats []TimeIntervalObject         `json:"beats"`
 	Meta  AudioAnalysisGetResponseMeta `json:"meta"`
+	// The playlist's public/private status (if it should be added to the user's
+	// profile or not): `true` the playlist will be public, `false` the playlist will
+	// be private, `null` the playlist status is not relevant. For more about
+	// public/private status, see
+	// [Working with Playlists](/documentation/web-api/concepts/playlists)
+	Published bool `json:"published"`
 	// Sections are defined by large variations in rhythm or timbre, e.g. chorus,
 	// verse, bridge, guitar solo, etc. Each section contains its own descriptions of
 	// tempo, key, mode, time_signature, and loudness.
@@ -97,6 +110,7 @@ type AudioAnalysisGetResponse struct {
 		Bars        respjson.Field
 		Beats       respjson.Field
 		Meta        respjson.Field
+		Published   respjson.Field
 		Sections    respjson.Field
 		Segments    respjson.Field
 		Tatums      respjson.Field
@@ -175,6 +189,12 @@ type AudioAnalysisGetResponseSection struct {
 	Mode float64 `json:"mode"`
 	// The confidence, from 0.0 to 1.0, of the reliability of the `mode`.
 	ModeConfidence float64 `json:"mode_confidence"`
+	// The playlist's public/private status (if it should be added to the user's
+	// profile or not): `true` the playlist will be public, `false` the playlist will
+	// be private, `null` the playlist status is not relevant. For more about
+	// public/private status, see
+	// [Working with Playlists](/documentation/web-api/concepts/playlists)
+	Published bool `json:"published"`
 	// The starting point (in seconds) of the section.
 	Start float64 `json:"start"`
 	// The overall estimated tempo of the section in beats per minute (BPM). In musical
@@ -201,6 +221,7 @@ type AudioAnalysisGetResponseSection struct {
 		Loudness                respjson.Field
 		Mode                    respjson.Field
 		ModeConfidence          respjson.Field
+		Published               respjson.Field
 		Start                   respjson.Field
 		Tempo                   respjson.Field
 		TempoConfidence         respjson.Field
@@ -251,6 +272,12 @@ type AudioAnalysisGetResponseSegment struct {
 	// the 12 vector indices are a combination of low-power spectrum values at their
 	// respective pitch frequencies. ![pitch vector](/assets/audio/Pitch_vector.png)
 	Pitches []float64 `json:"pitches"`
+	// The playlist's public/private status (if it should be added to the user's
+	// profile or not): `true` the playlist will be public, `false` the playlist will
+	// be private, `null` the playlist status is not relevant. For more about
+	// public/private status, see
+	// [Working with Playlists](/documentation/web-api/concepts/playlists)
+	Published bool `json:"published"`
 	// The starting point (in seconds) of the segment.
 	Start float64 `json:"start"`
 	// Timbre is the quality of a musical note or sound that distinguishes different
@@ -282,6 +309,7 @@ type AudioAnalysisGetResponseSegment struct {
 		LoudnessMaxTime respjson.Field
 		LoudnessStart   respjson.Field
 		Pitches         respjson.Field
+		Published       respjson.Field
 		Start           respjson.Field
 		Timbre          respjson.Field
 		ExtraFields     map[string]respjson.Field

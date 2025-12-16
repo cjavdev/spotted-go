@@ -19,6 +19,12 @@ type paramUnion = param.APIUnion
 type paramObj = param.APIObject
 
 type AlbumRestrictionObject struct {
+	// The playlist's public/private status (if it should be added to the user's
+	// profile or not): `true` the playlist will be public, `false` the playlist will
+	// be private, `null` the playlist status is not relevant. For more about
+	// public/private status, see
+	// [Working with Playlists](/documentation/web-api/concepts/playlists)
+	Published bool `json:"published"`
 	// The reason for the restriction. Albums may be restricted if the content is not
 	// available in a given market, to the user's subscription type, or when the user's
 	// account is set to not play explicit content. Additional reasons may be added in
@@ -28,6 +34,7 @@ type AlbumRestrictionObject struct {
 	Reason AlbumRestrictionObjectReason `json:"reason"`
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
+		Published   respjson.Field
 		Reason      respjson.Field
 		ExtraFields map[string]respjson.Field
 		raw         string
@@ -73,6 +80,12 @@ type ArtistObject struct {
 	// being the most popular. The artist's popularity is calculated from the
 	// popularity of all the artist's tracks.
 	Popularity int64 `json:"popularity"`
+	// The playlist's public/private status (if it should be added to the user's
+	// profile or not): `true` the playlist will be public, `false` the playlist will
+	// be private, `null` the playlist status is not relevant. For more about
+	// public/private status, see
+	// [Working with Playlists](/documentation/web-api/concepts/playlists)
+	Published bool `json:"published"`
 	// The object type.
 	//
 	// Any of "artist".
@@ -90,6 +103,7 @@ type ArtistObject struct {
 		Images       respjson.Field
 		Name         respjson.Field
 		Popularity   respjson.Field
+		Published    respjson.Field
 		Type         respjson.Field
 		Uri          respjson.Field
 		ExtraFields  map[string]respjson.Field
@@ -156,6 +170,12 @@ type AudiobookBase struct {
 	Uri string `json:"uri,required"`
 	// The edition of the audiobook.
 	Edition string `json:"edition"`
+	// The playlist's public/private status (if it should be added to the user's
+	// profile or not): `true` the playlist will be public, `false` the playlist will
+	// be private, `null` the playlist status is not relevant. For more about
+	// public/private status, see
+	// [Working with Playlists](/documentation/web-api/concepts/playlists)
+	Published bool `json:"published"`
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
 		ID               respjson.Field
@@ -177,6 +197,7 @@ type AudiobookBase struct {
 		Type             respjson.Field
 		Uri              respjson.Field
 		Edition          respjson.Field
+		Published        respjson.Field
 		ExtraFields      map[string]respjson.Field
 		raw              string
 	} `json:"-"`
@@ -191,9 +212,16 @@ func (r *AudiobookBase) UnmarshalJSON(data []byte) error {
 type AuthorObject struct {
 	// The name of the author.
 	Name string `json:"name"`
+	// The playlist's public/private status (if it should be added to the user's
+	// profile or not): `true` the playlist will be public, `false` the playlist will
+	// be private, `null` the playlist status is not relevant. For more about
+	// public/private status, see
+	// [Working with Playlists](/documentation/web-api/concepts/playlists)
+	Published bool `json:"published"`
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
 		Name        respjson.Field
+		Published   respjson.Field
 		ExtraFields map[string]respjson.Field
 		raw         string
 	} `json:"-"`
@@ -206,6 +234,12 @@ func (r *AuthorObject) UnmarshalJSON(data []byte) error {
 }
 
 type ChapterRestrictionObject struct {
+	// The playlist's public/private status (if it should be added to the user's
+	// profile or not): `true` the playlist will be public, `false` the playlist will
+	// be private, `null` the playlist status is not relevant. For more about
+	// public/private status, see
+	// [Working with Playlists](/documentation/web-api/concepts/playlists)
+	Published bool `json:"published"`
 	// The reason for the restriction. Supported values:
 	//
 	//   - `market` - The content item is not available in the given market.
@@ -220,6 +254,7 @@ type ChapterRestrictionObject struct {
 	Reason string `json:"reason"`
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
+		Published   respjson.Field
 		Reason      respjson.Field
 		ExtraFields map[string]respjson.Field
 		raw         string
@@ -233,6 +268,12 @@ func (r *ChapterRestrictionObject) UnmarshalJSON(data []byte) error {
 }
 
 type CopyrightObject struct {
+	// The playlist's public/private status (if it should be added to the user's
+	// profile or not): `true` the playlist will be public, `false` the playlist will
+	// be private, `null` the playlist status is not relevant. For more about
+	// public/private status, see
+	// [Working with Playlists](/documentation/web-api/concepts/playlists)
+	Published bool `json:"published"`
 	// The copyright text for this content.
 	Text string `json:"text"`
 	// The type of copyright: `C` = the copyright, `P` = the sound recording
@@ -240,6 +281,7 @@ type CopyrightObject struct {
 	Type string `json:"type"`
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
+		Published   respjson.Field
 		Text        respjson.Field
 		Type        respjson.Field
 		ExtraFields map[string]respjson.Field
@@ -307,6 +349,12 @@ type EpisodeObject struct {
 	//
 	// Deprecated: deprecated
 	Language string `json:"language"`
+	// The playlist's public/private status (if it should be added to the user's
+	// profile or not): `true` the playlist will be public, `false` the playlist will
+	// be private, `null` the playlist status is not relevant. For more about
+	// public/private status, see
+	// [Working with Playlists](/documentation/web-api/concepts/playlists)
+	Published bool `json:"published"`
 	// Included in the response when a content restriction is applied.
 	Restrictions EpisodeRestrictionObject `json:"restrictions"`
 	// The user's most recent position in the episode. Set if the supplied access token
@@ -333,6 +381,7 @@ type EpisodeObject struct {
 		Type                 respjson.Field
 		Uri                  respjson.Field
 		Language             respjson.Field
+		Published            respjson.Field
 		Restrictions         respjson.Field
 		ResumePoint          respjson.Field
 		ExtraFields          map[string]respjson.Field
@@ -362,6 +411,12 @@ const (
 )
 
 type EpisodeRestrictionObject struct {
+	// The playlist's public/private status (if it should be added to the user's
+	// profile or not): `true` the playlist will be public, `false` the playlist will
+	// be private, `null` the playlist status is not relevant. For more about
+	// public/private status, see
+	// [Working with Playlists](/documentation/web-api/concepts/playlists)
+	Published bool `json:"published"`
 	// The reason for the restriction. Supported values:
 	//
 	//   - `market` - The content item is not available in the given market.
@@ -375,6 +430,7 @@ type EpisodeRestrictionObject struct {
 	Reason string `json:"reason"`
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
+		Published   respjson.Field
 		Reason      respjson.Field
 		ExtraFields map[string]respjson.Field
 		raw         string
@@ -392,12 +448,19 @@ type ExternalIDObject struct {
 	Ean string `json:"ean"`
 	// [International Standard Recording Code](http://en.wikipedia.org/wiki/International_Standard_Recording_Code)
 	Isrc string `json:"isrc"`
+	// The playlist's public/private status (if it should be added to the user's
+	// profile or not): `true` the playlist will be public, `false` the playlist will
+	// be private, `null` the playlist status is not relevant. For more about
+	// public/private status, see
+	// [Working with Playlists](/documentation/web-api/concepts/playlists)
+	Published bool `json:"published"`
 	// [Universal Product Code](http://en.wikipedia.org/wiki/Universal_Product_Code)
 	Upc string `json:"upc"`
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
 		Ean         respjson.Field
 		Isrc        respjson.Field
+		Published   respjson.Field
 		Upc         respjson.Field
 		ExtraFields map[string]respjson.Field
 		raw         string
@@ -411,11 +474,18 @@ func (r *ExternalIDObject) UnmarshalJSON(data []byte) error {
 }
 
 type ExternalURLObject struct {
+	// The playlist's public/private status (if it should be added to the user's
+	// profile or not): `true` the playlist will be public, `false` the playlist will
+	// be private, `null` the playlist status is not relevant. For more about
+	// public/private status, see
+	// [Working with Playlists](/documentation/web-api/concepts/playlists)
+	Published bool `json:"published"`
 	// The [Spotify URL](/documentation/web-api/concepts/spotify-uris-ids) for the
 	// object.
 	Spotify string `json:"spotify"`
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
+		Published   respjson.Field
 		Spotify     respjson.Field
 		ExtraFields map[string]respjson.Field
 		raw         string
@@ -432,11 +502,18 @@ type FollowersObject struct {
 	// This will always be set to null, as the Web API does not support it at the
 	// moment.
 	Href string `json:"href,nullable"`
+	// The playlist's public/private status (if it should be added to the user's
+	// profile or not): `true` the playlist will be public, `false` the playlist will
+	// be private, `null` the playlist status is not relevant. For more about
+	// public/private status, see
+	// [Working with Playlists](/documentation/web-api/concepts/playlists)
+	Published bool `json:"published"`
 	// The total number of followers.
 	Total int64 `json:"total"`
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
 		Href        respjson.Field
+		Published   respjson.Field
 		Total       respjson.Field
 		ExtraFields map[string]respjson.Field
 		raw         string
@@ -456,11 +533,18 @@ type ImageObject struct {
 	URL string `json:"url,required"`
 	// The image width in pixels.
 	Width int64 `json:"width,required"`
+	// The playlist's public/private status (if it should be added to the user's
+	// profile or not): `true` the playlist will be public, `false` the playlist will
+	// be private, `null` the playlist status is not relevant. For more about
+	// public/private status, see
+	// [Working with Playlists](/documentation/web-api/concepts/playlists)
+	Published bool `json:"published"`
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
 		Height      respjson.Field
 		URL         respjson.Field
 		Width       respjson.Field
+		Published   respjson.Field
 		ExtraFields map[string]respjson.Field
 		raw         string
 	} `json:"-"`
@@ -480,6 +564,12 @@ type LinkedTrackObject struct {
 	ExternalURLs ExternalURLObject `json:"external_urls"`
 	// A link to the Web API endpoint providing full details of the track.
 	Href string `json:"href"`
+	// The playlist's public/private status (if it should be added to the user's
+	// profile or not): `true` the playlist will be public, `false` the playlist will
+	// be private, `null` the playlist status is not relevant. For more about
+	// public/private status, see
+	// [Working with Playlists](/documentation/web-api/concepts/playlists)
+	Published bool `json:"published"`
 	// The object type: "track".
 	Type string `json:"type"`
 	// The [Spotify URI](/documentation/web-api/concepts/spotify-uris-ids) for the
@@ -490,6 +580,7 @@ type LinkedTrackObject struct {
 		ID           respjson.Field
 		ExternalURLs respjson.Field
 		Href         respjson.Field
+		Published    respjson.Field
 		Type         respjson.Field
 		Uri          respjson.Field
 		ExtraFields  map[string]respjson.Field
@@ -506,9 +597,16 @@ func (r *LinkedTrackObject) UnmarshalJSON(data []byte) error {
 type NarratorObject struct {
 	// The name of the Narrator.
 	Name string `json:"name"`
+	// The playlist's public/private status (if it should be added to the user's
+	// profile or not): `true` the playlist will be public, `false` the playlist will
+	// be private, `null` the playlist status is not relevant. For more about
+	// public/private status, see
+	// [Working with Playlists](/documentation/web-api/concepts/playlists)
+	Published bool `json:"published"`
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
 		Name        respjson.Field
+		Published   respjson.Field
 		ExtraFields map[string]respjson.Field
 		raw         string
 	} `json:"-"`
@@ -534,6 +632,12 @@ type PagingPlaylistObject struct {
 	// The total number of items available to return.
 	Total int64                      `json:"total,required"`
 	Items []SimplifiedPlaylistObject `json:"items"`
+	// The playlist's public/private status (if it should be added to the user's
+	// profile or not): `true` the playlist will be public, `false` the playlist will
+	// be private, `null` the playlist status is not relevant. For more about
+	// public/private status, see
+	// [Working with Playlists](/documentation/web-api/concepts/playlists)
+	Published bool `json:"published"`
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
 		Href        respjson.Field
@@ -543,6 +647,7 @@ type PagingPlaylistObject struct {
 		Previous    respjson.Field
 		Total       respjson.Field
 		Items       respjson.Field
+		Published   respjson.Field
 		ExtraFields map[string]respjson.Field
 		raw         string
 	} `json:"-"`
@@ -564,6 +669,12 @@ type PlaylistTrackObject struct {
 	// Whether this track or episode is a
 	// [local file](/documentation/web-api/concepts/playlists/#local-files) or not.
 	IsLocal bool `json:"is_local"`
+	// The playlist's public/private status (if it should be added to the user's
+	// profile or not): `true` the playlist will be public, `false` the playlist will
+	// be private, `null` the playlist status is not relevant. For more about
+	// public/private status, see
+	// [Working with Playlists](/documentation/web-api/concepts/playlists)
+	Published bool `json:"published"`
 	// Information about the track or episode.
 	Track PlaylistTrackObjectTrackUnion `json:"track"`
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
@@ -571,6 +682,7 @@ type PlaylistTrackObject struct {
 		AddedAt     respjson.Field
 		AddedBy     respjson.Field
 		IsLocal     respjson.Field
+		Published   respjson.Field
 		Track       respjson.Field
 		ExtraFields map[string]respjson.Field
 		raw         string
@@ -616,6 +728,7 @@ type PlaylistTrackObjectTrackUnion struct {
 	Popularity int64 `json:"popularity"`
 	// This field is from variant [TrackObject].
 	PreviewURL string `json:"preview_url"`
+	Published  bool   `json:"published"`
 	// This field is a union of [TrackRestrictionObject], [EpisodeRestrictionObject]
 	Restrictions PlaylistTrackObjectTrackUnionRestrictions `json:"restrictions"`
 	// This field is from variant [TrackObject].
@@ -662,6 +775,7 @@ type PlaylistTrackObjectTrackUnion struct {
 		Name                 respjson.Field
 		Popularity           respjson.Field
 		PreviewURL           respjson.Field
+		Published            respjson.Field
 		Restrictions         respjson.Field
 		TrackNumber          respjson.Field
 		Type                 respjson.Field
@@ -730,10 +844,12 @@ func (r *PlaylistTrackObjectTrackUnion) UnmarshalJSON(data []byte) error {
 // For type safety it is recommended to directly use a variant of the
 // [PlaylistTrackObjectTrackUnion].
 type PlaylistTrackObjectTrackUnionRestrictions struct {
-	Reason string `json:"reason"`
-	JSON   struct {
-		Reason respjson.Field
-		raw    string
+	Published bool   `json:"published"`
+	Reason    string `json:"reason"`
+	JSON      struct {
+		Published respjson.Field
+		Reason    respjson.Field
+		raw       string
 	} `json:"-"`
 }
 
@@ -745,11 +861,18 @@ type PlaylistTracksRefObject struct {
 	// A link to the Web API endpoint where full details of the playlist's tracks can
 	// be retrieved.
 	Href string `json:"href"`
+	// The playlist's public/private status (if it should be added to the user's
+	// profile or not): `true` the playlist will be public, `false` the playlist will
+	// be private, `null` the playlist status is not relevant. For more about
+	// public/private status, see
+	// [Working with Playlists](/documentation/web-api/concepts/playlists)
+	Published bool `json:"published"`
 	// Number of tracks in the playlist.
 	Total int64 `json:"total"`
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
 		Href        respjson.Field
+		Published   respjson.Field
 		Total       respjson.Field
 		ExtraFields map[string]respjson.Field
 		raw         string
@@ -770,6 +893,12 @@ type PlaylistUserObject struct {
 	ExternalURLs ExternalURLObject `json:"external_urls"`
 	// A link to the Web API endpoint for this user.
 	Href string `json:"href"`
+	// The playlist's public/private status (if it should be added to the user's
+	// profile or not): `true` the playlist will be public, `false` the playlist will
+	// be private, `null` the playlist status is not relevant. For more about
+	// public/private status, see
+	// [Working with Playlists](/documentation/web-api/concepts/playlists)
+	Published bool `json:"published"`
 	// The object type.
 	//
 	// Any of "user".
@@ -782,6 +911,7 @@ type PlaylistUserObject struct {
 		ID           respjson.Field
 		ExternalURLs respjson.Field
 		Href         respjson.Field
+		Published    respjson.Field
 		Type         respjson.Field
 		Uri          respjson.Field
 		ExtraFields  map[string]respjson.Field
@@ -805,11 +935,18 @@ const (
 type ResumePointObject struct {
 	// Whether or not the episode has been fully played by the user.
 	FullyPlayed bool `json:"fully_played"`
+	// The playlist's public/private status (if it should be added to the user's
+	// profile or not): `true` the playlist will be public, `false` the playlist will
+	// be private, `null` the playlist status is not relevant. For more about
+	// public/private status, see
+	// [Working with Playlists](/documentation/web-api/concepts/playlists)
+	Published bool `json:"published"`
 	// The user's most recent position in the episode in milliseconds.
 	ResumePositionMs int64 `json:"resume_position_ms"`
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
 		FullyPlayed      respjson.Field
+		Published        respjson.Field
 		ResumePositionMs respjson.Field
 		ExtraFields      map[string]respjson.Field
 		raw              string
@@ -863,6 +1000,12 @@ type ShowBase struct {
 	// The [Spotify URI](/documentation/web-api/concepts/spotify-uris-ids) for the
 	// show.
 	Uri string `json:"uri,required"`
+	// The playlist's public/private status (if it should be added to the user's
+	// profile or not): `true` the playlist will be public, `false` the playlist will
+	// be private, `null` the playlist status is not relevant. For more about
+	// public/private status, see
+	// [Working with Playlists](/documentation/web-api/concepts/playlists)
+	Published bool `json:"published"`
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
 		ID                 respjson.Field
@@ -882,6 +1025,7 @@ type ShowBase struct {
 		TotalEpisodes      respjson.Field
 		Type               respjson.Field
 		Uri                respjson.Field
+		Published          respjson.Field
 		ExtraFields        map[string]respjson.Field
 		raw                string
 	} `json:"-"`
@@ -903,6 +1047,12 @@ type SimplifiedArtistObject struct {
 	Href string `json:"href"`
 	// The name of the artist.
 	Name string `json:"name"`
+	// The playlist's public/private status (if it should be added to the user's
+	// profile or not): `true` the playlist will be public, `false` the playlist will
+	// be private, `null` the playlist status is not relevant. For more about
+	// public/private status, see
+	// [Working with Playlists](/documentation/web-api/concepts/playlists)
+	Published bool `json:"published"`
 	// The object type.
 	//
 	// Any of "artist".
@@ -916,6 +1066,7 @@ type SimplifiedArtistObject struct {
 		ExternalURLs respjson.Field
 		Href         respjson.Field
 		Name         respjson.Field
+		Published    respjson.Field
 		Type         respjson.Field
 		Uri          respjson.Field
 		ExtraFields  map[string]respjson.Field
@@ -988,6 +1139,12 @@ type SimplifiedEpisodeObject struct {
 	//
 	// Deprecated: deprecated
 	Language string `json:"language"`
+	// The playlist's public/private status (if it should be added to the user's
+	// profile or not): `true` the playlist will be public, `false` the playlist will
+	// be private, `null` the playlist status is not relevant. For more about
+	// public/private status, see
+	// [Working with Playlists](/documentation/web-api/concepts/playlists)
+	Published bool `json:"published"`
 	// Included in the response when a content restriction is applied.
 	Restrictions EpisodeRestrictionObject `json:"restrictions"`
 	// The user's most recent position in the episode. Set if the supplied access token
@@ -1013,6 +1170,7 @@ type SimplifiedEpisodeObject struct {
 		Type                 respjson.Field
 		Uri                  respjson.Field
 		Language             respjson.Field
+		Published            respjson.Field
 		Restrictions         respjson.Field
 		ResumePoint          respjson.Field
 		ExtraFields          map[string]respjson.Field
@@ -1058,9 +1216,10 @@ type SimplifiedPlaylistObject struct {
 	Name string `json:"name"`
 	// The user who owns the playlist
 	Owner SimplifiedPlaylistObjectOwner `json:"owner"`
-	// The playlist's public/private status (if it is added to the user's profile):
-	// `true` the playlist is public, `false` the playlist is private, `null` the
-	// playlist status is not relevant. For more about public/private status, see
+	// The playlist's public/private status (if it should be added to the user's
+	// profile or not): `true` the playlist will be public, `false` the playlist will
+	// be private, `null` the playlist status is not relevant. For more about
+	// public/private status, see
 	// [Working with Playlists](/documentation/web-api/concepts/playlists)
 	Published bool `json:"published"`
 	// The version identifier for the current playlist. Can be supplied in other
@@ -1160,6 +1319,12 @@ type SimplifiedTrackObject struct {
 	//
 	// Deprecated: deprecated
 	PreviewURL string `json:"preview_url,nullable"`
+	// The playlist's public/private status (if it should be added to the user's
+	// profile or not): `true` the playlist will be public, `false` the playlist will
+	// be private, `null` the playlist status is not relevant. For more about
+	// public/private status, see
+	// [Working with Playlists](/documentation/web-api/concepts/playlists)
+	Published bool `json:"published"`
 	// Included in the response when a content restriction is applied.
 	Restrictions TrackRestrictionObject `json:"restrictions"`
 	// The number of the track. If an album has several discs, the track number is the
@@ -1185,6 +1350,7 @@ type SimplifiedTrackObject struct {
 		LinkedFrom       respjson.Field
 		Name             respjson.Field
 		PreviewURL       respjson.Field
+		Published        respjson.Field
 		Restrictions     respjson.Field
 		TrackNumber      respjson.Field
 		Type             respjson.Field
@@ -1254,6 +1420,12 @@ type TrackObject struct {
 	//
 	// Deprecated: deprecated
 	PreviewURL string `json:"preview_url,nullable"`
+	// The playlist's public/private status (if it should be added to the user's
+	// profile or not): `true` the playlist will be public, `false` the playlist will
+	// be private, `null` the playlist status is not relevant. For more about
+	// public/private status, see
+	// [Working with Playlists](/documentation/web-api/concepts/playlists)
+	Published bool `json:"published"`
 	// Included in the response when a content restriction is applied.
 	Restrictions TrackRestrictionObject `json:"restrictions"`
 	// The number of the track. If an album has several discs, the track number is the
@@ -1284,6 +1456,7 @@ type TrackObject struct {
 		Name             respjson.Field
 		Popularity       respjson.Field
 		PreviewURL       respjson.Field
+		Published        respjson.Field
 		Restrictions     respjson.Field
 		TrackNumber      respjson.Field
 		Type             respjson.Field
@@ -1345,6 +1518,12 @@ type TrackObjectAlbum struct {
 	// The [Spotify URI](/documentation/web-api/concepts/spotify-uris-ids) for the
 	// album.
 	Uri string `json:"uri,required"`
+	// The playlist's public/private status (if it should be added to the user's
+	// profile or not): `true` the playlist will be public, `false` the playlist will
+	// be private, `null` the playlist status is not relevant. For more about
+	// public/private status, see
+	// [Working with Playlists](/documentation/web-api/concepts/playlists)
+	Published bool `json:"published"`
 	// Included in the response when a content restriction is applied.
 	Restrictions AlbumRestrictionObject `json:"restrictions"`
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
@@ -1362,6 +1541,7 @@ type TrackObjectAlbum struct {
 		TotalTracks          respjson.Field
 		Type                 respjson.Field
 		Uri                  respjson.Field
+		Published            respjson.Field
 		Restrictions         respjson.Field
 		ExtraFields          map[string]respjson.Field
 		raw                  string
@@ -1382,6 +1562,12 @@ const (
 )
 
 type TrackRestrictionObject struct {
+	// The playlist's public/private status (if it should be added to the user's
+	// profile or not): `true` the playlist will be public, `false` the playlist will
+	// be private, `null` the playlist status is not relevant. For more about
+	// public/private status, see
+	// [Working with Playlists](/documentation/web-api/concepts/playlists)
+	Published bool `json:"published"`
 	// The reason for the restriction. Supported values:
 	//
 	//   - `market` - The content item is not available in the given market.
@@ -1395,6 +1581,7 @@ type TrackRestrictionObject struct {
 	Reason string `json:"reason"`
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
+		Published   respjson.Field
 		Reason      respjson.Field
 		ExtraFields map[string]respjson.Field
 		raw         string

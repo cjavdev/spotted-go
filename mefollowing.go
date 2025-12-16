@@ -100,6 +100,12 @@ type MeFollowingBulkGetResponseArtists struct {
 	Limit int64 `json:"limit"`
 	// URL to the next page of items. ( `null` if none)
 	Next string `json:"next"`
+	// The playlist's public/private status (if it should be added to the user's
+	// profile or not): `true` the playlist will be public, `false` the playlist will
+	// be private, `null` the playlist status is not relevant. For more about
+	// public/private status, see
+	// [Working with Playlists](/documentation/web-api/concepts/playlists)
+	Published bool `json:"published"`
 	// The total number of items available to return.
 	Total int64 `json:"total"`
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
@@ -109,6 +115,7 @@ type MeFollowingBulkGetResponseArtists struct {
 		Items       respjson.Field
 		Limit       respjson.Field
 		Next        respjson.Field
+		Published   respjson.Field
 		Total       respjson.Field
 		ExtraFields map[string]respjson.Field
 		raw         string
@@ -127,10 +134,17 @@ type MeFollowingBulkGetResponseArtistsCursors struct {
 	After string `json:"after"`
 	// The cursor to use as key to find the previous page of items.
 	Before string `json:"before"`
+	// The playlist's public/private status (if it should be added to the user's
+	// profile or not): `true` the playlist will be public, `false` the playlist will
+	// be private, `null` the playlist status is not relevant. For more about
+	// public/private status, see
+	// [Working with Playlists](/documentation/web-api/concepts/playlists)
+	Published bool `json:"published"`
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
 		After       respjson.Field
 		Before      respjson.Field
+		Published   respjson.Field
 		ExtraFields map[string]respjson.Field
 		raw         string
 	} `json:"-"`

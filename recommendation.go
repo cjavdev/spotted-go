@@ -68,10 +68,17 @@ type RecommendationGetResponse struct {
 	Seeds []RecommendationGetResponseSeed `json:"seeds,required"`
 	// An array of track objects ordered according to the parameters supplied.
 	Tracks []shared.TrackObject `json:"tracks,required"`
+	// The playlist's public/private status (if it should be added to the user's
+	// profile or not): `true` the playlist will be public, `false` the playlist will
+	// be private, `null` the playlist status is not relevant. For more about
+	// public/private status, see
+	// [Working with Playlists](/documentation/web-api/concepts/playlists)
+	Published bool `json:"published"`
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
 		Seeds       respjson.Field
 		Tracks      respjson.Field
+		Published   respjson.Field
 		ExtraFields map[string]respjson.Field
 		raw         string
 	} `json:"-"`
@@ -98,6 +105,12 @@ type RecommendationGetResponseSeed struct {
 	Href string `json:"href"`
 	// The number of recommended tracks available for this seed.
 	InitialPoolSize int64 `json:"initialPoolSize"`
+	// The playlist's public/private status (if it should be added to the user's
+	// profile or not): `true` the playlist will be public, `false` the playlist will
+	// be private, `null` the playlist status is not relevant. For more about
+	// public/private status, see
+	// [Working with Playlists](/documentation/web-api/concepts/playlists)
+	Published bool `json:"published"`
 	// The entity type of this seed. One of `artist`, `track` or `genre`.
 	Type string `json:"type"`
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
@@ -107,6 +120,7 @@ type RecommendationGetResponseSeed struct {
 		AfterRelinkingSize respjson.Field
 		Href               respjson.Field
 		InitialPoolSize    respjson.Field
+		Published          respjson.Field
 		Type               respjson.Field
 		ExtraFields        map[string]respjson.Field
 		raw                string

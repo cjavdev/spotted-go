@@ -25,6 +25,7 @@ func TestUsage(t *testing.T) {
 		option.WithClientID("My Client ID"),
 		option.WithClientSecret("My Client Secret"),
 	)
+	t.Skip("Prism tests are disabled")
 	album, err := client.Albums.Get(
 		context.TODO(),
 		"4aawyAB9vmqN3uQ7FjRGTy",

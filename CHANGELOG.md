@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.12.1 (2025-12-18)
+
+Full Changelog: [v0.12.0...v0.12.1](https://github.com/cjavdev/spotted-go/compare/v0.12.0...v0.12.1)
+
+### Bug Fixes
+
+* skip usage tests that don't work with Prism ([6864a3d](https://github.com/cjavdev/spotted-go/commit/6864a3d02a1ff09a202d943cc10cd4abe598d26f))
+
 ## 0.12.0 (2025-12-16)
 
 Full Changelog: [v0.11.0...v0.12.0](https://github.com/cjavdev/spotted-go/compare/v0.11.0...v0.12.0)

@@ -28,8 +28,8 @@ func TestAutoPagination(t *testing.T) {
 		context.TODO(),
 		"showid",
 		spotted.ShowListEpisodesParams{
-			Limit:  spotted.Int(5),
-			Offset: spotted.Int(10),
+			Limit:  spotted.Int(10),
+			Offset: spotted.Int(20),
 		},
 	)
 	// Prism mock isn't going to give us real pagination

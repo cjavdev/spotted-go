@@ -29,8 +29,8 @@ func TestManualPagination(t *testing.T) {
 		context.TODO(),
 		"showid",
 		spotted.ShowListEpisodesParams{
-			Limit:  spotted.Int(5),
-			Offset: spotted.Int(10),
+			Limit:  spotted.Int(10),
+			Offset: spotted.Int(20),
 		},
 	)
 	if err != nil {

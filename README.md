@@ -294,8 +294,8 @@ iter := client.Shows.ListEpisodesAutoPaging(
 	context.TODO(),
 	"showid",
 	spotted.ShowListEpisodesParams{
-		Limit:  spotted.Int(5),
-		Offset: spotted.Int(10),
+		Limit:  spotted.Int(10),
+		Offset: spotted.Int(20),
 	},
 )
 // Automatically fetches more pages as needed.
@@ -316,8 +316,8 @@ page, err := client.Shows.ListEpisodes(
 	context.TODO(),
 	"showid",
 	spotted.ShowListEpisodesParams{
-		Limit:  spotted.Int(5),
-		Offset: spotted.Int(10),
+		Limit:  spotted.Int(10),
+		Offset: spotted.Int(20),
 	},
 )
 for page != nil {

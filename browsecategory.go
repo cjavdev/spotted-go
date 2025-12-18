@@ -14,6 +14,7 @@ import (
 	"github.com/cjavdev/spotted-go/internal/apiquery"
 	"github.com/cjavdev/spotted-go/internal/requestconfig"
 	"github.com/cjavdev/spotted-go/option"
+	"github.com/cjavdev/spotted-go/packages/pagination"
 	"github.com/cjavdev/spotted-go/packages/param"
 	"github.com/cjavdev/spotted-go/packages/respjson"
 	"github.com/cjavdev/spotted-go/shared"
@@ -53,11 +54,27 @@ func (r *BrowseCategoryService) Get(ctx context.Context, categoryID string, quer
 
 // Get a list of categories used to tag items in Spotify (on, for example, the
 // Spotify player’s “Browse” tab).
-func (r *BrowseCategoryService) List(ctx context.Context, query BrowseCategoryListParams, opts ...option.RequestOption) (res *BrowseCategoryListResponse, err error) {
+func (r *BrowseCategoryService) List(ctx context.Context, query BrowseCategoryListParams, opts ...option.RequestOption) (res *pagination.CursorURLPage[BrowseCategoryListResponse], err error) {
+	var raw *http.Response
 	opts = slices.Concat(r.Options, opts)
+	opts = append([]option.RequestOption{option.WithResponseInto(&raw)}, opts...)
 	path := "browse/categories"
-	err = requestconfig.ExecuteNewRequest(ctx, http.MethodGet, path, query, &res, opts...)
-	return
+	cfg, err := requestconfig.NewRequestConfig(ctx, http.MethodGet, path, query, &res, opts...)
+	if err != nil {
+		return nil, err
+	}
+	err = cfg.Execute()
+	if err != nil {
+		return nil, err
+	}
+	res.SetPageConfig(cfg, raw)
+	return res, nil
+}
+
+// Get a list of categories used to tag items in Spotify (on, for example, the
+// Spotify player’s “Browse” tab).
+func (r *BrowseCategoryService) ListAutoPaging(ctx context.Context, query BrowseCategoryListParams, opts ...option.RequestOption) *pagination.CursorURLPageAutoPager[BrowseCategoryListResponse] {
+	return pagination.NewCursorURLPageAutoPager(r.List(ctx, query, opts...))
 }
 
 // Get a list of Spotify playlists tagged with a particular category.
@@ -109,63 +126,6 @@ func (r *BrowseCategoryGetResponse) UnmarshalJSON(data []byte) error {
 }
 
 type BrowseCategoryListResponse struct {
-	Categories BrowseCategoryListResponseCategories `json:"categories,required"`
-	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
-	JSON struct {
-		Categories  respjson.Field
-		ExtraFields map[string]respjson.Field
-		raw         string
-	} `json:"-"`
-}
-
-// Returns the unmodified JSON received from the API
-func (r BrowseCategoryListResponse) RawJSON() string { return r.JSON.raw }
-func (r *BrowseCategoryListResponse) UnmarshalJSON(data []byte) error {
-	return apijson.UnmarshalRoot(data, r)
-}
-
-type BrowseCategoryListResponseCategories struct {
-	// A link to the Web API endpoint returning the full result of the request
-	Href string `json:"href,required"`
-	// The maximum number of items in the response (as set in the query or by default).
-	Limit int64 `json:"limit,required"`
-	// URL to the next page of items. ( `null` if none)
-	Next string `json:"next,required"`
-	// The offset of the items returned (as set in the query or by default)
-	Offset int64 `json:"offset,required"`
-	// URL to the previous page of items. ( `null` if none)
-	Previous string `json:"previous,required"`
-	// The total number of items available to return.
-	Total int64                                      `json:"total,required"`
-	Items []BrowseCategoryListResponseCategoriesItem `json:"items"`
-	// The playlist's public/private status (if it should be added to the user's
-	// profile or not): `true` the playlist will be public, `false` the playlist will
-	// be private, `null` the playlist status is not relevant. For more about
-	// public/private status, see
-	// [Working with Playlists](/documentation/web-api/concepts/playlists)
-	Published bool `json:"published"`
-	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
-	JSON struct {
-		Href        respjson.Field
-		Limit       respjson.Field
-		Next        respjson.Field
-		Offset      respjson.Field
-		Previous    respjson.Field
-		Total       respjson.Field
-		Items       respjson.Field
-		Published   respjson.Field
-		ExtraFields map[string]respjson.Field
-		raw         string
-	} `json:"-"`
-}
-
-// Returns the unmodified JSON received from the API
-func (r BrowseCategoryListResponseCategories) RawJSON() string { return r.JSON.raw }
-func (r *BrowseCategoryListResponseCategories) UnmarshalJSON(data []byte) error {
-	return apijson.UnmarshalRoot(data, r)
-}
-
-type BrowseCategoryListResponseCategoriesItem struct {
 	// The [Spotify category ID](/documentation/web-api/concepts/spotify-uris-ids) of
 	// the category.
 	ID string `json:"id,required"`
@@ -194,8 +154,8 @@ type BrowseCategoryListResponseCategoriesItem struct {
 }
 
 // Returns the unmodified JSON received from the API
-func (r BrowseCategoryListResponseCategoriesItem) RawJSON() string { return r.JSON.raw }
-func (r *BrowseCategoryListResponseCategoriesItem) UnmarshalJSON(data []byte) error {
+func (r BrowseCategoryListResponse) RawJSON() string { return r.JSON.raw }
+func (r *BrowseCategoryListResponse) UnmarshalJSON(data []byte) error {
 	return apijson.UnmarshalRoot(data, r)
 }
 

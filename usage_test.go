@@ -24,6 +24,7 @@ func TestUsage(t *testing.T) {
 		option.WithBaseURL(baseURL),
 		option.WithAccessToken("My Access Token"),
 	)
+	t.Skip("Prism tests are disabled")
 	album, err := client.Albums.Get(
 		context.TODO(),
 		"4aawyAB9vmqN3uQ7FjRGTy",

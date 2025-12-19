@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.14.1 (2025-12-19)
+
+Full Changelog: [v0.14.0...v0.14.1](https://github.com/cjavdev/spotted-go/compare/v0.14.0...v0.14.1)
+
+### Chores
+
+* add float64 to valid types for RegisterFieldValidator ([9577af0](https://github.com/cjavdev/spotted-go/commit/9577af008b5959444dfa8c4a67d4dc5e34f254a2))
+
 ## 0.14.0 (2025-12-18)
 
 Full Changelog: [v0.13.0...v0.14.0](https://github.com/cjavdev/spotted-go/compare/v0.13.0...v0.14.0)

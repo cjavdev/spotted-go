@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.16.0 (2026-01-06)
+
+Full Changelog: [v0.15.0...v0.16.0](https://github.com/cjavdev/spotted-go/compare/v0.15.0...v0.16.0)
+
+### Features
+
+* **api:** manual updates ([888f01a](https://github.com/cjavdev/spotted-go/commit/888f01aa992c1dff4f51bd00399fba5acbd2f055))
+
+
+### Documentation
+
+* prominently feature MCP server setup in root SDK readmes ([f8de6ac](https://github.com/cjavdev/spotted-go/commit/f8de6ac538f9337961cd91201eda043d9c2147b7))
+
 ## 0.15.0 (2026-01-05)
 
 Full Changelog: [v0.14.1...v0.15.0](https://github.com/cjavdev/spotted-go/compare/v0.14.1...v0.15.0)

@@ -22,7 +22,8 @@ func TestAutoPagination(t *testing.T) {
 	}
 	client := spotted.NewClient(
 		option.WithBaseURL(baseURL),
-		option.WithAccessToken("My Access Token"),
+		option.WithClientID("My Client ID"),
+		option.WithClientSecret("My Client Secret"),
 	)
 	iter := client.Shows.ListEpisodesAutoPaging(
 		context.TODO(),

@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.17.1 (2026-01-14)
+
+Full Changelog: [v0.17.0...v0.17.1](https://github.com/cjavdev/spotted-go/compare/v0.17.0...v0.17.1)
+
+### Chores
+
+* remove custom code ([87bf399](https://github.com/cjavdev/spotted-go/commit/87bf3999fd4e2c54b608510b77289b05d4822c4e))
+
 ## 0.17.0 (2026-01-14)
 
 Full Changelog: [v0.16.0...v0.17.0](https://github.com/cjavdev/spotted-go/compare/v0.16.0...v0.17.0)

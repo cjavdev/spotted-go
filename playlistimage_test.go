@@ -26,7 +26,8 @@ func TestPlaylistImageUpdate(t *testing.T) {
 	baseURL := server.URL
 	client := spotted.NewClient(
 		option.WithBaseURL(baseURL),
-		option.WithAccessToken("My Access Token"),
+		option.WithClientID("My Client ID"),
+		option.WithClientSecret("My Client Secret"),
 	)
 	resp, err := client.Playlists.Images.Update(
 		context.TODO(),
@@ -66,7 +67,8 @@ func TestPlaylistImageList(t *testing.T) {
 	}
 	client := spotted.NewClient(
 		option.WithBaseURL(baseURL),
-		option.WithAccessToken("My Access Token"),
+		option.WithClientID("My Client ID"),
+		option.WithClientSecret("My Client Secret"),
 	)
 	_, err := client.Playlists.Images.List(context.TODO(), "3cEYpjA9oz9GiPac4AsH4n")
 	if err != nil {

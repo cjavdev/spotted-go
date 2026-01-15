@@ -6,7 +6,7 @@
 
 <!-- x-release-please-end -->
 
-The Unofficial Spotify library provides convenient access to the [Spotted REST API](https://spotted.stldocs.com?docs)
+The Unofficial Spotify library provides convenient access to the [Spotted REST API](https://spotted.cjav.dev)
 from applications written in Go.
 
 It is generated with [Stainless](https://www.stainless.com/).

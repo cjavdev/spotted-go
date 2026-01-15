@@ -24,8 +24,7 @@ func TestRecommendationGetWithOptionalParams(t *testing.T) {
 	}
 	client := spotted.NewClient(
 		option.WithBaseURL(baseURL),
-		option.WithClientID("My Client ID"),
-		option.WithClientSecret("My Client Secret"),
+		option.WithAccessToken("My Access Token"),
 	)
 	_, err := client.Recommendations.Get(context.TODO(), spotted.RecommendationGetParams{
 		Limit:                  spotted.Int(10),
@@ -96,8 +95,7 @@ func TestRecommendationListAvailableGenreSeeds(t *testing.T) {
 	}
 	client := spotted.NewClient(
 		option.WithBaseURL(baseURL),
-		option.WithClientID("My Client ID"),
-		option.WithClientSecret("My Client Secret"),
+		option.WithAccessToken("My Access Token"),
 	)
 	_, err := client.Recommendations.ListAvailableGenreSeeds(context.TODO())
 	if err != nil {

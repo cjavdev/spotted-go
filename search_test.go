@@ -24,8 +24,7 @@ func TestSearchQueryWithOptionalParams(t *testing.T) {
 	}
 	client := spotted.NewClient(
 		option.WithBaseURL(baseURL),
-		option.WithClientID("My Client ID"),
-		option.WithClientSecret("My Client Secret"),
+		option.WithAccessToken("My Access Token"),
 	)
 	_, err := client.Search.Query(context.TODO(), spotted.SearchQueryParams{
 		Q:               "remaster%20track:Doxy%20artist:Miles%20Davis",

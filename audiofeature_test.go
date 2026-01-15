@@ -24,8 +24,7 @@ func TestAudioFeatureGet(t *testing.T) {
 	}
 	client := spotted.NewClient(
 		option.WithBaseURL(baseURL),
-		option.WithClientID("My Client ID"),
-		option.WithClientSecret("My Client Secret"),
+		option.WithAccessToken("My Access Token"),
 	)
 	_, err := client.AudioFeatures.Get(context.TODO(), "11dFghVXANMlKmJXsNCbNl")
 	if err != nil {
@@ -48,8 +47,7 @@ func TestAudioFeatureBulkGet(t *testing.T) {
 	}
 	client := spotted.NewClient(
 		option.WithBaseURL(baseURL),
-		option.WithClientID("My Client ID"),
-		option.WithClientSecret("My Client Secret"),
+		option.WithAccessToken("My Access Token"),
 	)
 	_, err := client.AudioFeatures.BulkGet(context.TODO(), spotted.AudioFeatureBulkGetParams{
 		IDs: "7ouMYWpwJ422jRcDASZB7P,4VqPOruhp5EdPBeR92t6lQ,2takcwOaAZWiXQijPHIx7B",

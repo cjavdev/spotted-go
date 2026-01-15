@@ -24,8 +24,7 @@ func TestMeFollowingBulkGetWithOptionalParams(t *testing.T) {
 	}
 	client := spotted.NewClient(
 		option.WithBaseURL(baseURL),
-		option.WithClientID("My Client ID"),
-		option.WithClientSecret("My Client Secret"),
+		option.WithAccessToken("My Access Token"),
 	)
 	_, err := client.Me.Following.BulkGet(context.TODO(), spotted.MeFollowingBulkGetParams{
 		Type:  "artist",
@@ -52,8 +51,7 @@ func TestMeFollowingCheck(t *testing.T) {
 	}
 	client := spotted.NewClient(
 		option.WithBaseURL(baseURL),
-		option.WithClientID("My Client ID"),
-		option.WithClientSecret("My Client Secret"),
+		option.WithAccessToken("My Access Token"),
 	)
 	_, err := client.Me.Following.Check(context.TODO(), spotted.MeFollowingCheckParams{
 		IDs:  "2CIMQHirSU0MQqyYHq0eOx,57dN52uHvrHOxijzpIgu3E,1vCWHaC5f2uS3yhpwWbIA6",
@@ -79,8 +77,7 @@ func TestMeFollowingFollowWithOptionalParams(t *testing.T) {
 	}
 	client := spotted.NewClient(
 		option.WithBaseURL(baseURL),
-		option.WithClientID("My Client ID"),
-		option.WithClientSecret("My Client Secret"),
+		option.WithAccessToken("My Access Token"),
 	)
 	err := client.Me.Following.Follow(context.TODO(), spotted.MeFollowingFollowParams{
 		IDs:       []string{"string"},
@@ -106,8 +103,7 @@ func TestMeFollowingUnfollowWithOptionalParams(t *testing.T) {
 	}
 	client := spotted.NewClient(
 		option.WithBaseURL(baseURL),
-		option.WithClientID("My Client ID"),
-		option.WithClientSecret("My Client Secret"),
+		option.WithAccessToken("My Access Token"),
 	)
 	err := client.Me.Following.Unfollow(context.TODO(), spotted.MeFollowingUnfollowParams{
 		IDs:       []string{"string"},

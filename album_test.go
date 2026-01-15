@@ -24,8 +24,7 @@ func TestAlbumGetWithOptionalParams(t *testing.T) {
 	}
 	client := spotted.NewClient(
 		option.WithBaseURL(baseURL),
-		option.WithClientID("My Client ID"),
-		option.WithClientSecret("My Client Secret"),
+		option.WithAccessToken("My Access Token"),
 	)
 	_, err := client.Albums.Get(
 		context.TODO(),
@@ -54,8 +53,7 @@ func TestAlbumBulkGetWithOptionalParams(t *testing.T) {
 	}
 	client := spotted.NewClient(
 		option.WithBaseURL(baseURL),
-		option.WithClientID("My Client ID"),
-		option.WithClientSecret("My Client Secret"),
+		option.WithAccessToken("My Access Token"),
 	)
 	_, err := client.Albums.BulkGet(context.TODO(), spotted.AlbumBulkGetParams{
 		IDs:    "382ObEPsp2rxGrnsizN5TX,1A2GTWGtFfWp7KSQTwWOyo,2noRn2Aes5aoNVsU6iWThc",
@@ -81,8 +79,7 @@ func TestAlbumListTracksWithOptionalParams(t *testing.T) {
 	}
 	client := spotted.NewClient(
 		option.WithBaseURL(baseURL),
-		option.WithClientID("My Client ID"),
-		option.WithClientSecret("My Client Secret"),
+		option.WithAccessToken("My Access Token"),
 	)
 	_, err := client.Albums.ListTracks(
 		context.TODO(),

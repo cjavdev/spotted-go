@@ -63,8 +63,7 @@ import (
 
 func main() {
 	client := spotted.NewClient(
-		option.WithClientID("My Client ID"),         // defaults to os.LookupEnv("SPOTIFY_CLIENT_ID")
-		option.WithClientSecret("My Client Secret"), // defaults to os.LookupEnv("SPOTIFY_CLIENT_SECRET")
+		option.WithAccessToken("My Access Token"), // defaults to os.LookupEnv("SPOTIFY_ACCESS_TOKEN")
 	)
 	album, err := client.Albums.Get(
 		context.TODO(),

@@ -24,8 +24,7 @@ func TestTrackGetWithOptionalParams(t *testing.T) {
 	}
 	client := spotted.NewClient(
 		option.WithBaseURL(baseURL),
-		option.WithClientID("My Client ID"),
-		option.WithClientSecret("My Client Secret"),
+		option.WithAccessToken("My Access Token"),
 	)
 	_, err := client.Tracks.Get(
 		context.TODO(),
@@ -54,8 +53,7 @@ func TestTrackBulkGetWithOptionalParams(t *testing.T) {
 	}
 	client := spotted.NewClient(
 		option.WithBaseURL(baseURL),
-		option.WithClientID("My Client ID"),
-		option.WithClientSecret("My Client Secret"),
+		option.WithAccessToken("My Access Token"),
 	)
 	_, err := client.Tracks.BulkGet(context.TODO(), spotted.TrackBulkGetParams{
 		IDs:    "7ouMYWpwJ422jRcDASZB7P,4VqPOruhp5EdPBeR92t6lQ,2takcwOaAZWiXQijPHIx7B",

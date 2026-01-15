@@ -24,8 +24,7 @@ func TestMeShowListWithOptionalParams(t *testing.T) {
 	}
 	client := spotted.NewClient(
 		option.WithBaseURL(baseURL),
-		option.WithClientID("My Client ID"),
-		option.WithClientSecret("My Client Secret"),
+		option.WithAccessToken("My Access Token"),
 	)
 	_, err := client.Me.Shows.List(context.TODO(), spotted.MeShowListParams{
 		Limit:  spotted.Int(10),
@@ -51,8 +50,7 @@ func TestMeShowCheck(t *testing.T) {
 	}
 	client := spotted.NewClient(
 		option.WithBaseURL(baseURL),
-		option.WithClientID("My Client ID"),
-		option.WithClientSecret("My Client Secret"),
+		option.WithAccessToken("My Access Token"),
 	)
 	_, err := client.Me.Shows.Check(context.TODO(), spotted.MeShowCheckParams{
 		IDs: "5CfCWKI5pZ28U0uOzXkDHe,5as3aKmN2k11yfDDDSrvaZ",
@@ -77,8 +75,7 @@ func TestMeShowRemoveWithOptionalParams(t *testing.T) {
 	}
 	client := spotted.NewClient(
 		option.WithBaseURL(baseURL),
-		option.WithClientID("My Client ID"),
-		option.WithClientSecret("My Client Secret"),
+		option.WithAccessToken("My Access Token"),
 	)
 	err := client.Me.Shows.Remove(context.TODO(), spotted.MeShowRemoveParams{
 		IDs:       []string{"string"},
@@ -104,8 +101,7 @@ func TestMeShowSaveWithOptionalParams(t *testing.T) {
 	}
 	client := spotted.NewClient(
 		option.WithBaseURL(baseURL),
-		option.WithClientID("My Client ID"),
-		option.WithClientSecret("My Client Secret"),
+		option.WithAccessToken("My Access Token"),
 	)
 	err := client.Me.Shows.Save(context.TODO(), spotted.MeShowSaveParams{
 		IDs:       []string{"string"},

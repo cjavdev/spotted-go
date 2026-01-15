@@ -24,8 +24,7 @@ func TestBrowseGetFeaturedPlaylistsWithOptionalParams(t *testing.T) {
 	}
 	client := spotted.NewClient(
 		option.WithBaseURL(baseURL),
-		option.WithClientID("My Client ID"),
-		option.WithClientSecret("My Client Secret"),
+		option.WithAccessToken("My Access Token"),
 	)
 	_, err := client.Browse.GetFeaturedPlaylists(context.TODO(), spotted.BrowseGetFeaturedPlaylistsParams{
 		Limit:  spotted.Int(10),
@@ -52,8 +51,7 @@ func TestBrowseGetNewReleasesWithOptionalParams(t *testing.T) {
 	}
 	client := spotted.NewClient(
 		option.WithBaseURL(baseURL),
-		option.WithClientID("My Client ID"),
-		option.WithClientSecret("My Client Secret"),
+		option.WithAccessToken("My Access Token"),
 	)
 	_, err := client.Browse.GetNewReleases(context.TODO(), spotted.BrowseGetNewReleasesParams{
 		Limit:  spotted.Int(10),

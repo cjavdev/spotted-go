@@ -24,8 +24,7 @@ func TestMePlayerQueueAddWithOptionalParams(t *testing.T) {
 	}
 	client := spotted.NewClient(
 		option.WithBaseURL(baseURL),
-		option.WithClientID("My Client ID"),
-		option.WithClientSecret("My Client Secret"),
+		option.WithAccessToken("My Access Token"),
 	)
 	err := client.Me.Player.Queue.Add(context.TODO(), spotted.MePlayerQueueAddParams{
 		Uri:      "spotify:track:4iV5W9uYEdYUVa79Axb7Rh",
@@ -51,8 +50,7 @@ func TestMePlayerQueueGet(t *testing.T) {
 	}
 	client := spotted.NewClient(
 		option.WithBaseURL(baseURL),
-		option.WithClientID("My Client ID"),
-		option.WithClientSecret("My Client Secret"),
+		option.WithAccessToken("My Access Token"),
 	)
 	_, err := client.Me.Player.Queue.Get(context.TODO())
 	if err != nil {

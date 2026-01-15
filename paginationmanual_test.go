@@ -22,8 +22,7 @@ func TestManualPagination(t *testing.T) {
 	}
 	client := spotted.NewClient(
 		option.WithBaseURL(baseURL),
-		option.WithClientID("My Client ID"),
-		option.WithClientSecret("My Client Secret"),
+		option.WithAccessToken("My Access Token"),
 	)
 	page, err := client.Shows.ListEpisodes(
 		context.TODO(),

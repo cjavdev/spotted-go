@@ -24,8 +24,7 @@ func TestArtistGet(t *testing.T) {
 	}
 	client := spotted.NewClient(
 		option.WithBaseURL(baseURL),
-		option.WithClientID("My Client ID"),
-		option.WithClientSecret("My Client Secret"),
+		option.WithAccessToken("My Access Token"),
 	)
 	_, err := client.Artists.Get(context.TODO(), "0TnOYISbd1XYRBk9myaseg")
 	if err != nil {
@@ -48,8 +47,7 @@ func TestArtistBulkGet(t *testing.T) {
 	}
 	client := spotted.NewClient(
 		option.WithBaseURL(baseURL),
-		option.WithClientID("My Client ID"),
-		option.WithClientSecret("My Client Secret"),
+		option.WithAccessToken("My Access Token"),
 	)
 	_, err := client.Artists.BulkGet(context.TODO(), spotted.ArtistBulkGetParams{
 		IDs: "2CIMQHirSU0MQqyYHq0eOx,57dN52uHvrHOxijzpIgu3E,1vCWHaC5f2uS3yhpwWbIA6",
@@ -74,8 +72,7 @@ func TestArtistListAlbumsWithOptionalParams(t *testing.T) {
 	}
 	client := spotted.NewClient(
 		option.WithBaseURL(baseURL),
-		option.WithClientID("My Client ID"),
-		option.WithClientSecret("My Client Secret"),
+		option.WithAccessToken("My Access Token"),
 	)
 	_, err := client.Artists.ListAlbums(
 		context.TODO(),
@@ -107,8 +104,7 @@ func TestArtistListRelatedArtists(t *testing.T) {
 	}
 	client := spotted.NewClient(
 		option.WithBaseURL(baseURL),
-		option.WithClientID("My Client ID"),
-		option.WithClientSecret("My Client Secret"),
+		option.WithAccessToken("My Access Token"),
 	)
 	_, err := client.Artists.ListRelatedArtists(context.TODO(), "0TnOYISbd1XYRBk9myaseg")
 	if err != nil {
@@ -131,8 +127,7 @@ func TestArtistTopTracksWithOptionalParams(t *testing.T) {
 	}
 	client := spotted.NewClient(
 		option.WithBaseURL(baseURL),
-		option.WithClientID("My Client ID"),
-		option.WithClientSecret("My Client Secret"),
+		option.WithAccessToken("My Access Token"),
 	)
 	_, err := client.Artists.TopTracks(
 		context.TODO(),

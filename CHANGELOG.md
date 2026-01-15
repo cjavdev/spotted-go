@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.18.0 (2026-01-15)
+
+Full Changelog: [v0.17.1...v0.18.0](https://github.com/cjavdev/spotted-go/compare/v0.17.1...v0.18.0)
+
+### Features
+
+* **api:** manual updates ([679e6f8](https://github.com/cjavdev/spotted-go/commit/679e6f8c6ec6b98b9e5d00db2e17327df9531891))
+* **api:** manual updates ([1f3a938](https://github.com/cjavdev/spotted-go/commit/1f3a938d7f704e8100e06cbbb968f78fd80306de))
+* **api:** turn off oauth ([2ce2ac2](https://github.com/cjavdev/spotted-go/commit/2ce2ac267bd866484a01d645fa3d8750e6a943e7))
+
 ## 0.17.1 (2026-01-14)
 
 Full Changelog: [v0.17.0...v0.17.1](https://github.com/cjavdev/spotted-go/compare/v0.17.0...v0.17.1)

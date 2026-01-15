@@ -24,8 +24,7 @@ func TestEpisodeGetWithOptionalParams(t *testing.T) {
 	}
 	client := spotted.NewClient(
 		option.WithBaseURL(baseURL),
-		option.WithClientID("My Client ID"),
-		option.WithClientSecret("My Client Secret"),
+		option.WithAccessToken("My Access Token"),
 	)
 	_, err := client.Episodes.Get(
 		context.TODO(),
@@ -54,8 +53,7 @@ func TestEpisodeBulkGetWithOptionalParams(t *testing.T) {
 	}
 	client := spotted.NewClient(
 		option.WithBaseURL(baseURL),
-		option.WithClientID("My Client ID"),
-		option.WithClientSecret("My Client Secret"),
+		option.WithAccessToken("My Access Token"),
 	)
 	_, err := client.Episodes.BulkGet(context.TODO(), spotted.EpisodeBulkGetParams{
 		IDs:    "77o6BIVlYM3msb4MMIL1jH,0Q86acNRm6V9GYx55SXKwf",

@@ -24,8 +24,7 @@ func TestPlaylistFollowerCheckWithOptionalParams(t *testing.T) {
 	}
 	client := spotted.NewClient(
 		option.WithBaseURL(baseURL),
-		option.WithClientID("My Client ID"),
-		option.WithClientSecret("My Client Secret"),
+		option.WithAccessToken("My Access Token"),
 	)
 	_, err := client.Playlists.Followers.Check(
 		context.TODO(),
@@ -54,8 +53,7 @@ func TestPlaylistFollowerFollowWithOptionalParams(t *testing.T) {
 	}
 	client := spotted.NewClient(
 		option.WithBaseURL(baseURL),
-		option.WithClientID("My Client ID"),
-		option.WithClientSecret("My Client Secret"),
+		option.WithAccessToken("My Access Token"),
 	)
 	err := client.Playlists.Followers.Follow(
 		context.TODO(),
@@ -84,8 +82,7 @@ func TestPlaylistFollowerUnfollow(t *testing.T) {
 	}
 	client := spotted.NewClient(
 		option.WithBaseURL(baseURL),
-		option.WithClientID("My Client ID"),
-		option.WithClientSecret("My Client Secret"),
+		option.WithAccessToken("My Access Token"),
 	)
 	err := client.Playlists.Followers.Unfollow(context.TODO(), "3cEYpjA9oz9GiPac4AsH4n")
 	if err != nil {

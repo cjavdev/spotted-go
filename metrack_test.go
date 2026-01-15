@@ -25,8 +25,7 @@ func TestMeTrackListWithOptionalParams(t *testing.T) {
 	}
 	client := spotted.NewClient(
 		option.WithBaseURL(baseURL),
-		option.WithClientID("My Client ID"),
-		option.WithClientSecret("My Client Secret"),
+		option.WithAccessToken("My Access Token"),
 	)
 	_, err := client.Me.Tracks.List(context.TODO(), spotted.MeTrackListParams{
 		Limit:  spotted.Int(10),
@@ -53,8 +52,7 @@ func TestMeTrackCheck(t *testing.T) {
 	}
 	client := spotted.NewClient(
 		option.WithBaseURL(baseURL),
-		option.WithClientID("My Client ID"),
-		option.WithClientSecret("My Client Secret"),
+		option.WithAccessToken("My Access Token"),
 	)
 	_, err := client.Me.Tracks.Check(context.TODO(), spotted.MeTrackCheckParams{
 		IDs: "7ouMYWpwJ422jRcDASZB7P,4VqPOruhp5EdPBeR92t6lQ,2takcwOaAZWiXQijPHIx7B",
@@ -79,8 +77,7 @@ func TestMeTrackRemoveWithOptionalParams(t *testing.T) {
 	}
 	client := spotted.NewClient(
 		option.WithBaseURL(baseURL),
-		option.WithClientID("My Client ID"),
-		option.WithClientSecret("My Client Secret"),
+		option.WithAccessToken("My Access Token"),
 	)
 	err := client.Me.Tracks.Remove(context.TODO(), spotted.MeTrackRemoveParams{
 		IDs:       []string{"string"},
@@ -106,8 +103,7 @@ func TestMeTrackSaveWithOptionalParams(t *testing.T) {
 	}
 	client := spotted.NewClient(
 		option.WithBaseURL(baseURL),
-		option.WithClientID("My Client ID"),
-		option.WithClientSecret("My Client Secret"),
+		option.WithAccessToken("My Access Token"),
 	)
 	err := client.Me.Tracks.Save(context.TODO(), spotted.MeTrackSaveParams{
 		IDs:       []string{"string"},

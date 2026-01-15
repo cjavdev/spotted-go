@@ -24,8 +24,7 @@ func TestBrowseCategoryGetWithOptionalParams(t *testing.T) {
 	}
 	client := spotted.NewClient(
 		option.WithBaseURL(baseURL),
-		option.WithClientID("My Client ID"),
-		option.WithClientSecret("My Client Secret"),
+		option.WithAccessToken("My Access Token"),
 	)
 	_, err := client.Browse.Categories.Get(
 		context.TODO(),
@@ -54,8 +53,7 @@ func TestBrowseCategoryListWithOptionalParams(t *testing.T) {
 	}
 	client := spotted.NewClient(
 		option.WithBaseURL(baseURL),
-		option.WithClientID("My Client ID"),
-		option.WithClientSecret("My Client Secret"),
+		option.WithAccessToken("My Access Token"),
 	)
 	_, err := client.Browse.Categories.List(context.TODO(), spotted.BrowseCategoryListParams{
 		Limit:  spotted.Int(10),
@@ -82,8 +80,7 @@ func TestBrowseCategoryGetPlaylistsWithOptionalParams(t *testing.T) {
 	}
 	client := spotted.NewClient(
 		option.WithBaseURL(baseURL),
-		option.WithClientID("My Client ID"),
-		option.WithClientSecret("My Client Secret"),
+		option.WithAccessToken("My Access Token"),
 	)
 	_, err := client.Browse.Categories.GetPlaylists(
 		context.TODO(),

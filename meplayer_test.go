@@ -24,8 +24,7 @@ func TestMePlayerGetCurrentlyPlayingWithOptionalParams(t *testing.T) {
 	}
 	client := spotted.NewClient(
 		option.WithBaseURL(baseURL),
-		option.WithClientID("My Client ID"),
-		option.WithClientSecret("My Client Secret"),
+		option.WithAccessToken("My Access Token"),
 	)
 	_, err := client.Me.Player.GetCurrentlyPlaying(context.TODO(), spotted.MePlayerGetCurrentlyPlayingParams{
 		AdditionalTypes: spotted.String("additional_types"),
@@ -51,8 +50,7 @@ func TestMePlayerGetDevices(t *testing.T) {
 	}
 	client := spotted.NewClient(
 		option.WithBaseURL(baseURL),
-		option.WithClientID("My Client ID"),
-		option.WithClientSecret("My Client Secret"),
+		option.WithAccessToken("My Access Token"),
 	)
 	_, err := client.Me.Player.GetDevices(context.TODO())
 	if err != nil {
@@ -75,8 +73,7 @@ func TestMePlayerGetStateWithOptionalParams(t *testing.T) {
 	}
 	client := spotted.NewClient(
 		option.WithBaseURL(baseURL),
-		option.WithClientID("My Client ID"),
-		option.WithClientSecret("My Client Secret"),
+		option.WithAccessToken("My Access Token"),
 	)
 	_, err := client.Me.Player.GetState(context.TODO(), spotted.MePlayerGetStateParams{
 		AdditionalTypes: spotted.String("additional_types"),
@@ -102,8 +99,7 @@ func TestMePlayerListRecentlyPlayedWithOptionalParams(t *testing.T) {
 	}
 	client := spotted.NewClient(
 		option.WithBaseURL(baseURL),
-		option.WithClientID("My Client ID"),
-		option.WithClientSecret("My Client Secret"),
+		option.WithAccessToken("My Access Token"),
 	)
 	_, err := client.Me.Player.ListRecentlyPlayed(context.TODO(), spotted.MePlayerListRecentlyPlayedParams{
 		After:  spotted.Int(1484811043508),
@@ -130,8 +126,7 @@ func TestMePlayerPausePlaybackWithOptionalParams(t *testing.T) {
 	}
 	client := spotted.NewClient(
 		option.WithBaseURL(baseURL),
-		option.WithClientID("My Client ID"),
-		option.WithClientSecret("My Client Secret"),
+		option.WithAccessToken("My Access Token"),
 	)
 	err := client.Me.Player.PausePlayback(context.TODO(), spotted.MePlayerPausePlaybackParams{
 		DeviceID: spotted.String("0d1841b0976bae2a3a310dd74c0f3df354899bc8"),
@@ -156,8 +151,7 @@ func TestMePlayerSeekToPositionWithOptionalParams(t *testing.T) {
 	}
 	client := spotted.NewClient(
 		option.WithBaseURL(baseURL),
-		option.WithClientID("My Client ID"),
-		option.WithClientSecret("My Client Secret"),
+		option.WithAccessToken("My Access Token"),
 	)
 	err := client.Me.Player.SeekToPosition(context.TODO(), spotted.MePlayerSeekToPositionParams{
 		PositionMs: 25000,
@@ -183,8 +177,7 @@ func TestMePlayerSetRepeatModeWithOptionalParams(t *testing.T) {
 	}
 	client := spotted.NewClient(
 		option.WithBaseURL(baseURL),
-		option.WithClientID("My Client ID"),
-		option.WithClientSecret("My Client Secret"),
+		option.WithAccessToken("My Access Token"),
 	)
 	err := client.Me.Player.SetRepeatMode(context.TODO(), spotted.MePlayerSetRepeatModeParams{
 		State:    "context",
@@ -210,8 +203,7 @@ func TestMePlayerSetVolumeWithOptionalParams(t *testing.T) {
 	}
 	client := spotted.NewClient(
 		option.WithBaseURL(baseURL),
-		option.WithClientID("My Client ID"),
-		option.WithClientSecret("My Client Secret"),
+		option.WithAccessToken("My Access Token"),
 	)
 	err := client.Me.Player.SetVolume(context.TODO(), spotted.MePlayerSetVolumeParams{
 		VolumePercent: 50,
@@ -237,8 +229,7 @@ func TestMePlayerSkipNextWithOptionalParams(t *testing.T) {
 	}
 	client := spotted.NewClient(
 		option.WithBaseURL(baseURL),
-		option.WithClientID("My Client ID"),
-		option.WithClientSecret("My Client Secret"),
+		option.WithAccessToken("My Access Token"),
 	)
 	err := client.Me.Player.SkipNext(context.TODO(), spotted.MePlayerSkipNextParams{
 		DeviceID: spotted.String("0d1841b0976bae2a3a310dd74c0f3df354899bc8"),
@@ -263,8 +254,7 @@ func TestMePlayerSkipPreviousWithOptionalParams(t *testing.T) {
 	}
 	client := spotted.NewClient(
 		option.WithBaseURL(baseURL),
-		option.WithClientID("My Client ID"),
-		option.WithClientSecret("My Client Secret"),
+		option.WithAccessToken("My Access Token"),
 	)
 	err := client.Me.Player.SkipPrevious(context.TODO(), spotted.MePlayerSkipPreviousParams{
 		DeviceID: spotted.String("0d1841b0976bae2a3a310dd74c0f3df354899bc8"),
@@ -289,8 +279,7 @@ func TestMePlayerStartPlaybackWithOptionalParams(t *testing.T) {
 	}
 	client := spotted.NewClient(
 		option.WithBaseURL(baseURL),
-		option.WithClientID("My Client ID"),
-		option.WithClientSecret("My Client Secret"),
+		option.WithAccessToken("My Access Token"),
 	)
 	err := client.Me.Player.StartPlayback(context.TODO(), spotted.MePlayerStartPlaybackParams{
 		DeviceID:   spotted.String("0d1841b0976bae2a3a310dd74c0f3df354899bc8"),
@@ -322,8 +311,7 @@ func TestMePlayerToggleShuffleWithOptionalParams(t *testing.T) {
 	}
 	client := spotted.NewClient(
 		option.WithBaseURL(baseURL),
-		option.WithClientID("My Client ID"),
-		option.WithClientSecret("My Client Secret"),
+		option.WithAccessToken("My Access Token"),
 	)
 	err := client.Me.Player.ToggleShuffle(context.TODO(), spotted.MePlayerToggleShuffleParams{
 		State:    true,
@@ -349,8 +337,7 @@ func TestMePlayerTransferWithOptionalParams(t *testing.T) {
 	}
 	client := spotted.NewClient(
 		option.WithBaseURL(baseURL),
-		option.WithClientID("My Client ID"),
-		option.WithClientSecret("My Client Secret"),
+		option.WithAccessToken("My Access Token"),
 	)
 	err := client.Me.Player.Transfer(context.TODO(), spotted.MePlayerTransferParams{
 		DeviceIDs: []string{"74ASZWbe4lXaubB36ztrGX"},

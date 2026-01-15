@@ -24,8 +24,7 @@ func TestMeEpisodeListWithOptionalParams(t *testing.T) {
 	}
 	client := spotted.NewClient(
 		option.WithBaseURL(baseURL),
-		option.WithClientID("My Client ID"),
-		option.WithClientSecret("My Client Secret"),
+		option.WithAccessToken("My Access Token"),
 	)
 	_, err := client.Me.Episodes.List(context.TODO(), spotted.MeEpisodeListParams{
 		Limit:  spotted.Int(10),
@@ -52,8 +51,7 @@ func TestMeEpisodeCheck(t *testing.T) {
 	}
 	client := spotted.NewClient(
 		option.WithBaseURL(baseURL),
-		option.WithClientID("My Client ID"),
-		option.WithClientSecret("My Client Secret"),
+		option.WithAccessToken("My Access Token"),
 	)
 	_, err := client.Me.Episodes.Check(context.TODO(), spotted.MeEpisodeCheckParams{
 		IDs: "77o6BIVlYM3msb4MMIL1jH,0Q86acNRm6V9GYx55SXKwf",
@@ -78,8 +76,7 @@ func TestMeEpisodeRemoveWithOptionalParams(t *testing.T) {
 	}
 	client := spotted.NewClient(
 		option.WithBaseURL(baseURL),
-		option.WithClientID("My Client ID"),
-		option.WithClientSecret("My Client Secret"),
+		option.WithAccessToken("My Access Token"),
 	)
 	err := client.Me.Episodes.Remove(context.TODO(), spotted.MeEpisodeRemoveParams{
 		IDs:       []string{"string"},
@@ -105,8 +102,7 @@ func TestMeEpisodeSaveWithOptionalParams(t *testing.T) {
 	}
 	client := spotted.NewClient(
 		option.WithBaseURL(baseURL),
-		option.WithClientID("My Client ID"),
-		option.WithClientSecret("My Client Secret"),
+		option.WithAccessToken("My Access Token"),
 	)
 	err := client.Me.Episodes.Save(context.TODO(), spotted.MeEpisodeSaveParams{
 		IDs:       []string{"string"},

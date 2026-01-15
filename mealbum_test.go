@@ -24,8 +24,7 @@ func TestMeAlbumListWithOptionalParams(t *testing.T) {
 	}
 	client := spotted.NewClient(
 		option.WithBaseURL(baseURL),
-		option.WithClientID("My Client ID"),
-		option.WithClientSecret("My Client Secret"),
+		option.WithAccessToken("My Access Token"),
 	)
 	_, err := client.Me.Albums.List(context.TODO(), spotted.MeAlbumListParams{
 		Limit:  spotted.Int(10),
@@ -52,8 +51,7 @@ func TestMeAlbumCheck(t *testing.T) {
 	}
 	client := spotted.NewClient(
 		option.WithBaseURL(baseURL),
-		option.WithClientID("My Client ID"),
-		option.WithClientSecret("My Client Secret"),
+		option.WithAccessToken("My Access Token"),
 	)
 	_, err := client.Me.Albums.Check(context.TODO(), spotted.MeAlbumCheckParams{
 		IDs: "382ObEPsp2rxGrnsizN5TX,1A2GTWGtFfWp7KSQTwWOyo,2noRn2Aes5aoNVsU6iWThc",
@@ -78,8 +76,7 @@ func TestMeAlbumRemoveWithOptionalParams(t *testing.T) {
 	}
 	client := spotted.NewClient(
 		option.WithBaseURL(baseURL),
-		option.WithClientID("My Client ID"),
-		option.WithClientSecret("My Client Secret"),
+		option.WithAccessToken("My Access Token"),
 	)
 	err := client.Me.Albums.Remove(context.TODO(), spotted.MeAlbumRemoveParams{
 		IDs:       []string{"string"},
@@ -105,8 +102,7 @@ func TestMeAlbumSaveWithOptionalParams(t *testing.T) {
 	}
 	client := spotted.NewClient(
 		option.WithBaseURL(baseURL),
-		option.WithClientID("My Client ID"),
-		option.WithClientSecret("My Client Secret"),
+		option.WithAccessToken("My Access Token"),
 	)
 	err := client.Me.Albums.Save(context.TODO(), spotted.MeAlbumSaveParams{
 		IDs:       []string{"string"},

@@ -24,8 +24,7 @@ func TestMeTopListTopArtistsWithOptionalParams(t *testing.T) {
 	}
 	client := spotted.NewClient(
 		option.WithBaseURL(baseURL),
-		option.WithClientID("My Client ID"),
-		option.WithClientSecret("My Client Secret"),
+		option.WithAccessToken("My Access Token"),
 	)
 	_, err := client.Me.Top.ListTopArtists(context.TODO(), spotted.MeTopListTopArtistsParams{
 		Limit:     spotted.Int(10),
@@ -52,8 +51,7 @@ func TestMeTopListTopTracksWithOptionalParams(t *testing.T) {
 	}
 	client := spotted.NewClient(
 		option.WithBaseURL(baseURL),
-		option.WithClientID("My Client ID"),
-		option.WithClientSecret("My Client Secret"),
+		option.WithAccessToken("My Access Token"),
 	)
 	_, err := client.Me.Top.ListTopTracks(context.TODO(), spotted.MeTopListTopTracksParams{
 		Limit:     spotted.Int(10),

@@ -270,6 +270,6 @@ func WithEnvironmentProduction() RequestOption {
 func WithAccessToken(value string) RequestOption {
 	return requestconfig.RequestOptionFunc(func(r *requestconfig.RequestConfig) error {
 		r.AccessToken = value
-		return nil
+		return r.Apply(WithHeader("authorization", fmt.Sprintf("Bearer %s", r.AccessToken)))
 	})
 }

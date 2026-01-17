@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.18.1 (2026-01-17)
+
+Full Changelog: [v0.18.0...v0.18.1](https://github.com/cjavdev/spotted-go/compare/v0.18.0...v0.18.1)
+
+### Bug Fixes
+
+* **docs:** add missing pointer prefix to api.md return types ([1c75660](https://github.com/cjavdev/spotted-go/commit/1c75660b77296a2cf116480c577481435355d479))
+
+
+### Chores
+
+* **internal:** update `actions/checkout` version ([90516b1](https://github.com/cjavdev/spotted-go/commit/90516b1ff158df72582795612f80b7b9ff82b527))
+
 ## 0.18.0 (2026-01-15)
 
 Full Changelog: [v0.17.1...v0.18.0](https://github.com/cjavdev/spotted-go/compare/v0.17.1...v0.18.0)

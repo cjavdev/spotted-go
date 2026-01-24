@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.19.0 (2026-01-24)
+
+Full Changelog: [v0.18.1...v0.19.0](https://github.com/cjavdev/spotted-go/compare/v0.18.1...v0.19.0)
+
+### Features
+
+* **client:** add a convenient param.SetJSON helper ([ce9e536](https://github.com/cjavdev/spotted-go/commit/ce9e536dfa248bab68087b8ed27186409c58b8b3))
+
 ## 0.18.1 (2026-01-17)
 
 Full Changelog: [v0.18.0...v0.18.1](https://github.com/cjavdev/spotted-go/compare/v0.18.0...v0.18.1)

@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.19.1 (2026-01-29)
+
+Full Changelog: [v0.19.0...v0.19.1](https://github.com/cjavdev/spotted-go/compare/v0.19.0...v0.19.1)
+
+### Bug Fixes
+
+* **docs:** fix mcp installation instructions for remote servers ([b42c303](https://github.com/cjavdev/spotted-go/commit/b42c30303de0d0827e18c661d268fde37734f36d))
+
 ## 0.19.0 (2026-01-24)
 
 Full Changelog: [v0.18.1...v0.19.0](https://github.com/cjavdev/spotted-go/compare/v0.18.1...v0.19.0)

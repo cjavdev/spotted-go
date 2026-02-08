@@ -135,6 +135,8 @@ type MeAlbumListResponseAlbum struct {
 	// [ISO 3166-1 alpha-2 country codes](http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2).
 	// _**NOTE**: an album is considered available in a market when at least 1 of its
 	// tracks is available in that market._
+	//
+	// Deprecated: deprecated
 	AvailableMarkets []string `json:"available_markets,required"`
 	// Known external URLs for this album.
 	ExternalURLs shared.ExternalURLObject `json:"external_urls,required"`
@@ -164,15 +166,21 @@ type MeAlbumListResponseAlbum struct {
 	// The copyright statements of the album.
 	Copyrights []shared.CopyrightObject `json:"copyrights"`
 	// Known external IDs for the album.
+	//
+	// Deprecated: deprecated
 	ExternalIDs shared.ExternalIDObject `json:"external_ids"`
 	// **Deprecated** The array is always empty.
 	//
 	// Deprecated: deprecated
 	Genres []string `json:"genres"`
 	// The label associated with the album.
+	//
+	// Deprecated: deprecated
 	Label string `json:"label"`
 	// The popularity of the album. The value will be between 0 and 100, with 100 being
 	// the most popular.
+	//
+	// Deprecated: deprecated
 	Popularity int64 `json:"popularity"`
 	// The playlist's public/private status (if it should be added to the user's
 	// profile or not): `true` the playlist will be public, `false` the playlist will

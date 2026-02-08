@@ -38,6 +38,8 @@ func NewUserService(opts ...option.RequestOption) (r UserService) {
 }
 
 // Get public profile information about a Spotify user.
+//
+// Deprecated: deprecated
 func (r *UserService) GetProfile(ctx context.Context, userID string, opts ...option.RequestOption) (res *UserGetProfileResponse, err error) {
 	opts = slices.Concat(r.Options, opts)
 	if userID == "" {
@@ -58,6 +60,8 @@ type UserGetProfileResponse struct {
 	// Known public external URLs for this user.
 	ExternalURLs shared.ExternalURLObject `json:"external_urls"`
 	// Information about the followers of this user.
+	//
+	// Deprecated: deprecated
 	Followers shared.FollowersObject `json:"followers"`
 	// A link to the Web API endpoint for this user.
 	Href string `json:"href"`

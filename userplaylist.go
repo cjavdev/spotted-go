@@ -39,9 +39,14 @@ func NewUserPlaylistService(opts ...option.RequestOption) (r UserPlaylistService
 	return
 }
 
+// **Deprecated**: Use
+// [Create Playlist](/documentation/web-api/reference/create-playlist) instead.
+//
 // Create a playlist for a Spotify user. (The playlist will be empty until you
 // [add tracks](/documentation/web-api/reference/add-tracks-to-playlist).) Each
 // user is generally limited to a maximum of 11000 playlists.
+//
+// Deprecated: deprecated
 func (r *UserPlaylistService) New(ctx context.Context, userID string, body UserPlaylistNewParams, opts ...option.RequestOption) (res *UserPlaylistNewResponse, err error) {
 	opts = slices.Concat(r.Options, opts)
 	if userID == "" {
@@ -54,6 +59,8 @@ func (r *UserPlaylistService) New(ctx context.Context, userID string, body UserP
 }
 
 // Get a list of the playlists owned or followed by a Spotify user.
+//
+// Deprecated: deprecated
 func (r *UserPlaylistService) List(ctx context.Context, userID string, query UserPlaylistListParams, opts ...option.RequestOption) (res *pagination.CursorURLPage[shared.SimplifiedPlaylistObject], err error) {
 	var raw *http.Response
 	opts = slices.Concat(r.Options, opts)
@@ -76,6 +83,8 @@ func (r *UserPlaylistService) List(ctx context.Context, userID string, query Use
 }
 
 // Get a list of the playlists owned or followed by a Spotify user.
+//
+// Deprecated: deprecated
 func (r *UserPlaylistService) ListAutoPaging(ctx context.Context, userID string, query UserPlaylistListParams, opts ...option.RequestOption) *pagination.CursorURLPageAutoPager[shared.SimplifiedPlaylistObject] {
 	return pagination.NewCursorURLPageAutoPager(r.List(ctx, userID, query, opts...))
 }
@@ -114,7 +123,8 @@ type UserPlaylistNewResponse struct {
 	// The version identifier for the current playlist. Can be supplied in other
 	// requests to target a specific playlist version
 	SnapshotID string `json:"snapshot_id"`
-	// The tracks of the playlist.
+	// The tracks of the playlist. _**Note**: This field is only available for
+	// playlists owned by the current user._
 	Tracks UserPlaylistNewResponseTracks `json:"tracks"`
 	// The object type: "playlist"
 	Type string `json:"type"`
@@ -167,7 +177,8 @@ func (r *UserPlaylistNewResponseOwner) UnmarshalJSON(data []byte) error {
 	return apijson.UnmarshalRoot(data, r)
 }
 
-// The tracks of the playlist.
+// The tracks of the playlist. _**Note**: This field is only available for
+// playlists owned by the current user._
 type UserPlaylistNewResponseTracks struct {
 	// A link to the Web API endpoint returning the full result of the request
 	Href string `json:"href,required"`

@@ -79,7 +79,7 @@ func TestArtistListAlbumsWithOptionalParams(t *testing.T) {
 		"0TnOYISbd1XYRBk9myaseg",
 		spotted.ArtistListAlbumsParams{
 			IncludeGroups: spotted.String("single,appears_on"),
-			Limit:         spotted.Int(10),
+			Limit:         spotted.Int(5),
 			Market:        spotted.String("ES"),
 			Offset:        spotted.Int(5),
 		},

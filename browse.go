@@ -52,6 +52,8 @@ func (r *BrowseService) GetFeaturedPlaylists(ctx context.Context, query BrowseGe
 
 // Get a list of new album releases featured in Spotify (shown, for example, on a
 // Spotify player’s “Browse” tab).
+//
+// Deprecated: deprecated
 func (r *BrowseService) GetNewReleases(ctx context.Context, query BrowseGetNewReleasesParams, opts ...option.RequestOption) (res *BrowseGetNewReleasesResponse, err error) {
 	opts = slices.Concat(r.Options, opts)
 	path := "browse/new-releases"
@@ -157,6 +159,8 @@ type BrowseGetNewReleasesResponseAlbumsItem struct {
 	// [ISO 3166-1 alpha-2 country codes](http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2).
 	// _**NOTE**: an album is considered available in a market when at least 1 of its
 	// tracks is available in that market._
+	//
+	// Deprecated: deprecated
 	AvailableMarkets []string `json:"available_markets,required"`
 	// Known external URLs for this album.
 	ExternalURLs shared.ExternalURLObject `json:"external_urls,required"`

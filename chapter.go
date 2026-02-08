@@ -56,6 +56,8 @@ func (r *ChapterService) Get(ctx context.Context, id string, query ChapterGetPar
 // Get Spotify catalog information for several audiobook chapters identified by
 // their Spotify IDs. Chapters are only available within the US, UK, Canada,
 // Ireland, New Zealand and Australia markets.
+//
+// Deprecated: deprecated
 func (r *ChapterService) BulkGet(ctx context.Context, query ChapterBulkGetParams, opts ...option.RequestOption) (res *ChapterBulkGetResponse, err error) {
 	opts = slices.Concat(r.Options, opts)
 	path := "chapters"
@@ -113,6 +115,8 @@ type ChapterGetResponse struct {
 	Uri string `json:"uri,required"`
 	// A list of the countries in which the chapter can be played, identified by their
 	// [ISO 3166-1 alpha-2](http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) code.
+	//
+	// Deprecated: deprecated
 	AvailableMarkets []string `json:"available_markets"`
 	// The playlist's public/private status (if it should be added to the user's
 	// profile or not): `true` the playlist will be public, `false` the playlist will
@@ -235,6 +239,8 @@ type ChapterBulkGetResponseChapter struct {
 	Uri string `json:"uri,required"`
 	// A list of the countries in which the chapter can be played, identified by their
 	// [ISO 3166-1 alpha-2](http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) code.
+	//
+	// Deprecated: deprecated
 	AvailableMarkets []string `json:"available_markets"`
 	// The playlist's public/private status (if it should be added to the user's
 	// profile or not): `true` the playlist will be public, `false` the playlist will

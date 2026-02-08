@@ -41,6 +41,8 @@ func NewBrowseCategoryService(opts ...option.RequestOption) (r BrowseCategorySer
 
 // Get a single category used to tag items in Spotify (on, for example, the Spotify
 // player’s “Browse” tab).
+//
+// Deprecated: deprecated
 func (r *BrowseCategoryService) Get(ctx context.Context, categoryID string, query BrowseCategoryGetParams, opts ...option.RequestOption) (res *BrowseCategoryGetResponse, err error) {
 	opts = slices.Concat(r.Options, opts)
 	if categoryID == "" {
@@ -54,6 +56,8 @@ func (r *BrowseCategoryService) Get(ctx context.Context, categoryID string, quer
 
 // Get a list of categories used to tag items in Spotify (on, for example, the
 // Spotify player’s “Browse” tab).
+//
+// Deprecated: deprecated
 func (r *BrowseCategoryService) List(ctx context.Context, query BrowseCategoryListParams, opts ...option.RequestOption) (res *pagination.CursorURLPage[BrowseCategoryListResponse], err error) {
 	var raw *http.Response
 	opts = slices.Concat(r.Options, opts)
@@ -73,6 +77,8 @@ func (r *BrowseCategoryService) List(ctx context.Context, query BrowseCategoryLi
 
 // Get a list of categories used to tag items in Spotify (on, for example, the
 // Spotify player’s “Browse” tab).
+//
+// Deprecated: deprecated
 func (r *BrowseCategoryService) ListAutoPaging(ctx context.Context, query BrowseCategoryListParams, opts ...option.RequestOption) *pagination.CursorURLPageAutoPager[BrowseCategoryListResponse] {
 	return pagination.NewCursorURLPageAutoPager(r.List(ctx, query, opts...))
 }

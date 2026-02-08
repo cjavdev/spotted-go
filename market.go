@@ -33,6 +33,8 @@ func NewMarketService(opts ...option.RequestOption) (r MarketService) {
 }
 
 // Get the list of markets where Spotify is available.
+//
+// Deprecated: deprecated
 func (r *MarketService) List(ctx context.Context, opts ...option.RequestOption) (res *MarketListResponse, err error) {
 	opts = slices.Concat(r.Options, opts)
 	path := "markets"

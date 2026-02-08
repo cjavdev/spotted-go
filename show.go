@@ -53,6 +53,8 @@ func (r *ShowService) Get(ctx context.Context, id string, query ShowGetParams, o
 }
 
 // Get Spotify catalog information for several shows based on their Spotify IDs.
+//
+// Deprecated: deprecated
 func (r *ShowService) BulkGet(ctx context.Context, query ShowBulkGetParams, opts ...option.RequestOption) (res *ShowBulkGetResponse, err error) {
 	opts = slices.Concat(r.Options, opts)
 	path := "shows"

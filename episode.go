@@ -52,6 +52,8 @@ func (r *EpisodeService) Get(ctx context.Context, id string, query EpisodeGetPar
 }
 
 // Get Spotify catalog information for several episodes based on their Spotify IDs.
+//
+// Deprecated: deprecated
 func (r *EpisodeService) BulkGet(ctx context.Context, query EpisodeBulkGetParams, opts ...option.RequestOption) (res *EpisodeBulkGetResponse, err error) {
 	opts = slices.Concat(r.Options, opts)
 	path := "episodes"

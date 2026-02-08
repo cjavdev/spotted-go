@@ -54,6 +54,8 @@ func (r *ArtistService) Get(ctx context.Context, id string, opts ...option.Reque
 }
 
 // Get Spotify catalog information for several artists based on their Spotify IDs.
+//
+// Deprecated: deprecated
 func (r *ArtistService) BulkGet(ctx context.Context, query ArtistBulkGetParams, opts ...option.RequestOption) (res *ArtistBulkGetResponse, err error) {
 	opts = slices.Concat(r.Options, opts)
 	path := "artists"
@@ -62,6 +64,8 @@ func (r *ArtistService) BulkGet(ctx context.Context, query ArtistBulkGetParams, 
 }
 
 // Get Spotify catalog information about an artist's albums.
+//
+// Deprecated: deprecated
 func (r *ArtistService) ListAlbums(ctx context.Context, id string, query ArtistListAlbumsParams, opts ...option.RequestOption) (res *pagination.CursorURLPage[ArtistListAlbumsResponse], err error) {
 	var raw *http.Response
 	opts = slices.Concat(r.Options, opts)
@@ -84,6 +88,8 @@ func (r *ArtistService) ListAlbums(ctx context.Context, id string, query ArtistL
 }
 
 // Get Spotify catalog information about an artist's albums.
+//
+// Deprecated: deprecated
 func (r *ArtistService) ListAlbumsAutoPaging(ctx context.Context, id string, query ArtistListAlbumsParams, opts ...option.RequestOption) *pagination.CursorURLPageAutoPager[ArtistListAlbumsResponse] {
 	return pagination.NewCursorURLPageAutoPager(r.ListAlbums(ctx, id, query, opts...))
 }
@@ -104,6 +110,8 @@ func (r *ArtistService) ListRelatedArtists(ctx context.Context, id string, opts 
 }
 
 // Get Spotify catalog information about an artist's top tracks by country.
+//
+// Deprecated: deprecated
 func (r *ArtistService) TopTracks(ctx context.Context, id string, query ArtistTopTracksParams, opts ...option.RequestOption) (res *ArtistTopTracksResponse, err error) {
 	opts = slices.Concat(r.Options, opts)
 	if id == "" {
@@ -150,6 +158,8 @@ type ArtistListAlbumsResponse struct {
 	// [ISO 3166-1 alpha-2 country codes](http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2).
 	// _**NOTE**: an album is considered available in a market when at least 1 of its
 	// tracks is available in that market._
+	//
+	// Deprecated: deprecated
 	AvailableMarkets []string `json:"available_markets,required"`
 	// Known external URLs for this album.
 	ExternalURLs shared.ExternalURLObject `json:"external_urls,required"`
@@ -292,7 +302,7 @@ type ArtistListAlbumsParams struct {
 	// `album`<br/>- `single`<br/>- `appears_on`<br/>- `compilation`<br/>For example:
 	// `include_groups=album,single`.
 	IncludeGroups param.Opt[string] `query:"include_groups,omitzero" json:"-"`
-	// The maximum number of items to return. Default: 20. Minimum: 1. Maximum: 50.
+	// The maximum number of items to return. Default: 5. Minimum: 1. Maximum: 10.
 	Limit param.Opt[int64] `query:"limit,omitzero" json:"-"`
 	// An
 	// [ISO 3166-1 alpha-2 country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2).

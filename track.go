@@ -52,6 +52,8 @@ func (r *TrackService) Get(ctx context.Context, id string, query TrackGetParams,
 }
 
 // Get Spotify catalog information for multiple tracks based on their Spotify IDs.
+//
+// Deprecated: deprecated
 func (r *TrackService) BulkGet(ctx context.Context, query TrackBulkGetParams, opts ...option.RequestOption) (res *TrackBulkGetResponse, err error) {
 	opts = slices.Concat(r.Options, opts)
 	path := "tracks"

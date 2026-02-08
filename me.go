@@ -69,6 +69,8 @@ type MeGetResponse struct {
 	// _This field is only available when the current user has granted access to the
 	// [user-read-private](/documentation/web-api/concepts/scopes/#list-of-scopes)
 	// scope._
+	//
+	// Deprecated: deprecated
 	Country string `json:"country"`
 	// The name displayed on the user's profile. `null` if not available.
 	DisplayName string `json:"display_name"`
@@ -78,15 +80,21 @@ type MeGetResponse struct {
 	// user has granted access to the
 	// [user-read-email](/documentation/web-api/concepts/scopes/#list-of-scopes)
 	// scope._
+	//
+	// Deprecated: deprecated
 	Email string `json:"email"`
 	// The user's explicit content settings. _This field is only available when the
 	// current user has granted access to the
 	// [user-read-private](/documentation/web-api/concepts/scopes/#list-of-scopes)
 	// scope._
+	//
+	// Deprecated: deprecated
 	ExplicitContent MeGetResponseExplicitContent `json:"explicit_content"`
 	// Known external URLs for this user.
 	ExternalURLs shared.ExternalURLObject `json:"external_urls"`
 	// Information about the followers of the user.
+	//
+	// Deprecated: deprecated
 	Followers shared.FollowersObject `json:"followers"`
 	// A link to the Web API endpoint for this user.
 	Href string `json:"href"`
@@ -97,6 +105,8 @@ type MeGetResponse struct {
 	// available when the current user has granted access to the
 	// [user-read-private](/documentation/web-api/concepts/scopes/#list-of-scopes)
 	// scope._
+	//
+	// Deprecated: deprecated
 	Product string `json:"product"`
 	// The playlist's public/private status (if it should be added to the user's
 	// profile or not): `true` the playlist will be public, `false` the playlist will
@@ -139,6 +149,8 @@ func (r *MeGetResponse) UnmarshalJSON(data []byte) error {
 // current user has granted access to the
 // [user-read-private](/documentation/web-api/concepts/scopes/#list-of-scopes)
 // scope._
+//
+// Deprecated: deprecated
 type MeGetResponseExplicitContent struct {
 	// When `true`, indicates that explicit content should not be played.
 	FilterEnabled bool `json:"filter_enabled"`

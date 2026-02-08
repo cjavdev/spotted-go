@@ -104,7 +104,8 @@ type PlaylistGetResponse struct {
 	// The version identifier for the current playlist. Can be supplied in other
 	// requests to target a specific playlist version
 	SnapshotID string `json:"snapshot_id"`
-	// The tracks of the playlist.
+	// The tracks of the playlist. _**Note**: This field is only available for
+	// playlists owned by the current user._
 	Tracks PlaylistGetResponseTracks `json:"tracks"`
 	// The object type: "playlist"
 	Type string `json:"type"`
@@ -157,7 +158,8 @@ func (r *PlaylistGetResponseOwner) UnmarshalJSON(data []byte) error {
 	return apijson.UnmarshalRoot(data, r)
 }
 
-// The tracks of the playlist.
+// The tracks of the playlist. _**Note**: This field is only available for
+// playlists owned by the current user._
 type PlaylistGetResponseTracks struct {
 	// A link to the Web API endpoint returning the full result of the request
 	Href string `json:"href,required"`

@@ -60,6 +60,9 @@ func (r *PlaylistTrackService) Update(ctx context.Context, playlistID string, bo
 }
 
 // Get full details of the items of a playlist owned by a Spotify user.
+//
+// **Note**: This endpoint is only accessible for playlists owned by the current
+// user.
 func (r *PlaylistTrackService) List(ctx context.Context, playlistID string, query PlaylistTrackListParams, opts ...option.RequestOption) (res *pagination.CursorURLPage[shared.PlaylistTrackObject], err error) {
 	var raw *http.Response
 	opts = slices.Concat(r.Options, opts)
@@ -82,6 +85,9 @@ func (r *PlaylistTrackService) List(ctx context.Context, playlistID string, quer
 }
 
 // Get full details of the items of a playlist owned by a Spotify user.
+//
+// **Note**: This endpoint is only accessible for playlists owned by the current
+// user.
 func (r *PlaylistTrackService) ListAutoPaging(ctx context.Context, playlistID string, query PlaylistTrackListParams, opts ...option.RequestOption) *pagination.CursorURLPageAutoPager[shared.PlaylistTrackObject] {
 	return pagination.NewCursorURLPageAutoPager(r.List(ctx, playlistID, query, opts...))
 }

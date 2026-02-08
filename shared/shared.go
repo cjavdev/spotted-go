@@ -66,9 +66,13 @@ type ArtistObject struct {
 	// Known external URLs for this artist.
 	ExternalURLs ExternalURLObject `json:"external_urls"`
 	// Information about the followers of the artist.
+	//
+	// Deprecated: deprecated
 	Followers FollowersObject `json:"followers"`
 	// A list of the genres the artist is associated with. If not yet classified, the
 	// array is empty.
+	//
+	// Deprecated: deprecated
 	Genres []string `json:"genres"`
 	// A link to the Web API endpoint providing full details of the artist.
 	Href string `json:"href"`
@@ -79,6 +83,8 @@ type ArtistObject struct {
 	// The popularity of the artist. The value will be between 0 and 100, with 100
 	// being the most popular. The artist's popularity is calculated from the
 	// popularity of all the artist's tracks.
+	//
+	// Deprecated: deprecated
 	Popularity int64 `json:"popularity"`
 	// The playlist's public/private status (if it should be added to the user's
 	// profile or not): `true` the playlist will be public, `false` the playlist will
@@ -133,6 +139,8 @@ type AudiobookBase struct {
 	// A list of the countries in which the audiobook can be played, identified by
 	// their [ISO 3166-1 alpha-2](http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2)
 	// code.
+	//
+	// Deprecated: deprecated
 	AvailableMarkets []string `json:"available_markets,required"`
 	// The copyright statements of the audiobook.
 	Copyrights []CopyrightObject `json:"copyrights,required"`
@@ -160,6 +168,8 @@ type AudiobookBase struct {
 	// The narrator(s) for the audiobook.
 	Narrators []NarratorObject `json:"narrators,required"`
 	// The publisher of the audiobook.
+	//
+	// Deprecated: deprecated
 	Publisher string `json:"publisher,required"`
 	// The number of chapters in this audiobook.
 	TotalChapters int64 `json:"total_chapters,required"`
@@ -964,6 +974,8 @@ type ShowBase struct {
 	ID string `json:"id,required"`
 	// A list of the countries in which the show can be played, identified by their
 	// [ISO 3166-1 alpha-2](http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) code.
+	//
+	// Deprecated: deprecated
 	AvailableMarkets []string `json:"available_markets,required"`
 	// The copyright statements of the show.
 	Copyrights []CopyrightObject `json:"copyrights,required"`
@@ -992,6 +1004,8 @@ type ShowBase struct {
 	// The name of the episode.
 	Name string `json:"name,required"`
 	// The publisher of the show.
+	//
+	// Deprecated: deprecated
 	Publisher string `json:"publisher,required"`
 	// The total number of episodes in the show.
 	TotalEpisodes int64 `json:"total_episodes,required"`
@@ -1289,6 +1303,8 @@ type SimplifiedTrackObject struct {
 	Artists []SimplifiedArtistObject `json:"artists"`
 	// A list of the countries in which the track can be played, identified by their
 	// [ISO 3166-1 alpha-2](http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) code.
+	//
+	// Deprecated: deprecated
 	AvailableMarkets []string `json:"available_markets"`
 	// The disc number (usually `1` unless the album consists of more than one disc).
 	DiscNumber int64 `json:"disc_number"`
@@ -1312,6 +1328,8 @@ type SimplifiedTrackObject struct {
 	// and is only part of the response if the track linking, in fact, exists. The
 	// requested track has been replaced with a different track. The track in the
 	// `linked_from` object contains information about the originally requested track.
+	//
+	// Deprecated: deprecated
 	LinkedFrom LinkedTrackObject `json:"linked_from"`
 	// The name of the track.
 	Name string `json:"name"`
@@ -1378,6 +1396,8 @@ type TrackObject struct {
 	Artists []SimplifiedArtistObject `json:"artists"`
 	// A list of the countries in which the track can be played, identified by their
 	// [ISO 3166-1 alpha-2](http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) code.
+	//
+	// Deprecated: deprecated
 	AvailableMarkets []string `json:"available_markets"`
 	// The disc number (usually `1` unless the album consists of more than one disc).
 	DiscNumber int64 `json:"disc_number"`
@@ -1387,6 +1407,8 @@ type TrackObject struct {
 	// no it does not OR unknown).
 	Explicit bool `json:"explicit"`
 	// Known external IDs for the track.
+	//
+	// Deprecated: deprecated
 	ExternalIDs ExternalIDObject `json:"external_ids"`
 	// Known external URLs for this track.
 	ExternalURLs ExternalURLObject `json:"external_urls"`
@@ -1402,6 +1424,8 @@ type TrackObject struct {
 	// [Track Relinking](/documentation/web-api/concepts/track-relinking) is applied,
 	// and the requested track has been replaced with different track. The track in the
 	// `linked_from` object contains information about the originally requested track.
+	//
+	// Deprecated: deprecated
 	LinkedFrom LinkedTrackObject `json:"linked_from"`
 	// The name of the track.
 	Name string `json:"name"`
@@ -1415,6 +1439,8 @@ type TrackObject struct {
 	// rated independently. Artist and album popularity is derived mathematically from
 	// track popularity. _**Note**: the popularity value may lag actual popularity by a
 	// few days: the value is not updated in real time._
+	//
+	// Deprecated: deprecated
 	Popularity int64 `json:"popularity"`
 	// A link to a 30 second preview (MP3 format) of the track. Can be `null`
 	//
@@ -1495,6 +1521,8 @@ type TrackObjectAlbum struct {
 	// [ISO 3166-1 alpha-2 country codes](http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2).
 	// _**NOTE**: an album is considered available in a market when at least 1 of its
 	// tracks is available in that market._
+	//
+	// Deprecated: deprecated
 	AvailableMarkets []string `json:"available_markets,required"`
 	// Known external URLs for this album.
 	ExternalURLs ExternalURLObject `json:"external_urls,required"`

@@ -64,8 +64,6 @@ func (r *ArtistService) BulkGet(ctx context.Context, query ArtistBulkGetParams, 
 }
 
 // Get Spotify catalog information about an artist's albums.
-//
-// Deprecated: deprecated
 func (r *ArtistService) ListAlbums(ctx context.Context, id string, query ArtistListAlbumsParams, opts ...option.RequestOption) (res *pagination.CursorURLPage[ArtistListAlbumsResponse], err error) {
 	var raw *http.Response
 	opts = slices.Concat(r.Options, opts)
@@ -88,8 +86,6 @@ func (r *ArtistService) ListAlbums(ctx context.Context, id string, query ArtistL
 }
 
 // Get Spotify catalog information about an artist's albums.
-//
-// Deprecated: deprecated
 func (r *ArtistService) ListAlbumsAutoPaging(ctx context.Context, id string, query ArtistListAlbumsParams, opts ...option.RequestOption) *pagination.CursorURLPageAutoPager[ArtistListAlbumsResponse] {
 	return pagination.NewCursorURLPageAutoPager(r.ListAlbums(ctx, id, query, opts...))
 }

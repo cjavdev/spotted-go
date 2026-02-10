@@ -83,6 +83,8 @@ func (r *MeEpisodeService) Check(ctx context.Context, query MeEpisodeCheckParams
 // endpoint is in **beta** and could change without warning. Please share any
 // feedback that you have, or issues that you discover, in our
 // [developer community forum](https://community.spotify.com/t5/Spotify-for-Developers/bd-p/Spotify_Developer).
+//
+// Deprecated: deprecated
 func (r *MeEpisodeService) Remove(ctx context.Context, body MeEpisodeRemoveParams, opts ...option.RequestOption) (err error) {
 	opts = slices.Concat(r.Options, opts)
 	opts = append([]option.RequestOption{option.WithHeader("Accept", "*/*")}, opts...)
@@ -95,6 +97,8 @@ func (r *MeEpisodeService) Remove(ctx context.Context, body MeEpisodeRemoveParam
 // is in **beta** and could change without warning. Please share any feedback that
 // you have, or issues that you discover, in our
 // [developer community forum](https://community.spotify.com/t5/Spotify-for-Developers/bd-p/Spotify_Developer).
+//
+// Deprecated: deprecated
 func (r *MeEpisodeService) Save(ctx context.Context, body MeEpisodeSaveParams, opts ...option.RequestOption) (err error) {
 	opts = slices.Concat(r.Options, opts)
 	opts = append([]option.RequestOption{option.WithHeader("Accept", "*/*")}, opts...)

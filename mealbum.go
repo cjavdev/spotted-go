@@ -74,6 +74,8 @@ func (r *MeAlbumService) Check(ctx context.Context, query MeAlbumCheckParams, op
 }
 
 // Remove one or more albums from the current user's 'Your Music' library.
+//
+// Deprecated: deprecated
 func (r *MeAlbumService) Remove(ctx context.Context, body MeAlbumRemoveParams, opts ...option.RequestOption) (err error) {
 	opts = slices.Concat(r.Options, opts)
 	opts = append([]option.RequestOption{option.WithHeader("Accept", "*/*")}, opts...)
@@ -83,6 +85,8 @@ func (r *MeAlbumService) Remove(ctx context.Context, body MeAlbumRemoveParams, o
 }
 
 // Save one or more albums to the current user's 'Your Music' library.
+//
+// Deprecated: deprecated
 func (r *MeAlbumService) Save(ctx context.Context, body MeAlbumSaveParams, opts ...option.RequestOption) (err error) {
 	opts = slices.Concat(r.Options, opts)
 	opts = append([]option.RequestOption{option.WithHeader("Accept", "*/*")}, opts...)

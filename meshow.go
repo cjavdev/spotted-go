@@ -73,6 +73,8 @@ func (r *MeShowService) Check(ctx context.Context, query MeShowCheckParams, opts
 }
 
 // Delete one or more shows from current Spotify user's library.
+//
+// Deprecated: deprecated
 func (r *MeShowService) Remove(ctx context.Context, body MeShowRemoveParams, opts ...option.RequestOption) (err error) {
 	opts = slices.Concat(r.Options, opts)
 	opts = append([]option.RequestOption{option.WithHeader("Accept", "*/*")}, opts...)
@@ -82,6 +84,8 @@ func (r *MeShowService) Remove(ctx context.Context, body MeShowRemoveParams, opt
 }
 
 // Save one or more shows to current Spotify user's library.
+//
+// Deprecated: deprecated
 func (r *MeShowService) Save(ctx context.Context, body MeShowSaveParams, opts ...option.RequestOption) (err error) {
 	opts = slices.Concat(r.Options, opts)
 	opts = append([]option.RequestOption{option.WithHeader("Accept", "*/*")}, opts...)

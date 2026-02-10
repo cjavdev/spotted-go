@@ -73,6 +73,8 @@ func (r *MeAudiobookService) Check(ctx context.Context, query MeAudiobookCheckPa
 }
 
 // Remove one or more audiobooks from the Spotify user's library.
+//
+// Deprecated: deprecated
 func (r *MeAudiobookService) Remove(ctx context.Context, body MeAudiobookRemoveParams, opts ...option.RequestOption) (err error) {
 	opts = slices.Concat(r.Options, opts)
 	opts = append([]option.RequestOption{option.WithHeader("Accept", "*/*")}, opts...)
@@ -82,6 +84,8 @@ func (r *MeAudiobookService) Remove(ctx context.Context, body MeAudiobookRemoveP
 }
 
 // Save one or more audiobooks to the current Spotify user's library.
+//
+// Deprecated: deprecated
 func (r *MeAudiobookService) Save(ctx context.Context, body MeAudiobookSaveParams, opts ...option.RequestOption) (err error) {
 	opts = slices.Concat(r.Options, opts)
 	opts = append([]option.RequestOption{option.WithHeader("Accept", "*/*")}, opts...)

@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.21.1 (2026-02-11)
+
+Full Changelog: [v0.21.0...v0.21.1](https://github.com/cjavdev/spotted-go/compare/v0.21.0...v0.21.1)
+
+### Bug Fixes
+
+* **encoder:** correctly serialize NullStruct ([dd3737c](https://github.com/cjavdev/spotted-go/commit/dd3737c529fb38f5cdb54ab183479190ba05f6bf))
+
 ## 0.21.0 (2026-02-10)
 
 Full Changelog: [v0.20.0...v0.21.0](https://github.com/cjavdev/spotted-go/compare/v0.20.0...v0.21.0)

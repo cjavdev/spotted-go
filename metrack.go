@@ -65,6 +65,12 @@ func (r *MeTrackService) ListAutoPaging(ctx context.Context, query MeTrackListPa
 
 // Check if one or more tracks is already saved in the current Spotify user's 'Your
 // Music' library.
+//
+// **Note:** This endpoint is deprecated. Use
+// [Check User's Saved Items](/documentation/web-api/reference/check-library-contains)
+// instead.
+//
+// Deprecated: deprecated
 func (r *MeTrackService) Check(ctx context.Context, query MeTrackCheckParams, opts ...option.RequestOption) (res *[]bool, err error) {
 	opts = slices.Concat(r.Options, opts)
 	path := "me/tracks/contains"
@@ -73,6 +79,10 @@ func (r *MeTrackService) Check(ctx context.Context, query MeTrackCheckParams, op
 }
 
 // Remove one or more tracks from the current user's 'Your Music' library.
+//
+// **Note:** This endpoint is deprecated. Use
+// [Remove Items from Library](/documentation/web-api/reference/remove-library-items)
+// instead.
 //
 // Deprecated: deprecated
 func (r *MeTrackService) Remove(ctx context.Context, body MeTrackRemoveParams, opts ...option.RequestOption) (err error) {
@@ -84,6 +94,10 @@ func (r *MeTrackService) Remove(ctx context.Context, body MeTrackRemoveParams, o
 }
 
 // Save one or more tracks to the current user's 'Your Music' library.
+//
+// **Note:** This endpoint is deprecated. Use
+// [Save Items to Library](/documentation/web-api/reference/save-library-items)
+// instead.
 //
 // Deprecated: deprecated
 func (r *MeTrackService) Save(ctx context.Context, body MeTrackSaveParams, opts ...option.RequestOption) (err error) {

@@ -65,6 +65,12 @@ func (r *MeShowService) ListAutoPaging(ctx context.Context, query MeShowListPara
 
 // Check if one or more shows is already saved in the current Spotify user's
 // library.
+//
+// **Note:** This endpoint is deprecated. Use
+// [Check User's Saved Items](/documentation/web-api/reference/check-library-contains)
+// instead.
+//
+// Deprecated: deprecated
 func (r *MeShowService) Check(ctx context.Context, query MeShowCheckParams, opts ...option.RequestOption) (res *[]bool, err error) {
 	opts = slices.Concat(r.Options, opts)
 	path := "me/shows/contains"
@@ -73,6 +79,10 @@ func (r *MeShowService) Check(ctx context.Context, query MeShowCheckParams, opts
 }
 
 // Delete one or more shows from current Spotify user's library.
+//
+// **Note:** This endpoint is deprecated. Use
+// [Remove Items from Library](/documentation/web-api/reference/remove-library-items)
+// instead.
 //
 // Deprecated: deprecated
 func (r *MeShowService) Remove(ctx context.Context, body MeShowRemoveParams, opts ...option.RequestOption) (err error) {
@@ -84,6 +94,10 @@ func (r *MeShowService) Remove(ctx context.Context, body MeShowRemoveParams, opt
 }
 
 // Save one or more shows to current Spotify user's library.
+//
+// **Note:** This endpoint is deprecated. Use
+// [Save Items to Library](/documentation/web-api/reference/save-library-items)
+// instead.
 //
 // Deprecated: deprecated
 func (r *MeShowService) Save(ctx context.Context, body MeShowSaveParams, opts ...option.RequestOption) (err error) {

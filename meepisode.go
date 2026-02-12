@@ -38,10 +38,7 @@ func NewMeEpisodeService(opts ...option.RequestOption) (r MeEpisodeService) {
 	return
 }
 
-// Get a list of the episodes saved in the current Spotify user's library.<br/>
-// This API endpoint is in **beta** and could change without warning. Please share
-// any feedback that you have, or issues that you discover, in our
-// [developer community forum](https://community.spotify.com/t5/Spotify-for-Developers/bd-p/Spotify_Developer).
+// Get a list of the episodes saved in the current Spotify user's library.
 func (r *MeEpisodeService) List(ctx context.Context, query MeEpisodeListParams, opts ...option.RequestOption) (res *pagination.CursorURLPage[MeEpisodeListResponse], err error) {
 	var raw *http.Response
 	opts = slices.Concat(r.Options, opts)
@@ -59,19 +56,19 @@ func (r *MeEpisodeService) List(ctx context.Context, query MeEpisodeListParams, 
 	return res, nil
 }
 
-// Get a list of the episodes saved in the current Spotify user's library.<br/>
-// This API endpoint is in **beta** and could change without warning. Please share
-// any feedback that you have, or issues that you discover, in our
-// [developer community forum](https://community.spotify.com/t5/Spotify-for-Developers/bd-p/Spotify_Developer).
+// Get a list of the episodes saved in the current Spotify user's library.
 func (r *MeEpisodeService) ListAutoPaging(ctx context.Context, query MeEpisodeListParams, opts ...option.RequestOption) *pagination.CursorURLPageAutoPager[MeEpisodeListResponse] {
 	return pagination.NewCursorURLPageAutoPager(r.List(ctx, query, opts...))
 }
 
 // Check if one or more episodes is already saved in the current Spotify user's
-// 'Your Episodes' library.<br/> This API endpoint is in **beta** and could change
-// without warning. Please share any feedback that you have, or issues that you
-// discover, in our
-// [developer community forum](https://community.spotify.com/t5/Spotify-for-Developers/bd-p/Spotify_Developer)..
+// 'Your Episodes' library.
+//
+// **Note:** This endpoint is deprecated. Use
+// [Check User's Saved Items](/documentation/web-api/reference/check-library-contains)
+// instead.
+//
+// Deprecated: deprecated
 func (r *MeEpisodeService) Check(ctx context.Context, query MeEpisodeCheckParams, opts ...option.RequestOption) (res *[]bool, err error) {
 	opts = slices.Concat(r.Options, opts)
 	path := "me/episodes/contains"
@@ -79,10 +76,11 @@ func (r *MeEpisodeService) Check(ctx context.Context, query MeEpisodeCheckParams
 	return
 }
 
-// Remove one or more episodes from the current user's library.<br/> This API
-// endpoint is in **beta** and could change without warning. Please share any
-// feedback that you have, or issues that you discover, in our
-// [developer community forum](https://community.spotify.com/t5/Spotify-for-Developers/bd-p/Spotify_Developer).
+// Remove one or more episodes from the current user's library.
+//
+// **Note:** This endpoint is deprecated. Use
+// [Remove Items from Library](/documentation/web-api/reference/remove-library-items)
+// instead.
 //
 // Deprecated: deprecated
 func (r *MeEpisodeService) Remove(ctx context.Context, body MeEpisodeRemoveParams, opts ...option.RequestOption) (err error) {
@@ -93,10 +91,11 @@ func (r *MeEpisodeService) Remove(ctx context.Context, body MeEpisodeRemoveParam
 	return
 }
 
-// Save one or more episodes to the current user's library.<br/> This API endpoint
-// is in **beta** and could change without warning. Please share any feedback that
-// you have, or issues that you discover, in our
-// [developer community forum](https://community.spotify.com/t5/Spotify-for-Developers/bd-p/Spotify_Developer).
+// Save one or more episodes to the current user's library.
+//
+// **Note:** This endpoint is deprecated. Use
+// [Save Items to Library](/documentation/web-api/reference/save-library-items)
+// instead.
 //
 // Deprecated: deprecated
 func (r *MeEpisodeService) Save(ctx context.Context, body MeEpisodeSaveParams, opts ...option.RequestOption) (err error) {

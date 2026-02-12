@@ -66,6 +66,12 @@ func (r *MeAlbumService) ListAutoPaging(ctx context.Context, query MeAlbumListPa
 
 // Check if one or more albums is already saved in the current Spotify user's 'Your
 // Music' library.
+//
+// **Note:** This endpoint is deprecated. Use
+// [Check User's Saved Items](/documentation/web-api/reference/check-library-contains)
+// instead.
+//
+// Deprecated: deprecated
 func (r *MeAlbumService) Check(ctx context.Context, query MeAlbumCheckParams, opts ...option.RequestOption) (res *[]bool, err error) {
 	opts = slices.Concat(r.Options, opts)
 	path := "me/albums/contains"
@@ -74,6 +80,10 @@ func (r *MeAlbumService) Check(ctx context.Context, query MeAlbumCheckParams, op
 }
 
 // Remove one or more albums from the current user's 'Your Music' library.
+//
+// **Note:** This endpoint is deprecated. Use
+// [Remove Items from Library](/documentation/web-api/reference/remove-library-items)
+// instead.
 //
 // Deprecated: deprecated
 func (r *MeAlbumService) Remove(ctx context.Context, body MeAlbumRemoveParams, opts ...option.RequestOption) (err error) {
@@ -85,6 +95,10 @@ func (r *MeAlbumService) Remove(ctx context.Context, body MeAlbumRemoveParams, o
 }
 
 // Save one or more albums to the current user's 'Your Music' library.
+//
+// **Note:** This endpoint is deprecated. Use
+// [Save Items to Library](/documentation/web-api/reference/save-library-items)
+// instead.
 //
 // Deprecated: deprecated
 func (r *MeAlbumService) Save(ctx context.Context, body MeAlbumSaveParams, opts ...option.RequestOption) (err error) {

@@ -65,6 +65,12 @@ func (r *MeAudiobookService) ListAutoPaging(ctx context.Context, query MeAudiobo
 
 // Check if one or more audiobooks are already saved in the current Spotify user's
 // library.
+//
+// **Note:** This endpoint is deprecated. Use
+// [Check User's Saved Items](/documentation/web-api/reference/check-library-contains)
+// instead.
+//
+// Deprecated: deprecated
 func (r *MeAudiobookService) Check(ctx context.Context, query MeAudiobookCheckParams, opts ...option.RequestOption) (res *[]bool, err error) {
 	opts = slices.Concat(r.Options, opts)
 	path := "me/audiobooks/contains"
@@ -73,6 +79,10 @@ func (r *MeAudiobookService) Check(ctx context.Context, query MeAudiobookCheckPa
 }
 
 // Remove one or more audiobooks from the Spotify user's library.
+//
+// **Note:** This endpoint is deprecated. Use
+// [Remove Items from Library](/documentation/web-api/reference/remove-library-items)
+// instead.
 //
 // Deprecated: deprecated
 func (r *MeAudiobookService) Remove(ctx context.Context, body MeAudiobookRemoveParams, opts ...option.RequestOption) (err error) {
@@ -84,6 +94,10 @@ func (r *MeAudiobookService) Remove(ctx context.Context, body MeAudiobookRemoveP
 }
 
 // Save one or more audiobooks to the current Spotify user's library.
+//
+// **Note:** This endpoint is deprecated. Use
+// [Save Items to Library](/documentation/web-api/reference/save-library-items)
+// instead.
 //
 // Deprecated: deprecated
 func (r *MeAudiobookService) Save(ctx context.Context, body MeAudiobookSaveParams, opts ...option.RequestOption) (err error) {

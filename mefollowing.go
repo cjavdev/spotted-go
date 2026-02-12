@@ -47,6 +47,12 @@ func (r *MeFollowingService) BulkGet(ctx context.Context, query MeFollowingBulkG
 
 // Check to see if the current user is following one or more artists or other
 // Spotify users.
+//
+// **Note:** This endpoint is deprecated. Use
+// [Check User's Saved Items](/documentation/web-api/reference/check-library-contains)
+// instead.
+//
+// Deprecated: deprecated
 func (r *MeFollowingService) Check(ctx context.Context, query MeFollowingCheckParams, opts ...option.RequestOption) (res *[]bool, err error) {
 	opts = slices.Concat(r.Options, opts)
 	path := "me/following/contains"
@@ -56,6 +62,12 @@ func (r *MeFollowingService) Check(ctx context.Context, query MeFollowingCheckPa
 
 // Add the current user as a follower of one or more artists or other Spotify
 // users.
+//
+// **Note:** This endpoint is deprecated. Use
+// [Save Items to Library](/documentation/web-api/reference/save-library-items)
+// instead.
+//
+// Deprecated: deprecated
 func (r *MeFollowingService) Follow(ctx context.Context, body MeFollowingFollowParams, opts ...option.RequestOption) (err error) {
 	opts = slices.Concat(r.Options, opts)
 	opts = append([]option.RequestOption{option.WithHeader("Accept", "*/*")}, opts...)
@@ -66,6 +78,12 @@ func (r *MeFollowingService) Follow(ctx context.Context, body MeFollowingFollowP
 
 // Remove the current user as a follower of one or more artists or other Spotify
 // users.
+//
+// **Note:** This endpoint is deprecated. Use
+// [Remove Items from Library](/documentation/web-api/reference/remove-library-items)
+// instead.
+//
+// Deprecated: deprecated
 func (r *MeFollowingService) Unfollow(ctx context.Context, body MeFollowingUnfollowParams, opts ...option.RequestOption) (err error) {
 	opts = slices.Concat(r.Options, opts)
 	opts = append([]option.RequestOption{option.WithHeader("Accept", "*/*")}, opts...)

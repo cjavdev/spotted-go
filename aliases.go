@@ -106,6 +106,11 @@ type PlaylistTrackObject = shared.PlaylistTrackObject
 // Information about the track or episode.
 //
 // This is an alias to an internal type.
+type PlaylistTrackObjectItemUnion = shared.PlaylistTrackObjectItemUnion
+
+// **Deprecated:** Use `item` instead. Information about the track or episode.
+//
+// This is an alias to an internal type.
 type PlaylistTrackObjectTrackUnion = shared.PlaylistTrackObjectTrackUnion
 
 // This is an alias to an internal type.

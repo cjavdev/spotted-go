@@ -405,6 +405,7 @@ func (r *EpisodeObject) UnmarshalJSON(data []byte) error {
 	return apijson.UnmarshalRoot(data, r)
 }
 
+func (EpisodeObject) ImplPlaylistTrackObjectItemUnion()                  {}
 func (EpisodeObject) ImplPlaylistTrackObjectTrackUnion()                 {}
 func (EpisodeObject) ImplMePlayerGetCurrentlyPlayingResponseItemUnion()  {}
 func (EpisodeObject) ImplMePlayerGetStateResponseItemUnion()             {}
@@ -679,19 +680,24 @@ type PlaylistTrackObject struct {
 	// Whether this track or episode is a
 	// [local file](/documentation/web-api/concepts/playlists/#local-files) or not.
 	IsLocal bool `json:"is_local"`
+	// Information about the track or episode.
+	Item PlaylistTrackObjectItemUnion `json:"item"`
 	// The playlist's public/private status (if it should be added to the user's
 	// profile or not): `true` the playlist will be public, `false` the playlist will
 	// be private, `null` the playlist status is not relevant. For more about
 	// public/private status, see
 	// [Working with Playlists](/documentation/web-api/concepts/playlists)
 	Published bool `json:"published"`
-	// Information about the track or episode.
+	// **Deprecated:** Use `item` instead. Information about the track or episode.
+	//
+	// Deprecated: deprecated
 	Track PlaylistTrackObjectTrackUnion `json:"track"`
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
 		AddedAt     respjson.Field
 		AddedBy     respjson.Field
 		IsLocal     respjson.Field
+		Item        respjson.Field
 		Published   respjson.Field
 		Track       respjson.Field
 		ExtraFields map[string]respjson.Field
@@ -702,6 +708,168 @@ type PlaylistTrackObject struct {
 // Returns the unmodified JSON received from the API
 func (r PlaylistTrackObject) RawJSON() string { return r.JSON.raw }
 func (r *PlaylistTrackObject) UnmarshalJSON(data []byte) error {
+	return apijson.UnmarshalRoot(data, r)
+}
+
+// PlaylistTrackObjectItemUnion contains all possible properties and values from
+// [TrackObject], [EpisodeObject].
+//
+// Use the [PlaylistTrackObjectItemUnion.AsAny] method to switch on the variant.
+//
+// Use the methods beginning with 'As' to cast the union to one of its variants.
+type PlaylistTrackObjectItemUnion struct {
+	ID string `json:"id"`
+	// This field is from variant [TrackObject].
+	Album TrackObjectAlbum `json:"album"`
+	// This field is from variant [TrackObject].
+	Artists []SimplifiedArtistObject `json:"artists"`
+	// This field is from variant [TrackObject].
+	AvailableMarkets []string `json:"available_markets"`
+	// This field is from variant [TrackObject].
+	DiscNumber int64 `json:"disc_number"`
+	DurationMs int64 `json:"duration_ms"`
+	Explicit   bool  `json:"explicit"`
+	// This field is from variant [TrackObject].
+	ExternalIDs ExternalIDObject `json:"external_ids"`
+	// This field is from variant [TrackObject].
+	ExternalURLs ExternalURLObject `json:"external_urls"`
+	Href         string            `json:"href"`
+	// This field is from variant [TrackObject].
+	IsLocal    bool `json:"is_local"`
+	IsPlayable bool `json:"is_playable"`
+	// This field is from variant [TrackObject].
+	LinkedFrom LinkedTrackObject `json:"linked_from"`
+	Name       string            `json:"name"`
+	// This field is from variant [TrackObject].
+	Popularity int64 `json:"popularity"`
+	// This field is from variant [TrackObject].
+	PreviewURL string `json:"preview_url"`
+	Published  bool   `json:"published"`
+	// This field is a union of [TrackRestrictionObject], [EpisodeRestrictionObject]
+	Restrictions PlaylistTrackObjectItemUnionRestrictions `json:"restrictions"`
+	// This field is from variant [TrackObject].
+	TrackNumber int64 `json:"track_number"`
+	// Any of "track", "episode".
+	Type string `json:"type"`
+	Uri  string `json:"uri"`
+	// This field is from variant [EpisodeObject].
+	AudioPreviewURL string `json:"audio_preview_url"`
+	// This field is from variant [EpisodeObject].
+	Description string `json:"description"`
+	// This field is from variant [EpisodeObject].
+	HTMLDescription string `json:"html_description"`
+	// This field is from variant [EpisodeObject].
+	Images []ImageObject `json:"images"`
+	// This field is from variant [EpisodeObject].
+	IsExternallyHosted bool `json:"is_externally_hosted"`
+	// This field is from variant [EpisodeObject].
+	Languages []string `json:"languages"`
+	// This field is from variant [EpisodeObject].
+	ReleaseDate string `json:"release_date"`
+	// This field is from variant [EpisodeObject].
+	ReleaseDatePrecision EpisodeObjectReleaseDatePrecision `json:"release_date_precision"`
+	// This field is from variant [EpisodeObject].
+	Show ShowBase `json:"show"`
+	// This field is from variant [EpisodeObject].
+	Language string `json:"language"`
+	// This field is from variant [EpisodeObject].
+	ResumePoint ResumePointObject `json:"resume_point"`
+	JSON        struct {
+		ID                   respjson.Field
+		Album                respjson.Field
+		Artists              respjson.Field
+		AvailableMarkets     respjson.Field
+		DiscNumber           respjson.Field
+		DurationMs           respjson.Field
+		Explicit             respjson.Field
+		ExternalIDs          respjson.Field
+		ExternalURLs         respjson.Field
+		Href                 respjson.Field
+		IsLocal              respjson.Field
+		IsPlayable           respjson.Field
+		LinkedFrom           respjson.Field
+		Name                 respjson.Field
+		Popularity           respjson.Field
+		PreviewURL           respjson.Field
+		Published            respjson.Field
+		Restrictions         respjson.Field
+		TrackNumber          respjson.Field
+		Type                 respjson.Field
+		Uri                  respjson.Field
+		AudioPreviewURL      respjson.Field
+		Description          respjson.Field
+		HTMLDescription      respjson.Field
+		Images               respjson.Field
+		IsExternallyHosted   respjson.Field
+		Languages            respjson.Field
+		ReleaseDate          respjson.Field
+		ReleaseDatePrecision respjson.Field
+		Show                 respjson.Field
+		Language             respjson.Field
+		ResumePoint          respjson.Field
+		raw                  string
+	} `json:"-"`
+}
+
+// anyPlaylistTrackObjectItem is implemented by each variant of
+// [PlaylistTrackObjectItemUnion] to add type safety for the return type of
+// [PlaylistTrackObjectItemUnion.AsAny]
+type anyPlaylistTrackObjectItem interface {
+	ImplPlaylistTrackObjectItemUnion()
+}
+
+// Use the following switch statement to find the correct variant
+//
+//	switch variant := PlaylistTrackObjectItemUnion.AsAny().(type) {
+//	case shared.TrackObject:
+//	case shared.EpisodeObject:
+//	default:
+//	  fmt.Errorf("no variant present")
+//	}
+func (u PlaylistTrackObjectItemUnion) AsAny() anyPlaylistTrackObjectItem {
+	switch u.Type {
+	case "track":
+		return u.AsTrack()
+	case "episode":
+		return u.AsEpisode()
+	}
+	return nil
+}
+
+func (u PlaylistTrackObjectItemUnion) AsTrack() (v TrackObject) {
+	apijson.UnmarshalRoot(json.RawMessage(u.JSON.raw), &v)
+	return
+}
+
+func (u PlaylistTrackObjectItemUnion) AsEpisode() (v EpisodeObject) {
+	apijson.UnmarshalRoot(json.RawMessage(u.JSON.raw), &v)
+	return
+}
+
+// Returns the unmodified JSON received from the API
+func (u PlaylistTrackObjectItemUnion) RawJSON() string { return u.JSON.raw }
+
+func (r *PlaylistTrackObjectItemUnion) UnmarshalJSON(data []byte) error {
+	return apijson.UnmarshalRoot(data, r)
+}
+
+// PlaylistTrackObjectItemUnionRestrictions is an implicit subunion of
+// [PlaylistTrackObjectItemUnion]. PlaylistTrackObjectItemUnionRestrictions
+// provides convenient access to the sub-properties of the union.
+//
+// For type safety it is recommended to directly use a variant of the
+// [PlaylistTrackObjectItemUnion].
+type PlaylistTrackObjectItemUnionRestrictions struct {
+	Published bool   `json:"published"`
+	Reason    string `json:"reason"`
+	JSON      struct {
+		Published respjson.Field
+		Reason    respjson.Field
+		raw       string
+	} `json:"-"`
+}
+
+func (r *PlaylistTrackObjectItemUnionRestrictions) UnmarshalJSON(data []byte) error {
 	return apijson.UnmarshalRoot(data, r)
 }
 
@@ -1226,6 +1394,11 @@ type SimplifiedPlaylistObject struct {
 	// If returned, the source URL for the image (`url`) is temporary and will expire
 	// in less than a day._
 	Images []ImageObject `json:"images"`
+	// A collection containing a link ( `href` ) to the Web API endpoint where full
+	// details of the playlist's items can be retrieved, along with the `total` number
+	// of items in the playlist. Note, a track object may be `null`. This can happen if
+	// a track is no longer available.
+	Items PlaylistTracksRefObject `json:"items"`
 	// The name of the playlist.
 	Name string `json:"name"`
 	// The user who owns the playlist
@@ -1239,10 +1412,12 @@ type SimplifiedPlaylistObject struct {
 	// The version identifier for the current playlist. Can be supplied in other
 	// requests to target a specific playlist version
 	SnapshotID string `json:"snapshot_id"`
-	// A collection containing a link ( `href` ) to the Web API endpoint where full
-	// details of the playlist's tracks can be retrieved, along with the `total` number
-	// of tracks in the playlist. Note, a track object may be `null`. This can happen
-	// if a track is no longer available.
+	// **Deprecated:** Use `items` instead. A collection containing a link ( `href` )
+	// to the Web API endpoint where full details of the playlist's tracks can be
+	// retrieved, along with the `total` number of tracks in the playlist. Note, a
+	// track object may be `null`. This can happen if a track is no longer available.
+	//
+	// Deprecated: deprecated
 	Tracks PlaylistTracksRefObject `json:"tracks"`
 	// The object type: "playlist"
 	Type string `json:"type"`
@@ -1257,6 +1432,7 @@ type SimplifiedPlaylistObject struct {
 		ExternalURLs  respjson.Field
 		Href          respjson.Field
 		Images        respjson.Field
+		Items         respjson.Field
 		Name          respjson.Field
 		Owner         respjson.Field
 		Published     respjson.Field
@@ -1498,6 +1674,7 @@ func (r *TrackObject) UnmarshalJSON(data []byte) error {
 	return apijson.UnmarshalRoot(data, r)
 }
 
+func (TrackObject) ImplPlaylistTrackObjectItemUnion()                  {}
 func (TrackObject) ImplPlaylistTrackObjectTrackUnion()                 {}
 func (TrackObject) ImplMePlayerGetCurrentlyPlayingResponseItemUnion()  {}
 func (TrackObject) ImplMePlayerGetStateResponseItemUnion()             {}

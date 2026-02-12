@@ -110,6 +110,9 @@ type UserPlaylistNewResponse struct {
 	// If returned, the source URL for the image (`url`) is temporary and will expire
 	// in less than a day._
 	Images []shared.ImageObject `json:"images"`
+	// The items of the playlist. _**Note**: This field is only available for playlists
+	// owned by the current user or playlists the user is a collaborator of._
+	Items UserPlaylistNewResponseItems `json:"items"`
 	// The name of the playlist.
 	Name string `json:"name"`
 	// The user who owns the playlist
@@ -123,8 +126,9 @@ type UserPlaylistNewResponse struct {
 	// The version identifier for the current playlist. Can be supplied in other
 	// requests to target a specific playlist version
 	SnapshotID string `json:"snapshot_id"`
-	// The tracks of the playlist. _**Note**: This field is only available for
-	// playlists owned by the current user._
+	// **Deprecated:** Use `items` instead. The tracks of the playlist.
+	//
+	// Deprecated: deprecated
 	Tracks UserPlaylistNewResponseTracks `json:"tracks"`
 	// The object type: "playlist"
 	Type string `json:"type"`
@@ -140,6 +144,7 @@ type UserPlaylistNewResponse struct {
 		Followers     respjson.Field
 		Href          respjson.Field
 		Images        respjson.Field
+		Items         respjson.Field
 		Name          respjson.Field
 		Owner         respjson.Field
 		Published     respjson.Field
@@ -155,6 +160,49 @@ type UserPlaylistNewResponse struct {
 // Returns the unmodified JSON received from the API
 func (r UserPlaylistNewResponse) RawJSON() string { return r.JSON.raw }
 func (r *UserPlaylistNewResponse) UnmarshalJSON(data []byte) error {
+	return apijson.UnmarshalRoot(data, r)
+}
+
+// The items of the playlist. _**Note**: This field is only available for playlists
+// owned by the current user or playlists the user is a collaborator of._
+type UserPlaylistNewResponseItems struct {
+	// A link to the Web API endpoint returning the full result of the request
+	Href string `json:"href,required"`
+	// The maximum number of items in the response (as set in the query or by default).
+	Limit int64 `json:"limit,required"`
+	// URL to the next page of items. ( `null` if none)
+	Next string `json:"next,required"`
+	// The offset of the items returned (as set in the query or by default)
+	Offset int64 `json:"offset,required"`
+	// URL to the previous page of items. ( `null` if none)
+	Previous string `json:"previous,required"`
+	// The total number of items available to return.
+	Total int64                        `json:"total,required"`
+	Items []shared.PlaylistTrackObject `json:"items"`
+	// The playlist's public/private status (if it should be added to the user's
+	// profile or not): `true` the playlist will be public, `false` the playlist will
+	// be private, `null` the playlist status is not relevant. For more about
+	// public/private status, see
+	// [Working with Playlists](/documentation/web-api/concepts/playlists)
+	Published bool `json:"published"`
+	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
+	JSON struct {
+		Href        respjson.Field
+		Limit       respjson.Field
+		Next        respjson.Field
+		Offset      respjson.Field
+		Previous    respjson.Field
+		Total       respjson.Field
+		Items       respjson.Field
+		Published   respjson.Field
+		ExtraFields map[string]respjson.Field
+		raw         string
+	} `json:"-"`
+}
+
+// Returns the unmodified JSON received from the API
+func (r UserPlaylistNewResponseItems) RawJSON() string { return r.JSON.raw }
+func (r *UserPlaylistNewResponseItems) UnmarshalJSON(data []byte) error {
 	return apijson.UnmarshalRoot(data, r)
 }
 
@@ -177,8 +225,9 @@ func (r *UserPlaylistNewResponseOwner) UnmarshalJSON(data []byte) error {
 	return apijson.UnmarshalRoot(data, r)
 }
 
-// The tracks of the playlist. _**Note**: This field is only available for
-// playlists owned by the current user._
+// **Deprecated:** Use `items` instead. The tracks of the playlist.
+//
+// Deprecated: deprecated
 type UserPlaylistNewResponseTracks struct {
 	// A link to the Web API endpoint returning the full result of the request
 	Href string `json:"href,required"`

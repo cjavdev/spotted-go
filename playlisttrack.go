@@ -39,6 +39,10 @@ func NewPlaylistTrackService(opts ...option.RequestOption) (r PlaylistTrackServi
 	return
 }
 
+// **Deprecated:** Use
+// [Update Playlist Items](/documentation/web-api/reference/reorder-or-replace-playlists-items)
+// instead.
+//
 // Either reorder or replace items in a playlist depending on the request's
 // parameters. To reorder items, include `range_start`, `insert_before`,
 // `range_length` and `snapshot_id` in the request's body. To replace items,
@@ -48,6 +52,8 @@ func NewPlaylistTrackService(opts ...option.RequestOption) (r PlaylistTrackServi
 // reorder are mutually exclusive operations which share the same endpoint, but
 // have different parameters. These operations can't be applied together in a
 // single request.
+//
+// Deprecated: deprecated
 func (r *PlaylistTrackService) Update(ctx context.Context, playlistID string, body PlaylistTrackUpdateParams, opts ...option.RequestOption) (res *PlaylistTrackUpdateResponse, err error) {
 	opts = slices.Concat(r.Options, opts)
 	if playlistID == "" {
@@ -59,10 +65,13 @@ func (r *PlaylistTrackService) Update(ctx context.Context, playlistID string, bo
 	return
 }
 
+// **Deprecated:** Use
+// [Get Playlist Items](/documentation/web-api/reference/get-playlists-items)
+// instead.
+//
 // Get full details of the items of a playlist owned by a Spotify user.
 //
-// **Note**: This endpoint is only accessible for playlists owned by the current
-// user.
+// Deprecated: deprecated
 func (r *PlaylistTrackService) List(ctx context.Context, playlistID string, query PlaylistTrackListParams, opts ...option.RequestOption) (res *pagination.CursorURLPage[shared.PlaylistTrackObject], err error) {
 	var raw *http.Response
 	opts = slices.Concat(r.Options, opts)
@@ -84,15 +93,24 @@ func (r *PlaylistTrackService) List(ctx context.Context, playlistID string, quer
 	return res, nil
 }
 
+// **Deprecated:** Use
+// [Get Playlist Items](/documentation/web-api/reference/get-playlists-items)
+// instead.
+//
 // Get full details of the items of a playlist owned by a Spotify user.
 //
-// **Note**: This endpoint is only accessible for playlists owned by the current
-// user.
+// Deprecated: deprecated
 func (r *PlaylistTrackService) ListAutoPaging(ctx context.Context, playlistID string, query PlaylistTrackListParams, opts ...option.RequestOption) *pagination.CursorURLPageAutoPager[shared.PlaylistTrackObject] {
 	return pagination.NewCursorURLPageAutoPager(r.List(ctx, playlistID, query, opts...))
 }
 
+// **Deprecated:** Use
+// [Add Items to Playlist](/documentation/web-api/reference/add-items-to-playlist)
+// instead.
+//
 // Add one or more items to a user's playlist.
+//
+// Deprecated: deprecated
 func (r *PlaylistTrackService) Add(ctx context.Context, playlistID string, body PlaylistTrackAddParams, opts ...option.RequestOption) (res *PlaylistTrackAddResponse, err error) {
 	opts = slices.Concat(r.Options, opts)
 	if playlistID == "" {
@@ -104,7 +122,13 @@ func (r *PlaylistTrackService) Add(ctx context.Context, playlistID string, body 
 	return
 }
 
+// **Deprecated:** Use
+// [Remove Playlist Items](/documentation/web-api/reference/remove-items-playlist)
+// instead.
+//
 // Remove one or more items from a user's playlist.
+//
+// Deprecated: deprecated
 func (r *PlaylistTrackService) Remove(ctx context.Context, playlistID string, body PlaylistTrackRemoveParams, opts ...option.RequestOption) (res *PlaylistTrackRemoveResponse, err error) {
 	opts = slices.Concat(r.Options, opts)
 	if playlistID == "" {

@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.23.0 (2026-02-14)
+
+Full Changelog: [v0.22.0...v0.23.0](https://github.com/cjavdev/spotted-go/compare/v0.22.0...v0.23.0)
+
+### Features
+
+* **api:** api update ([9013cae](https://github.com/cjavdev/spotted-go/commit/9013cae4500a4479fb5e094fe6e2666b23ab96dd))
+
 ## 0.22.0 (2026-02-12)
 
 Full Changelog: [v0.21.1...v0.22.0](https://github.com/cjavdev/spotted-go/compare/v0.21.1...v0.22.0)

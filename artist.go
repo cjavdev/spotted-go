@@ -142,6 +142,8 @@ type ArtistListAlbumsResponse struct {
 	// This field describes the relationship between the artist and the album.
 	//
 	// Any of "album", "single", "compilation", "appears_on".
+	//
+	// Deprecated: deprecated
 	AlbumGroup ArtistListAlbumsResponseAlbumGroup `json:"album_group,required"`
 	// The type of the album.
 	//

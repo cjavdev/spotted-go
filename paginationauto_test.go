@@ -32,7 +32,7 @@ func TestAutoPagination(t *testing.T) {
 			Offset: spotted.Int(20),
 		},
 	)
-	// Prism mock isn't going to give us real pagination
+	// The mock server isn't going to give us real pagination
 	for i := 0; i < 3 && iter.Next(); i++ {
 		show := iter.Current()
 		t.Logf("%+v\n", show.ID)

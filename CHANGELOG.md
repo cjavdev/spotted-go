@@ -1,5 +1,20 @@
 # Changelog
 
+## 0.23.1 (2026-02-22)
+
+Full Changelog: [v0.23.0...v0.23.1](https://github.com/cjavdev/spotted-go/compare/v0.23.0...v0.23.1)
+
+### Bug Fixes
+
+* allow canceling a request while it is waiting to retry ([ddf72cb](https://github.com/cjavdev/spotted-go/commit/ddf72cbefb302d1a5d06e13cf97e49efb948c4af))
+* **internal:** skip tests that depend on mock server ([bda0ce5](https://github.com/cjavdev/spotted-go/commit/bda0ce56d0b74b66adddef359cfffd9b88ecba4c))
+
+
+### Chores
+
+* **internal:** remove mock server code ([8683254](https://github.com/cjavdev/spotted-go/commit/8683254b27c562fef2c1c0a7249f5b3779d10a17))
+* update mock server docs ([fffc12b](https://github.com/cjavdev/spotted-go/commit/fffc12bff4ee882b1d200b8b253f6bf92267b5bd))
+
 ## 0.23.0 (2026-02-14)
 
 Full Changelog: [v0.22.0...v0.23.0](https://github.com/cjavdev/spotted-go/compare/v0.22.0...v0.23.0)

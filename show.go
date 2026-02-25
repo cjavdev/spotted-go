@@ -93,7 +93,7 @@ func (r *ShowService) ListEpisodesAutoPaging(ctx context.Context, id string, que
 
 type ShowGetResponse struct {
 	// The episodes of the show.
-	Episodes ShowGetResponseEpisodes `json:"episodes,required"`
+	Episodes ShowGetResponseEpisodes `json:"episodes" api:"required"`
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
 		Episodes    respjson.Field
@@ -112,17 +112,17 @@ func (r *ShowGetResponse) UnmarshalJSON(data []byte) error {
 // The episodes of the show.
 type ShowGetResponseEpisodes struct {
 	// A link to the Web API endpoint returning the full result of the request
-	Href string `json:"href,required"`
+	Href string `json:"href" api:"required"`
 	// The maximum number of items in the response (as set in the query or by default).
-	Limit int64 `json:"limit,required"`
+	Limit int64 `json:"limit" api:"required"`
 	// URL to the next page of items. ( `null` if none)
-	Next string `json:"next,required"`
+	Next string `json:"next" api:"required"`
 	// The offset of the items returned (as set in the query or by default)
-	Offset int64 `json:"offset,required"`
+	Offset int64 `json:"offset" api:"required"`
 	// URL to the previous page of items. ( `null` if none)
-	Previous string `json:"previous,required"`
+	Previous string `json:"previous" api:"required"`
 	// The total number of items available to return.
-	Total int64                            `json:"total,required"`
+	Total int64                            `json:"total" api:"required"`
 	Items []shared.SimplifiedEpisodeObject `json:"items"`
 	// The playlist's public/private status (if it should be added to the user's
 	// profile or not): `true` the playlist will be public, `false` the playlist will
@@ -152,7 +152,7 @@ func (r *ShowGetResponseEpisodes) UnmarshalJSON(data []byte) error {
 }
 
 type ShowBulkGetResponse struct {
-	Shows []shared.ShowBase `json:"shows,required"`
+	Shows []shared.ShowBase `json:"shows" api:"required"`
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
 		Shows       respjson.Field
@@ -193,7 +193,7 @@ type ShowBulkGetParams struct {
 	// A comma-separated list of the
 	// [Spotify IDs](/documentation/web-api/concepts/spotify-uris-ids) for the shows.
 	// Maximum: 50 IDs.
-	IDs string `query:"ids,required" json:"-"`
+	IDs string `query:"ids" api:"required" json:"-"`
 	// An
 	// [ISO 3166-1 alpha-2 country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2).
 	// If a country code is specified, only content that is available in that market

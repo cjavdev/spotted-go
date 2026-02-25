@@ -160,7 +160,7 @@ type MeShowCheckParams struct {
 	// A comma-separated list of the
 	// [Spotify IDs](/documentation/web-api/concepts/spotify-uris-ids) for the shows.
 	// Maximum: 50 IDs.
-	IDs string `query:"ids,required" json:"-"`
+	IDs string `query:"ids" api:"required" json:"-"`
 	paramObj
 }
 

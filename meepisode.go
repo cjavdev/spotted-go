@@ -166,7 +166,7 @@ type MeEpisodeCheckParams struct {
 	// A comma-separated list of the
 	// [Spotify IDs](/documentation/web-api/concepts/spotify-uris-ids) for the
 	// episodes. Maximum: 50 IDs.
-	IDs string `query:"ids,required" json:"-"`
+	IDs string `query:"ids" api:"required" json:"-"`
 	paramObj
 }
 
@@ -208,7 +208,7 @@ type MeEpisodeSaveParams struct {
 	// of 50 items can be specified in one request. _**Note**: if the `ids` parameter
 	// is present in the query string, any IDs listed here in the body will be
 	// ignored._
-	IDs []string `json:"ids,omitzero,required"`
+	IDs []string `json:"ids,omitzero" api:"required"`
 	// The playlist's public/private status (if it should be added to the user's
 	// profile or not): `true` the playlist will be public, `false` the playlist will
 	// be private, `null` the playlist status is not relevant. For more about

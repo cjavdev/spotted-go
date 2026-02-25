@@ -95,40 +95,40 @@ func (r *AlbumService) ListTracksAutoPaging(ctx context.Context, id string, quer
 type AlbumGetResponse struct {
 	// The [Spotify ID](/documentation/web-api/concepts/spotify-uris-ids) for the
 	// album.
-	ID string `json:"id,required"`
+	ID string `json:"id" api:"required"`
 	// The type of the album.
 	//
 	// Any of "album", "single", "compilation".
-	AlbumType AlbumGetResponseAlbumType `json:"album_type,required"`
+	AlbumType AlbumGetResponseAlbumType `json:"album_type" api:"required"`
 	// The markets in which the album is available:
 	// [ISO 3166-1 alpha-2 country codes](http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2).
 	// _**NOTE**: an album is considered available in a market when at least 1 of its
 	// tracks is available in that market._
 	//
 	// Deprecated: deprecated
-	AvailableMarkets []string `json:"available_markets,required"`
+	AvailableMarkets []string `json:"available_markets" api:"required"`
 	// Known external URLs for this album.
-	ExternalURLs shared.ExternalURLObject `json:"external_urls,required"`
+	ExternalURLs shared.ExternalURLObject `json:"external_urls" api:"required"`
 	// A link to the Web API endpoint providing full details of the album.
-	Href string `json:"href,required"`
+	Href string `json:"href" api:"required"`
 	// The cover art for the album in various sizes, widest first.
-	Images []shared.ImageObject `json:"images,required"`
+	Images []shared.ImageObject `json:"images" api:"required"`
 	// The name of the album. In case of an album takedown, the value may be an empty
 	// string.
-	Name string `json:"name,required"`
+	Name string `json:"name" api:"required"`
 	// The date the album was first released.
-	ReleaseDate string `json:"release_date,required"`
+	ReleaseDate string `json:"release_date" api:"required"`
 	// The precision with which `release_date` value is known.
 	//
 	// Any of "year", "month", "day".
-	ReleaseDatePrecision AlbumGetResponseReleaseDatePrecision `json:"release_date_precision,required"`
+	ReleaseDatePrecision AlbumGetResponseReleaseDatePrecision `json:"release_date_precision" api:"required"`
 	// The number of tracks in the album.
-	TotalTracks int64 `json:"total_tracks,required"`
+	TotalTracks int64 `json:"total_tracks" api:"required"`
 	// The object type.
-	Type constant.Album `json:"type,required"`
+	Type constant.Album `json:"type" api:"required"`
 	// The [Spotify URI](/documentation/web-api/concepts/spotify-uris-ids) for the
 	// album.
-	Uri string `json:"uri,required"`
+	Uri string `json:"uri" api:"required"`
 	// The artists of the album. Each artist object includes a link in `href` to more
 	// detailed information about the artist.
 	Artists []shared.SimplifiedArtistObject `json:"artists"`
@@ -216,17 +216,17 @@ const (
 // The tracks of the album.
 type AlbumGetResponseTracks struct {
 	// A link to the Web API endpoint returning the full result of the request
-	Href string `json:"href,required"`
+	Href string `json:"href" api:"required"`
 	// The maximum number of items in the response (as set in the query or by default).
-	Limit int64 `json:"limit,required"`
+	Limit int64 `json:"limit" api:"required"`
 	// URL to the next page of items. ( `null` if none)
-	Next string `json:"next,required"`
+	Next string `json:"next" api:"required"`
 	// The offset of the items returned (as set in the query or by default)
-	Offset int64 `json:"offset,required"`
+	Offset int64 `json:"offset" api:"required"`
 	// URL to the previous page of items. ( `null` if none)
-	Previous string `json:"previous,required"`
+	Previous string `json:"previous" api:"required"`
 	// The total number of items available to return.
-	Total int64                          `json:"total,required"`
+	Total int64                          `json:"total" api:"required"`
 	Items []shared.SimplifiedTrackObject `json:"items"`
 	// The playlist's public/private status (if it should be added to the user's
 	// profile or not): `true` the playlist will be public, `false` the playlist will
@@ -256,7 +256,7 @@ func (r *AlbumGetResponseTracks) UnmarshalJSON(data []byte) error {
 }
 
 type AlbumBulkGetResponse struct {
-	Albums []AlbumBulkGetResponseAlbum `json:"albums,required"`
+	Albums []AlbumBulkGetResponseAlbum `json:"albums" api:"required"`
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
 		Albums      respjson.Field
@@ -274,40 +274,40 @@ func (r *AlbumBulkGetResponse) UnmarshalJSON(data []byte) error {
 type AlbumBulkGetResponseAlbum struct {
 	// The [Spotify ID](/documentation/web-api/concepts/spotify-uris-ids) for the
 	// album.
-	ID string `json:"id,required"`
+	ID string `json:"id" api:"required"`
 	// The type of the album.
 	//
 	// Any of "album", "single", "compilation".
-	AlbumType string `json:"album_type,required"`
+	AlbumType string `json:"album_type" api:"required"`
 	// The markets in which the album is available:
 	// [ISO 3166-1 alpha-2 country codes](http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2).
 	// _**NOTE**: an album is considered available in a market when at least 1 of its
 	// tracks is available in that market._
 	//
 	// Deprecated: deprecated
-	AvailableMarkets []string `json:"available_markets,required"`
+	AvailableMarkets []string `json:"available_markets" api:"required"`
 	// Known external URLs for this album.
-	ExternalURLs shared.ExternalURLObject `json:"external_urls,required"`
+	ExternalURLs shared.ExternalURLObject `json:"external_urls" api:"required"`
 	// A link to the Web API endpoint providing full details of the album.
-	Href string `json:"href,required"`
+	Href string `json:"href" api:"required"`
 	// The cover art for the album in various sizes, widest first.
-	Images []shared.ImageObject `json:"images,required"`
+	Images []shared.ImageObject `json:"images" api:"required"`
 	// The name of the album. In case of an album takedown, the value may be an empty
 	// string.
-	Name string `json:"name,required"`
+	Name string `json:"name" api:"required"`
 	// The date the album was first released.
-	ReleaseDate string `json:"release_date,required"`
+	ReleaseDate string `json:"release_date" api:"required"`
 	// The precision with which `release_date` value is known.
 	//
 	// Any of "year", "month", "day".
-	ReleaseDatePrecision string `json:"release_date_precision,required"`
+	ReleaseDatePrecision string `json:"release_date_precision" api:"required"`
 	// The number of tracks in the album.
-	TotalTracks int64 `json:"total_tracks,required"`
+	TotalTracks int64 `json:"total_tracks" api:"required"`
 	// The object type.
-	Type constant.Album `json:"type,required"`
+	Type constant.Album `json:"type" api:"required"`
 	// The [Spotify URI](/documentation/web-api/concepts/spotify-uris-ids) for the
 	// album.
-	Uri string `json:"uri,required"`
+	Uri string `json:"uri" api:"required"`
 	// The artists of the album. Each artist object includes a link in `href` to more
 	// detailed information about the artist.
 	Artists []shared.SimplifiedArtistObject `json:"artists"`
@@ -377,17 +377,17 @@ func (r *AlbumBulkGetResponseAlbum) UnmarshalJSON(data []byte) error {
 // The tracks of the album.
 type AlbumBulkGetResponseAlbumTracks struct {
 	// A link to the Web API endpoint returning the full result of the request
-	Href string `json:"href,required"`
+	Href string `json:"href" api:"required"`
 	// The maximum number of items in the response (as set in the query or by default).
-	Limit int64 `json:"limit,required"`
+	Limit int64 `json:"limit" api:"required"`
 	// URL to the next page of items. ( `null` if none)
-	Next string `json:"next,required"`
+	Next string `json:"next" api:"required"`
 	// The offset of the items returned (as set in the query or by default)
-	Offset int64 `json:"offset,required"`
+	Offset int64 `json:"offset" api:"required"`
 	// URL to the previous page of items. ( `null` if none)
-	Previous string `json:"previous,required"`
+	Previous string `json:"previous" api:"required"`
 	// The total number of items available to return.
-	Total int64                          `json:"total,required"`
+	Total int64                          `json:"total" api:"required"`
 	Items []shared.SimplifiedTrackObject `json:"items"`
 	// The playlist's public/private status (if it should be added to the user's
 	// profile or not): `true` the playlist will be public, `false` the playlist will
@@ -442,7 +442,7 @@ type AlbumBulkGetParams struct {
 	// A comma-separated list of the
 	// [Spotify IDs](/documentation/web-api/concepts/spotify-uris-ids) for the albums.
 	// Maximum: 20 IDs.
-	IDs string `query:"ids,required" json:"-"`
+	IDs string `query:"ids" api:"required" json:"-"`
 	// An
 	// [ISO 3166-1 alpha-2 country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2).
 	// If a country code is specified, only content that is available in that market

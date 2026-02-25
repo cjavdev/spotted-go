@@ -170,7 +170,7 @@ type MeTrackCheckParams struct {
 	// A comma-separated list of the
 	// [Spotify IDs](/documentation/web-api/concepts/spotify-uris-ids). For example:
 	// `ids=4iV5W9uYEdYUVa79Axb7Rh,1301WleyT98MSxVHPZCA6M`. Maximum: 50 IDs.
-	IDs string `query:"ids,required" json:"-"`
+	IDs string `query:"ids" api:"required" json:"-"`
 	paramObj
 }
 
@@ -213,7 +213,7 @@ type MeTrackSaveParams struct {
 	// can be specified in one request. _**Note**: if the `timestamped_ids` is present
 	// in the body, any IDs listed in the query parameters (deprecated) or the `ids`
 	// field in the body will be ignored._
-	IDs []string `json:"ids,omitzero,required"`
+	IDs []string `json:"ids,omitzero" api:"required"`
 	// The playlist's public/private status (if it should be added to the user's
 	// profile or not): `true` the playlist will be public, `false` the playlist will
 	// be private, `null` the playlist status is not relevant. For more about
@@ -243,13 +243,13 @@ func (r *MeTrackSaveParams) UnmarshalJSON(data []byte) error {
 type MeTrackSaveParamsTimestampedID struct {
 	// The [Spotify ID](/documentation/web-api/concepts/spotify-uris-ids) for the
 	// track.
-	ID string `json:"id,required"`
+	ID string `json:"id" api:"required"`
 	// The timestamp when the track was added to the library. Use ISO 8601 format with
 	// UTC timezone (e.g., `2023-01-15T14:30:00Z`). You can specify past timestamps to
 	// insert tracks at specific positions in the library's chronological order. The
 	// API uses minute-level granularity for ordering, though the timestamp supports
 	// millisecond precision.
-	AddedAt time.Time `json:"added_at,required" format:"date-time"`
+	AddedAt time.Time `json:"added_at" api:"required" format:"date-time"`
 	paramObj
 }
 

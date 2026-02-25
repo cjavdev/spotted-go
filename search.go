@@ -77,17 +77,17 @@ func (r *SearchQueryResponse) UnmarshalJSON(data []byte) error {
 
 type SearchQueryResponseAlbums struct {
 	// A link to the Web API endpoint returning the full result of the request
-	Href string `json:"href,required"`
+	Href string `json:"href" api:"required"`
 	// The maximum number of items in the response (as set in the query or by default).
-	Limit int64 `json:"limit,required"`
+	Limit int64 `json:"limit" api:"required"`
 	// URL to the next page of items. ( `null` if none)
-	Next string `json:"next,required"`
+	Next string `json:"next" api:"required"`
 	// The offset of the items returned (as set in the query or by default)
-	Offset int64 `json:"offset,required"`
+	Offset int64 `json:"offset" api:"required"`
 	// URL to the previous page of items. ( `null` if none)
-	Previous string `json:"previous,required"`
+	Previous string `json:"previous" api:"required"`
 	// The total number of items available to return.
-	Total int64                           `json:"total,required"`
+	Total int64                           `json:"total" api:"required"`
 	Items []SearchQueryResponseAlbumsItem `json:"items"`
 	// The playlist's public/private status (if it should be added to the user's
 	// profile or not): `true` the playlist will be public, `false` the playlist will
@@ -119,43 +119,43 @@ func (r *SearchQueryResponseAlbums) UnmarshalJSON(data []byte) error {
 type SearchQueryResponseAlbumsItem struct {
 	// The [Spotify ID](/documentation/web-api/concepts/spotify-uris-ids) for the
 	// album.
-	ID string `json:"id,required"`
+	ID string `json:"id" api:"required"`
 	// The type of the album.
 	//
 	// Any of "album", "single", "compilation".
-	AlbumType string `json:"album_type,required"`
+	AlbumType string `json:"album_type" api:"required"`
 	// The artists of the album. Each artist object includes a link in `href` to more
 	// detailed information about the artist.
-	Artists []shared.SimplifiedArtistObject `json:"artists,required"`
+	Artists []shared.SimplifiedArtistObject `json:"artists" api:"required"`
 	// The markets in which the album is available:
 	// [ISO 3166-1 alpha-2 country codes](http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2).
 	// _**NOTE**: an album is considered available in a market when at least 1 of its
 	// tracks is available in that market._
 	//
 	// Deprecated: deprecated
-	AvailableMarkets []string `json:"available_markets,required"`
+	AvailableMarkets []string `json:"available_markets" api:"required"`
 	// Known external URLs for this album.
-	ExternalURLs shared.ExternalURLObject `json:"external_urls,required"`
+	ExternalURLs shared.ExternalURLObject `json:"external_urls" api:"required"`
 	// A link to the Web API endpoint providing full details of the album.
-	Href string `json:"href,required"`
+	Href string `json:"href" api:"required"`
 	// The cover art for the album in various sizes, widest first.
-	Images []shared.ImageObject `json:"images,required"`
+	Images []shared.ImageObject `json:"images" api:"required"`
 	// The name of the album. In case of an album takedown, the value may be an empty
 	// string.
-	Name string `json:"name,required"`
+	Name string `json:"name" api:"required"`
 	// The date the album was first released.
-	ReleaseDate string `json:"release_date,required"`
+	ReleaseDate string `json:"release_date" api:"required"`
 	// The precision with which `release_date` value is known.
 	//
 	// Any of "year", "month", "day".
-	ReleaseDatePrecision string `json:"release_date_precision,required"`
+	ReleaseDatePrecision string `json:"release_date_precision" api:"required"`
 	// The number of tracks in the album.
-	TotalTracks int64 `json:"total_tracks,required"`
+	TotalTracks int64 `json:"total_tracks" api:"required"`
 	// The object type.
-	Type constant.Album `json:"type,required"`
+	Type constant.Album `json:"type" api:"required"`
 	// The [Spotify URI](/documentation/web-api/concepts/spotify-uris-ids) for the
 	// album.
-	Uri string `json:"uri,required"`
+	Uri string `json:"uri" api:"required"`
 	// The playlist's public/private status (if it should be added to the user's
 	// profile or not): `true` the playlist will be public, `false` the playlist will
 	// be private, `null` the playlist status is not relevant. For more about
@@ -194,17 +194,17 @@ func (r *SearchQueryResponseAlbumsItem) UnmarshalJSON(data []byte) error {
 
 type SearchQueryResponseArtists struct {
 	// A link to the Web API endpoint returning the full result of the request
-	Href string `json:"href,required"`
+	Href string `json:"href" api:"required"`
 	// The maximum number of items in the response (as set in the query or by default).
-	Limit int64 `json:"limit,required"`
+	Limit int64 `json:"limit" api:"required"`
 	// URL to the next page of items. ( `null` if none)
-	Next string `json:"next,required"`
+	Next string `json:"next" api:"required"`
 	// The offset of the items returned (as set in the query or by default)
-	Offset int64 `json:"offset,required"`
+	Offset int64 `json:"offset" api:"required"`
 	// URL to the previous page of items. ( `null` if none)
-	Previous string `json:"previous,required"`
+	Previous string `json:"previous" api:"required"`
 	// The total number of items available to return.
-	Total int64                 `json:"total,required"`
+	Total int64                 `json:"total" api:"required"`
 	Items []shared.ArtistObject `json:"items"`
 	// The playlist's public/private status (if it should be added to the user's
 	// profile or not): `true` the playlist will be public, `false` the playlist will
@@ -235,17 +235,17 @@ func (r *SearchQueryResponseArtists) UnmarshalJSON(data []byte) error {
 
 type SearchQueryResponseAudiobooks struct {
 	// A link to the Web API endpoint returning the full result of the request
-	Href string `json:"href,required"`
+	Href string `json:"href" api:"required"`
 	// The maximum number of items in the response (as set in the query or by default).
-	Limit int64 `json:"limit,required"`
+	Limit int64 `json:"limit" api:"required"`
 	// URL to the next page of items. ( `null` if none)
-	Next string `json:"next,required"`
+	Next string `json:"next" api:"required"`
 	// The offset of the items returned (as set in the query or by default)
-	Offset int64 `json:"offset,required"`
+	Offset int64 `json:"offset" api:"required"`
 	// URL to the previous page of items. ( `null` if none)
-	Previous string `json:"previous,required"`
+	Previous string `json:"previous" api:"required"`
 	// The total number of items available to return.
-	Total int64                  `json:"total,required"`
+	Total int64                  `json:"total" api:"required"`
 	Items []shared.AudiobookBase `json:"items"`
 	// The playlist's public/private status (if it should be added to the user's
 	// profile or not): `true` the playlist will be public, `false` the playlist will
@@ -276,17 +276,17 @@ func (r *SearchQueryResponseAudiobooks) UnmarshalJSON(data []byte) error {
 
 type SearchQueryResponseEpisodes struct {
 	// A link to the Web API endpoint returning the full result of the request
-	Href string `json:"href,required"`
+	Href string `json:"href" api:"required"`
 	// The maximum number of items in the response (as set in the query or by default).
-	Limit int64 `json:"limit,required"`
+	Limit int64 `json:"limit" api:"required"`
 	// URL to the next page of items. ( `null` if none)
-	Next string `json:"next,required"`
+	Next string `json:"next" api:"required"`
 	// The offset of the items returned (as set in the query or by default)
-	Offset int64 `json:"offset,required"`
+	Offset int64 `json:"offset" api:"required"`
 	// URL to the previous page of items. ( `null` if none)
-	Previous string `json:"previous,required"`
+	Previous string `json:"previous" api:"required"`
 	// The total number of items available to return.
-	Total int64                            `json:"total,required"`
+	Total int64                            `json:"total" api:"required"`
 	Items []shared.SimplifiedEpisodeObject `json:"items"`
 	// The playlist's public/private status (if it should be added to the user's
 	// profile or not): `true` the playlist will be public, `false` the playlist will
@@ -317,17 +317,17 @@ func (r *SearchQueryResponseEpisodes) UnmarshalJSON(data []byte) error {
 
 type SearchQueryResponseShows struct {
 	// A link to the Web API endpoint returning the full result of the request
-	Href string `json:"href,required"`
+	Href string `json:"href" api:"required"`
 	// The maximum number of items in the response (as set in the query or by default).
-	Limit int64 `json:"limit,required"`
+	Limit int64 `json:"limit" api:"required"`
 	// URL to the next page of items. ( `null` if none)
-	Next string `json:"next,required"`
+	Next string `json:"next" api:"required"`
 	// The offset of the items returned (as set in the query or by default)
-	Offset int64 `json:"offset,required"`
+	Offset int64 `json:"offset" api:"required"`
 	// URL to the previous page of items. ( `null` if none)
-	Previous string `json:"previous,required"`
+	Previous string `json:"previous" api:"required"`
 	// The total number of items available to return.
-	Total int64             `json:"total,required"`
+	Total int64             `json:"total" api:"required"`
 	Items []shared.ShowBase `json:"items"`
 	// The playlist's public/private status (if it should be added to the user's
 	// profile or not): `true` the playlist will be public, `false` the playlist will
@@ -358,17 +358,17 @@ func (r *SearchQueryResponseShows) UnmarshalJSON(data []byte) error {
 
 type SearchQueryResponseTracks struct {
 	// A link to the Web API endpoint returning the full result of the request
-	Href string `json:"href,required"`
+	Href string `json:"href" api:"required"`
 	// The maximum number of items in the response (as set in the query or by default).
-	Limit int64 `json:"limit,required"`
+	Limit int64 `json:"limit" api:"required"`
 	// URL to the next page of items. ( `null` if none)
-	Next string `json:"next,required"`
+	Next string `json:"next" api:"required"`
 	// The offset of the items returned (as set in the query or by default)
-	Offset int64 `json:"offset,required"`
+	Offset int64 `json:"offset" api:"required"`
 	// URL to the previous page of items. ( `null` if none)
-	Previous string `json:"previous,required"`
+	Previous string `json:"previous" api:"required"`
 	// The total number of items available to return.
-	Total int64                `json:"total,required"`
+	Total int64                `json:"total" api:"required"`
 	Items []shared.TrackObject `json:"items"`
 	// The playlist's public/private status (if it should be added to the user's
 	// profile or not): `true` the playlist will be public, `false` the playlist will
@@ -412,13 +412,13 @@ type SearchQueryParams struct {
 	// and `tag:hipster` filters can only be used while searching albums. The `tag:new`
 	// filter will return albums released in the past two weeks and `tag:hipster` can
 	// be used to return only albums with the lowest 10% popularity.<br />
-	Q string `query:"q,required" json:"-"`
+	Q string `query:"q" api:"required" json:"-"`
 	// A comma-separated list of item types to search across. Search results include
 	// hits from all the specified item types. For example: `q=abacab&type=album,track`
 	// returns both albums and tracks matching "abacab".
 	//
 	// Any of "album", "artist", "playlist", "track", "show", "episode", "audiobook".
-	Type []string `query:"type,omitzero,required" json:"-"`
+	Type []string `query:"type,omitzero" api:"required" json:"-"`
 	// The maximum number of results to return in each item type.
 	Limit param.Opt[int64] `query:"limit,omitzero" json:"-"`
 	// An

@@ -62,7 +62,7 @@ func (r *TrackService) BulkGet(ctx context.Context, query TrackBulkGetParams, op
 }
 
 type TrackBulkGetResponse struct {
-	Tracks []shared.TrackObject `json:"tracks,required"`
+	Tracks []shared.TrackObject `json:"tracks" api:"required"`
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
 		Tracks      respjson.Field
@@ -103,7 +103,7 @@ type TrackBulkGetParams struct {
 	// A comma-separated list of the
 	// [Spotify IDs](/documentation/web-api/concepts/spotify-uris-ids). For example:
 	// `ids=4iV5W9uYEdYUVa79Axb7Rh,1301WleyT98MSxVHPZCA6M`. Maximum: 50 IDs.
-	IDs string `query:"ids,required" json:"-"`
+	IDs string `query:"ids" api:"required" json:"-"`
 	// An
 	// [ISO 3166-1 alpha-2 country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2).
 	// If a country code is specified, only content that is available in that market

@@ -100,13 +100,13 @@ func (r *BrowseCategoryService) GetPlaylists(ctx context.Context, categoryID str
 type BrowseCategoryGetResponse struct {
 	// The [Spotify category ID](/documentation/web-api/concepts/spotify-uris-ids) of
 	// the category.
-	ID string `json:"id,required"`
+	ID string `json:"id" api:"required"`
 	// A link to the Web API endpoint returning full details of the category.
-	Href string `json:"href,required"`
+	Href string `json:"href" api:"required"`
 	// The category icon, in various sizes.
-	Icons []shared.ImageObject `json:"icons,required"`
+	Icons []shared.ImageObject `json:"icons" api:"required"`
 	// The name of the category.
-	Name string `json:"name,required"`
+	Name string `json:"name" api:"required"`
 	// The playlist's public/private status (if it should be added to the user's
 	// profile or not): `true` the playlist will be public, `false` the playlist will
 	// be private, `null` the playlist status is not relevant. For more about
@@ -134,13 +134,13 @@ func (r *BrowseCategoryGetResponse) UnmarshalJSON(data []byte) error {
 type BrowseCategoryListResponse struct {
 	// The [Spotify category ID](/documentation/web-api/concepts/spotify-uris-ids) of
 	// the category.
-	ID string `json:"id,required"`
+	ID string `json:"id" api:"required"`
 	// A link to the Web API endpoint returning full details of the category.
-	Href string `json:"href,required"`
+	Href string `json:"href" api:"required"`
 	// The category icon, in various sizes.
-	Icons []shared.ImageObject `json:"icons,required"`
+	Icons []shared.ImageObject `json:"icons" api:"required"`
 	// The name of the category.
-	Name string `json:"name,required"`
+	Name string `json:"name" api:"required"`
 	// The playlist's public/private status (if it should be added to the user's
 	// profile or not): `true` the playlist will be public, `false` the playlist will
 	// be private, `null` the playlist status is not relevant. For more about

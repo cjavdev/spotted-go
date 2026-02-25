@@ -62,7 +62,7 @@ func (r *EpisodeService) BulkGet(ctx context.Context, query EpisodeBulkGetParams
 }
 
 type EpisodeBulkGetResponse struct {
-	Episodes []shared.EpisodeObject `json:"episodes,required"`
+	Episodes []shared.EpisodeObject `json:"episodes" api:"required"`
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
 		Episodes    respjson.Field
@@ -103,7 +103,7 @@ type EpisodeBulkGetParams struct {
 	// A comma-separated list of the
 	// [Spotify IDs](/documentation/web-api/concepts/spotify-uris-ids) for the
 	// episodes. Maximum: 50 IDs.
-	IDs string `query:"ids,required" json:"-"`
+	IDs string `query:"ids" api:"required" json:"-"`
 	// An
 	// [ISO 3166-1 alpha-2 country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2).
 	// If a country code is specified, only content that is available in that market

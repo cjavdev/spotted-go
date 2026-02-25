@@ -142,7 +142,7 @@ func (r *MeAudiobookListResponse) UnmarshalJSON(data []byte) error {
 // Information about the audiobook.
 type MeAudiobookListResponseAudiobook struct {
 	// The chapters of the audiobook.
-	Chapters MeAudiobookListResponseAudiobookChapters `json:"chapters,required"`
+	Chapters MeAudiobookListResponseAudiobookChapters `json:"chapters" api:"required"`
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
 		Chapters    respjson.Field
@@ -161,17 +161,17 @@ func (r *MeAudiobookListResponseAudiobook) UnmarshalJSON(data []byte) error {
 // The chapters of the audiobook.
 type MeAudiobookListResponseAudiobookChapters struct {
 	// A link to the Web API endpoint returning the full result of the request
-	Href string `json:"href,required"`
+	Href string `json:"href" api:"required"`
 	// The maximum number of items in the response (as set in the query or by default).
-	Limit int64 `json:"limit,required"`
+	Limit int64 `json:"limit" api:"required"`
 	// URL to the next page of items. ( `null` if none)
-	Next string `json:"next,required"`
+	Next string `json:"next" api:"required"`
 	// The offset of the items returned (as set in the query or by default)
-	Offset int64 `json:"offset,required"`
+	Offset int64 `json:"offset" api:"required"`
 	// URL to the previous page of items. ( `null` if none)
-	Previous string `json:"previous,required"`
+	Previous string `json:"previous" api:"required"`
 	// The total number of items available to return.
-	Total int64                     `json:"total,required"`
+	Total int64                     `json:"total" api:"required"`
 	Items []SimplifiedChapterObject `json:"items"`
 	// The playlist's public/private status (if it should be added to the user's
 	// profile or not): `true` the playlist will be public, `false` the playlist will
@@ -221,7 +221,7 @@ type MeAudiobookCheckParams struct {
 	// A comma-separated list of the
 	// [Spotify IDs](/documentation/web-api/concepts/spotify-uris-ids). For example:
 	// `ids=18yVqkdbdRvS24c0Ilj2ci,1HGw3J3NxZO1TP1BTtVhpZ`. Maximum: 50 IDs.
-	IDs string `query:"ids,required" json:"-"`
+	IDs string `query:"ids" api:"required" json:"-"`
 	paramObj
 }
 
@@ -237,7 +237,7 @@ type MeAudiobookRemoveParams struct {
 	// A comma-separated list of the
 	// [Spotify IDs](/documentation/web-api/concepts/spotify-uris-ids). For example:
 	// `ids=18yVqkdbdRvS24c0Ilj2ci,1HGw3J3NxZO1TP1BTtVhpZ`. Maximum: 50 IDs.
-	IDs string `query:"ids,required" json:"-"`
+	IDs string `query:"ids" api:"required" json:"-"`
 	paramObj
 }
 
@@ -254,7 +254,7 @@ type MeAudiobookSaveParams struct {
 	// A comma-separated list of the
 	// [Spotify IDs](/documentation/web-api/concepts/spotify-uris-ids). For example:
 	// `ids=18yVqkdbdRvS24c0Ilj2ci,1HGw3J3NxZO1TP1BTtVhpZ`. Maximum: 50 IDs.
-	IDs string `query:"ids,required" json:"-"`
+	IDs string `query:"ids" api:"required" json:"-"`
 	paramObj
 }
 

@@ -56,7 +56,7 @@ type UserGetProfileResponse struct {
 	// user.
 	ID string `json:"id"`
 	// The name displayed on the user's profile. `null` if not available.
-	DisplayName string `json:"display_name,nullable"`
+	DisplayName string `json:"display_name" api:"nullable"`
 	// Known public external URLs for this user.
 	ExternalURLs shared.ExternalURLObject `json:"external_urls"`
 	// Information about the followers of this user.

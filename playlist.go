@@ -78,7 +78,7 @@ type PlaylistGetResponse struct {
 	Collaborative bool `json:"collaborative"`
 	// The playlist description. _Only returned for modified, verified playlists,
 	// otherwise_ `null`.
-	Description string `json:"description,nullable"`
+	Description string `json:"description" api:"nullable"`
 	// Known external URLs for this playlist.
 	ExternalURLs shared.ExternalURLObject `json:"external_urls"`
 	// Information about the followers of the playlist.
@@ -148,17 +148,17 @@ func (r *PlaylistGetResponse) UnmarshalJSON(data []byte) error {
 // owned by the current user or playlists the user is a collaborator of._
 type PlaylistGetResponseItems struct {
 	// A link to the Web API endpoint returning the full result of the request
-	Href string `json:"href,required"`
+	Href string `json:"href" api:"required"`
 	// The maximum number of items in the response (as set in the query or by default).
-	Limit int64 `json:"limit,required"`
+	Limit int64 `json:"limit" api:"required"`
 	// URL to the next page of items. ( `null` if none)
-	Next string `json:"next,required"`
+	Next string `json:"next" api:"required"`
 	// The offset of the items returned (as set in the query or by default)
-	Offset int64 `json:"offset,required"`
+	Offset int64 `json:"offset" api:"required"`
 	// URL to the previous page of items. ( `null` if none)
-	Previous string `json:"previous,required"`
+	Previous string `json:"previous" api:"required"`
 	// The total number of items available to return.
-	Total int64                        `json:"total,required"`
+	Total int64                        `json:"total" api:"required"`
 	Items []shared.PlaylistTrackObject `json:"items"`
 	// The playlist's public/private status (if it should be added to the user's
 	// profile or not): `true` the playlist will be public, `false` the playlist will
@@ -190,7 +190,7 @@ func (r *PlaylistGetResponseItems) UnmarshalJSON(data []byte) error {
 // The user who owns the playlist
 type PlaylistGetResponseOwner struct {
 	// The name displayed on the user's profile. `null` if not available.
-	DisplayName string `json:"display_name,nullable"`
+	DisplayName string `json:"display_name" api:"nullable"`
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
 		DisplayName respjson.Field
@@ -211,17 +211,17 @@ func (r *PlaylistGetResponseOwner) UnmarshalJSON(data []byte) error {
 // Deprecated: deprecated
 type PlaylistGetResponseTracks struct {
 	// A link to the Web API endpoint returning the full result of the request
-	Href string `json:"href,required"`
+	Href string `json:"href" api:"required"`
 	// The maximum number of items in the response (as set in the query or by default).
-	Limit int64 `json:"limit,required"`
+	Limit int64 `json:"limit" api:"required"`
 	// URL to the next page of items. ( `null` if none)
-	Next string `json:"next,required"`
+	Next string `json:"next" api:"required"`
 	// The offset of the items returned (as set in the query or by default)
-	Offset int64 `json:"offset,required"`
+	Offset int64 `json:"offset" api:"required"`
 	// URL to the previous page of items. ( `null` if none)
-	Previous string `json:"previous,required"`
+	Previous string `json:"previous" api:"required"`
 	// The total number of items available to return.
-	Total int64                        `json:"total,required"`
+	Total int64                        `json:"total" api:"required"`
 	Items []shared.PlaylistTrackObject `json:"items"`
 	// The playlist's public/private status (if it should be added to the user's
 	// profile or not): `true` the playlist will be public, `false` the playlist will

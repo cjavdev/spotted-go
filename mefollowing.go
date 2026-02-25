@@ -93,7 +93,7 @@ func (r *MeFollowingService) Unfollow(ctx context.Context, body MeFollowingUnfol
 }
 
 type MeFollowingBulkGetResponse struct {
-	Artists MeFollowingBulkGetResponseArtists `json:"artists,required"`
+	Artists MeFollowingBulkGetResponseArtists `json:"artists" api:"required"`
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
 		Artists     respjson.Field
@@ -182,7 +182,7 @@ type MeFollowingBulkGetParams struct {
 	// The ID type: currently only `artist` is supported.
 	//
 	// This field can be elided, and will marshal its zero value as "artist".
-	Type constant.Artist `query:"type,required" json:"-"`
+	Type constant.Artist `query:"type" api:"required" json:"-"`
 	paramObj
 }
 
@@ -200,11 +200,11 @@ type MeFollowingCheckParams struct {
 	// [Spotify IDs](/documentation/web-api/concepts/spotify-uris-ids) to check. For
 	// example: `ids=74ASZWbe4lXaubB36ztrGX,08td7MxkoHQkXnWAYD8d6Q`. A maximum of 50
 	// IDs can be sent in one request.
-	IDs string `query:"ids,required" json:"-"`
+	IDs string `query:"ids" api:"required" json:"-"`
 	// The ID type: either `artist` or `user`.
 	//
 	// Any of "artist", "user".
-	Type MeFollowingCheckParamsType `query:"type,omitzero,required" json:"-"`
+	Type MeFollowingCheckParamsType `query:"type,omitzero" api:"required" json:"-"`
 	paramObj
 }
 
@@ -230,7 +230,7 @@ type MeFollowingFollowParams struct {
 	// `{ids:["74ASZWbe4lXaubB36ztrGX", "08td7MxkoHQkXnWAYD8d6Q"]}`. A maximum of 50
 	// IDs can be sent in one request. _**Note**: if the `ids` parameter is present in
 	// the query string, any IDs listed here in the body will be ignored._
-	IDs []string `json:"ids,omitzero,required"`
+	IDs []string `json:"ids,omitzero" api:"required"`
 	// The playlist's public/private status (if it should be added to the user's
 	// profile or not): `true` the playlist will be public, `false` the playlist will
 	// be private, `null` the playlist status is not relevant. For more about

@@ -181,7 +181,7 @@ const (
 )
 
 type AudioFeatureBulkGetResponse struct {
-	AudioFeatures []AudioFeatureBulkGetResponseAudioFeature `json:"audio_features,required"`
+	AudioFeatures []AudioFeatureBulkGetResponseAudioFeature `json:"audio_features" api:"required"`
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
 		AudioFeatures respjson.Field
@@ -312,7 +312,7 @@ type AudioFeatureBulkGetParams struct {
 	// A comma-separated list of the
 	// [Spotify IDs](/documentation/web-api/concepts/spotify-uris-ids) for the tracks.
 	// Maximum: 100 IDs.
-	IDs string `query:"ids,required" json:"-"`
+	IDs string `query:"ids" api:"required" json:"-"`
 	paramObj
 }
 

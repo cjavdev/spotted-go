@@ -229,7 +229,7 @@ type DeviceObject struct {
 	// The device ID. This ID is unique and persistent to some extent. However, this is
 	// not guaranteed and any cached `device_id` should periodically be cleared out and
 	// refetched as necessary.
-	ID string `json:"id,nullable"`
+	ID string `json:"id" api:"nullable"`
 	// If this device is the currently active device.
 	IsActive bool `json:"is_active"`
 	// If this device is currently in a private session.
@@ -252,7 +252,7 @@ type DeviceObject struct {
 	// Device type, such as "computer", "smartphone" or "speaker".
 	Type string `json:"type"`
 	// The current volume in percent.
-	VolumePercent int64 `json:"volume_percent,nullable"`
+	VolumePercent int64 `json:"volume_percent" api:"nullable"`
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
 		ID               respjson.Field
@@ -538,7 +538,7 @@ func (r *MePlayerGetCurrentlyPlayingResponseItemUnionRestrictions) UnmarshalJSON
 }
 
 type MePlayerGetDevicesResponse struct {
-	Devices []DeviceObject `json:"devices,required"`
+	Devices []DeviceObject `json:"devices" api:"required"`
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
 		Devices     respjson.Field
@@ -955,7 +955,7 @@ type MePlayerSeekToPositionParams struct {
 	// The position in milliseconds to seek to. Must be a positive number. Passing in a
 	// position that is greater than the length of the track will cause the player to
 	// start playing the next song.
-	PositionMs int64 `query:"position_ms,required" json:"-"`
+	PositionMs int64 `query:"position_ms" api:"required" json:"-"`
 	// The id of the device this command is targeting. If not supplied, the user's
 	// currently active device is the target.
 	DeviceID param.Opt[string] `query:"device_id,omitzero" json:"-"`
@@ -975,7 +975,7 @@ type MePlayerSetRepeatModeParams struct {
 	// **track**, **context** or **off**.<br/> **track** will repeat the current
 	// track.<br/> **context** will repeat the current context.<br/> **off** will turn
 	// repeat off.
-	State string `query:"state,required" json:"-"`
+	State string `query:"state" api:"required" json:"-"`
 	// The id of the device this command is targeting. If not supplied, the user's
 	// currently active device is the target.
 	DeviceID param.Opt[string] `query:"device_id,omitzero" json:"-"`
@@ -993,7 +993,7 @@ func (r MePlayerSetRepeatModeParams) URLQuery() (v url.Values, err error) {
 
 type MePlayerSetVolumeParams struct {
 	// The volume to set. Must be a value from 0 to 100 inclusive.
-	VolumePercent int64 `query:"volume_percent,required" json:"-"`
+	VolumePercent int64 `query:"volume_percent" api:"required" json:"-"`
 	// The id of the device this command is targeting. If not supplied, the user's
 	// currently active device is the target.
 	DeviceID param.Opt[string] `query:"device_id,omitzero" json:"-"`
@@ -1089,7 +1089,7 @@ func (r MePlayerStartPlaybackParams) URLQuery() (v url.Values, err error) {
 type MePlayerToggleShuffleParams struct {
 	// **true** : Shuffle user's playback.<br/> **false** : Do not shuffle user's
 	// playback.
-	State bool `query:"state,required" json:"-"`
+	State bool `query:"state" api:"required" json:"-"`
 	// The id of the device this command is targeting. If not supplied, the user's
 	// currently active device is the target.
 	DeviceID param.Opt[string] `query:"device_id,omitzero" json:"-"`
@@ -1111,7 +1111,7 @@ type MePlayerTransferParams struct {
 	// example:`{device_ids:["74ASZWbe4lXaubB36ztrGX"]}`<br/>_**Note**: Although an
 	// array is accepted, only a single device_id is currently supported. Supplying
 	// more than one will return `400 Bad Request`_
-	DeviceIDs []string `json:"device_ids,omitzero,required"`
+	DeviceIDs []string `json:"device_ids,omitzero" api:"required"`
 	// **true**: ensure playback happens on new device.<br/>**false** or not provided:
 	// keep the current playback state.
 	Play param.Opt[bool] `json:"play,omitzero"`

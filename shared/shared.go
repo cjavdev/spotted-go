@@ -133,51 +133,51 @@ const (
 type AudiobookBase struct {
 	// The [Spotify ID](/documentation/web-api/concepts/spotify-uris-ids) for the
 	// audiobook.
-	ID string `json:"id,required"`
+	ID string `json:"id" api:"required"`
 	// The author(s) for the audiobook.
-	Authors []AuthorObject `json:"authors,required"`
+	Authors []AuthorObject `json:"authors" api:"required"`
 	// A list of the countries in which the audiobook can be played, identified by
 	// their [ISO 3166-1 alpha-2](http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2)
 	// code.
 	//
 	// Deprecated: deprecated
-	AvailableMarkets []string `json:"available_markets,required"`
+	AvailableMarkets []string `json:"available_markets" api:"required"`
 	// The copyright statements of the audiobook.
-	Copyrights []CopyrightObject `json:"copyrights,required"`
+	Copyrights []CopyrightObject `json:"copyrights" api:"required"`
 	// A description of the audiobook. HTML tags are stripped away from this field, use
 	// `html_description` field in case HTML tags are needed.
-	Description string `json:"description,required"`
+	Description string `json:"description" api:"required"`
 	// Whether or not the audiobook has explicit content (true = yes it does; false =
 	// no it does not OR unknown).
-	Explicit bool `json:"explicit,required"`
+	Explicit bool `json:"explicit" api:"required"`
 	// External URLs for this audiobook.
-	ExternalURLs ExternalURLObject `json:"external_urls,required"`
+	ExternalURLs ExternalURLObject `json:"external_urls" api:"required"`
 	// A link to the Web API endpoint providing full details of the audiobook.
-	Href string `json:"href,required"`
+	Href string `json:"href" api:"required"`
 	// A description of the audiobook. This field may contain HTML tags.
-	HTMLDescription string `json:"html_description,required"`
+	HTMLDescription string `json:"html_description" api:"required"`
 	// The cover art for the audiobook in various sizes, widest first.
-	Images []ImageObject `json:"images,required"`
+	Images []ImageObject `json:"images" api:"required"`
 	// A list of the languages used in the audiobook, identified by their
 	// [ISO 639](https://en.wikipedia.org/wiki/ISO_639) code.
-	Languages []string `json:"languages,required"`
+	Languages []string `json:"languages" api:"required"`
 	// The media type of the audiobook.
-	MediaType string `json:"media_type,required"`
+	MediaType string `json:"media_type" api:"required"`
 	// The name of the audiobook.
-	Name string `json:"name,required"`
+	Name string `json:"name" api:"required"`
 	// The narrator(s) for the audiobook.
-	Narrators []NarratorObject `json:"narrators,required"`
+	Narrators []NarratorObject `json:"narrators" api:"required"`
 	// The publisher of the audiobook.
 	//
 	// Deprecated: deprecated
-	Publisher string `json:"publisher,required"`
+	Publisher string `json:"publisher" api:"required"`
 	// The number of chapters in this audiobook.
-	TotalChapters int64 `json:"total_chapters,required"`
+	TotalChapters int64 `json:"total_chapters" api:"required"`
 	// The object type.
-	Type constant.Audiobook `json:"type,required"`
+	Type constant.Audiobook `json:"type" api:"required"`
 	// The [Spotify URI](/documentation/web-api/concepts/spotify-uris-ids) for the
 	// audiobook.
-	Uri string `json:"uri,required"`
+	Uri string `json:"uri" api:"required"`
 	// The edition of the audiobook.
 	Edition string `json:"edition"`
 	// The playlist's public/private status (if it should be added to the user's
@@ -308,51 +308,51 @@ func (r *CopyrightObject) UnmarshalJSON(data []byte) error {
 type EpisodeObject struct {
 	// The [Spotify ID](/documentation/web-api/concepts/spotify-uris-ids) for the
 	// episode.
-	ID string `json:"id,required"`
+	ID string `json:"id" api:"required"`
 	// A URL to a 30 second preview (MP3 format) of the episode. `null` if not
 	// available.
 	//
 	// Deprecated: deprecated
-	AudioPreviewURL string `json:"audio_preview_url,required"`
+	AudioPreviewURL string `json:"audio_preview_url" api:"required"`
 	// A description of the episode. HTML tags are stripped away from this field, use
 	// `html_description` field in case HTML tags are needed.
-	Description string `json:"description,required"`
+	Description string `json:"description" api:"required"`
 	// The episode length in milliseconds.
-	DurationMs int64 `json:"duration_ms,required"`
+	DurationMs int64 `json:"duration_ms" api:"required"`
 	// Whether or not the episode has explicit content (true = yes it does; false = no
 	// it does not OR unknown).
-	Explicit bool `json:"explicit,required"`
+	Explicit bool `json:"explicit" api:"required"`
 	// External URLs for this episode.
-	ExternalURLs ExternalURLObject `json:"external_urls,required"`
+	ExternalURLs ExternalURLObject `json:"external_urls" api:"required"`
 	// A link to the Web API endpoint providing full details of the episode.
-	Href string `json:"href,required"`
+	Href string `json:"href" api:"required"`
 	// A description of the episode. This field may contain HTML tags.
-	HTMLDescription string `json:"html_description,required"`
+	HTMLDescription string `json:"html_description" api:"required"`
 	// The cover art for the episode in various sizes, widest first.
-	Images []ImageObject `json:"images,required"`
+	Images []ImageObject `json:"images" api:"required"`
 	// True if the episode is hosted outside of Spotify's CDN.
-	IsExternallyHosted bool `json:"is_externally_hosted,required"`
+	IsExternallyHosted bool `json:"is_externally_hosted" api:"required"`
 	// True if the episode is playable in the given market. Otherwise false.
-	IsPlayable bool `json:"is_playable,required"`
+	IsPlayable bool `json:"is_playable" api:"required"`
 	// A list of the languages used in the episode, identified by their
 	// [ISO 639-1](https://en.wikipedia.org/wiki/ISO_639) code.
-	Languages []string `json:"languages,required"`
+	Languages []string `json:"languages" api:"required"`
 	// The name of the episode.
-	Name string `json:"name,required"`
+	Name string `json:"name" api:"required"`
 	// The date the episode was first released, for example `"1981-12-15"`. Depending
 	// on the precision, it might be shown as `"1981"` or `"1981-12"`.
-	ReleaseDate string `json:"release_date,required"`
+	ReleaseDate string `json:"release_date" api:"required"`
 	// The precision with which `release_date` value is known.
 	//
 	// Any of "year", "month", "day".
-	ReleaseDatePrecision EpisodeObjectReleaseDatePrecision `json:"release_date_precision,required"`
+	ReleaseDatePrecision EpisodeObjectReleaseDatePrecision `json:"release_date_precision" api:"required"`
 	// The show on which the episode belongs.
-	Show ShowBase `json:"show,required"`
+	Show ShowBase `json:"show" api:"required"`
 	// The object type.
-	Type constant.Episode `json:"type,required"`
+	Type constant.Episode `json:"type" api:"required"`
 	// The [Spotify URI](/documentation/web-api/concepts/spotify-uris-ids) for the
 	// episode.
-	Uri string `json:"uri,required"`
+	Uri string `json:"uri" api:"required"`
 	// The language used in the episode, identified by a
 	// [ISO 639](https://en.wikipedia.org/wiki/ISO_639) code. This field is deprecated
 	// and might be removed in the future. Please use the `languages` field instead.
@@ -512,7 +512,7 @@ func (r *ExternalURLObject) UnmarshalJSON(data []byte) error {
 type FollowersObject struct {
 	// This will always be set to null, as the Web API does not support it at the
 	// moment.
-	Href string `json:"href,nullable"`
+	Href string `json:"href" api:"nullable"`
 	// The playlist's public/private status (if it should be added to the user's
 	// profile or not): `true` the playlist will be public, `false` the playlist will
 	// be private, `null` the playlist status is not relevant. For more about
@@ -539,11 +539,11 @@ func (r *FollowersObject) UnmarshalJSON(data []byte) error {
 
 type ImageObject struct {
 	// The image height in pixels.
-	Height int64 `json:"height,required"`
+	Height int64 `json:"height" api:"required"`
 	// The source URL of the image.
-	URL string `json:"url,required"`
+	URL string `json:"url" api:"required"`
 	// The image width in pixels.
-	Width int64 `json:"width,required"`
+	Width int64 `json:"width" api:"required"`
 	// The playlist's public/private status (if it should be added to the user's
 	// profile or not): `true` the playlist will be public, `false` the playlist will
 	// be private, `null` the playlist status is not relevant. For more about
@@ -631,17 +631,17 @@ func (r *NarratorObject) UnmarshalJSON(data []byte) error {
 
 type PagingPlaylistObject struct {
 	// A link to the Web API endpoint returning the full result of the request
-	Href string `json:"href,required"`
+	Href string `json:"href" api:"required"`
 	// The maximum number of items in the response (as set in the query or by default).
-	Limit int64 `json:"limit,required"`
+	Limit int64 `json:"limit" api:"required"`
 	// URL to the next page of items. ( `null` if none)
-	Next string `json:"next,required"`
+	Next string `json:"next" api:"required"`
 	// The offset of the items returned (as set in the query or by default)
-	Offset int64 `json:"offset,required"`
+	Offset int64 `json:"offset" api:"required"`
 	// URL to the previous page of items. ( `null` if none)
-	Previous string `json:"previous,required"`
+	Previous string `json:"previous" api:"required"`
 	// The total number of items available to return.
-	Total int64                      `json:"total,required"`
+	Total int64                      `json:"total" api:"required"`
 	Items []SimplifiedPlaylistObject `json:"items"`
 	// The playlist's public/private status (if it should be added to the user's
 	// profile or not): `true` the playlist will be public, `false` the playlist will
@@ -1139,49 +1139,49 @@ func (r *ResumePointObject) UnmarshalJSON(data []byte) error {
 
 type ShowBase struct {
 	// The [Spotify ID](/documentation/web-api/concepts/spotify-uris-ids) for the show.
-	ID string `json:"id,required"`
+	ID string `json:"id" api:"required"`
 	// A list of the countries in which the show can be played, identified by their
 	// [ISO 3166-1 alpha-2](http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) code.
 	//
 	// Deprecated: deprecated
-	AvailableMarkets []string `json:"available_markets,required"`
+	AvailableMarkets []string `json:"available_markets" api:"required"`
 	// The copyright statements of the show.
-	Copyrights []CopyrightObject `json:"copyrights,required"`
+	Copyrights []CopyrightObject `json:"copyrights" api:"required"`
 	// A description of the show. HTML tags are stripped away from this field, use
 	// `html_description` field in case HTML tags are needed.
-	Description string `json:"description,required"`
+	Description string `json:"description" api:"required"`
 	// Whether or not the show has explicit content (true = yes it does; false = no it
 	// does not OR unknown).
-	Explicit bool `json:"explicit,required"`
+	Explicit bool `json:"explicit" api:"required"`
 	// External URLs for this show.
-	ExternalURLs ExternalURLObject `json:"external_urls,required"`
+	ExternalURLs ExternalURLObject `json:"external_urls" api:"required"`
 	// A link to the Web API endpoint providing full details of the show.
-	Href string `json:"href,required"`
+	Href string `json:"href" api:"required"`
 	// A description of the show. This field may contain HTML tags.
-	HTMLDescription string `json:"html_description,required"`
+	HTMLDescription string `json:"html_description" api:"required"`
 	// The cover art for the show in various sizes, widest first.
-	Images []ImageObject `json:"images,required"`
+	Images []ImageObject `json:"images" api:"required"`
 	// True if all of the shows episodes are hosted outside of Spotify's CDN. This
 	// field might be `null` in some cases.
-	IsExternallyHosted bool `json:"is_externally_hosted,required"`
+	IsExternallyHosted bool `json:"is_externally_hosted" api:"required"`
 	// A list of the languages used in the show, identified by their
 	// [ISO 639](https://en.wikipedia.org/wiki/ISO_639) code.
-	Languages []string `json:"languages,required"`
+	Languages []string `json:"languages" api:"required"`
 	// The media type of the show.
-	MediaType string `json:"media_type,required"`
+	MediaType string `json:"media_type" api:"required"`
 	// The name of the episode.
-	Name string `json:"name,required"`
+	Name string `json:"name" api:"required"`
 	// The publisher of the show.
 	//
 	// Deprecated: deprecated
-	Publisher string `json:"publisher,required"`
+	Publisher string `json:"publisher" api:"required"`
 	// The total number of episodes in the show.
-	TotalEpisodes int64 `json:"total_episodes,required"`
+	TotalEpisodes int64 `json:"total_episodes" api:"required"`
 	// The object type.
-	Type constant.Show `json:"type,required"`
+	Type constant.Show `json:"type" api:"required"`
 	// The [Spotify URI](/documentation/web-api/concepts/spotify-uris-ids) for the
 	// show.
-	Uri string `json:"uri,required"`
+	Uri string `json:"uri" api:"required"`
 	// The playlist's public/private status (if it should be added to the user's
 	// profile or not): `true` the playlist will be public, `false` the playlist will
 	// be private, `null` the playlist status is not relevant. For more about
@@ -1272,49 +1272,49 @@ const (
 type SimplifiedEpisodeObject struct {
 	// The [Spotify ID](/documentation/web-api/concepts/spotify-uris-ids) for the
 	// episode.
-	ID string `json:"id,required"`
+	ID string `json:"id" api:"required"`
 	// A URL to a 30 second preview (MP3 format) of the episode. `null` if not
 	// available.
 	//
 	// Deprecated: deprecated
-	AudioPreviewURL string `json:"audio_preview_url,required"`
+	AudioPreviewURL string `json:"audio_preview_url" api:"required"`
 	// A description of the episode. HTML tags are stripped away from this field, use
 	// `html_description` field in case HTML tags are needed.
-	Description string `json:"description,required"`
+	Description string `json:"description" api:"required"`
 	// The episode length in milliseconds.
-	DurationMs int64 `json:"duration_ms,required"`
+	DurationMs int64 `json:"duration_ms" api:"required"`
 	// Whether or not the episode has explicit content (true = yes it does; false = no
 	// it does not OR unknown).
-	Explicit bool `json:"explicit,required"`
+	Explicit bool `json:"explicit" api:"required"`
 	// External URLs for this episode.
-	ExternalURLs ExternalURLObject `json:"external_urls,required"`
+	ExternalURLs ExternalURLObject `json:"external_urls" api:"required"`
 	// A link to the Web API endpoint providing full details of the episode.
-	Href string `json:"href,required"`
+	Href string `json:"href" api:"required"`
 	// A description of the episode. This field may contain HTML tags.
-	HTMLDescription string `json:"html_description,required"`
+	HTMLDescription string `json:"html_description" api:"required"`
 	// The cover art for the episode in various sizes, widest first.
-	Images []ImageObject `json:"images,required"`
+	Images []ImageObject `json:"images" api:"required"`
 	// True if the episode is hosted outside of Spotify's CDN.
-	IsExternallyHosted bool `json:"is_externally_hosted,required"`
+	IsExternallyHosted bool `json:"is_externally_hosted" api:"required"`
 	// True if the episode is playable in the given market. Otherwise false.
-	IsPlayable bool `json:"is_playable,required"`
+	IsPlayable bool `json:"is_playable" api:"required"`
 	// A list of the languages used in the episode, identified by their
 	// [ISO 639-1](https://en.wikipedia.org/wiki/ISO_639) code.
-	Languages []string `json:"languages,required"`
+	Languages []string `json:"languages" api:"required"`
 	// The name of the episode.
-	Name string `json:"name,required"`
+	Name string `json:"name" api:"required"`
 	// The date the episode was first released, for example `"1981-12-15"`. Depending
 	// on the precision, it might be shown as `"1981"` or `"1981-12"`.
-	ReleaseDate string `json:"release_date,required"`
+	ReleaseDate string `json:"release_date" api:"required"`
 	// The precision with which `release_date` value is known.
 	//
 	// Any of "year", "month", "day".
-	ReleaseDatePrecision SimplifiedEpisodeObjectReleaseDatePrecision `json:"release_date_precision,required"`
+	ReleaseDatePrecision SimplifiedEpisodeObjectReleaseDatePrecision `json:"release_date_precision" api:"required"`
 	// The object type.
-	Type constant.Episode `json:"type,required"`
+	Type constant.Episode `json:"type" api:"required"`
 	// The [Spotify URI](/documentation/web-api/concepts/spotify-uris-ids) for the
 	// episode.
-	Uri string `json:"uri,required"`
+	Uri string `json:"uri" api:"required"`
 	// The language used in the episode, identified by a
 	// [ISO 639](https://en.wikipedia.org/wiki/ISO_639) code. This field is deprecated
 	// and might be removed in the future. Please use the `languages` field instead.
@@ -1454,7 +1454,7 @@ func (r *SimplifiedPlaylistObject) UnmarshalJSON(data []byte) error {
 // The user who owns the playlist
 type SimplifiedPlaylistObjectOwner struct {
 	// The name displayed on the user's profile. `null` if not available.
-	DisplayName string `json:"display_name,nullable"`
+	DisplayName string `json:"display_name" api:"nullable"`
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
 		DisplayName respjson.Field
@@ -1512,7 +1512,7 @@ type SimplifiedTrackObject struct {
 	// A URL to a 30 second preview (MP3 format) of the track.
 	//
 	// Deprecated: deprecated
-	PreviewURL string `json:"preview_url,nullable"`
+	PreviewURL string `json:"preview_url" api:"nullable"`
 	// The playlist's public/private status (if it should be added to the user's
 	// profile or not): `true` the playlist will be public, `false` the playlist will
 	// be private, `null` the playlist status is not relevant. For more about
@@ -1621,7 +1621,7 @@ type TrackObject struct {
 	// A link to a 30 second preview (MP3 format) of the track. Can be `null`
 	//
 	// Deprecated: deprecated
-	PreviewURL string `json:"preview_url,nullable"`
+	PreviewURL string `json:"preview_url" api:"nullable"`
 	// The playlist's public/private status (if it should be added to the user's
 	// profile or not): `true` the playlist will be public, `false` the playlist will
 	// be private, `null` the playlist status is not relevant. For more about
@@ -1686,43 +1686,43 @@ func (TrackObject) ImplMePlayerQueueGetResponseQueueUnion()            {}
 type TrackObjectAlbum struct {
 	// The [Spotify ID](/documentation/web-api/concepts/spotify-uris-ids) for the
 	// album.
-	ID string `json:"id,required"`
+	ID string `json:"id" api:"required"`
 	// The type of the album.
 	//
 	// Any of "album", "single", "compilation".
-	AlbumType string `json:"album_type,required"`
+	AlbumType string `json:"album_type" api:"required"`
 	// The artists of the album. Each artist object includes a link in `href` to more
 	// detailed information about the artist.
-	Artists []SimplifiedArtistObject `json:"artists,required"`
+	Artists []SimplifiedArtistObject `json:"artists" api:"required"`
 	// The markets in which the album is available:
 	// [ISO 3166-1 alpha-2 country codes](http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2).
 	// _**NOTE**: an album is considered available in a market when at least 1 of its
 	// tracks is available in that market._
 	//
 	// Deprecated: deprecated
-	AvailableMarkets []string `json:"available_markets,required"`
+	AvailableMarkets []string `json:"available_markets" api:"required"`
 	// Known external URLs for this album.
-	ExternalURLs ExternalURLObject `json:"external_urls,required"`
+	ExternalURLs ExternalURLObject `json:"external_urls" api:"required"`
 	// A link to the Web API endpoint providing full details of the album.
-	Href string `json:"href,required"`
+	Href string `json:"href" api:"required"`
 	// The cover art for the album in various sizes, widest first.
-	Images []ImageObject `json:"images,required"`
+	Images []ImageObject `json:"images" api:"required"`
 	// The name of the album. In case of an album takedown, the value may be an empty
 	// string.
-	Name string `json:"name,required"`
+	Name string `json:"name" api:"required"`
 	// The date the album was first released.
-	ReleaseDate string `json:"release_date,required"`
+	ReleaseDate string `json:"release_date" api:"required"`
 	// The precision with which `release_date` value is known.
 	//
 	// Any of "year", "month", "day".
-	ReleaseDatePrecision string `json:"release_date_precision,required"`
+	ReleaseDatePrecision string `json:"release_date_precision" api:"required"`
 	// The number of tracks in the album.
-	TotalTracks int64 `json:"total_tracks,required"`
+	TotalTracks int64 `json:"total_tracks" api:"required"`
 	// The object type.
-	Type constant.Album `json:"type,required"`
+	Type constant.Album `json:"type" api:"required"`
 	// The [Spotify URI](/documentation/web-api/concepts/spotify-uris-ids) for the
 	// album.
-	Uri string `json:"uri,required"`
+	Uri string `json:"uri" api:"required"`
 	// The playlist's public/private status (if it should be added to the user's
 	// profile or not): `true` the playlist will be public, `false` the playlist will
 	// be private, `null` the playlist status is not relevant. For more about

@@ -415,7 +415,7 @@ func (r *MePlayerQueueGetResponseQueueUnionRestrictions) UnmarshalJSON(data []by
 
 type MePlayerQueueAddParams struct {
 	// The uri of the item to add to the queue. Must be a track or an episode uri.
-	Uri string `query:"uri,required" json:"-"`
+	Uri string `query:"uri" api:"required" json:"-"`
 	// The id of the device this command is targeting. If not supplied, the user's
 	// currently active device is the target.
 	DeviceID param.Opt[string] `query:"device_id,omitzero" json:"-"`

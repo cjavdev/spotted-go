@@ -68,51 +68,51 @@ func (r *ChapterService) BulkGet(ctx context.Context, query ChapterBulkGetParams
 type ChapterGetResponse struct {
 	// The [Spotify ID](/documentation/web-api/concepts/spotify-uris-ids) for the
 	// chapter.
-	ID string `json:"id,required"`
+	ID string `json:"id" api:"required"`
 	// A URL to a 30 second preview (MP3 format) of the chapter. `null` if not
 	// available.
 	//
 	// Deprecated: deprecated
-	AudioPreviewURL string `json:"audio_preview_url,required"`
+	AudioPreviewURL string `json:"audio_preview_url" api:"required"`
 	// The audiobook for which the chapter belongs.
-	Audiobook shared.AudiobookBase `json:"audiobook,required"`
+	Audiobook shared.AudiobookBase `json:"audiobook" api:"required"`
 	// The number of the chapter
-	ChapterNumber int64 `json:"chapter_number,required"`
+	ChapterNumber int64 `json:"chapter_number" api:"required"`
 	// A description of the chapter. HTML tags are stripped away from this field, use
 	// `html_description` field in case HTML tags are needed.
-	Description string `json:"description,required"`
+	Description string `json:"description" api:"required"`
 	// The chapter length in milliseconds.
-	DurationMs int64 `json:"duration_ms,required"`
+	DurationMs int64 `json:"duration_ms" api:"required"`
 	// Whether or not the chapter has explicit content (true = yes it does; false = no
 	// it does not OR unknown).
-	Explicit bool `json:"explicit,required"`
+	Explicit bool `json:"explicit" api:"required"`
 	// External URLs for this chapter.
-	ExternalURLs shared.ExternalURLObject `json:"external_urls,required"`
+	ExternalURLs shared.ExternalURLObject `json:"external_urls" api:"required"`
 	// A link to the Web API endpoint providing full details of the chapter.
-	Href string `json:"href,required"`
+	Href string `json:"href" api:"required"`
 	// A description of the chapter. This field may contain HTML tags.
-	HTMLDescription string `json:"html_description,required"`
+	HTMLDescription string `json:"html_description" api:"required"`
 	// The cover art for the chapter in various sizes, widest first.
-	Images []shared.ImageObject `json:"images,required"`
+	Images []shared.ImageObject `json:"images" api:"required"`
 	// True if the chapter is playable in the given market. Otherwise false.
-	IsPlayable bool `json:"is_playable,required"`
+	IsPlayable bool `json:"is_playable" api:"required"`
 	// A list of the languages used in the chapter, identified by their
 	// [ISO 639-1](https://en.wikipedia.org/wiki/ISO_639) code.
-	Languages []string `json:"languages,required"`
+	Languages []string `json:"languages" api:"required"`
 	// The name of the chapter.
-	Name string `json:"name,required"`
+	Name string `json:"name" api:"required"`
 	// The date the chapter was first released, for example `"1981-12-15"`. Depending
 	// on the precision, it might be shown as `"1981"` or `"1981-12"`.
-	ReleaseDate string `json:"release_date,required"`
+	ReleaseDate string `json:"release_date" api:"required"`
 	// The precision with which `release_date` value is known.
 	//
 	// Any of "year", "month", "day".
-	ReleaseDatePrecision ChapterGetResponseReleaseDatePrecision `json:"release_date_precision,required"`
+	ReleaseDatePrecision ChapterGetResponseReleaseDatePrecision `json:"release_date_precision" api:"required"`
 	// The object type.
-	Type constant.Episode `json:"type,required"`
+	Type constant.Episode `json:"type" api:"required"`
 	// The [Spotify URI](/documentation/web-api/concepts/spotify-uris-ids) for the
 	// chapter.
-	Uri string `json:"uri,required"`
+	Uri string `json:"uri" api:"required"`
 	// A list of the countries in which the chapter can be played, identified by their
 	// [ISO 3166-1 alpha-2](http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) code.
 	//
@@ -174,7 +174,7 @@ const (
 )
 
 type ChapterBulkGetResponse struct {
-	Chapters []ChapterBulkGetResponseChapter `json:"chapters,required"`
+	Chapters []ChapterBulkGetResponseChapter `json:"chapters" api:"required"`
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
 		Chapters    respjson.Field
@@ -192,51 +192,51 @@ func (r *ChapterBulkGetResponse) UnmarshalJSON(data []byte) error {
 type ChapterBulkGetResponseChapter struct {
 	// The [Spotify ID](/documentation/web-api/concepts/spotify-uris-ids) for the
 	// chapter.
-	ID string `json:"id,required"`
+	ID string `json:"id" api:"required"`
 	// A URL to a 30 second preview (MP3 format) of the chapter. `null` if not
 	// available.
 	//
 	// Deprecated: deprecated
-	AudioPreviewURL string `json:"audio_preview_url,required"`
+	AudioPreviewURL string `json:"audio_preview_url" api:"required"`
 	// The audiobook for which the chapter belongs.
-	Audiobook shared.AudiobookBase `json:"audiobook,required"`
+	Audiobook shared.AudiobookBase `json:"audiobook" api:"required"`
 	// The number of the chapter
-	ChapterNumber int64 `json:"chapter_number,required"`
+	ChapterNumber int64 `json:"chapter_number" api:"required"`
 	// A description of the chapter. HTML tags are stripped away from this field, use
 	// `html_description` field in case HTML tags are needed.
-	Description string `json:"description,required"`
+	Description string `json:"description" api:"required"`
 	// The chapter length in milliseconds.
-	DurationMs int64 `json:"duration_ms,required"`
+	DurationMs int64 `json:"duration_ms" api:"required"`
 	// Whether or not the chapter has explicit content (true = yes it does; false = no
 	// it does not OR unknown).
-	Explicit bool `json:"explicit,required"`
+	Explicit bool `json:"explicit" api:"required"`
 	// External URLs for this chapter.
-	ExternalURLs shared.ExternalURLObject `json:"external_urls,required"`
+	ExternalURLs shared.ExternalURLObject `json:"external_urls" api:"required"`
 	// A link to the Web API endpoint providing full details of the chapter.
-	Href string `json:"href,required"`
+	Href string `json:"href" api:"required"`
 	// A description of the chapter. This field may contain HTML tags.
-	HTMLDescription string `json:"html_description,required"`
+	HTMLDescription string `json:"html_description" api:"required"`
 	// The cover art for the chapter in various sizes, widest first.
-	Images []shared.ImageObject `json:"images,required"`
+	Images []shared.ImageObject `json:"images" api:"required"`
 	// True if the chapter is playable in the given market. Otherwise false.
-	IsPlayable bool `json:"is_playable,required"`
+	IsPlayable bool `json:"is_playable" api:"required"`
 	// A list of the languages used in the chapter, identified by their
 	// [ISO 639-1](https://en.wikipedia.org/wiki/ISO_639) code.
-	Languages []string `json:"languages,required"`
+	Languages []string `json:"languages" api:"required"`
 	// The name of the chapter.
-	Name string `json:"name,required"`
+	Name string `json:"name" api:"required"`
 	// The date the chapter was first released, for example `"1981-12-15"`. Depending
 	// on the precision, it might be shown as `"1981"` or `"1981-12"`.
-	ReleaseDate string `json:"release_date,required"`
+	ReleaseDate string `json:"release_date" api:"required"`
 	// The precision with which `release_date` value is known.
 	//
 	// Any of "year", "month", "day".
-	ReleaseDatePrecision string `json:"release_date_precision,required"`
+	ReleaseDatePrecision string `json:"release_date_precision" api:"required"`
 	// The object type.
-	Type constant.Episode `json:"type,required"`
+	Type constant.Episode `json:"type" api:"required"`
 	// The [Spotify URI](/documentation/web-api/concepts/spotify-uris-ids) for the
 	// chapter.
-	Uri string `json:"uri,required"`
+	Uri string `json:"uri" api:"required"`
 	// A list of the countries in which the chapter can be played, identified by their
 	// [ISO 3166-1 alpha-2](http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) code.
 	//
@@ -314,7 +314,7 @@ type ChapterBulkGetParams struct {
 	// A comma-separated list of the
 	// [Spotify IDs](/documentation/web-api/concepts/spotify-uris-ids). For example:
 	// `ids=0IsXVP0JmcB2adSE338GkK,3ZXb8FKZGU0EHALYX6uCzU`. Maximum: 50 IDs.
-	IDs string `query:"ids,required" json:"-"`
+	IDs string `query:"ids" api:"required" json:"-"`
 	// An
 	// [ISO 3166-1 alpha-2 country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2).
 	// If a country code is specified, only content that is available in that market

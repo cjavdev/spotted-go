@@ -65,9 +65,9 @@ func (r *RecommendationService) ListAvailableGenreSeeds(ctx context.Context, opt
 
 type RecommendationGetResponse struct {
 	// An array of recommendation seed objects.
-	Seeds []RecommendationGetResponseSeed `json:"seeds,required"`
+	Seeds []RecommendationGetResponseSeed `json:"seeds" api:"required"`
 	// An array of track objects ordered according to the parameters supplied.
-	Tracks []shared.TrackObject `json:"tracks,required"`
+	Tracks []shared.TrackObject `json:"tracks" api:"required"`
 	// The playlist's public/private status (if it should be added to the user's
 	// profile or not): `true` the playlist will be public, `false` the playlist will
 	// be private, `null` the playlist status is not relevant. For more about
@@ -134,7 +134,7 @@ func (r *RecommendationGetResponseSeed) UnmarshalJSON(data []byte) error {
 }
 
 type RecommendationListAvailableGenreSeedsResponse struct {
-	Genres []string `json:"genres,required"`
+	Genres []string `json:"genres" api:"required"`
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
 		Genres      respjson.Field

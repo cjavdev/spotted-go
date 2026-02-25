@@ -308,7 +308,7 @@ type PlaylistTrackRemoveParams struct {
 	// or episodes to remove. For example:
 	// `{ "tracks": [{ "uri": "spotify:track:4iV5W9uYEdYUVa79Axb7Rh" },{ "uri": "spotify:track:1301WleyT98MSxVHPZCA6M" }] }`.
 	// A maximum of 100 objects can be sent at once.
-	Tracks []PlaylistTrackRemoveParamsTrack `json:"tracks,omitzero,required"`
+	Tracks []PlaylistTrackRemoveParamsTrack `json:"tracks,omitzero" api:"required"`
 	// The playlist's public/private status (if it should be added to the user's
 	// profile or not): `true` the playlist will be public, `false` the playlist will
 	// be private, `null` the playlist status is not relevant. For more about

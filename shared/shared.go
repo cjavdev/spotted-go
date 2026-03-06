@@ -1583,8 +1583,6 @@ type TrackObject struct {
 	// no it does not OR unknown).
 	Explicit bool `json:"explicit"`
 	// Known external IDs for the track.
-	//
-	// Deprecated: deprecated
 	ExternalIDs ExternalIDObject `json:"external_ids"`
 	// Known external URLs for this track.
 	ExternalURLs ExternalURLObject `json:"external_urls"`

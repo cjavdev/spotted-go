@@ -135,8 +135,6 @@ type AlbumGetResponse struct {
 	// The copyright statements of the album.
 	Copyrights []shared.CopyrightObject `json:"copyrights"`
 	// Known external IDs for the album.
-	//
-	// Deprecated: deprecated
 	ExternalIDs shared.ExternalIDObject `json:"external_ids"`
 	// **Deprecated** The array is always empty.
 	//
@@ -314,8 +312,6 @@ type AlbumBulkGetResponseAlbum struct {
 	// The copyright statements of the album.
 	Copyrights []shared.CopyrightObject `json:"copyrights"`
 	// Known external IDs for the album.
-	//
-	// Deprecated: deprecated
 	ExternalIDs shared.ExternalIDObject `json:"external_ids"`
 	// **Deprecated** The array is always empty.
 	//

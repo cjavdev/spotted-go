@@ -1,5 +1,19 @@
 # Changelog
 
+## 0.24.0 (2026-03-06)
+
+Full Changelog: [v0.23.1...v0.24.0](https://github.com/cjavdev/spotted-go/compare/v0.23.1...v0.24.0)
+
+### Features
+
+* **api:** api update ([6976d0d](https://github.com/cjavdev/spotted-go/commit/6976d0d6b4257a0b8a5d778d35afed34e8bfafa4))
+
+
+### Chores
+
+* **internal:** codegen related update ([a4b64ff](https://github.com/cjavdev/spotted-go/commit/a4b64ff0d00fea310dfeb9b7760b52e6df003377))
+* **internal:** move custom custom `json` tags to `api` ([e83262b](https://github.com/cjavdev/spotted-go/commit/e83262b2cb03fc076b6ae7ef01765328d3969f0f))
+
 ## 0.23.1 (2026-02-22)
 
 Full Changelog: [v0.23.0...v0.23.1](https://github.com/cjavdev/spotted-go/compare/v0.23.0...v0.23.1)

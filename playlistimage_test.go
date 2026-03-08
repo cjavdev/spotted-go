@@ -31,7 +31,7 @@ func TestPlaylistImageUpdate(t *testing.T) {
 	resp, err := client.Playlists.Images.Update(
 		context.TODO(),
 		"3cEYpjA9oz9GiPac4AsH4n",
-		io.Reader(bytes.NewBuffer([]byte("some file contents"))),
+		io.Reader(bytes.NewBuffer([]byte("Example data"))),
 	)
 	if err != nil {
 		var apierr *spotted.Error

@@ -44,7 +44,7 @@ func (r *SearchService) Query(ctx context.Context, query SearchQueryParams, opts
 	opts = slices.Concat(r.Options, opts)
 	path := "search"
 	err = requestconfig.ExecuteNewRequest(ctx, http.MethodGet, path, query, &res, opts...)
-	return
+	return res, err
 }
 
 type SearchQueryResponse struct {

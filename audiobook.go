@@ -46,11 +46,11 @@ func (r *AudiobookService) Get(ctx context.Context, id string, query AudiobookGe
 	opts = slices.Concat(r.Options, opts)
 	if id == "" {
 		err = errors.New("missing required id parameter")
-		return
+		return nil, err
 	}
 	path := fmt.Sprintf("audiobooks/%s", id)
 	err = requestconfig.ExecuteNewRequest(ctx, http.MethodGet, path, query, &res, opts...)
-	return
+	return res, err
 }
 
 // Get Spotify catalog information for several audiobooks identified by their
@@ -62,7 +62,7 @@ func (r *AudiobookService) BulkGet(ctx context.Context, query AudiobookBulkGetPa
 	opts = slices.Concat(r.Options, opts)
 	path := "audiobooks"
 	err = requestconfig.ExecuteNewRequest(ctx, http.MethodGet, path, query, &res, opts...)
-	return
+	return res, err
 }
 
 // Get Spotify catalog information about an audiobook's chapters. Audiobooks are
@@ -74,7 +74,7 @@ func (r *AudiobookService) ListChapters(ctx context.Context, id string, query Au
 	opts = append([]option.RequestOption{option.WithResponseInto(&raw)}, opts...)
 	if id == "" {
 		err = errors.New("missing required id parameter")
-		return
+		return nil, err
 	}
 	path := fmt.Sprintf("audiobooks/%s/chapters", id)
 	cfg, err := requestconfig.NewRequestConfig(ctx, http.MethodGet, path, query, &res, opts...)

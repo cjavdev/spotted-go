@@ -46,11 +46,11 @@ func (r *ChapterService) Get(ctx context.Context, id string, query ChapterGetPar
 	opts = slices.Concat(r.Options, opts)
 	if id == "" {
 		err = errors.New("missing required id parameter")
-		return
+		return nil, err
 	}
 	path := fmt.Sprintf("chapters/%s", id)
 	err = requestconfig.ExecuteNewRequest(ctx, http.MethodGet, path, query, &res, opts...)
-	return
+	return res, err
 }
 
 // Get Spotify catalog information for several audiobook chapters identified by
@@ -62,7 +62,7 @@ func (r *ChapterService) BulkGet(ctx context.Context, query ChapterBulkGetParams
 	opts = slices.Concat(r.Options, opts)
 	path := "chapters"
 	err = requestconfig.ExecuteNewRequest(ctx, http.MethodGet, path, query, &res, opts...)
-	return
+	return res, err
 }
 
 type ChapterGetResponse struct {

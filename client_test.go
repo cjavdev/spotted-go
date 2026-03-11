@@ -38,7 +38,7 @@ func TestUserAgentHeader(t *testing.T) {
 			},
 		}),
 	)
-	client.Albums.Get(
+	_, _ = client.Albums.Get(
 		context.Background(),
 		"4aawyAB9vmqN3uQ7FjRGTy",
 		spotted.AlbumGetParams{},

@@ -44,11 +44,11 @@ func (r *EpisodeService) Get(ctx context.Context, id string, query EpisodeGetPar
 	opts = slices.Concat(r.Options, opts)
 	if id == "" {
 		err = errors.New("missing required id parameter")
-		return
+		return nil, err
 	}
 	path := fmt.Sprintf("episodes/%s", id)
 	err = requestconfig.ExecuteNewRequest(ctx, http.MethodGet, path, query, &res, opts...)
-	return
+	return res, err
 }
 
 // Get Spotify catalog information for several episodes based on their Spotify IDs.
@@ -58,7 +58,7 @@ func (r *EpisodeService) BulkGet(ctx context.Context, query EpisodeBulkGetParams
 	opts = slices.Concat(r.Options, opts)
 	path := "episodes"
 	err = requestconfig.ExecuteNewRequest(ctx, http.MethodGet, path, query, &res, opts...)
-	return
+	return res, err
 }
 
 type EpisodeBulkGetResponse struct {

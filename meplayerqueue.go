@@ -45,7 +45,7 @@ func (r *MePlayerQueueService) Add(ctx context.Context, body MePlayerQueueAddPar
 	opts = append([]option.RequestOption{option.WithHeader("Accept", "*/*")}, opts...)
 	path := "me/player/queue"
 	err = requestconfig.ExecuteNewRequest(ctx, http.MethodPost, path, body, nil, opts...)
-	return
+	return err
 }
 
 // Get the list of objects that make up the user's queue.
@@ -53,7 +53,7 @@ func (r *MePlayerQueueService) Get(ctx context.Context, opts ...option.RequestOp
 	opts = slices.Concat(r.Options, opts)
 	path := "me/player/queue"
 	err = requestconfig.ExecuteNewRequest(ctx, http.MethodGet, path, nil, &res, opts...)
-	return
+	return res, err
 }
 
 type MePlayerQueueGetResponse struct {

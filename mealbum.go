@@ -76,7 +76,7 @@ func (r *MeAlbumService) Check(ctx context.Context, query MeAlbumCheckParams, op
 	opts = slices.Concat(r.Options, opts)
 	path := "me/albums/contains"
 	err = requestconfig.ExecuteNewRequest(ctx, http.MethodGet, path, query, &res, opts...)
-	return
+	return res, err
 }
 
 // Remove one or more albums from the current user's 'Your Music' library.
@@ -91,7 +91,7 @@ func (r *MeAlbumService) Remove(ctx context.Context, body MeAlbumRemoveParams, o
 	opts = append([]option.RequestOption{option.WithHeader("Accept", "*/*")}, opts...)
 	path := "me/albums"
 	err = requestconfig.ExecuteNewRequest(ctx, http.MethodDelete, path, body, nil, opts...)
-	return
+	return err
 }
 
 // Save one or more albums to the current user's 'Your Music' library.
@@ -106,7 +106,7 @@ func (r *MeAlbumService) Save(ctx context.Context, body MeAlbumSaveParams, opts 
 	opts = append([]option.RequestOption{option.WithHeader("Accept", "*/*")}, opts...)
 	path := "me/albums"
 	err = requestconfig.ExecuteNewRequest(ctx, http.MethodPut, path, body, nil, opts...)
-	return
+	return err
 }
 
 type MeAlbumListResponse struct {

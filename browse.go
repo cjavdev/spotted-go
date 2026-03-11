@@ -47,7 +47,7 @@ func (r *BrowseService) GetFeaturedPlaylists(ctx context.Context, query BrowseGe
 	opts = slices.Concat(r.Options, opts)
 	path := "browse/featured-playlists"
 	err = requestconfig.ExecuteNewRequest(ctx, http.MethodGet, path, query, &res, opts...)
-	return
+	return res, err
 }
 
 // Get a list of new album releases featured in Spotify (shown, for example, on a
@@ -58,7 +58,7 @@ func (r *BrowseService) GetNewReleases(ctx context.Context, query BrowseGetNewRe
 	opts = slices.Concat(r.Options, opts)
 	path := "browse/new-releases"
 	err = requestconfig.ExecuteNewRequest(ctx, http.MethodGet, path, query, &res, opts...)
-	return
+	return res, err
 }
 
 type BrowseGetFeaturedPlaylistsResponse struct {

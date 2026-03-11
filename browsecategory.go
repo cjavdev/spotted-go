@@ -47,11 +47,11 @@ func (r *BrowseCategoryService) Get(ctx context.Context, categoryID string, quer
 	opts = slices.Concat(r.Options, opts)
 	if categoryID == "" {
 		err = errors.New("missing required category_id parameter")
-		return
+		return nil, err
 	}
 	path := fmt.Sprintf("browse/categories/%s", categoryID)
 	err = requestconfig.ExecuteNewRequest(ctx, http.MethodGet, path, query, &res, opts...)
-	return
+	return res, err
 }
 
 // Get a list of categories used to tag items in Spotify (on, for example, the
@@ -90,11 +90,11 @@ func (r *BrowseCategoryService) GetPlaylists(ctx context.Context, categoryID str
 	opts = slices.Concat(r.Options, opts)
 	if categoryID == "" {
 		err = errors.New("missing required category_id parameter")
-		return
+		return nil, err
 	}
 	path := fmt.Sprintf("browse/categories/%s/playlists", categoryID)
 	err = requestconfig.ExecuteNewRequest(ctx, http.MethodGet, path, query, &res, opts...)
-	return
+	return res, err
 }
 
 type BrowseCategoryGetResponse struct {

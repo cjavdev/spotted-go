@@ -45,11 +45,11 @@ func (r *AlbumService) Get(ctx context.Context, id string, query AlbumGetParams,
 	opts = slices.Concat(r.Options, opts)
 	if id == "" {
 		err = errors.New("missing required id parameter")
-		return
+		return nil, err
 	}
 	path := fmt.Sprintf("albums/%s", id)
 	err = requestconfig.ExecuteNewRequest(ctx, http.MethodGet, path, query, &res, opts...)
-	return
+	return res, err
 }
 
 // Get Spotify catalog information for multiple albums identified by their Spotify
@@ -60,7 +60,7 @@ func (r *AlbumService) BulkGet(ctx context.Context, query AlbumBulkGetParams, op
 	opts = slices.Concat(r.Options, opts)
 	path := "albums"
 	err = requestconfig.ExecuteNewRequest(ctx, http.MethodGet, path, query, &res, opts...)
-	return
+	return res, err
 }
 
 // Get Spotify catalog information about an album’s tracks. Optional parameters can
@@ -71,7 +71,7 @@ func (r *AlbumService) ListTracks(ctx context.Context, id string, query AlbumLis
 	opts = append([]option.RequestOption{option.WithResponseInto(&raw)}, opts...)
 	if id == "" {
 		err = errors.New("missing required id parameter")
-		return
+		return nil, err
 	}
 	path := fmt.Sprintf("albums/%s/tracks", id)
 	cfg, err := requestconfig.NewRequestConfig(ctx, http.MethodGet, path, query, &res, opts...)

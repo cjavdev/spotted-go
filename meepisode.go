@@ -73,7 +73,7 @@ func (r *MeEpisodeService) Check(ctx context.Context, query MeEpisodeCheckParams
 	opts = slices.Concat(r.Options, opts)
 	path := "me/episodes/contains"
 	err = requestconfig.ExecuteNewRequest(ctx, http.MethodGet, path, query, &res, opts...)
-	return
+	return res, err
 }
 
 // Remove one or more episodes from the current user's library.
@@ -88,7 +88,7 @@ func (r *MeEpisodeService) Remove(ctx context.Context, body MeEpisodeRemoveParam
 	opts = append([]option.RequestOption{option.WithHeader("Accept", "*/*")}, opts...)
 	path := "me/episodes"
 	err = requestconfig.ExecuteNewRequest(ctx, http.MethodDelete, path, body, nil, opts...)
-	return
+	return err
 }
 
 // Save one or more episodes to the current user's library.
@@ -103,7 +103,7 @@ func (r *MeEpisodeService) Save(ctx context.Context, body MeEpisodeSaveParams, o
 	opts = append([]option.RequestOption{option.WithHeader("Accept", "*/*")}, opts...)
 	path := "me/episodes"
 	err = requestconfig.ExecuteNewRequest(ctx, http.MethodPut, path, body, nil, opts...)
-	return
+	return err
 }
 
 type MeEpisodeListResponse struct {

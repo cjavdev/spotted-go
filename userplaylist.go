@@ -51,11 +51,11 @@ func (r *UserPlaylistService) New(ctx context.Context, userID string, body UserP
 	opts = slices.Concat(r.Options, opts)
 	if userID == "" {
 		err = errors.New("missing required user_id parameter")
-		return
+		return nil, err
 	}
 	path := fmt.Sprintf("users/%s/playlists", userID)
 	err = requestconfig.ExecuteNewRequest(ctx, http.MethodPost, path, body, &res, opts...)
-	return
+	return res, err
 }
 
 // Get a list of the playlists owned or followed by a Spotify user.
@@ -67,7 +67,7 @@ func (r *UserPlaylistService) List(ctx context.Context, userID string, query Use
 	opts = append([]option.RequestOption{option.WithResponseInto(&raw)}, opts...)
 	if userID == "" {
 		err = errors.New("missing required user_id parameter")
-		return
+		return nil, err
 	}
 	path := fmt.Sprintf("users/%s/playlists", userID)
 	cfg, err := requestconfig.NewRequestConfig(ctx, http.MethodGet, path, query, &res, opts...)

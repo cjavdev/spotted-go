@@ -49,7 +49,7 @@ func (r *RecommendationService) Get(ctx context.Context, query RecommendationGet
 	opts = slices.Concat(r.Options, opts)
 	path := "recommendations"
 	err = requestconfig.ExecuteNewRequest(ctx, http.MethodGet, path, query, &res, opts...)
-	return
+	return res, err
 }
 
 // Retrieve a list of available genres seed parameter values for
@@ -60,7 +60,7 @@ func (r *RecommendationService) ListAvailableGenreSeeds(ctx context.Context, opt
 	opts = slices.Concat(r.Options, opts)
 	path := "recommendations/available-genre-seeds"
 	err = requestconfig.ExecuteNewRequest(ctx, http.MethodGet, path, nil, &res, opts...)
-	return
+	return res, err
 }
 
 type RecommendationGetResponse struct {

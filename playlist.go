@@ -49,11 +49,11 @@ func (r *PlaylistService) Get(ctx context.Context, playlistID string, query Play
 	opts = slices.Concat(r.Options, opts)
 	if playlistID == "" {
 		err = errors.New("missing required playlist_id parameter")
-		return
+		return nil, err
 	}
 	path := fmt.Sprintf("playlists/%s", playlistID)
 	err = requestconfig.ExecuteNewRequest(ctx, http.MethodGet, path, query, &res, opts...)
-	return
+	return res, err
 }
 
 // Change a playlist's name and public/private state. (The user must, of course,
@@ -63,11 +63,11 @@ func (r *PlaylistService) Update(ctx context.Context, playlistID string, body Pl
 	opts = append([]option.RequestOption{option.WithHeader("Accept", "*/*")}, opts...)
 	if playlistID == "" {
 		err = errors.New("missing required playlist_id parameter")
-		return
+		return err
 	}
 	path := fmt.Sprintf("playlists/%s", playlistID)
 	err = requestconfig.ExecuteNewRequest(ctx, http.MethodPut, path, body, nil, opts...)
-	return
+	return err
 }
 
 type PlaylistGetResponse struct {

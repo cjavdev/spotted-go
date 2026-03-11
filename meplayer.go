@@ -46,7 +46,7 @@ func (r *MePlayerService) GetCurrentlyPlaying(ctx context.Context, query MePlaye
 	opts = slices.Concat(r.Options, opts)
 	path := "me/player/currently-playing"
 	err = requestconfig.ExecuteNewRequest(ctx, http.MethodGet, path, query, &res, opts...)
-	return
+	return res, err
 }
 
 // Get information about a user’s available Spotify Connect devices. Some device
@@ -55,7 +55,7 @@ func (r *MePlayerService) GetDevices(ctx context.Context, opts ...option.Request
 	opts = slices.Concat(r.Options, opts)
 	path := "me/player/devices"
 	err = requestconfig.ExecuteNewRequest(ctx, http.MethodGet, path, nil, &res, opts...)
-	return
+	return res, err
 }
 
 // Get information about the user’s current playback state, including track or
@@ -64,7 +64,7 @@ func (r *MePlayerService) GetState(ctx context.Context, query MePlayerGetStatePa
 	opts = slices.Concat(r.Options, opts)
 	path := "me/player"
 	err = requestconfig.ExecuteNewRequest(ctx, http.MethodGet, path, query, &res, opts...)
-	return
+	return res, err
 }
 
 // Get tracks from the current user's recently played tracks. _**Note**: Currently
@@ -100,7 +100,7 @@ func (r *MePlayerService) PausePlayback(ctx context.Context, body MePlayerPauseP
 	opts = append([]option.RequestOption{option.WithHeader("Accept", "*/*")}, opts...)
 	path := "me/player/pause"
 	err = requestconfig.ExecuteNewRequest(ctx, http.MethodPut, path, body, nil, opts...)
-	return
+	return err
 }
 
 // Seeks to the given position in the user’s currently playing track. This API only
@@ -111,7 +111,7 @@ func (r *MePlayerService) SeekToPosition(ctx context.Context, body MePlayerSeekT
 	opts = append([]option.RequestOption{option.WithHeader("Accept", "*/*")}, opts...)
 	path := "me/player/seek"
 	err = requestconfig.ExecuteNewRequest(ctx, http.MethodPut, path, body, nil, opts...)
-	return
+	return err
 }
 
 // Set the repeat mode for the user's playback. This API only works for users who
@@ -122,7 +122,7 @@ func (r *MePlayerService) SetRepeatMode(ctx context.Context, body MePlayerSetRep
 	opts = append([]option.RequestOption{option.WithHeader("Accept", "*/*")}, opts...)
 	path := "me/player/repeat"
 	err = requestconfig.ExecuteNewRequest(ctx, http.MethodPut, path, body, nil, opts...)
-	return
+	return err
 }
 
 // Set the volume for the user’s current playback device. This API only works for
@@ -133,7 +133,7 @@ func (r *MePlayerService) SetVolume(ctx context.Context, body MePlayerSetVolumeP
 	opts = append([]option.RequestOption{option.WithHeader("Accept", "*/*")}, opts...)
 	path := "me/player/volume"
 	err = requestconfig.ExecuteNewRequest(ctx, http.MethodPut, path, body, nil, opts...)
-	return
+	return err
 }
 
 // Skips to next track in the user’s queue. This API only works for users who have
@@ -144,7 +144,7 @@ func (r *MePlayerService) SkipNext(ctx context.Context, body MePlayerSkipNextPar
 	opts = append([]option.RequestOption{option.WithHeader("Accept", "*/*")}, opts...)
 	path := "me/player/next"
 	err = requestconfig.ExecuteNewRequest(ctx, http.MethodPost, path, body, nil, opts...)
-	return
+	return err
 }
 
 // Skips to previous track in the user’s queue. This API only works for users who
@@ -155,7 +155,7 @@ func (r *MePlayerService) SkipPrevious(ctx context.Context, body MePlayerSkipPre
 	opts = append([]option.RequestOption{option.WithHeader("Accept", "*/*")}, opts...)
 	path := "me/player/previous"
 	err = requestconfig.ExecuteNewRequest(ctx, http.MethodPost, path, body, nil, opts...)
-	return
+	return err
 }
 
 // Start a new context or resume current playback on the user's active device. This
@@ -166,7 +166,7 @@ func (r *MePlayerService) StartPlayback(ctx context.Context, params MePlayerStar
 	opts = append([]option.RequestOption{option.WithHeader("Accept", "*/*")}, opts...)
 	path := "me/player/play"
 	err = requestconfig.ExecuteNewRequest(ctx, http.MethodPut, path, params, nil, opts...)
-	return
+	return err
 }
 
 // Toggle shuffle on or off for user’s playback. This API only works for users who
@@ -177,7 +177,7 @@ func (r *MePlayerService) ToggleShuffle(ctx context.Context, body MePlayerToggle
 	opts = append([]option.RequestOption{option.WithHeader("Accept", "*/*")}, opts...)
 	path := "me/player/shuffle"
 	err = requestconfig.ExecuteNewRequest(ctx, http.MethodPut, path, body, nil, opts...)
-	return
+	return err
 }
 
 // Transfer playback to a new device and optionally begin playback. This API only
@@ -188,7 +188,7 @@ func (r *MePlayerService) Transfer(ctx context.Context, body MePlayerTransferPar
 	opts = append([]option.RequestOption{option.WithHeader("Accept", "*/*")}, opts...)
 	path := "me/player"
 	err = requestconfig.ExecuteNewRequest(ctx, http.MethodPut, path, body, nil, opts...)
-	return
+	return err
 }
 
 type ContextObject struct {

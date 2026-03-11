@@ -46,11 +46,11 @@ func (r *ArtistService) Get(ctx context.Context, id string, opts ...option.Reque
 	opts = slices.Concat(r.Options, opts)
 	if id == "" {
 		err = errors.New("missing required id parameter")
-		return
+		return nil, err
 	}
 	path := fmt.Sprintf("artists/%s", id)
 	err = requestconfig.ExecuteNewRequest(ctx, http.MethodGet, path, nil, &res, opts...)
-	return
+	return res, err
 }
 
 // Get Spotify catalog information for several artists based on their Spotify IDs.
@@ -60,7 +60,7 @@ func (r *ArtistService) BulkGet(ctx context.Context, query ArtistBulkGetParams, 
 	opts = slices.Concat(r.Options, opts)
 	path := "artists"
 	err = requestconfig.ExecuteNewRequest(ctx, http.MethodGet, path, query, &res, opts...)
-	return
+	return res, err
 }
 
 // Get Spotify catalog information about an artist's albums.
@@ -70,7 +70,7 @@ func (r *ArtistService) ListAlbums(ctx context.Context, id string, query ArtistL
 	opts = append([]option.RequestOption{option.WithResponseInto(&raw)}, opts...)
 	if id == "" {
 		err = errors.New("missing required id parameter")
-		return
+		return nil, err
 	}
 	path := fmt.Sprintf("artists/%s/albums", id)
 	cfg, err := requestconfig.NewRequestConfig(ctx, http.MethodGet, path, query, &res, opts...)
@@ -98,11 +98,11 @@ func (r *ArtistService) ListRelatedArtists(ctx context.Context, id string, opts 
 	opts = slices.Concat(r.Options, opts)
 	if id == "" {
 		err = errors.New("missing required id parameter")
-		return
+		return nil, err
 	}
 	path := fmt.Sprintf("artists/%s/related-artists", id)
 	err = requestconfig.ExecuteNewRequest(ctx, http.MethodGet, path, nil, &res, opts...)
-	return
+	return res, err
 }
 
 // Get Spotify catalog information about an artist's top tracks by country.
@@ -112,11 +112,11 @@ func (r *ArtistService) TopTracks(ctx context.Context, id string, query ArtistTo
 	opts = slices.Concat(r.Options, opts)
 	if id == "" {
 		err = errors.New("missing required id parameter")
-		return
+		return nil, err
 	}
 	path := fmt.Sprintf("artists/%s/top-tracks", id)
 	err = requestconfig.ExecuteNewRequest(ctx, http.MethodGet, path, query, &res, opts...)
-	return
+	return res, err
 }
 
 type ArtistBulkGetResponse struct {

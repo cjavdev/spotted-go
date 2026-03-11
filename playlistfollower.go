@@ -47,11 +47,11 @@ func (r *PlaylistFollowerService) Check(ctx context.Context, playlistID string, 
 	opts = slices.Concat(r.Options, opts)
 	if playlistID == "" {
 		err = errors.New("missing required playlist_id parameter")
-		return
+		return nil, err
 	}
 	path := fmt.Sprintf("playlists/%s/followers/contains", playlistID)
 	err = requestconfig.ExecuteNewRequest(ctx, http.MethodGet, path, query, &res, opts...)
-	return
+	return res, err
 }
 
 // Add the current user as a follower of a playlist.
@@ -66,11 +66,11 @@ func (r *PlaylistFollowerService) Follow(ctx context.Context, playlistID string,
 	opts = append([]option.RequestOption{option.WithHeader("Accept", "*/*")}, opts...)
 	if playlistID == "" {
 		err = errors.New("missing required playlist_id parameter")
-		return
+		return err
 	}
 	path := fmt.Sprintf("playlists/%s/followers", playlistID)
 	err = requestconfig.ExecuteNewRequest(ctx, http.MethodPut, path, body, nil, opts...)
-	return
+	return err
 }
 
 // Remove the current user as a follower of a playlist.
@@ -85,11 +85,11 @@ func (r *PlaylistFollowerService) Unfollow(ctx context.Context, playlistID strin
 	opts = append([]option.RequestOption{option.WithHeader("Accept", "*/*")}, opts...)
 	if playlistID == "" {
 		err = errors.New("missing required playlist_id parameter")
-		return
+		return err
 	}
 	path := fmt.Sprintf("playlists/%s/followers", playlistID)
 	err = requestconfig.ExecuteNewRequest(ctx, http.MethodDelete, path, nil, nil, opts...)
-	return
+	return err
 }
 
 type PlaylistFollowerCheckParams struct {

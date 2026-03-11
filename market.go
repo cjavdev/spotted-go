@@ -39,7 +39,7 @@ func (r *MarketService) List(ctx context.Context, opts ...option.RequestOption) 
 	opts = slices.Concat(r.Options, opts)
 	path := "markets"
 	err = requestconfig.ExecuteNewRequest(ctx, http.MethodGet, path, nil, &res, opts...)
-	return
+	return res, err
 }
 
 type MarketListResponse struct {

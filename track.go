@@ -44,11 +44,11 @@ func (r *TrackService) Get(ctx context.Context, id string, query TrackGetParams,
 	opts = slices.Concat(r.Options, opts)
 	if id == "" {
 		err = errors.New("missing required id parameter")
-		return
+		return nil, err
 	}
 	path := fmt.Sprintf("tracks/%s", id)
 	err = requestconfig.ExecuteNewRequest(ctx, http.MethodGet, path, query, &res, opts...)
-	return
+	return res, err
 }
 
 // Get Spotify catalog information for multiple tracks based on their Spotify IDs.
@@ -58,7 +58,7 @@ func (r *TrackService) BulkGet(ctx context.Context, query TrackBulkGetParams, op
 	opts = slices.Concat(r.Options, opts)
 	path := "tracks"
 	err = requestconfig.ExecuteNewRequest(ctx, http.MethodGet, path, query, &res, opts...)
-	return
+	return res, err
 }
 
 type TrackBulkGetResponse struct {

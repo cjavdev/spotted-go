@@ -43,11 +43,11 @@ func (r *AudioAnalysisService) Get(ctx context.Context, id string, opts ...optio
 	opts = slices.Concat(r.Options, opts)
 	if id == "" {
 		err = errors.New("missing required id parameter")
-		return
+		return nil, err
 	}
 	path := fmt.Sprintf("audio-analysis/%s", id)
 	err = requestconfig.ExecuteNewRequest(ctx, http.MethodGet, path, nil, &res, opts...)
-	return
+	return res, err
 }
 
 type TimeIntervalObject struct {

@@ -42,7 +42,7 @@ func (r *MeFollowingService) BulkGet(ctx context.Context, query MeFollowingBulkG
 	opts = slices.Concat(r.Options, opts)
 	path := "me/following"
 	err = requestconfig.ExecuteNewRequest(ctx, http.MethodGet, path, query, &res, opts...)
-	return
+	return res, err
 }
 
 // Check to see if the current user is following one or more artists or other
@@ -57,7 +57,7 @@ func (r *MeFollowingService) Check(ctx context.Context, query MeFollowingCheckPa
 	opts = slices.Concat(r.Options, opts)
 	path := "me/following/contains"
 	err = requestconfig.ExecuteNewRequest(ctx, http.MethodGet, path, query, &res, opts...)
-	return
+	return res, err
 }
 
 // Add the current user as a follower of one or more artists or other Spotify
@@ -73,7 +73,7 @@ func (r *MeFollowingService) Follow(ctx context.Context, body MeFollowingFollowP
 	opts = append([]option.RequestOption{option.WithHeader("Accept", "*/*")}, opts...)
 	path := "me/following"
 	err = requestconfig.ExecuteNewRequest(ctx, http.MethodPut, path, body, nil, opts...)
-	return
+	return err
 }
 
 // Remove the current user as a follower of one or more artists or other Spotify
@@ -89,7 +89,7 @@ func (r *MeFollowingService) Unfollow(ctx context.Context, body MeFollowingUnfol
 	opts = append([]option.RequestOption{option.WithHeader("Accept", "*/*")}, opts...)
 	path := "me/following"
 	err = requestconfig.ExecuteNewRequest(ctx, http.MethodDelete, path, body, nil, opts...)
-	return
+	return err
 }
 
 type MeFollowingBulkGetResponse struct {

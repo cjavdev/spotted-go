@@ -44,11 +44,11 @@ func (r *AudioFeatureService) Get(ctx context.Context, id string, opts ...option
 	opts = slices.Concat(r.Options, opts)
 	if id == "" {
 		err = errors.New("missing required id parameter")
-		return
+		return nil, err
 	}
 	path := fmt.Sprintf("audio-features/%s", id)
 	err = requestconfig.ExecuteNewRequest(ctx, http.MethodGet, path, nil, &res, opts...)
-	return
+	return res, err
 }
 
 // Get audio features for multiple tracks based on their Spotify IDs.
@@ -58,7 +58,7 @@ func (r *AudioFeatureService) BulkGet(ctx context.Context, query AudioFeatureBul
 	opts = slices.Concat(r.Options, opts)
 	path := "audio-features"
 	err = requestconfig.ExecuteNewRequest(ctx, http.MethodGet, path, query, &res, opts...)
-	return
+	return res, err
 }
 
 type AudioFeatureGetResponse struct {

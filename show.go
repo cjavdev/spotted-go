@@ -45,11 +45,11 @@ func (r *ShowService) Get(ctx context.Context, id string, query ShowGetParams, o
 	opts = slices.Concat(r.Options, opts)
 	if id == "" {
 		err = errors.New("missing required id parameter")
-		return
+		return nil, err
 	}
 	path := fmt.Sprintf("shows/%s", id)
 	err = requestconfig.ExecuteNewRequest(ctx, http.MethodGet, path, query, &res, opts...)
-	return
+	return res, err
 }
 
 // Get Spotify catalog information for several shows based on their Spotify IDs.
@@ -59,7 +59,7 @@ func (r *ShowService) BulkGet(ctx context.Context, query ShowBulkGetParams, opts
 	opts = slices.Concat(r.Options, opts)
 	path := "shows"
 	err = requestconfig.ExecuteNewRequest(ctx, http.MethodGet, path, query, &res, opts...)
-	return
+	return res, err
 }
 
 // Get Spotify catalog information about an show’s episodes. Optional parameters
@@ -70,7 +70,7 @@ func (r *ShowService) ListEpisodes(ctx context.Context, id string, query ShowLis
 	opts = append([]option.RequestOption{option.WithResponseInto(&raw)}, opts...)
 	if id == "" {
 		err = errors.New("missing required id parameter")
-		return
+		return nil, err
 	}
 	path := fmt.Sprintf("shows/%s/episodes", id)
 	cfg, err := requestconfig.NewRequestConfig(ctx, http.MethodGet, path, query, &res, opts...)

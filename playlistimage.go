@@ -40,11 +40,11 @@ func (r *PlaylistImageService) Update(ctx context.Context, playlistID string, bo
 	opts = append([]option.RequestOption{option.WithRequestBody("image/jpeg", body), option.WithHeader("Accept", "application/binary")}, opts...)
 	if playlistID == "" {
 		err = errors.New("missing required playlist_id parameter")
-		return
+		return nil, err
 	}
 	path := fmt.Sprintf("playlists/%s/images", playlistID)
 	err = requestconfig.ExecuteNewRequest(ctx, http.MethodPut, path, nil, &res, opts...)
-	return
+	return res, err
 }
 
 // Get the current image associated with a specific playlist.
@@ -52,9 +52,9 @@ func (r *PlaylistImageService) List(ctx context.Context, playlistID string, opts
 	opts = slices.Concat(r.Options, opts)
 	if playlistID == "" {
 		err = errors.New("missing required playlist_id parameter")
-		return
+		return nil, err
 	}
 	path := fmt.Sprintf("playlists/%s/images", playlistID)
 	err = requestconfig.ExecuteNewRequest(ctx, http.MethodGet, path, nil, &res, opts...)
-	return
+	return res, err
 }

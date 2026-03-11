@@ -58,11 +58,11 @@ func (r *PlaylistTrackService) Update(ctx context.Context, playlistID string, bo
 	opts = slices.Concat(r.Options, opts)
 	if playlistID == "" {
 		err = errors.New("missing required playlist_id parameter")
-		return
+		return nil, err
 	}
 	path := fmt.Sprintf("playlists/%s/tracks", playlistID)
 	err = requestconfig.ExecuteNewRequest(ctx, http.MethodPut, path, body, &res, opts...)
-	return
+	return res, err
 }
 
 // **Deprecated:** Use
@@ -78,7 +78,7 @@ func (r *PlaylistTrackService) List(ctx context.Context, playlistID string, quer
 	opts = append([]option.RequestOption{option.WithResponseInto(&raw)}, opts...)
 	if playlistID == "" {
 		err = errors.New("missing required playlist_id parameter")
-		return
+		return nil, err
 	}
 	path := fmt.Sprintf("playlists/%s/tracks", playlistID)
 	cfg, err := requestconfig.NewRequestConfig(ctx, http.MethodGet, path, query, &res, opts...)
@@ -115,11 +115,11 @@ func (r *PlaylistTrackService) Add(ctx context.Context, playlistID string, body 
 	opts = slices.Concat(r.Options, opts)
 	if playlistID == "" {
 		err = errors.New("missing required playlist_id parameter")
-		return
+		return nil, err
 	}
 	path := fmt.Sprintf("playlists/%s/tracks", playlistID)
 	err = requestconfig.ExecuteNewRequest(ctx, http.MethodPost, path, body, &res, opts...)
-	return
+	return res, err
 }
 
 // **Deprecated:** Use
@@ -133,11 +133,11 @@ func (r *PlaylistTrackService) Remove(ctx context.Context, playlistID string, bo
 	opts = slices.Concat(r.Options, opts)
 	if playlistID == "" {
 		err = errors.New("missing required playlist_id parameter")
-		return
+		return nil, err
 	}
 	path := fmt.Sprintf("playlists/%s/tracks", playlistID)
 	err = requestconfig.ExecuteNewRequest(ctx, http.MethodDelete, path, body, &res, opts...)
-	return
+	return res, err
 }
 
 type PlaylistTrackUpdateResponse struct {

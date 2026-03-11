@@ -75,7 +75,7 @@ func (r *MeShowService) Check(ctx context.Context, query MeShowCheckParams, opts
 	opts = slices.Concat(r.Options, opts)
 	path := "me/shows/contains"
 	err = requestconfig.ExecuteNewRequest(ctx, http.MethodGet, path, query, &res, opts...)
-	return
+	return res, err
 }
 
 // Delete one or more shows from current Spotify user's library.
@@ -90,7 +90,7 @@ func (r *MeShowService) Remove(ctx context.Context, body MeShowRemoveParams, opt
 	opts = append([]option.RequestOption{option.WithHeader("Accept", "*/*")}, opts...)
 	path := "me/shows"
 	err = requestconfig.ExecuteNewRequest(ctx, http.MethodDelete, path, body, nil, opts...)
-	return
+	return err
 }
 
 // Save one or more shows to current Spotify user's library.
@@ -105,7 +105,7 @@ func (r *MeShowService) Save(ctx context.Context, body MeShowSaveParams, opts ..
 	opts = append([]option.RequestOption{option.WithHeader("Accept", "*/*")}, opts...)
 	path := "me/shows"
 	err = requestconfig.ExecuteNewRequest(ctx, http.MethodPut, path, body, nil, opts...)
-	return
+	return err
 }
 
 type MeShowListResponse struct {

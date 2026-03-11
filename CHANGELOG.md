@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.24.1 (2026-03-11)
+
+Full Changelog: [v0.24.0...v0.24.1](https://github.com/cjavdev/spotted-go/compare/v0.24.0...v0.24.1)
+
+### Chores
+
+* **ci:** skip uploading artifacts on stainless-internal branches ([a0de006](https://github.com/cjavdev/spotted-go/commit/a0de006744f5c33c563e9c07c250180046215c74))
+* **internal:** codegen related update ([7f226c6](https://github.com/cjavdev/spotted-go/commit/7f226c6712f86ceddc483f3a76508931e11e6d3b))
+* **internal:** minor cleanup ([6f5cd77](https://github.com/cjavdev/spotted-go/commit/6f5cd770381cdf4de01edfc20ed29d3ece4f82ba))
+* **internal:** use explicit returns ([692eaf4](https://github.com/cjavdev/spotted-go/commit/692eaf4be7abe9ba69a023d8b1d76d2c2932d341))
+* **internal:** use explicit returns in more places ([31c720e](https://github.com/cjavdev/spotted-go/commit/31c720e6f403d40a60fdb1f8016d117c240316ce))
+* update placeholder string ([a4db922](https://github.com/cjavdev/spotted-go/commit/a4db9224bbc061cfc5f1cdc7660635cb3f2bad9d))
+
 ## 0.24.0 (2026-03-06)
 
 Full Changelog: [v0.23.1...v0.24.0](https://github.com/cjavdev/spotted-go/compare/v0.23.1...v0.24.0)

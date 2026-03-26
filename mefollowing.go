@@ -182,7 +182,7 @@ type MeFollowingBulkGetParams struct {
 	// The ID type: currently only `artist` is supported.
 	//
 	// This field can be elided, and will marshal its zero value as "artist".
-	Type constant.Artist `query:"type" api:"required" json:"-"`
+	Type constant.Artist `query:"type" json:"-" default:"artist"`
 	paramObj
 }
 

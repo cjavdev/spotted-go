@@ -109,7 +109,7 @@ type ChapterGetResponse struct {
 	// Any of "year", "month", "day".
 	ReleaseDatePrecision ChapterGetResponseReleaseDatePrecision `json:"release_date_precision" api:"required"`
 	// The object type.
-	Type constant.Episode `json:"type" api:"required"`
+	Type constant.Episode `json:"type" default:"episode"`
 	// The [Spotify URI](/documentation/web-api/concepts/spotify-uris-ids) for the
 	// chapter.
 	Uri string `json:"uri" api:"required"`
@@ -233,7 +233,7 @@ type ChapterBulkGetResponseChapter struct {
 	// Any of "year", "month", "day".
 	ReleaseDatePrecision string `json:"release_date_precision" api:"required"`
 	// The object type.
-	Type constant.Episode `json:"type" api:"required"`
+	Type constant.Episode `json:"type" default:"episode"`
 	// The [Spotify URI](/documentation/web-api/concepts/spotify-uris-ids) for the
 	// chapter.
 	Uri string `json:"uri" api:"required"`

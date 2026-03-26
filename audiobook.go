@@ -138,7 +138,7 @@ type SimplifiedChapterObject struct {
 	// Any of "year", "month", "day".
 	ReleaseDatePrecision SimplifiedChapterObjectReleaseDatePrecision `json:"release_date_precision" api:"required"`
 	// The object type.
-	Type constant.Episode `json:"type" api:"required"`
+	Type constant.Episode `json:"type" default:"episode"`
 	// The [Spotify URI](/documentation/web-api/concepts/spotify-uris-ids) for the
 	// chapter.
 	Uri string `json:"uri" api:"required"`

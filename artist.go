@@ -177,7 +177,7 @@ type ArtistListAlbumsResponse struct {
 	// The number of tracks in the album.
 	TotalTracks int64 `json:"total_tracks" api:"required"`
 	// The object type.
-	Type constant.Album `json:"type" api:"required"`
+	Type constant.Album `json:"type" default:"album"`
 	// The [Spotify URI](/documentation/web-api/concepts/spotify-uris-ids) for the
 	// album.
 	Uri string `json:"uri" api:"required"`

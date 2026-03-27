@@ -1,5 +1,28 @@
 # Changelog
 
+## 0.24.1 (2026-03-27)
+
+Full Changelog: [v0.24.0...v0.24.1](https://github.com/cjavdev/spotted-go/compare/v0.24.0...v0.24.1)
+
+### Bug Fixes
+
+* prevent duplicate ? in query params ([d83c2f2](https://github.com/cjavdev/spotted-go/commit/d83c2f2ec693dd10f6a9980ade1ac8c9ce9641a8))
+
+
+### Chores
+
+* **ci:** skip lint on metadata-only changes ([33afcc7](https://github.com/cjavdev/spotted-go/commit/33afcc706e2e5465ac426878c98c302c6709d849))
+* **ci:** skip uploading artifacts on stainless-internal branches ([a0de006](https://github.com/cjavdev/spotted-go/commit/a0de006744f5c33c563e9c07c250180046215c74))
+* **client:** fix multipart serialisation of Default() fields ([2b8703d](https://github.com/cjavdev/spotted-go/commit/2b8703d729ed441a8877a9d33d298220e07c5ea7))
+* **internal:** codegen related update ([7f226c6](https://github.com/cjavdev/spotted-go/commit/7f226c6712f86ceddc483f3a76508931e11e6d3b))
+* **internal:** minor cleanup ([6f5cd77](https://github.com/cjavdev/spotted-go/commit/6f5cd770381cdf4de01edfc20ed29d3ece4f82ba))
+* **internal:** support default value struct tag ([bcd55c2](https://github.com/cjavdev/spotted-go/commit/bcd55c2aeeae0b29d842cdfc3bc4ea5922189f3f))
+* **internal:** tweak CI branches ([6e115cd](https://github.com/cjavdev/spotted-go/commit/6e115cdd869b020913b428e3565ff82bfc57580c))
+* **internal:** update gitignore ([1e8b245](https://github.com/cjavdev/spotted-go/commit/1e8b245533d2475e01341e7cce212ab7ec2b6596))
+* **internal:** use explicit returns ([692eaf4](https://github.com/cjavdev/spotted-go/commit/692eaf4be7abe9ba69a023d8b1d76d2c2932d341))
+* **internal:** use explicit returns in more places ([31c720e](https://github.com/cjavdev/spotted-go/commit/31c720e6f403d40a60fdb1f8016d117c240316ce))
+* update placeholder string ([a4db922](https://github.com/cjavdev/spotted-go/commit/a4db9224bbc061cfc5f1cdc7660635cb3f2bad9d))
+
 ## 0.24.0 (2026-03-06)
 
 Full Changelog: [v0.23.1...v0.24.0](https://github.com/cjavdev/spotted-go/compare/v0.23.1...v0.24.0)

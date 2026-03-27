@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.25.0 (2026-03-27)
+
+Full Changelog: [v0.24.1...v0.25.0](https://github.com/cjavdev/spotted-go/compare/v0.24.1...v0.25.0)
+
+### Features
+
+* **internal:** support comma format in multipart form encoding ([d20f520](https://github.com/cjavdev/spotted-go/commit/d20f5200fd17841e48cfb067c4a593a869e7a51d))
+
+
+### Chores
+
+* remove unnecessary error check for url parsing ([a50fe11](https://github.com/cjavdev/spotted-go/commit/a50fe11c270ce39cc8cdec6f3419753318270990))
+
 ## 0.24.1 (2026-03-27)
 
 Full Changelog: [v0.24.0...v0.24.1](https://github.com/cjavdev/spotted-go/compare/v0.24.0...v0.24.1)

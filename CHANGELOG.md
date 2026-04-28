@@ -1,5 +1,19 @@
 # Changelog
 
+## 0.26.0 (2026-04-28)
+
+Full Changelog: [v0.25.1...v0.26.0](https://github.com/cjavdev/spotted-go/compare/v0.25.1...v0.26.0)
+
+### Features
+
+* **go:** add default http client with timeout ([b992b36](https://github.com/cjavdev/spotted-go/commit/b992b365026b5a7aa7a2091de85da077363d96f6))
+* support setting headers via env ([30d6051](https://github.com/cjavdev/spotted-go/commit/30d6051825ca797962e5374befbd134165ce073f))
+
+
+### Chores
+
+* **internal:** more robust bootstrap script ([8680dd0](https://github.com/cjavdev/spotted-go/commit/8680dd0584de4856a7124b667bc2116093ec9bbb))
+
 ## 0.25.1 (2026-03-31)
 
 Full Changelog: [v0.25.0...v0.25.1](https://github.com/cjavdev/spotted-go/compare/v0.25.0...v0.25.1)

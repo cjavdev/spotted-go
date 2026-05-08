@@ -1,5 +1,19 @@
 # Changelog
 
+## 0.26.1 (2026-05-08)
+
+Full Changelog: [v0.26.0...v0.26.1](https://github.com/cjavdev/spotted-go/compare/v0.26.0...v0.26.1)
+
+### Bug Fixes
+
+* **go:** avoid panic when http.DefaultTransport is wrapped ([44d0344](https://github.com/cjavdev/spotted-go/commit/44d0344cab18bd2d94102c7d86296da3dccdb4aa))
+
+
+### Chores
+
+* avoid embedding reflect.Type for dead code elimination ([a4ca8f2](https://github.com/cjavdev/spotted-go/commit/a4ca8f28291e6a3bffb59b3cf612219d6db9ba22))
+* redact api-key headers in debug logs ([815fbc2](https://github.com/cjavdev/spotted-go/commit/815fbc25ff998ec81579997d86718676ecd077cc))
+
 ## 0.26.0 (2026-04-28)
 
 Full Changelog: [v0.25.1...v0.26.0](https://github.com/cjavdev/spotted-go/compare/v0.25.1...v0.26.0)

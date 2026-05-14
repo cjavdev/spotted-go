@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.27.0 (2026-05-14)
+
+Full Changelog: [v0.26.1...v0.27.0](https://github.com/cjavdev/spotted-go/compare/v0.26.1...v0.27.0)
+
+### Features
+
+* **client:** optimize json encoder for internal types ([83899d6](https://github.com/cjavdev/spotted-go/commit/83899d6e2c4ce55faa32017f0bf85ab1390d8c23))
+
 ## 0.26.1 (2026-05-08)
 
 Full Changelog: [v0.26.0...v0.26.1](https://github.com/cjavdev/spotted-go/compare/v0.26.0...v0.26.1)

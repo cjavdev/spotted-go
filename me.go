@@ -62,8 +62,13 @@ func (r *MeService) Get(ctx context.Context, opts ...option.RequestOption) (res 
 
 type MeGetResponse struct {
 	// The [Spotify user ID](/documentation/web-api/concepts/spotify-uris-ids) for the
-	// user.
+	// user. Do not use this field for account linking — use `account_id` instead,
+	// which is immutable.
 	ID string `json:"id"`
+	// A public, immutable, pseudoanonymous identifier for the user's account. Use this
+	// field for account linking rather than the `id` field, as it is stable and will
+	// not change over the lifetime of the account.
+	AccountID string `json:"account_id"`
 	// The country of the user, as set in the user's account profile. An
 	// [ISO 3166-1 alpha-2 country code](http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2).
 	// _This field is only available when the current user has granted access to the
@@ -122,6 +127,7 @@ type MeGetResponse struct {
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
 		ID              respjson.Field
+		AccountID       respjson.Field
 		Country         respjson.Field
 		DisplayName     respjson.Field
 		Email           respjson.Field
